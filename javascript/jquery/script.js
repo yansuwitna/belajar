@@ -55,7 +55,7 @@ $(document).ready(function() {
     });
   
     // Hapus data
-    $(document).on('click', '.delete', function
+    $(document).on('click', '.delete', function()
     {
         var id = $(this).data('id');
         
@@ -93,5 +93,5 @@ $(document).ready(function() {
         });
         $('#tabel-data tbody').html(rows);
         }
-        });
-        }
+        });   
+        }   

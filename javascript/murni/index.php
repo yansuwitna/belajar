@@ -16,11 +16,11 @@
 
   <h2>Tambah Pengguna</h2>
   <form id="addForm">
-    <input type="text" id="name" placeholder="Nama" required>
-    <input type="email" id="email" placeholder="Email" required>
-    <button type="submit">Tambah</button>
+          <input type="text" id="name" placeholder="Nama" required>
+          <input type="email" id="email" placeholder="Email" required>
+          <button type="submit">Tambah</button>
   </form>
-
+ 
   <h2>Edit Pengguna</h2>
   <form id="editForm" style="display:none;">
     <input type="hidden" id="editId">
@@ -29,7 +29,7 @@
     <button type="submit">Simpan</button>
     <button type="button" onclick="cancelEdit()">Batal</button>
   </form>
-
+ 
   <script src="script.js"></script>
 </body>
 </html>
