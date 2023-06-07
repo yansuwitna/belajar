@@ -1,9 +1,9 @@
 <?php
 // Konfigurasi database MySQL
 $servername = 'localhost';
-$username = 'username';
-$password = 'password';
-$dbname = 'database';
+$username = 'root';
+$password = '';
+$dbname = 'latihan';
 
 // Membuat koneksi ke database
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -37,10 +37,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
   $id = $_GET['id'];
   $name = $_PUT['name'];
   $email = $_PUT['email'];
-  $sql = "UPDATE users SET name='$name', email='$email' WHERE id='$id'";
-  if ($conn->query($sql) === TRUE) {
-    http_response_code(200);
-  }
+  $sql = "UPDATE users SET name='".$name."', email='".$email."' WHERE id='".$id."'";
+  http_response_code(222);
+  // if ($conn->query($sql) === TRUE) {
+  //   http_response_code(200); 
+  // }
 }
 
 // Menghandle request DELETE untuk menghapus pengguna
