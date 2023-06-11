@@ -1,0 +1,332 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+        <title>Asesmen Nasional - Tahun 2022</title>
+        <link rel="icon" href="assets/img/logo.png" sizes="32x32" />
+
+        <!--Vendor-->
+        <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="vendor/jquery/jquery-ui.min.css" />
+        <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="vendor/font-awesome-5/css/all.min.css" />
+        <link rel="stylesheet" href="vendor/select2/css/select2.min.css" />
+        <link rel="stylesheet" href="vendor/chart/Chart.min.css" />
+
+        <link href="vendor/leaflet/leaflet.css" rel="stylesheet">
+        <link href="vendor/leaflet/MarkerCluster.css" rel="stylesheet">
+        <link href="vendor/leaflet/MarkerCluster.Default.css" rel="stylesheet">
+
+        <!--Assets-->
+        <link rel="stylesheet" href="assets/css/framework.min.css?_dc=20230611202152" />
+        <link rel="stylesheet" href="assets/css/puspendik.min.css?_dc=20230611202152" />
+    </head>
+    <body>
+        <div class="main">
+            <div class="menu">
+                <div class="menu-header">
+                    <img src="assets/img/logo.png" height="70px" />
+                    <span>Asesmen Nasional</span>
+                    <span>PUSAT ASESMEN PENDIDIKAN</span>
+                    <ul>
+                        <li>
+                            <a href="javascript:;" class="js-menu" data-class="Home" data-url="home" data-ajax="Y" data-dialog="N"> 
+                                <span class="fas fa-home fa-lg"></span><br />Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="js-menu" data-class="UsersPengaturan" data-url="users/pengaturan" data-ajax="Y" data-dialog="Y"> 
+                                <span class="fas fa-user-cog fa-lg"></span><br />Pengaturan
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="btn-logout"> <span class="fas fa-sign-out-alt fa-lg"></span><br />Keluar</a>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="nav side-menu">
+                                        <li class="side-menu-label">Menu Utama</li>
+
+                                         <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="Home" data-url="home" data-ajax="Y" data-dialog="N">
+                            <span class="fa fa-tachometer-alt side-menu-icon"></span>
+                            <span class="side-menu-title">Dashboard</span>
+
+                                                    </a>
+
+                                            </li>
+                                        <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="Sekolah" data-url="sekolah" data-ajax="Y" data-dialog="N">
+                            <span class="fa fa-school side-menu-icon"></span>
+                            <span class="side-menu-title">Data Sekolah</span>
+
+                                                    </a>
+
+                                            </li>
+                                        <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="Biodata" data-url="biodata" data-ajax="Y" data-dialog="N">
+                            <span class="fa fa-user-graduate side-menu-icon"></span>
+                            <span class="side-menu-title">Biodata Siswa</span>
+
+                                                    </a>
+
+                                            </li>
+                                        <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="#" data-url="#" data-ajax="Y" data-dialog="N">
+                            <span class="fa fa-desktop side-menu-icon"></span>
+                            <span class="side-menu-title">Asesmen Nasional</span>
+
+                                                        <span class="caret"></span>
+                                                    </a>
+
+                                                <ul class="nav sub-menu collapse">
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="PenjelasanShow" data-url="penjelasan/show" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Penjelasan</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="Integritas" data-url="integritas" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Pakta Integritas</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="Server" data-url="server" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Komputer Proktor</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="Sesi" data-url="sesi" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Pengaturan Sesi</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="SesiKelengkapan" data-url="sesi/kelengkapan" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Cek Kelengkapan Data</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="Kartu" data-url="kartu" data-ajax="Y" data-dialog="Y">
+                                    <span class="side-menu-title">Kartu Login</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="AbsenCetak" data-url="absen/cetak" data-ajax="Y" data-dialog="Y">
+                                    <span class="side-menu-title">Cetak Daftar Hadir</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="AbsenUpload" data-url="absen/upload" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Unggah Daftar Hadir</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="Pelaksanaan" data-url="pelaksanaan" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Berita Acara Pelaksanaan</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="Kasus" data-url="kasus" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Laporan Kasus Soal</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="Cadangan" data-url="cadangan" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Aktivasi Peserta Cadangan</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="Sinkronisasi" data-url="sinkronisasi" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Jadwal Sinkronisasi</span>
+                                </a>
+                            </li>
+                                                    </ul>
+                                            </li>
+                                        <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="#" data-url="#" data-ajax="Y" data-dialog="N">
+                            <span class="fa fa-chart-bar side-menu-icon"></span>
+                            <span class="side-menu-title">Rekap</span>
+
+                                                        <span class="caret"></span>
+                                                    </a>
+
+                                                <ul class="nav sub-menu collapse">
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="ResponseServer" data-url="response/server" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Rekap Upload</span>
+                                </a>
+                            </li>
+                                                    </ul>
+                                            </li>
+                                        <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="#" data-url="#" data-ajax="Y" data-dialog="N">
+                            <span class="fa fa-signal side-menu-icon"></span>
+                            <span class="side-menu-title">Sekolah Blank Spot</span>
+
+                                                        <span class="caret"></span>
+                                                    </a>
+
+                                                <ul class="nav sub-menu collapse">
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="OfflinePenjelasan" data-url="offline/penjelasan" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Penjelasan</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="Token" data-url="token" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Token Sekolah Blank Spot</span>
+                                </a>
+                            </li>
+                                                    </ul>
+                                            </li>
+                                        <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="#" data-url="#" data-ajax="Y" data-dialog="N">
+                            <span class="fa fa-table side-menu-icon"></span>
+                            <span class="side-menu-title">Penjadwalan Ulang</span>
+
+                                                        <span class="caret"></span>
+                                                    </a>
+
+                                                <ul class="nav sub-menu collapse">
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="ResponseSubtes" data-url="response/subtes" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Rekap Sekolah</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="SimulasiServer" data-url="simulasi/server" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Komputer Proktor</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="SimulasiKartu" data-url="simulasi/kartu" data-ajax="Y" data-dialog="Y">
+                                    <span class="side-menu-title">Cetak Kartu Login</span>
+                                </a>
+                            </li>
+                                                    </ul>
+                                            </li>
+                                        <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="Ticket" data-url="ticket" data-ajax="Y" data-dialog="N">
+                            <span class="fa fa-ticket-alt side-menu-icon"></span>
+                            <span class="side-menu-title">Layanan Pengaduan</span>
+
+                                                    </a>
+
+                                            </li>
+                                          <li class="side-menu-label">Pengaturan</li>
+
+                                         <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="UsersPengaturan" data-url="users/pengaturan" data-ajax="Y" data-dialog="Y">
+                            <span class="fa fa-user-cog side-menu-icon"></span>
+                            <span class="side-menu-title">Pengaturan Akun</span>
+
+                                                    </a>
+
+                                            </li>
+                                        <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="UsersOnline" data-url="users/online" data-ajax="Y" data-dialog="Y">
+                            <span class="fa fa-users side-menu-icon"></span>
+                            <span class="side-menu-title">Pengguna Online</span>
+
+                                                    </a>
+
+                                            </li>
+                                      </ul>
+            </div>
+            <div class="wrapper-main">
+                <div class="header">
+                    <a href="#" class="toggle-menu" id="toggle-menu">
+                        <span class="fa fa-bars side-menu-icon"></span>
+                    </a>
+                    <ul class="header-right">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <span class="far fa-user"></span>
+                                <span class="label label-success online-count">0</span>
+                            </a>
+                            <ul class="dropdown-menu user-list"></ul>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <span class="far fa-bell"></span>
+                                <span class="label label-danger chat-count">0</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="javascript:void(0)" class="js-menu" id="chat-notification" data-class="Ticket" data-url="ticket" data-ajax="Y" data-dialog="N">
+                                        <span class="fa fa-comments"></span>
+                                        Ada
+                                        <span class="chat-count">0</span>
+                                        layanan pengaduan belum ditangani
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="user-menu">
+                            <a href="#" class="dropdown-toggle button-user" data-toggle="dropdown" aria-expanded="false">
+                                <img alt="" src="/api/v2/users/avatar?ajaxToken=1A61F09AB22A92E772CC6A3B77E247C3" />
+                                <span class="userlogin"></span>
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <div class="photo">
+                                    <img alt="" src="/api/v2/users/avatar?ajaxToken=1A61F09AB22A92E772CC6A3B77E247C3" width="100%" />
+                                </div>
+                                <li>
+                                    <a href="javascript:void(0)" class="js-menu" data-class="UsersPengaturan" data-url="users/pengaturan" data-ajax="Y" data-dialog="Y">
+                                        <span class="fa fa-user"></span>
+                                        Pengaturan Akun
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="btn-logout">
+                                        <span class="fa fa-sign-out-alt"></span>
+                                        Keluar</a
+                                    >
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div> 
+                <div class="wrapper-content">
+                    <div class="content imat" id="content">
+                    <div class="panel panel-default" id="imat-08HCi"><div class="panel-heading"><i class="icon-left fa fa-school"></i>Identitas dan Infrastruktur Sekolah<div class="panel-tools"></div></div><div class="panel-body with-header no-padding"><div class="navbar navbar-default" id="imat-IUZsn"><div class="container-fluid"></div><table width="100%"><tbody><tr><td class="tableLeft" align="left"><form class="navbar-form"><div class="form-group"><a href="javascript:void(0)" class="btn hidden btn-default" id="simpan" hidden="hidden"><i class="icon-left fa fa-save"></i>Simpan</a><div class="dropdown btn-group" id="kesiapan"><a href="javascript:void(0)" class="btn btn-default dropdown-toggle" id="kesiapan-button" data-toggle="dropdown" aria-expanded="false"><i class="icon-left fa fa-file-pdf"></i>Surat Kesiapan <span class="caret"></span></a><ul class="dropdown-menu dropdown-menu-left onNavBar" role="menu" id="kesiapan-dropdown"><li role="presentation"><a href="javascript:void(0)" id="imat-aw9N3"><i class="icon-left fa fa-print"></i>Cetak</a></li><li role="presentation"><a href="javascript:void(0)" id="upload" hidden="hidden" class="hidden"><i class="icon-left fa fa-upload"></i>Upload</a></li><li role="presentation"><a href="javascript:void(0)" id="imat-o8oQj"><i class="icon-left fa fa-image"></i>Lihat Gambar</a></li></ul></div></div></form></td><td class="tableRight" align="right"><form class="navbar-form"><div class="form-group"></div></form></td></tr></tbody></table></div><div class="navs" id="imat-5Entv" style="margin: 10px;"><ul class="nav nav-tabs"><li class="active"><a data-toggle="tab" href="#imat-DD0kO-content">Identitas</a></li><li><a data-toggle="tab" href="#imat-C3w0d-content">Tim Teknis</a></li><li><a data-toggle="tab" href="#imat-O3RKF-content">Infrastruktur</a></li></ul><div class="tab-content"><div class="tab-pane fade in active" id="imat-DD0kO-content"><form method="POST" id="imat-DD0kO" class="form-horizontal" style="margin: 15px;"><div class="form-group"><label class="control-label col-sm-3">Jenjang</label><div class="col-sm-3"><select class="form-control" id="kd_jenjang" name="kd_jenjang"><option value="K">SMK</option></select></div></div><div class="form-group"><label class="control-label col-sm-3">Provinsi</label><div class="col-sm-6"><select class="form-control" id="kd_prop" name="kd_prop"><option value="22">22. BALI</option></select></div></div><div class="form-group"><label class="control-label col-sm-3">Kota/Kabupaten</label><div class="col-sm-6"><select class="form-control" id="kd_rayon" name="kd_rayon"><option value="05">05. KABUPATEN KARANGASEM</option></select></div></div><div class="form-group"><label class="control-label col-sm-3">Sekolah</label><div class="col-sm-6"><select class="form-control" id="kd_sek" name="kd_sek"><option value="0001" data-params="50102771">0001. SMK NEGERI 1 ABANG</option></select></div></div><div class="form-group"><label class="control-label col-sm-3">Status Sekolah</label><div class="col-sm-3"><select class="form-control disabled" id="sts_sek" disabled="disabled" name="sts_sek"><option value="">Pilih Status</option><option value="N">Negeri</option><option value="S">Swasta</option></select></div></div><div class="form-group"><label href="javascript:void(0)" id="imat-sARml" class="col-sm-3 control-label">NPSN</label><div class="col-sm-2"><input class="form-control disabled" type="text" id="npsn" disabled="disabled" name="npsn" size="col-sm-2"></div><label href="javascript:void(0)" id="imat-gezaj" class="col-sm-2 control-label">Kode AN</label><div class="col-sm-2"><input class="form-control disabled" type="text" id="kode_un" disabled="disabled" name="kode_un" size="col-sm-2"></div></div><div class="form-group"><label class="control-label col-sm-3">Email</label><div class="col-sm-6"><input class="form-control" type="text" id="email" name="email" size="col-sm-6"></div></div><div class="form-group"><label class="control-label col-sm-3">Status Pelaksanaan</label><div class="col-sm-6"><div class="check disabled" id="anbk" disabled="disabled"><div class="radio-inline"><input class="styled cek disabled" type="radio" name="anbk" id="anbk1" value="1" disabled="disabled"><label for="anbk1">&nbsp;Mandiri</label></div><div class="radio-inline"><input class="styled cek disabled" type="radio" name="anbk" id="anbk2" value="2" disabled="disabled"><label for="anbk2">&nbsp;Menumpang</label></div></div></div></div><div class="form-group" style=""><label class="control-label col-sm-3">Moda Pelaksanaan</label><div class="col-sm-6"><div class="check disabled" id="moda" disabled="disabled"><div class="radio-inline"><input class="styled cek disabled" type="radio" name="moda" id="moda1" value="1" disabled="disabled"><label for="moda1">&nbsp;Online</label></div><div class="radio-inline"><input class="styled cek disabled" type="radio" name="moda" id="moda2" value="2" disabled="disabled"><label for="moda2">&nbsp;Semi Online</label></div></div></div></div><div class="form-group"><div class="html-object" id="tempat" style="background: rgb(221, 221, 221); padding: 5px; font-weight: bold; text-align: center; display: none;">Tempat Pelaksanaan</div></div><div class="form-group" style="display: none;"><label class="control-label col-sm-3">Jenjang</label><div class="col-sm-3"><select class="form-control disabled" id="a_kd_jenjang" name="a_kd_jenjang" disabled="disabled"><option value="">Pilih Jenjang</option><option value="D">SD/MI</option><option value="P">SMP/MTs</option><option value="U">SMA/MA</option><option value="K">SMK</option><option value="X">Kesetaraan</option><option value="Q">Sekolah Khusus</option></select></div></div><div class="form-group" style="display: none;"><label class="control-label col-sm-3">Sekolah</label><div class="col-sm-6"><select class="form-control disabled" id="a_kd_sek" name="a_kd_sek" disabled="disabled"><option value="">Pilih Sekolah Pelaksana</option><option value="0001" data-params="50102771">0001. SMK NEGERI 1 ABANG</option><option value="0003" data-params="50102772">0003. SMK SARASWATI AMLAPURA</option><option value="0004" data-params="50103675">0004. SMK WIDYA WISATA GRAHA</option><option value="0005" data-params="50103677">0005. SMK NEGERI 1 MANGGIS</option><option value="0006" data-params="50103852">0006. SMK NEGERI 1 KUBU</option><option value="0007" data-params="50103858">0007. SMK PGRI AMLAPURA</option><option value="0008" data-params="50105543">0008. SMK NUSA DUA TOYA ANYAR</option><option value="0009" data-params="50105647">0009. SMK GIRI PENDAWA RENDANG</option><option value="0011" data-params="69762794">0011. SMK NEGERI 1 AMLAPURA</option><option value="0012" data-params="69861125">0012. SMK TI BALI GLOBAL KARANGASEM</option><option value="0013" data-params="69902191">0013. SMK NEGERI 1 BEBANDEM</option></select></div></div><div class="form-group"><div class="html-object menumpang" id="imat-6IECX" style="background: rgb(221, 221, 221); padding: 5px; font-weight: bold; text-align: center; display: none;">Sekolah Menumpang</div></div><div class="form-group"><div class="html-object menumpang" id="menumpang" style="padding: 10px; display: none;"></div></div></form></div><div class="tab-pane fade" id="imat-C3w0d-content"><form method="POST" id="imat-C3w0d" class="form-horizontal" style="margin: 15px;"><div class="form-group"><label class="control-label col-sm-3">Nama Penanggung Jawab</label><div class="col-sm-6"><input class="form-control" type="text" id="nm_kepsek" name="nm_kepsek" size="col-sm-6"></div></div><div class="form-group"><label class="control-label col-sm-3">NIP Penanggung Jawab</label><div class="col-sm-3"><input class="form-control" type="text" id="nip_kepsek" name="nip_kepsek" size="col-sm-3"></div></div><div class="form-group"><label class="control-label col-sm-3">Telepon Penanggung Jawab</label><div class="col-sm-3"><input class="form-control" type="text" id="tlp_kepsek" name="tlp_kepsek" size="col-sm-3"></div></div><div class="form-group"><label class="control-label col-sm-3">Nama Proktor</label><div class="col-sm-6"><input class="form-control" type="text" id="nm_proktor" name="nm_proktor" size="col-sm-6"></div></div><div class="form-group"><label class="control-label col-sm-3">Email Proktor</label><div class="col-sm-6"><input class="form-control" type="text" id="email_proktor" name="email_proktor" size="col-sm-6"></div></div><div class="form-group"><label class="control-label col-sm-3">HP Proktor</label><div class="col-sm-3"><input class="form-control" type="text" id="hp_proktor" name="hp_proktor" size="col-sm-3"></div></div><div class="form-group"><label class="control-label col-sm-3">Nama Teknisi</label><div class="col-sm-6"><input class="form-control" type="text" id="nm_teknisi" name="nm_teknisi" size="col-sm-6"></div></div><div class="form-group"><label class="control-label col-sm-3">Email Teknisi</label><div class="col-sm-6"><input class="form-control" type="text" id="email_teknisi" name="email_teknisi" size="col-sm-6"></div></div><div class="form-group"><label class="control-label col-sm-3">HP Teknisi</label><div class="col-sm-3"><input class="form-control" type="text" id="hp_teknisi" name="hp_teknisi" size="col-sm-3"></div></div></form></div><div class="tab-pane fade" id="imat-O3RKF-content"><form method="POST" id="imat-O3RKF" class="form-horizontal" style="margin: 15px;"><div class="form-group"><label class="control-label col-sm-3">Jumlah Komputer Proktor</label><div class="col-sm-2"><input class="form-control" type="text" id="jm_server" name="jm_server" size="col-sm-2"></div></div><div class="form-group"><label class="control-label col-sm-3">Jumlah Kepemilikan Lab Komputer</label><div class="col-sm-2"><input class="form-control" type="text" id="jm_lab" name="jm_lab" size="col-sm-2"></div></div><div class="form-group"><label class="control-label col-sm-3">Jumlah Client (Milik)</label><div class="col-sm-2"><input class="form-control" type="text" id="jm_client_milik" name="jm_client_milik" size="col-sm-2"></div></div><div class="form-group"><label class="control-label col-sm-3">Jumlah Client (Bukan Milik)</label><div class="col-sm-2"><input class="form-control" type="text" id="jm_client_non_milik" name="jm_client_non_milik" size="col-sm-2"></div></div><div class="form-group"><label class="control-label col-sm-3">Jumlah Switch/HUB</label><div class="col-sm-3"><input class="form-control" type="text" id="jm_switch" name="jm_switch" size="col-sm-3"></div></div><div class="form-group"><label class="control-label col-sm-3">Jumlah Access Point</label><div class="col-sm-3"><input class="form-control" type="text" id="jm_access_point" name="jm_access_point" size="col-sm-3"></div></div><div class="form-group"><div class="html-object" id="imat-MW7Vu" style="background: rgb(153, 153, 153); color: white; padding: 5px;">Listrik</div></div><div class="form-group"><label class="control-label col-sm-3">Sumber Listrik</label><div class="col-sm-6"><select class="form-control" id="listrik_sumber" name="listrik_sumber"><option value="">Pilih</option><option value="1">Tidak Ada</option><option value="2">PLN</option><option value="3">Diesel</option><option value="4">Tenaga Surya</option><option value="5">PLN &amp; Diesel</option><option value="6">Biogas</option><option value="9">Lainnya</option></select></div></div><div class="form-group"><label class="control-label col-sm-3">Daya</label><div class="col-sm-5"><input class="form-control" type="text" id="listrik_daya" name="listrik_daya" size="col-sm-5"></div></div><div class="form-group"><div class="html-object" id="imat-WqeFc" style="background: rgb(153, 153, 153); color: white; padding: 5px;">Internet</div></div><div class="form-group"><label class="control-label col-sm-3">Nama ISP</label><div class="col-sm-6"><select class="form-control" id="internet_isp" name="internet_isp"><option value="">Pilih</option><option value="0">Tidak Ada</option><option value="1">Jardiknas</option><option value="2">Telkom Speedy</option><option value="3">Telkom Astinet</option><option value="4">Telkomsel Flash</option><option value="5">Indosat Mentari</option><option value="6">Indosat IM3</option><option value="7">Indosat IM2</option><option value="8">Indosat IM2 (Satelit)</option><option value="9">XL (GSM)</option><option value="10">XL (Serat Optik)</option><option value="11">Smartfren</option><option value="12">Esia AHA</option><option value="13">CBN</option><option value="14">Centrin (Kabel)</option><option value="15">Centrin (Wavelan)</option><option value="16">Biznet (Kabel)</option><option value="17">Biznet (Serat Optik)</option><option value="18">Firstmedia</option><option value="19">Linknet</option><option value="20">CNI (Wavelan)</option><option value="21">CNI (Serat Optik)</option><option value="22">3 (Tri)</option><option value="23">Axis</option><option value="91">Lainnya (Kabel)</option><option value="92">Lainnya (Serat Optik)</option><option value="93">Lainnya (Wavelan)</option><option value="94">Lainnya (Satelit)</option><option value="99">Lainnya</option></select></div></div><div class="form-group"><label class="control-label col-sm-3">Bandwidth Upload</label><div class="col-sm-3"><input class="form-control" type="text" id="internet_bandwidth_up" name="internet_bandwidth_up" size="col-sm-3"></div></div><div class="form-group"><label class="control-label col-sm-3">Bandwidth Download</label><div class="col-sm-3"><input class="form-control" type="text" id="internet_bandwidth_down" name="internet_bandwidth_down" size="col-sm-3"></div></div></form></div></div></div></div><div class="panel-footer" style="display: none;"></div></div><div class="panel panel-default fullsize" id="imat-egB2n" style="display: none;"><div class="panel-heading"><i class="icon-left fa fa-print"></i>Cetak<div class="panel-tools"></div></div><div class="panel-body with-header no-padding"><div class="navbar navbar-default" id="imat-wGBZt"><div class="container-fluid"></div><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#imat-wGBZt .navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></div><table width="100%"><tbody><tr><td class="tableLeft" align="left"><form class="navbar-form"><div class="form-group"><a href="javascript:void(0)" class="btn btn-default" id="back"><i class="icon-left fa fa-arrow-left"></i>Kembali</a><a href="javascript:void(0)" class="btn btn-default" id="refresh"><i class="icon-left fa fa-sync-alt"></i>Refresh</a><a href="javascript:void(0)" class="btn btn-default" id="cetak"><i class="icon-left fa fa-print"></i>Cetak</a><a href="javascript:void(0)" class="btn btn-default" id="putar_kiri"><i class="icon-left fa fa-undo"></i>Putar Kiri</a><a href="javascript:void(0)" class="btn btn-default" id="putar_kanan"><i class="icon-left fa fa-redo"></i>Putar Kanan</a></div></form></td><td class="tableRight" align="right"><form class="navbar-form collapse navbar-collapse"></form></td></tr></tbody></table></div><div class="imat-frame" id="imat-bTzmB" style="top: 32px;"><iframe name="imat-frame" src="" id="imat-frame"></iframe></div></div><div class="panel-footer" style="display: none;"></div></div></div>
+                </div>
+            </div>
+        </div>
+        <script>
+            var baseURL = '/';
+            var uniqueID = 'c6f3129c51eb84dbe0bd01d651e6085b';
+        </script>
+
+        <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+        <script src="vendor/jquery/jquery.form.min.js"></script>
+        <script src="vendor/jquery/jquery-ui.min.js"></script>
+        <script src="vendor/jquery/jquery.slimscroll.min.js"></script>
+        <script src="vendor/select2/js/select2.min.js"></script>
+        <script src="vendor/plupload/js/plupload.full.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="vendor/tinymce/tinymce.min.js"></script>
+        <script src="vendor/tinymce/jquery.tinymce.min.js"></script>
+        <script src="vendor/chart/Chart.min.js"></script>
+
+        <script src="vendor/leaflet/leaflet.js"></script>
+        <script src="vendor/leaflet/leaflet.markercluster.js"></script>
+        <script src="vendor/leaflet/leaflet.colormarkers.js"></script>
+        
+        <!--Assets-->
+        <script src="user/referensi/20230611202152"></script>
+        <script src="assets/js/framework.min.js?_dc=20230611202152"></script>
+        <script src="assets/js/puspendik.min.js?_dc=20230611202152"></script>
+        <!--<script src="vendor/dev-tools/dev-tools.js"></script>-->
+
+        
+</div>
+<ul class="dropdown-menu dropdown-menu-left onNavBar" role="menu" id="kesiapan-dropdown" style="display: block; top: 134px; left: 264px;"><li role="presentation"><a href="javascript:void(0)" id="imat-ycGLw"><i class="icon-left fa fa-print"></i>Cetak</a></li><li role="presentation"><a href="javascript:void(0)" id="upload" hidden="hidden" class="hidden"><i class="icon-left fa fa-upload"></i>Upload</a></li><li role="presentation"><a href="javascript:void(0)" id="imat-Q6MBY"><i class="icon-left fa fa-image"></i>Lihat Gambar</a></li></ul>
+<div class="imat modal-backdrop fade in"></div>    
+<div class="imat modal fade modal-vcenter in"><div class="modal-dialog"><div class="modal-content ui-draggable" style="position: relative; margin-top: 351px;"><div class="modal-header ui-draggable-handle"><i class="icon-left fa fa-edit"></i>Isi Pakta Integritas<button type="button" class="close" data-dismiss="modal">×</button></div><div class="modal-body with-header with-footer"><form method="POST" id="imat-hzpQo" class="form-horizontal"><div class="form-group"><label class="control-label col-sm-4">NIP</label><div class="col-sm-5"><input class="form-control" type="text" id="nip" name="nip" size="col-sm-5"></div></div><div class="form-group"><label class="control-label col-sm-4">Nama</label><div class="col-sm-8"><input class="form-control" type="text" id="nama" name="nama" size="col-sm-8"></div></div><div class="form-group"><label class="control-label col-sm-4">Tugas</label><div class="col-sm-8"><select class="form-control" id="tugas" name="tugas"><option value="">Pilih Tugas</option><option value="KS">Penanggung Jawab</option><option value="PR">Proktor</option><option value="TK">Teknisi</option><option value="PW">Pengawas</option></select></div></div><div class="form-group"><div class="html-object asal" id="imat-7wBZL" style="background: rgb(221, 221, 221); padding: 5px; font-weight: bold; text-align: center; display: none;">Sekolah Asal</div></div><div class="form-group" style="display: none;"><label class="control-label col-sm-4">Jenjang</label><div class="col-sm-8"><select class="form-control" id="a_kd_jenjang" name="a_kd_jenjang"><option value="">Pilih Jenjang</option><option value="D">SD/MI</option><option value="P">SMP/MTs</option><option value="U">SMA/MA</option><option value="K">SMK</option><option value="X">Kesetaraan</option><option value="Q">Sekolah Khusus</option></select></div></div><div class="form-group" style="display: none;"><label class="control-label col-sm-4">Sekolah</label><div class="col-sm-8"><select class="form-control" id="a_kd_sek" name="a_kd_sek"><option value="">Pilih Sekolah</option></select></div></div></form></div><div class="modal-footer"><div class="navbar navbar-default" id="imat-1WYA0"><div class="container-fluid"></div><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#imat-1WYA0 .navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></div><table width="100%"><tbody><tr><td class="tableLeft" align="left"><form class="navbar-form"><div class="form-group"></div></form></td><td class="tableRight" align="right"><form class="navbar-form"><div class="form-group"><a href="javascript:void(0)" class="btn btn-default" id="imat-IqAri"><i class="icon-left fa fa-save"></i>Simpan</a></div></form></td></tr></tbody></table></div></div></div></div></div>
+</body>
+</html>

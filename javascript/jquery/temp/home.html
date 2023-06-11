@@ -1,0 +1,813 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+        <title>Asesmen Nasional - Tahun 2022</title>
+        <link rel="icon" href="assets/img/logo.png" sizes="32x32" />
+
+        <!--Vendor-->
+        <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="vendor/jquery/jquery-ui.min.css" />
+        <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="vendor/font-awesome-5/css/all.min.css" />
+        <link rel="stylesheet" href="vendor/select2/css/select2.min.css" />
+        <link rel="stylesheet" href="vendor/chart/Chart.min.css" />
+
+        <link href="vendor/leaflet/leaflet.css" rel="stylesheet">
+        <link href="vendor/leaflet/MarkerCluster.css" rel="stylesheet">
+        <link href="vendor/leaflet/MarkerCluster.Default.css" rel="stylesheet">
+
+        <!--Assets-->
+        <link rel="stylesheet" href="assets/css/framework.min.css?_dc=20230611202152" />
+        <link rel="stylesheet" href="assets/css/puspendik.min.css?_dc=20230611202152" />
+    </head>
+    <body>
+        <div class="main">
+            <div class="menu">
+                <div class="menu-header">
+                    <img src="assets/img/logo.png" height="70px" />
+                    <span>Asesmen Nasional</span>
+                    <span>PUSAT ASESMEN PENDIDIKAN</span>
+                    <ul>
+                        <li>
+                            <a href="javascript:;" class="js-menu" data-class="Home" data-url="home" data-ajax="Y" data-dialog="N"> 
+                                <span class="fas fa-home fa-lg"></span><br />Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="js-menu" data-class="UsersPengaturan" data-url="users/pengaturan" data-ajax="Y" data-dialog="Y"> 
+                                <span class="fas fa-user-cog fa-lg"></span><br />Pengaturan
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="btn-logout"> <span class="fas fa-sign-out-alt fa-lg"></span><br />Keluar</a>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="nav side-menu">
+                                        <li class="side-menu-label">Menu Utama</li>
+
+                                         <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="Home" data-url="home" data-ajax="Y" data-dialog="N">
+                            <span class="fa fa-tachometer-alt side-menu-icon"></span>
+                            <span class="side-menu-title">Dashboard</span>
+
+                                                    </a>
+
+                                            </li>
+                                        <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="Sekolah" data-url="sekolah" data-ajax="Y" data-dialog="N">
+                            <span class="fa fa-school side-menu-icon"></span>
+                            <span class="side-menu-title">Data Sekolah</span>
+
+                                                    </a>
+
+                                            </li>
+                                        <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="Biodata" data-url="biodata" data-ajax="Y" data-dialog="N">
+                            <span class="fa fa-user-graduate side-menu-icon"></span>
+                            <span class="side-menu-title">Biodata Siswa</span>
+
+                                                    </a>
+
+                                            </li>
+                                        <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="#" data-url="#" data-ajax="Y" data-dialog="N">
+                            <span class="fa fa-desktop side-menu-icon"></span>
+                            <span class="side-menu-title">Asesmen Nasional</span>
+
+                                                        <span class="caret"></span>
+                                                    </a>
+
+                                                <ul class="nav sub-menu collapse">
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="PenjelasanShow" data-url="penjelasan/show" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Penjelasan</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="Integritas" data-url="integritas" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Pakta Integritas</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="Server" data-url="server" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Komputer Proktor</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="Sesi" data-url="sesi" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Pengaturan Sesi</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="SesiKelengkapan" data-url="sesi/kelengkapan" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Cek Kelengkapan Data</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="Kartu" data-url="kartu" data-ajax="Y" data-dialog="Y">
+                                    <span class="side-menu-title">Kartu Login</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="AbsenCetak" data-url="absen/cetak" data-ajax="Y" data-dialog="Y">
+                                    <span class="side-menu-title">Cetak Daftar Hadir</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="AbsenUpload" data-url="absen/upload" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Unggah Daftar Hadir</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="Pelaksanaan" data-url="pelaksanaan" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Berita Acara Pelaksanaan</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="Kasus" data-url="kasus" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Laporan Kasus Soal</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="Cadangan" data-url="cadangan" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Aktivasi Peserta Cadangan</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="Sinkronisasi" data-url="sinkronisasi" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Jadwal Sinkronisasi</span>
+                                </a>
+                            </li>
+                                                    </ul>
+                                            </li>
+                                        <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="#" data-url="#" data-ajax="Y" data-dialog="N">
+                            <span class="fa fa-chart-bar side-menu-icon"></span>
+                            <span class="side-menu-title">Rekap</span>
+
+                                                        <span class="caret"></span>
+                                                    </a>
+
+                                                <ul class="nav sub-menu collapse">
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="ResponseServer" data-url="response/server" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Rekap Upload</span>
+                                </a>
+                            </li>
+                                                    </ul>
+                                            </li>
+                                        <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="#" data-url="#" data-ajax="Y" data-dialog="N">
+                            <span class="fa fa-signal side-menu-icon"></span>
+                            <span class="side-menu-title">Sekolah Blank Spot</span>
+
+                                                        <span class="caret"></span>
+                                                    </a>
+
+                                                <ul class="nav sub-menu collapse">
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="OfflinePenjelasan" data-url="offline/penjelasan" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Penjelasan</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="Token" data-url="token" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Token Sekolah Blank Spot</span>
+                                </a>
+                            </li>
+                                                    </ul>
+                                            </li>
+                                        <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="#" data-url="#" data-ajax="Y" data-dialog="N">
+                            <span class="fa fa-table side-menu-icon"></span>
+                            <span class="side-menu-title">Penjadwalan Ulang</span>
+
+                                                        <span class="caret"></span>
+                                                    </a>
+
+                                                <ul class="nav sub-menu collapse">
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="ResponseSubtes" data-url="response/subtes" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Rekap Sekolah</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="SimulasiServer" data-url="simulasi/server" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Komputer Proktor</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="SimulasiKartu" data-url="simulasi/kartu" data-ajax="Y" data-dialog="Y">
+                                    <span class="side-menu-title">Cetak Kartu Login</span>
+                                </a>
+                            </li>
+                                                    </ul>
+                                            </li>
+                                        <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="Ticket" data-url="ticket" data-ajax="Y" data-dialog="N">
+                            <span class="fa fa-ticket-alt side-menu-icon"></span>
+                            <span class="side-menu-title">Layanan Pengaduan</span>
+
+                                                    </a>
+
+                                            </li>
+                                          <li class="side-menu-label">Pengaturan</li>
+
+                                         <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="UsersPengaturan" data-url="users/pengaturan" data-ajax="Y" data-dialog="Y">
+                            <span class="fa fa-user-cog side-menu-icon"></span>
+                            <span class="side-menu-title">Pengaturan Akun</span>
+
+                                                    </a>
+
+                                            </li>
+                                        <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="UsersOnline" data-url="users/online" data-ajax="Y" data-dialog="Y">
+                            <span class="fa fa-users side-menu-icon"></span>
+                            <span class="side-menu-title">Pengguna Online</span>
+
+                                                    </a>
+
+                                            </li>
+                                      </ul>
+            </div>
+            <div class="wrapper-main">
+                <div class="header">
+                    <a href="#" class="toggle-menu" id="toggle-menu">
+                        <span class="fa fa-bars side-menu-icon"></span>
+                    </a>
+                    <ul class="header-right">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <span class="far fa-user"></span>
+                                <span class="label label-success online-count">0</span>
+                            </a>
+                            <ul class="dropdown-menu user-list"></ul>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <span class="far fa-bell"></span>
+                                <span class="label label-danger chat-count">0</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="javascript:void(0)" class="js-menu" id="chat-notification" data-class="Ticket" data-url="ticket" data-ajax="Y" data-dialog="N">
+                                        <span class="fa fa-comments"></span>
+                                        Ada
+                                        <span class="chat-count">0</span>
+                                        layanan pengaduan belum ditangani
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="user-menu">
+                            <a href="#" class="dropdown-toggle button-user" data-toggle="dropdown" aria-expanded="false">
+                                <img alt="" src="/api/v2/users/avatar?ajaxToken=1A61F09AB22A92E772CC6A3B77E247C3" />
+                                <span class="userlogin"></span>
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <div class="photo">
+                                    <img alt="" src="/api/v2/users/avatar?ajaxToken=1A61F09AB22A92E772CC6A3B77E247C3" width="100%" />
+                                </div>
+                                <li>
+                                    <a href="javascript:void(0)" class="js-menu" data-class="UsersPengaturan" data-url="users/pengaturan" data-ajax="Y" data-dialog="Y">
+                                        <span class="fa fa-user"></span>
+                                        Pengaturan Akun
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="btn-logout">
+                                        <span class="fa fa-sign-out-alt"></span>
+                                        Keluar</a
+                                    >
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="wrapper-content">
+                    <div class="content imat" id="content"><div class="column" id="imat-V3NXv"><div class="row"><div class="col-sm-8"><div class="panel panel-default" id="imat-MZB0H"><div class="panel-heading"><i class="icon-left fa fa-bullhorn"></i>Pengumuman<div class="panel-tools"><a href="javascript:void(0)" class="btn bg-aqua btn-xs hidden" id="imat-OsB0H" hidden="hidden"><i class="icon-left fa fa-plus"></i>Tambah</a><a href="javascript:void(0)" class="btn bg-aqua btn-xs" id="imat-G2r7C"><i class="icon-left fa fa-sync-alt"></i>Refresh</a></div></div><div class="panel-body with-header no-padding"><div class="html-object" id="contentPengumuman" style="padding: 10px; min-height: 568px;"><ul class="timeline"><li class="time-label"><span class="bg-green">Pengumuman Terakhir</span></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">PROSEDUR PELAKSANAAN PENJADWALAN ULANG KHUSUS ANBK 2022 JENJANG SMA/SMK/SMALB/Paket C Sederajat, SMP/SMPLB/Paket B Sederajat, SD/SDLB/Paket A Sederajat.</a><span class="timeline-user">Posko</span><span class="time"><i class="far fa-calendar"></i>19-11-2022<i class="far fa-clock"></i>21:34</span></h3><div class="timeline-body"><p><strong>Hari MINGGU, 20 NOVEMBER 2022</strong></p>
+<p>1. Jalankan &amp; login ke Proktor Browser. <strong>ID Proktor diaktifkan pada pukul 06.30 WAKTU SETEMPAT.</strong><br>2. Masuk ke menu status tes.<br>3. Pilih Daftar Tes: <strong>PUANBK2022H2</strong><br>4. Pilih kelompok 1 (Kelompok Tes 1 untuk semua sesi ujian).<br>5. Tekan Rilis Token; <strong>Token dibuka pukul 07.20 WAKTU SETEMPAT.</strong><br>6. Masuk ke Menu Kelompok Tes, pilih Assign All; untuk mengaktifkan peserta login tes.</p>
+<p>Catatan :<br>a. Siswa akan mengerjakan 3 subtes:<br> - Subtes 1 adalah Latihan Soal,<br> - Subtes 2 adalah Numerasi,<br> - Subtes 3 adalah Survey Lingkungan Belajar ;<br>b. Antar subtes terdapat jeda waktu 1 menit ditandai dengan tombol MULAI berwarna BIRU;<br>c. Pastikan peserta kembali ke HALAMAN LOGIN untuk keluar dari&nbsp;halaman&nbsp;tes.</p>
+<p>&nbsp;</p>
+<p>Terimakasih</p></div><div class="timeline-footer"></div></div></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">Penjadwalan Ulang Kusus</a><span class="timeline-user">Putra</span><span class="time"><i class="far fa-calendar"></i>17-11-2022<i class="far fa-clock"></i>15:17</span></h3><div class="timeline-body"><p>Bagi seluruh jenjang satuan pendidikan yang belum melaksanakan PU (Penjadwalan Ulang).</p>
+<p>Dapat melaksanakan PU pada jadwal khusus di hari Sabtu-Minggu, tanggal 19 dan 20 November 2022.</p>
+<p>&nbsp;</p>
+<p>terimakasih</p></div><div class="timeline-footer"></div></div></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">PATCHING PELAKSANAAN PENJADWALAN ULANG ANBK 2022 JENJANG SMA/SMK/SMALB/Paket C Sederajat, SMP/SMPLB/ Paket B Sederajat, SD/SDLB/Paket A Sederajat.</a><span class="timeline-user">Posko</span><span class="time"><i class="far fa-calendar"></i>11-11-2022<i class="far fa-clock"></i>21:54</span></h3><div class="timeline-body"><p><strong>MODA SEMI DARING</strong></p>
+<p>Untuk Pelaksanaan Penjadwalan Ulang ANBK 2022 Jenjang SMA/SMK/SMALB/Paket C Sederajat, SMP/SMPLB/Paket B Sederajat, SD/SDLB/Paket A Sederajat, satuan pendidikan menggunakan <strong>new_VHD ANBK 2022-07_FRESH versi 14.22.7.0 (belum pernah dipatching sebelumnya)</strong> dan melakukan Auto Patching dengan cara:</p>
+<p>1. Klik tombol <strong>"Pembaharuan"</strong> pada pop up yang tampil di halaman CBTSYNC<br>2. Tunggu proses pembaharuan selesai<br>3. Proses pembaharuan selesai ditandai dengan perubahan versi CBTSYNC menjadi <strong>v14.22.7.9</strong></p>
+<p>Note :<br>- Jadwal sinkronisasi pada setiap satuan pendidikan dapat dilihat pada menu <strong>"Penjadwalan Ulang" "Komputer Proktor"</strong><br>- ID Proktor dan password bisa di lihat pada menu : <strong>"Penjadwalan Ulang" - "Komputer Proktor"</strong><br>- Normal view pada Exambrowser Admin menggunakan password <strong>"n0rm4l";</strong></p>
+<p><strong>MODA DARING</strong></p>
+<p>- <strong>ID Proktor dan password</strong> dapat dilihat oleh satuan pendidikan pada tanggal <strong>13 November 2022</strong> Pada Menu : <strong>"Penjadwalan Ulang" - "Komputer Proktor"</strong></p>
+<p>Terima Kasih.</p></div><div class="timeline-footer"></div></div></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">PROSEDUR PERUBAHAN MODA PELAKSANAAN PENJADWALAN ULANG 14-17 NOVEMBER 2022</a><span class="timeline-user">Suryo Atmojo</span><span class="time"><i class="far fa-calendar"></i>11-11-2022<i class="far fa-clock"></i>17:24</span></h3><div class="timeline-body"><p><strong>Pengumuman Perubahan Moda Untuk Penjadwalan Ulang 14-17 November 2022:</strong></p>
+<p>1. akses perubahan moda sudah muncul di menu <strong>Penjadwalan ulang</strong> -<strong> komputer&nbsp;proktor</strong><br>2. akses perubahan moda berada di tim teknis Provinsi atau tim teknis kab/kota<br>3. perubahan moda hanya boleh dilakukan <strong>satu&nbsp;kali</strong><br>4. perubahan moda akan <strong>ditutup</strong> pada sabtu malam&nbsp;pukul&nbsp;18.00&nbsp;WIB</p></div><div class="timeline-footer"></div></div></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">PROSEDUR PELAKSANAAN UTAMA ANBK 2022 JENJANG PAKET A /PKPPS ULA GELOMBANG 2 KHUSUS</a><span class="timeline-user">Posko</span><span class="time"><i class="far fa-calendar"></i>05-11-2022<i class="far fa-clock"></i>20:27</span></h3><div class="timeline-body"><p><strong>Hari MINGGU, 06 NOVEMBER 2022</strong></p>
+<p>1. Jalankan &amp; login ke Proktor Browser. <strong>ID Proktor diaktifkan pada pukul 06.30 WAKTU SETEMPAT.</strong><br>2. Masuk ke menu status tes.<br>3. Pilih Daftar Tes: <strong>UTMANBKD22H2</strong><br>4. Pilih Kelompok Sesuai Sesi-nya.<br>5. Tekan Rilis Token; <br> <strong>- Token Sesi 1 dibuka pukul 07.20 WAKTU SETEMPAT.</strong><br><strong> - Token Sesi 2 dibuka pukul 10.30 WAKTU SETEMPAT.</strong><br><strong> - Token Sesi 3 dibuka pukul 13.40 WAKTU SETEMPAT.</strong><br>6. Masuk ke Menu Kelompok Tes, pilih Assign All; untuk mengaktifkan peserta login tes.</p>
+<p>Catatan :<br>a. Siswa akan mengerjakan 3 subtes:<br><strong>- Subtes 1 adalah Latihan (15 Menit),</strong><br><strong>- Subtes 2 adalah Numerasi (75 Menit),</strong><br><strong>- Subtes 3 adalah Survey Lingkungan Belajar (40 Menit);</strong><br>b. Antar subtes terdapat jeda waktu 1 menit ditandai dengan tombol MULAI berwarna BIRU;<br>c. Pastikan peserta kembali ke HALAMAN LOGIN untuk dapat keluar dari halaman tes;</p>
+<p>Terimakasih</p></div><div class="timeline-footer"></div></div></li><li class="time-label"><span class="bg-blue">Oktober 2022</span></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">PATCHING PELAKSANAAN UTAMA ANBK 2022 Jenjang SD/SDLB/PAKET A Sederajat</a><span class="timeline-user">Pusmendik</span><span class="time"><i class="far fa-calendar"></i>22-10-2022<i class="far fa-clock"></i>09:25</span></h3><div class="timeline-body"><p><strong>MODA SEMI DARING</strong></p>
+<p>Untuk Pelaksanaan Utama ANBK 2022 Jenjang SD/SDLB/PAKET A Sederajat, Satuan Pendidikan menggunakan <strong>new_VHD ANBK 2022-07_FRESH versi 14.22.7.0 (belum pernah dipatching sebelumnya)</strong> dan melakukan Auto Patching dengan cara:</p>
+<p>1. Klik tombol <strong>"Pembaharuan"</strong> pada pop up yang tampil di halaman CBTSYNC<br>2. Tunggu proses pembaharuan selesai<br>3. Proses pembaharuan selesai ditandai dengan perubahan versi CBTSYNC menjadi<strong> v14.22.7.8</strong></p>
+<p>Note :<br>- Jadwal sinkronisasi pada setiap satuan pendidikan dapat dilihat pada menu <strong>"Asesmen Nasional" - "Jadwal Sinkronisasi"</strong><br>- ID Proktor dan password bisa di lihat pada menu : <strong>"Asesmen Nasional" - "Komputer Proktor"</strong><br>- Normal view pada Exambrowser Admin menggunakan password <strong>"n0rm4l";</strong></p>
+<p><strong>MODA DARING</strong></p>
+<p>- <strong>ID Proktor dan password</strong> dapat dilihat oleh satuan pendidikan pada tanggal <strong>23 Oktober 2022</strong> Pada Menu :<strong> "Asesmen Nasional" - "Komputer Proktor"</strong></p>
+<p>Terima&nbsp;Kasih.</p></div><div class="timeline-footer"></div></div></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">MEKANISME PELAKSANAAN GLADI BERSIH AN 2022 JENJANG&nbsp;SD/SDLB/PAKET A Sederajat</a><span class="timeline-user">Posko</span><span class="time"><i class="far fa-calendar"></i>15-10-2022<i class="far fa-clock"></i>13:28</span></h3><div class="timeline-body"><p>1. Gladi Bersih berlangsung <strong>5 hari dari Senin, 17 Oktober 2022 - Jumat, 21 Oktober 2022</strong>, dengan detail jadwal sebagai berikut :</p>
+<p><strong> - Satpen yang memilih jadwal Gel. 1 melaksanakan Gladi pada tanggal 17 Oktober 2022</strong><br><strong> - Satpen yang memilih jadwal Gel. 2 melaksanakan Gladi pada tanggal 18 Oktober 2022</strong><br><strong> - Satpen yang memilih jadwal Gel. 3 melaksanakan Gladi pada tanggal 19 Oktober 2022</strong><br><strong> - Satpen yang memilih jadwal Gel. 4 melaksanakan Gladi pada tanggal 20 Oktober 2022</strong><br><strong> - Satpen yang memilih jadwal Gel. Khusus melaksanakan Gladi pada tanggal 21 Oktober 2022</strong></p>
+<p><br>2. Dalam 1 gelombang (1 hari) pelaksanaan Gladi Bersih terdiri dari 3 sesi:<br> - Sesi 1 Pukul : 07.30 Waktu Setempat<br> - Sesi 2 Pukul : 10.30 Waktu Setempat<br> - Sesi 3 Pukul : 13.30 Waktu Setempat</p>
+<p><br><strong>3. Setiap peserta mengerjakan butir soal LITERASI pada Gladi Bersih dengan menggunakan Username peserta sesuai kartu login.</strong></p>
+<p>4. Selanjutnya setiap peserta juga dapat mencoba untuk mengerjakan butir soal <strong>NUMERASI</strong> menggunakan&nbsp;<strong>Username</strong> sesuai pada kartu login <strong>DENGAN</strong> Tambahan Huruf <strong>"N"</strong> pada akhir usernamenya.</p>
+<p><strong>Catatan</strong><br><strong>- Butir soal Numerasi dapat dikerjakan di hari yang sama pada gelombang yang sama dengan LITERASI atau</strong><br><strong>- Butir soal Numerasi dapat dikerjakan di gelombang berikutnya, atau</strong><br><strong>- Butir soal Numerasi dapat dikerjakan di jadwal khusus di hari jumat tanggal&nbsp;21&nbsp;Oktober&nbsp;2022</strong></p></div><div class="timeline-footer"></div></div></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">PATCHING GLADI BERSIH ANBK 2022 Jenjang SD/SDLB/PAKET A Sederajat</a><span class="timeline-user">Posko</span><span class="time"><i class="far fa-calendar"></i>14-10-2022<i class="far fa-clock"></i>23:36</span></h3><div class="timeline-body"><p><strong>MODA SEMI DARING</strong></p>
+<p>Untuk Pelaksanaan Gladi Bersih ANBK 2022 Jenjang SD/SDLB/PAKET A Sederajat, Satuan Pendidikan menggunakan <strong>new_VHD ANBK 2022-07_FRESH versi 14.22.7.0 (belum pernah dipatching sebelumnya)</strong> dan melakukan Auto Patching dengan cara:</p>
+<p>1. Klik tombol <strong>"Pembaharuan"</strong> pada pop up yang tampil di halaman CBTSYNC<br>2. Tunggu proses pembaharuan selesai<br>3. Proses pembaharuan selesai ditandai dengan perubahan versi CBTSYNC menjadi <strong>v14.22.7.7</strong></p>
+<p>Note :<br>- Akses "PATCHING" akan dibuka pada pukul 05.00 WIB<br>- Jadwal sinkronisasi pada setiap satuan pendidikan dapat dilihat pada menu <strong>"GLADI BERSIH" - "Komputer Proktor"</strong><br>- ID Proktor dan password bisa di lihat pada menu : <strong>"GLADI BERSIH" - "Komputer Proktor"</strong><br>- Normal view pada Exambrowser Admin menggunakan password <strong>"n0rm4l"</strong>;</p>
+<p><strong>MODA DARING</strong></p>
+<p>- ID Proktor dan password dapat dilihat oleh satuan pendidikan pada tanggal <strong>16 Oktober 2022</strong> Pada Menu : <strong>"GLADI BERSIH" - "Komputer Proktor"</strong></p>
+<p>Terima&nbsp;Kasih.</p></div><div class="timeline-footer"></div></div></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">PROSEDUR PELAKSANAAN SIMULASI ANBK 2022 Jenjang SD/SDLB/PAKET A Sederajat Tahap 2</a><span class="timeline-user">Posko</span><span class="time"><i class="far fa-calendar"></i>05-10-2022<i class="far fa-clock"></i>17:42</span></h3><div class="timeline-body"><p><span style="font-size: 10pt;"><strong>MODA DARING DAN SEMI DARING</strong></span></p>
+<p><strong>Hari KAMIS, 06 Oktober 2022</strong></p>
+<p>1. Jalankan &amp; login ke Proktor Browser. ID Proktor diaktifkan pada pukul <strong>06.30 WAKTU SETEMPAT.</strong><br>2. Masuk ke menu status tes.<br>3. Pilih Daftar Tes: <strong>SIMANBKD22H2</strong><br>4. Pilih kelompok 1 (Kelompok Tes 1 untuk semua sesi ujian).<br>5. Tekan Rilis Token; <strong>Token dibuka pukul 07.20 WAKTU SETEMPAT.</strong><br>6. Masuk ke Menu Kelompok Tes, pilih Assign All; untuk mengaktifkan peserta login tes.</p>
+<p>Catatan :<br>a. Siswa akan mengerjakan 3 subtes:<br> - Subtes 1 adalah Latihan Soal,<br> - Subtes 2 adalah Numerasi<br> - Subtes 3 adalah Survei Lingkungan Belajar;<br>b. Antar subtes terdapat jeda waktu 1 menit ditandai dengan tombol MULAI berwarna BIRU;<br>c. Pastikan peserta kembali ke HALAMAN LOGIN untuk keluar dari&nbsp;halaman&nbsp;tes.</p></div><div class="timeline-footer"></div></div></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">Gladi Bersih dan Pelaksanaan ANBK Utama Jenjang SD/SDLB/MI/Paket A/PKPPS Ula dan yang sederajat</a><span class="timeline-user">Pusmendik</span><span class="time"><i class="far fa-calendar"></i>05-10-2022<i class="far fa-clock"></i>07:16</span></h3><div class="timeline-body"><p><span style="font-weight: 400;">Dalam rangka pelaksanaan Gladi ANBK Jenjang </span><strong>SD/SDLB/MI/Paket A/PKPPS Ula dan yang sederajat</strong><span style="font-weight: 400;">, berikut beberapa pengumuman yang perlu diperhatikan</span></p>
+<ol>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Akses untuk Pemilihan Status Pelaksanaan, Moda Pelaksanaan,&nbsp; Penambahan/Penyesuaian Komputer Proktor, Pengaturan Gelombang dan Pengaturan Sesi, sudah dibuka kembali. Satuan pendidikan dipersilahkan untuk segera melakukan pemutakhiran data pada laman ANBK. Akses pemutakhiran data akan ditutup pada hari </span><strong>Rabu, 12 Oktober 2022 Pukul 18.00 WIB.</strong></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Pemilihan Status Pelaksanaan, Moda Pelaksanaan,&nbsp; Penambahan/Penyesuaian Komputer Proktor, Pengaturan Gelombang dan Pengaturan Sesi yang dilakukan untuk Pelaksanaan Gladi merupakan pengaturan Final </span><strong>(</strong><strong><em>tidak dapat diedit</em></strong><strong>)</strong><span style="font-weight: 400;"> yang akan digunakan pada saat pelaksanaan ANBK Utama Jenjang SD/SDLB/MI/Paket A/PKPPS Ula dan yang sederajat.</span></li>
+<li style="font-weight: 400;"><span style="font-weight: 400;">Untuk menjaga kualitas pelaksanaan ANBK Moda Online, diberlakukan pembatasan jumlah peserta pada setiap </span><strong>sesi dan gelombang</strong><span style="font-weight: 400;">.</span></li>
+<li style="font-weight: 400;">Karena keterbatasan waktu, khusus untuk <strong>GLADI ANBK</strong><span style="font-weight: 400;"> Jenjang SD/SDLB/MI/Paket A/PKPPS Ula dan yang sederajat dalam pelaksanaannya hanya 1 hari. Detail mengenai teknis pelaksanaan akan diumumkan lebih lanjut.</span></li>
+</ol>
+<p>&nbsp;</p>
+<table class="table-pengumuman" border="1" width="100%" cellspacing="0" cellpadding="5px">
+<tbody>
+<tr>
+<td style="background-color: #e6e6e6; padding: 4px; text-align: center; vertical-align: middle;" width="10"><strong>No</strong></td>
+<td style="background-color: #e6e6e6; padding: 4px; text-align: center; vertical-align: middle;"><strong>Gelombang</strong></td>
+<td style="background-color: #e6e6e6; padding: 4px; text-align: center; vertical-align: middle;"><strong>Gladi AN</strong></td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">1.</td>
+<td style="padding: 4px; vertical-align: middle;">Gelombang 1</td>
+<td style="padding: 4px; vertical-align: middle;"><span style="font-weight: 400;">Senin, 17 Oktober 2022</span></td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">2.</td>
+<td style="padding: 4px; vertical-align: middle;">Gelombang 2</td>
+<td style="padding: 4px; vertical-align: middle;"><span style="font-weight: 400;">Selasa, 18 Oktober 2022</span></td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">3.</td>
+<td style="padding: 4px; vertical-align: middle;">Gelombang 3</td>
+<td style="padding: 4px; vertical-align: middle;"><span style="font-weight: 400;">Rabu, 19 Oktober 2022</span></td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">4.</td>
+<td style="padding: 4px; vertical-align: middle;">Gelombang 4</td>
+<td style="padding: 4px; vertical-align: middle;"><span style="font-weight: 400;">Kamis, 20 Oktober 2022</span></td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">5.</td>
+<td style="padding: 4px; vertical-align: middle;">Jadwal Khusus Paket A</td>
+<td style="padding: 4px; vertical-align: middle;"><span style="font-weight: 400;">Jumat, 21 Oktober 2022</span></td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p><strong>Tanggal-tanggal penting Gladi Bersih dan Pelaksanaan AN SD/SDLB/MI/Paket A/PKPPS Ula dan yang sederajat</strong></p>
+<table class="table-pengumuman" border="1" width="100%" cellspacing="0" cellpadding="5px">
+<tbody>
+<tr>
+<td style="background-color: #e6e6e6; padding: 4px; text-align: center; vertical-align: middle;" width="10"><strong>No</strong></td>
+<td style="background-color: #e6e6e6; padding: 4px; text-align: center; vertical-align: middle;"><strong>Tanggal</strong></td>
+<td style="background-color: #e6e6e6; padding: 4px; text-align: center; vertical-align: middle;"><strong>Kegiatan</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px; background-color: #ebebeb; vertical-align: middle; text-align: center;" colspan="3"><strong>GLADI BERSIH</strong></td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">1.</td>
+<td style="padding: 4px; vertical-align: middle;">Maks 12&nbsp;Oktober 18.00 WIB</td>
+<td style="padding: 4px; vertical-align: middle;">Pemutakhiran Data (Status/Moda dan Gelombang/Sesi)</td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">2.</td>
+<td style="padding: 4px; vertical-align: middle;"><span style="font-weight: 400;">15-16 Oktober</span></td>
+<td style="padding: 4px; vertical-align: middle;">Sinkronisasi&nbsp;Gladi Bersih</td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">3.</td>
+<td style="padding: 4px; vertical-align: middle;"><span style="font-weight: 400;">17-20 Oktober</span></td>
+<td style="padding: 4px; vertical-align: middle;">Pelaksanaan Gladi Bersih</td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">4.</td>
+<td style="padding: 4px; vertical-align: middle;"><span style="font-weight: 400;">21 Oktober</span></td>
+<td style="padding: 4px; vertical-align: middle;">Pelaksanaan&nbsp;Gladi Bersih Jadwal Khusus Paket A</td>
+</tr>
+<tr>
+<td style="padding: 5px; background-color: #ebebeb; vertical-align: middle; text-align: center;" colspan="3"><strong>PELAKSANAAN</strong></td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">1.</td>
+<td style="padding: 4px; vertical-align: middle;"><span style="font-weight: 400;">22 - 23 Oktober</span></td>
+<td style="padding: 4px; vertical-align: middle;"><span style="font-weight: 400;">Sinkronisasi Pelaksanaan AN</span></td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">2.</td>
+<td style="padding: 4px; vertical-align: middle;"><span style="font-weight: 400;">24 - 27 Oktober</span></td>
+<td style="padding: 4px; vertical-align: middle;"><span style="font-weight: 400;">Pelaksanaan AN Gelombang 1 dan 2</span></td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">3.</td>
+<td style="padding: 4px; vertical-align: middle;"><span style="font-weight: 400;">29 - 30 Oktober</span></td>
+<td style="padding: 4px; vertical-align: middle;"><span style="font-weight: 400;">Pelaksanaan Jadwal Kusus Paket A Tahap 1</span></td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">4.</td>
+<td style="padding: 4px; vertical-align: middle;"><span style="font-weight: 400;">31 Okt - 3 Nov</span></td>
+<td style="padding: 4px; vertical-align: middle;"><span style="font-weight: 400;">Pelaksanaan AN Gelombang 3 dan 4</span></td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">5.</td>
+<td style="padding: 4px; vertical-align: middle;"><span style="font-weight: 400;">5 - 6 November</span></td>
+<td style="padding: 4px; vertical-align: middle;"><span style="font-weight: 400;">Pelaksanaan Jadwal Khusus Paket A Tahap 2</span></td>
+</tr>
+</tbody>
+</table></div><div class="timeline-footer"></div></div></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">PATCHING SIMULASI ANBK 2022 Jenjang SD/SDLB/PAKET A Sederajat Tahap 2</a><span class="timeline-user">Pusmendik</span><span class="time"><i class="far fa-calendar"></i>01-10-2022<i class="far fa-clock"></i>05:07</span></h3><div class="timeline-body"><p><strong>MODA SEMI DARING</strong></p>
+<p>Untuk Pelaksanaan Simulasi ANBK 2022 Jenjang SD/SDLB/PAKET A Sederajat TAHAP 2, Satuan Pendidikan menggunakan <strong>new_VHD ANBK 2022-07_FRESH versi 14.22.7.0</strong> (belum pernah dipatching sebelumnya) dan melakukan Auto Patching dengan cara:</p>
+<p>1. Klik tombol <strong>"Pembaharuan"</strong> pada pop up yang tampil di halaman CBTSYNC<br>2. Tunggu proses pembaharuan selesai<br>3. Proses pembaharuan selesai ditandai dengan perubahan versi CBTSYNC menjadi <strong>v14.22.7.6</strong></p>
+<p>Note :<br>- Akses "PATCHING" akan dibuka pada pukul 05.00 WIB<br>- Jadwal sinkronisasi pada setiap satuan pendidikan dapat dilihat pada menu <strong>"Simulasi" - "Komputer Proktor"</strong><br>- ID Proktor dan password bisa di lihat pada menu : <strong>"Simulasi" - "Komputer Proktor"</strong><br>- Normal view pada Exambrowser Admin menggunakan password <strong>"n0rm4l";</strong></p>
+<p><strong>MODA DARING</strong></p>
+<p>- ID Proktor dan password dapat dilihat oleh satuan pendidikan pada tanggal <strong>02 Oktober 2022</strong> Pada Menu : <strong>"Simulasi" - "Komputer Proktor"</strong></p>
+<p>Terima&nbsp;Kasih.</p></div><div class="timeline-footer"></div></div></li><li class="time-label"><span class="bg-blue">September 2022</span></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">PENGUMUMAN PEMUNDURAN PENJADWALAN ULANG DAN SIMULASI TAHAP 1 ANBK 2022 untuk Jenjang SMK/SMA/SMALB/PAKET C Sederajat; SMP/SMPLB/Paket B; dan SD/SDLB/PAKET A Sederajat</a><span class="timeline-user">Posko</span><span class="time"><i class="far fa-calendar"></i>28-09-2022<i class="far fa-clock"></i>09:35</span></h3><div class="timeline-body"><p><span style="font-size: 10pt;"><strong>MODA DARING</strong></span><br><br>Hari RABU, 28 September 2022</p>
+<p><strong>Dikarenakan penyiapan data ANBK moda DARING masih dalam proses, khusus untuk pelaksanaan AN moda DARING dilakukan beberapa penyesuaian sebagai berikut:</strong><br><strong>1. pelaksanaan AN Moda DARING khusus HARI PERTAMA dimulai pada pukul 13.00 WIB.</strong><br><strong>2. Bagi satuan pendidikan yang TIDAK dapat MELAKSANAKAN Penjadwalan Ulang di HARI PERTAMA, DAPAT MELAKSANAKAN Penjadwalan Ulang di hari JUMAT, 30 SEPTEMBER 2022, pukul 07.30 waktu setempat.</strong><br><strong>Kami memohon maaf atas ketidaknyamanannya.</strong></p>
+<p>Untuk teknis pelaksanaan AN moda DARING adalah sebagai berikut:<br>1. Jalankan &amp; login ke Proktor Browser.<br>2. Masuk ke menu status tes.<br>3. Pilih Daftar Tes: <strong>SPUANBK22H1</strong><br>4. Pilih kelompok 1 (Kelompok Tes 1 untuk semua sesi ujian).<br>5. Tekan Rilis Token;<br>6. Masuk ke Menu Kelompok Tes, pilih Assign All; untuk mengaktifkan peserta login tes.</p>
+<p>Catatan :<br>a. Siswa akan mengerjakan 3 subtes:<br> - Subtes 1 adalah Latihan,<br> - Subtes 2 adalah Literasi,<br> - Subtes 3 adalah Survei Karakter;<br>b. Antar subtes terdapat jeda waktu 1 menit ditandai dengan tombol MULAI berwarna BIRU;<br>c. Pastikan peserta kembali ke HALAMAN LOGIN untuk keluar dari&nbsp;halaman&nbsp;tes.</p></div><div class="timeline-footer"></div></div></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">PERMASALAHAN LOG OUT HITAM MODA SEMI DARING</a><span class="timeline-user">Posko</span><span class="time"><i class="far fa-calendar"></i>28-09-2022<i class="far fa-clock"></i>08:09</span></h3><div class="timeline-body"><p>Bagi Satuan Pendidikan yang melaksanakan <strong>SIMULASI jenjang SD/SDLB/PAKET A</strong> yang mengalami <strong>LOGOUT HITAM</strong> pada saat login peserta silahkan lakukan langkah-langkah berikut :</p>
+<p>1. Log out dan kemudian log in kembali CBTsync Admin<br>2. Tutup dan buka kembali Exambrowser&nbsp;Client</p></div><div class="timeline-footer"></div></div></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">PROSEDUR PELAKSANAAN ANBK UTAMA 2022 PAKET B JADWAL KHUSUS</a><span class="timeline-user">Posko</span><span class="time"><i class="far fa-calendar"></i>24-09-2022<i class="far fa-clock"></i>20:07</span></h3><div class="timeline-body"><p><strong>Hari MINGGU, 25 September 2022</strong></p>
+<p>1. Jalankan &amp; login ke Proktor Browser. <strong>ID Proktor diaktifkan pada pukul 06.30 WAKTU SETEMPAT.</strong><br>2. Masuk ke menu status tes.<br>3. Pilih Daftar Tes: <strong>UTMANBKP22H2</strong><br>4. Pilih Kelompok Sesuai Sesi-nya.<br>5. Tekan Rilis Token; <br> <strong>- Token Sesi 1 dibuka pukul 07.20 WAKTU SETEMPAT.</strong><br><strong> - Token Sesi 2 dibuka pukul 10.30 WAKTU SETEMPAT.</strong><br><strong> - Token Sesi 3 dibuka pukul 14.10 WAKTU SETEMPAT.</strong><br>6. Masuk ke Menu Kelompok Tes, pilih Assign All; untuk mengaktifkan peserta login tes.</p>
+<p>Catatan :<br>a. Siswa akan mengerjakan 3 subtes:<br>- Subtes 1 adalah Latihan (10 Menit),<br>- Subtes 2 adalah Numerasi (90 Menit),<br>- Subtes 3 adalah Survei Lingkungan Belajar (30 Menit);<br>b. Antar subtes terdapat jeda waktu 1 menit ditandai dengan tombol MULAI berwarna BIRU;<br>c. Pastikan peserta kembali ke HALAMAN LOGIN untuk dapat keluar dari halaman tes;</p></div><div class="timeline-footer"></div></div></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">Simulasi Asesmen Nasional Jenjang SD/SDLB/Paket A Sederajat</a><span class="timeline-user">Pusmendik</span><span class="time"><i class="far fa-calendar"></i>23-09-2022<i class="far fa-clock"></i>17:40</span></h3><div class="timeline-body"><p>Untuk persiapan&nbsp;Simulasi Asesmen Nasional jenjang <strong>SD/SDLB/Paket&nbsp;A sederajat</strong>, berikut langkah-langkah yang harus segera dilakukan:</p>
+<ol>
+<li>Memperbaharui data infrastruktur, proktor utama dan teknisi</li>
+<li>Memilih status dan moda pelaksanaan</li>
+<li>Mengisi rincian komputer proktor, klien, dan ruang untuk mendapatkan ID Proktor</li>
+</ol>
+<p>&nbsp;</p>
+<p>Tanggal-tanggal penting&nbsp;Simulasi&nbsp;ANBK jenjang SD/SDLB/Paket A sederajat</p>
+<table class="table-pengumuman" border="1" width="100%" cellspacing="0" cellpadding="5px">
+<tbody>
+<tr>
+<td style="background-color: #e6e6e6; padding: 4px; text-align: center; vertical-align: middle;" width="10"><strong>No</strong></td>
+<td style="background-color: #e6e6e6; padding: 4px; text-align: center; vertical-align: middle;"><strong>Tanggal</strong></td>
+<td style="background-color: #e6e6e6; padding: 4px; text-align: center; vertical-align: middle;"><strong>Kegiatan</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px; background-color: #ebebeb; vertical-align: middle; text-align: center;" colspan="3"><strong>SIMULASI 1</strong></td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">1.</td>
+<td style="padding: 4px; vertical-align: middle;">Maks&nbsp;24 September 18.00 WIB</td>
+<td style="padding: 4px; vertical-align: middle;">Pemutakhiran Data Status dan Moda</td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">2.</td>
+<td style="padding: 4px; vertical-align: middle;">26-27 September</td>
+<td style="padding: 4px; vertical-align: middle;">Sinkronisasi&nbsp;Simulasi SD</td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">3.</td>
+<td style="padding: 4px; vertical-align: middle;">28-29 September</td>
+<td style="padding: 4px; vertical-align: middle;">Pelaksanaan Simulasi SD</td>
+</tr>
+<tr>
+<td style="padding: 5px; background-color: #ebebeb; vertical-align: middle; text-align: center;" colspan="3"><strong>SIMULASI 2</strong></td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">4.</td>
+<td style="padding: 4px; vertical-align: middle;">Maks&nbsp;29 September 18.00 WIB</td>
+<td style="padding: 4px; vertical-align: middle;">Pemutakhiran Data&nbsp;Status dan Moda</td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">5.</td>
+<td style="padding: 4px; vertical-align: middle;">1-2 Oktober</td>
+<td style="padding: 4px; vertical-align: middle;">Sinkronisasi Simulasi&nbsp;SD</td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">6.</td>
+<td style="padding: 4px; vertical-align: middle;">3-6 Oktober</td>
+<td style="padding: 4px; vertical-align: middle;">Pelaksanaan&nbsp;Simulasi SD</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p><strong>Catatan:</strong></p>
+<ul>
+<li>Simulasi menggunakan data dummy</li>
+<li>Simulasi hanya untuk satuan pendidikan mandiri</li>
+<li>Simulasi diikuti oleh proktor dan teknisi, siswa boleh mengikuti (tidak wajib)</li>
+</ul></div><div class="timeline-footer"></div></div></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">Kendala Aplikasi (error login siswa blank putih)</a><span class="timeline-user">Putra</span><span class="time"><i class="far fa-calendar"></i>20-09-2022<i class="far fa-clock"></i>10:23</span></h3><div class="timeline-body"><p>Terkait Kendala Aplikasi (error login siswa blank putih) moda online Pelaksanaan ANBK Jenjang SMP Sederajad pada Gelombang ke 1 yang terjadi di hari pertama dan kedua. Penanganan atas isu kendala aplikasi moda online dapat dilakukan sebagai berikut ini:</p>
+<ol>
+<li>Satuan pendidikan yang terdampak hal tersebut bisa melaksanakan ANBK kembali pada Gelombang ke 2 Sesuai Sesinya.</li>
+<li>Atau pada saat Penjadwalan Ulang (PU) yang rencannya akan dilaksanakan pada <strong>tanggal 28 - 29 September 2022.</strong></li>
+</ol>
+<p><em>Himbauan, diusahakan dilaksanakan di Gelombang ke 2</em>.</p>
+<p>Tetap semangat.</p>
+<p>&nbsp;</p>
+<p>Terimakasih</p></div><div class="timeline-footer"></div></div></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">PATCHING PELAKSANAAN UTAMA ANBK 2022 SMP/SMPLB/Paket B Sederajat</a><span class="timeline-user">Posko</span><span class="time"><i class="far fa-calendar"></i>17-09-2022<i class="far fa-clock"></i>03:12</span></h3><div class="timeline-body"><p><strong>MODA SEMI DARING</strong></p>
+<p>Untuk Pelaksanaan Utama ANBK 2022 Jenjang SMP/SMPLB/Paket B Sederajat, Satuan Pendidikan menggunakan <strong>new_VHD ANBK 2022-07_FRESH versi 14.22.7.0 (belum pernah dipatching sebelumnya)</strong> dan melakukan Auto Patching dengan cara:</p>
+<p>1. Klik tombol <strong>"Pembaharuan"</strong> pada tampilan pop up yang tampil di halaman CBTSYNC<br>2. Tunggu proses pembaharuan hingga selesai<br>3. Proses pembaharuan selesai ditandai dengan perubahan versi CBTSYNC menjadi <strong>v14.22.7.4</strong></p>
+<p>Note :<br>- Akses Patching akan dibuka pada pukul 05.00 WIB<br>- <strong>Jadwal sinkronisasi Pelaksanaan Utama</strong> pada setiap satuan pendidikan dapat dilihat pada menu <strong>"Asesmen Nasional" - "Jadwal Sinkronisasi"</strong><br>- <strong>Id Proktor dan Pass</strong> bisa di lihat pada menu <strong>"Asesmen Nasional" - "Komputer Proktor"</strong><br>- Untuk melakukan Normal view pada Exambrowser Admin menggunakan password <strong>"n0rm4l"</strong>;</p>
+<p><strong>MODA DARING</strong></p>
+<p>- <strong>Id Proktor dan Pass</strong> pada menu <strong>"Asesmen Nasional" - "Komputer Proktor"</strong> dapat dilihat oleh satuan pendidikan pada tanggal <strong>18 September 2022.</strong></p>
+<p><br>Terima Kasih.</p></div><div class="timeline-footer"></div></div></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">PROSEDUR GLADI BERSIH ANBK 2022 Paket B JADWAL KHUSUS</a><span class="timeline-user">Posko</span><span class="time"><i class="far fa-calendar"></i>15-09-2022<i class="far fa-clock"></i>23:48</span></h3><div class="timeline-body"><p><strong>Hari JUM'AT, 16 September 2022</strong></p>
+<p>1. Jalankan &amp; login ke Proktor Browser. <strong>ID Proktor diaktifkan pada pukul 06.30 WAKTU SETEMPAT.</strong><br>2. Masuk ke menu status tes.<br>3. Pilih Daftar Tes: <strong>GLDANBKP22H1&nbsp;</strong><br>4. Pilih Kelompok Sesuai Sesi-nya.<br>5. Tekan Rilis Token;<br><strong>- Token Sesi 1 dibuka pukul 07.20 WAKTU SETEMPAT.</strong><br><strong>- Token Sesi 2 dibuka pukul 10.30 WAKTU SETEMPAT.</strong><br><strong>- Token Sesi 3 dibuka pukul 14.10 WAKTU SETEMPAT.</strong><br>6. Masuk ke Menu Kelompok Tes, pilih Assign All; untuk mengaktifkan peserta login tes.</p>
+<p>Catatan :<br>a. Siswa akan mengerjakan 3 subtes:<br>- Subtes 1 adalah Latihan Soal (10 Menit),<br>- Subtes 2 adalah Literasi Membaca (90 Menit),<br>- Subtes 3 adalah Survey Karakter (30 Menit);<br>b. Antar subtes terdapat jeda waktu 1 menit ditandai dengan tombol MULAI berwarna BIRU;<br>c. Pastikan peserta kembali ke HALAMAN LOGIN untuk dapat keluar dari halaman tes;</p></div><div class="timeline-footer"></div></div></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">Pemutakhiran Data Pelaksanaan AN SMP/SMPLB/Paket B Sederajat</a><span class="timeline-user">Pusmendik</span><span class="time"><i class="far fa-calendar"></i>12-09-2022<i class="far fa-clock"></i>11:29</span></h3><div class="timeline-body"><p>Akses pemutakhiran data status, moda, gelombang dan sesi untuk persiapan Pelaksanaan AN SMP/SMPLB/Paket B Sederajat sudah dibuka, pemutakhiran data akan <strong>ditutup tanggal 14 September 2022 pukul 18.00 WIB</strong></p>
+<p>Catatan:</p>
+<ol>
+<li>Gladi Bersih menggunakan data cut-off tanggal 6 September 2022</li>
+<li>Data Gladi Bersih dapat dilihat di menu Gladi Bersih</li>
+</ol></div><div class="timeline-footer"></div></div></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">PATCHING GLADI BERSIH ANBK 2022 SMP/SMPLB/Paket B Sederajat</a><span class="timeline-user">Posko</span><span class="time"><i class="far fa-calendar"></i>10-09-2022<i class="far fa-clock"></i>01:08</span></h3><div class="timeline-body"><p><strong>MODA SEMI DARING</strong></p>
+<p>Untuk Gladi Bersih ANBK 2022 Jenjang SMP/SMPLB/Paket B Sederajat, Satuan Pendidikan menggunakan <strong>new_VHD ANBK 2022-07_FRESH versi 14.22.7.0 (belum pernah dipatching sebelumnya)</strong> dan melakukan Auto Patching dengan cara:</p>
+<p>1. Klik tombol <strong>"Pembaharuan"</strong> pada tampilan pop up yang tampil di halaman CBTSYNC<br>2. Tunggu proses pembaharuan hingga selesai<br>3. Proses pembaharuan selesai ditandai dengan perubahan versi CBTSYNC menjadi <strong>v14.22.7.3</strong></p>
+<p>Note :<br><strong>- Akses Patching akan dibuka pada pukul 05.00 WIB</strong><br>- <strong>Jadwal sinkronisasi GLADI BERSIH</strong>&nbsp;pada setiap satuan pendidikan dapat dilihat pada menu <strong>"Asesmen Nasional" - "Jadwal Sinkronisasi"</strong><br>- <strong>Id Proktor dan Pass</strong> bisa di lihat pada menu <strong>"Asesmen Nasional" - "Komputer Proktor"</strong><br>- Untuk melakukan Normal view pada Exambrowser Admin menggunakan password <strong>"n0rm4l"</strong>;</p>
+<p><strong>MODA DARING</strong></p>
+<p>- <strong>Id Proktor dan Pass</strong> pada menu <strong>"Asesmen Nasional" - "Komputer Proktor"</strong> dapat dilihat oleh satuan pendidikan pada tanggal <strong>11 September 2022.</strong></p></div><div class="timeline-footer"></div></div></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">Penguman Penjadwalan Ulang</a><span class="timeline-user">Posko</span><span class="time"><i class="far fa-calendar"></i>05-09-2022<i class="far fa-clock"></i>15:48</span></h3><div class="timeline-body"><p style="text-align: justify;">Pelaksanaan <strong>Penjadwalan Ulang (PU) ANBK 2022 jenjang SMA/SMK/SMALB/Paket C Sederajat</strong> akan diselenggarakan pada hari <strong>Rabu dan Kamis, 7-8 September 2022</strong>.</p>
+<p style="text-align: justify;">Adapun <strong>kriteria satuan pendidikan</strong> yang diperkenankan mengikuti Pelaksanaan PU adalah sebagai berikut :</p>
+<ol>
+<li style="text-align: justify;">Satuan pendidikan yang seluruh siswanya terkendala dalam satu sesi atau lebih pada gelombang 1, gelombang 2, dan jadwal khusus.</li>
+<li style="text-align: justify;">Penjadwalan ulang menggunakan data cut off tanggal 17 Agustus 2022 (tanggal terakhir pemutahiran data) serta tidak ada perubahan <strong>sesi, moda pelaksanaan, dan status pelaksanaan.</strong></li>
+</ol>
+<p style="text-align: justify;">Penjadwalan ulang dengan penyebab lain diluar kriteria diatas akan dijadwalkan bersamaan dengan PU ANBK jenjang SMP/SMPLB/Paket B sederajat. Mengenai teknis pelaksanaannya akan diinformasikan lebih lanjut di laman komunikasi ANBK.</p>
+<p>Mohon selalu dipantau pengumuman di laman komunikasi ANBK.</p>
+<p>Terima kasih.</p></div><div class="timeline-footer"></div></div></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">PROSEDUR PELAKSANAAN ANBK UTAMA 2022 PAKET C JADWAL KHUSUS</a><span class="timeline-user">Posko</span><span class="time"><i class="far fa-calendar"></i>03-09-2022<i class="far fa-clock"></i>20:54</span></h3><div class="timeline-body"><p><strong>Hari MINGGU, 04 September 2022</strong></p>
+<p>1. Jalankan &amp; login ke Proktor Browser. <strong>ID Proktor diaktifkan pada pukul 06.30 WAKTU SETEMPAT.</strong><br>2. Masuk ke menu status tes.<br>3. Pilih Daftar Tes: <strong>UTMANBK22H2</strong><br>4. Pilih Kelompok Sesuai Sesi-nya.<br>5. Tekan Rilis Token; <br> - <strong>Token Sesi 1 dibuka pukul 07.20 WAKTU SETEMPAT.</strong><br><strong> - Token Sesi 2 dibuka pukul 10.20 WAKTU SETEMPAT.</strong><br><strong> - Token Sesi 3 dibuka pukul 14.10 WAKTU SETEMPAT.</strong><br>6. Masuk ke Menu Kelompok Tes, pilih Assign All; untuk mengaktifkan peserta login tes.</p>
+<p>Catatan :<br>a. Siswa akan mengerjakan 3 subtes:<br>- Subtes 1 adalah Latihan Soal (10 Menit),<br>- Subtes 2 adalah Numerasi (90 Menit),<br>- Subtes 3 adalah Survey Lingkungan Belajar (30 Menit);<br>b. Antar subtes terdapat jeda waktu 1 menit ditandai dengan tombol MULAI berwarna BIRU;<br>c. Pastikan peserta kembali ke HALAMAN LOGIN untuk dapat keluar dari halaman tes;</p></div><div class="timeline-footer"></div></div></li><li class="time-label"><span class="bg-blue">Agustus 2022</span></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">Persiapan Gladi Bersih jenjang SMP/SMPLB/Paket B Sederajat</a><span class="timeline-user">Putra</span><span class="time"><i class="far fa-calendar"></i>30-08-2022<i class="far fa-clock"></i>16:49</span></h3><div class="timeline-body"><p>Untuk persiapan Gladi Bersih jenjang <strong>SMP/SMPLB/Paket B sederajat</strong>, berikut langkah-langkah yang harus segera dilakukan:</p>
+<ol>
+<li>Memperbaharui data infrastruktur, proktor utama dan teknisi</li>
+<li>Memilih status dan moda pelaksanaan</li>
+<li>Mengisi rincian komputer proktor, klien, dan ruang untuk mendapatkan ID Proktor</li>
+<li>Mengatur peserta ke ID proktor/ruang, gelombang dan sesi</li>
+</ol>
+<p>&nbsp;</p>
+<p>Tanggal-tanggal penting Gladi Bersih ANBK</p>
+<table class="table-pengumuman" border="1" width="100%" cellspacing="0" cellpadding="5px">
+<tbody>
+<tr>
+<td style="background-color: #e6e6e6; padding: 4px; text-align: center; vertical-align: middle;" width="10"><strong>No</strong></td>
+<td style="background-color: #e6e6e6; padding: 4px; text-align: center; vertical-align: middle;"><strong>Tanggal</strong></td>
+<td style="background-color: #e6e6e6; padding: 4px; text-align: center; vertical-align: middle;"><strong>Kegiatan</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px; background-color: #ebebeb; vertical-align: middle; text-align: center;" colspan="3"><strong>GLADI BERSIH</strong></td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">1.</td>
+<td style="padding: 4px; vertical-align: middle;">Maks 6 September 18.00 WIB</td>
+<td style="padding: 4px; vertical-align: middle;">Pemutakhiran Data (Status/Moda dan Gelombang/Sesi)</td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">2.</td>
+<td style="padding: 4px; vertical-align: middle;">10-11 September</td>
+<td style="padding: 4px; vertical-align: middle;">Sinkronisasi&nbsp;Gladi Bersih</td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">3.</td>
+<td style="padding: 4px; vertical-align: middle;">12-15&nbsp;September</td>
+<td style="padding: 4px; vertical-align: middle;">Pelaksanaan&nbsp;Gladi Bersih</td>
+</tr>
+<tr>
+<td style="padding: 5px; background-color: #ebebeb; vertical-align: middle; text-align: center;" colspan="3"><strong>PELAKSANAAN AN</strong></td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">4.</td>
+<td style="padding: 4px; vertical-align: middle;">12-14 September 18.00 WIB</td>
+<td style="padding: 4px; vertical-align: middle;">Pemutakhiran Data (Status/Moda dan Gelombang/Sesi)</td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">5.</td>
+<td style="padding: 4px; vertical-align: middle;">17-18 September</td>
+<td style="padding: 4px; vertical-align: middle;">Sinkronisasi Pelaksanaan AN</td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">6.</td>
+<td style="padding: 4px; vertical-align: middle;">19-22 September</td>
+<td style="padding: 4px; vertical-align: middle;">Pelaksanaan AN</td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">7.</td>
+<td style="padding: 4px; vertical-align: middle;">24-25 September</td>
+<td style="padding: 4px; vertical-align: middle;">Jadwal Khusus Paket B</td>
+</tr>
+</tbody>
+</table></div><div class="timeline-footer"></div></div></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">PATCHING PELAKSANAAN UTAMA ANBK SMA/SMK/SMALB/Paket C Sederajat</a><span class="timeline-user">Putra</span><span class="time"><i class="far fa-calendar"></i>28-08-2022<i class="far fa-clock"></i>17:45</span></h3><div class="timeline-body"><p><strong>MODA SEMI DARING</strong></p>
+<p>Untuk Pelaksanaan Utama ANBK 2022 Jenjang SMA/SMK/SMALB/Paket C Sederajat, Satuan Pendidikan menggunakan <strong>new_VHD ANBK 2022-07_FRESH versi 14.22.7.0</strong> (belum pernah dipatching sebelumnya) dan melakukan Auto Patching dengan cara:</p>
+<p>1. Klik tombol <strong>"Pembaharuan"</strong> pada tampilan pop up yang tampil di halaman CBTSYNC<br>2. Tunggu proses pembaharuan hingga selesai<br>3. Proses pembaharuan selesai ditandai dengan perubahan versi CBTSYNC menjadi <strong>v14.22.7.2</strong></p>
+<p>Note :<br>- Akses Patching akan dibuka pada pukul 05.00 WIB<br>- <strong>Jadwal sinkronisasi</strong> Pelaksanaan Utama ANBK 2022 pada setiap satuan pendidikan dapat dilihat pada menu <strong>"Asesmen Nasional" - "Jadwal Sinkronisasi"</strong><br>- <strong>Id Proktor dan Pass</strong> bisa di lihat pada menu <strong>"Asesmen Nasional" - "Komputer Proktor"</strong><br>- Untuk melakukan Normal view pada Exambrowser Admin menggunakan password <strong>"n0rm4l"</strong>;</p>
+<p><strong>MODA DARING</strong></p>
+<p>- Id Proktor dan Pass pada menu <strong>"Asesmen Nasional" - "Komputer Proktor"</strong> dapat dilihat oleh satuan pendidikan pada tanggal <strong>29 Agustus 2022.</strong></p>
+<p><br>Terima Kasih.</p></div><div class="timeline-footer"></div></div></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">AKSES GELOMBANG 1 GLADI BERSIH SMA/SMK/SMALB/Paket C SEDERAJAT </a><span class="timeline-user">Posko</span><span class="time"><i class="far fa-calendar"></i>23-08-2022<i class="far fa-clock"></i>17:47</span></h3><div class="timeline-body"><p>Bagi satuan pendidikan yang belum mengikuti gladi bersih di gelombang 1 atau peserta yang belum sama sekali melaksanakan gladi bersih, <strong>akan dibuka kembali di gelombang ke 2 dengan waktu dan sesi mengikuti gelombang 1.</strong></p></div><div class="timeline-footer"></div></div></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">PATCHING GLADI BERSIH SMA/SMK/SMALB/Paket C Sederajat</a><span class="timeline-user">Posko</span><span class="time"><i class="far fa-calendar"></i>19-08-2022<i class="far fa-clock"></i>19:59</span></h3><div class="timeline-body"><p><strong>MODA SEMI DARING</strong></p>
+<p>Untuk Pelaksanaan Gladi Bersih ANBK 2022 Jenjang SMA/SMK/SMALB/Paket C Sederajat, Satuan Pendidikan menggunakan <strong>new_VHD ANBK 2022-07_FRESH versi 14.22.7.0</strong> (belum pernah dipatching sebelumnya) dan melakukan Auto Patching dengan cara:</p>
+<p>1. Klik tombol <strong>"Pembaharuan"</strong> pada tampilan pop up yang tampil di halaman CBTSYNC<br>2. Tunggu proses pembaharuan hingga selesai<br>3. Proses pembaharuan selesai ditandai dengan perubahan versi CBTSYNC menjadi <strong>v14.22.7.1</strong></p>
+<p>Note :<br>- Akses Patching akan dibuka pada pukul 05.00 WIB<br>- <strong>Jadwal sinkronisasi Gladi Bersih ANBK 2022</strong> pada setiap satuan pendidikan dapat dilihat pada menu <strong>"Gladi Bersih" - "Jadwal Sinkronisasi"</strong><br>- <strong>Id Proktor dan Pass</strong> bisa di lihat pada menu <strong>"Gladi Bersih" - "Komputer Proktor"</strong><br>- Untuk melakukan Normal view pada Exambrowser Admin menggunakan password <strong>"n0rm4l"</strong>;</p>
+<p><strong>MODA DARING</strong></p>
+<p>- <strong>Id Proktor dan Pass</strong> pada menu <strong>"Gladi Bersih" - "Komputer Proktor"</strong> dapat dilihat oleh satuan pendidikan pada tanggal <strong>21 Agustus 2022</strong>.</p>
+<p><br>Terima Kasih.</p></div><div class="timeline-footer"></div></div></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">Persiapan Gladi Bersih SMA/SMK/SMALB/Paket C Sederajat</a><span class="timeline-user">Pusmendik</span><span class="time"><i class="far fa-calendar"></i>11-08-2022<i class="far fa-clock"></i>13:17</span></h3><div class="timeline-body"><p>Untuk persiapan Gladi Bersih jenjang SMA/SMK/SMALB/Paket C sederajat, berikut langkah-langkah yang harus segera dilakukan:</p>
+<ol>
+<li>Memperbaharui data infrastruktur, proktor utama dan teknisi</li>
+<li>Memilih status dan moda pelaksanaan</li>
+<li>Mengisi rincian komputer proktor, klien, dan ruang untuk mendapatkan ID Proktor</li>
+<li>Mengatur peserta ke ID proktor/ruang, gelombang dan sesi</li>
+</ol>
+<p>&nbsp;</p>
+<p>Tanggal-tanggal penting Gladi Bersih ANBK</p>
+<table class="table-pengumuman" border="1" width="100%" cellspacing="0" cellpadding="5px">
+<tbody>
+<tr>
+<td style="background-color: #e6e6e6; padding: 4px; text-align: center; vertical-align: middle;" width="10"><strong>No</strong></td>
+<td style="background-color: #e6e6e6; padding: 4px; text-align: center; vertical-align: middle;"><strong>Tanggal</strong></td>
+<td style="background-color: #e6e6e6; padding: 4px; text-align: center; vertical-align: middle;"><strong>Kegiatan</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px; background-color: #ebebeb; vertical-align: middle; text-align: center;" colspan="3"><strong>GLADI BERSIH</strong></td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">1.</td>
+<td style="padding: 4px; vertical-align: middle;">Maks&nbsp;17 Agustus</td>
+<td style="padding: 4px; vertical-align: middle;">Pemutakhiran Data (Status/Moda dan Gelombang/Sesi)</td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">2.</td>
+<td style="padding: 4px; vertical-align: middle;">20-21 Agustus</td>
+<td style="padding: 4px; vertical-align: middle;">Sinkronisasi&nbsp;Gladi Bersih</td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">3.</td>
+<td style="padding: 4px; vertical-align: middle;">22-25 Agustus</td>
+<td style="padding: 4px; vertical-align: middle;">Pelaksanaan&nbsp;Gladi Bersih</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p><em><strong>Catatan:</strong></em></p>
+<ul>
+<li>Gladi bersih menggunakan data&nbsp;sebenarnya</li>
+<li>Pengaturan gelombang dan sesi pada gladi bersih <strong>TIDAK DAPAT DIEDIT</strong> dan akan menjadi acuan dalam pelaksanaan AN Utama.</li>
+<li>Gladi bersih diikuti oleh proktor, teknisi dan siswa</li>
+<li>VHD ANBK 2022_FRESH Versi 14.0.0.1 sudah tidak digunakan dan diganti dengan <strong>new_VHD ANBK 2022-07_FRESH Versi 14.22.7.0</strong></li>
+<li>Selanjutnya semua rangkaian AN 2022 Moda Semi Daring pada semua jenjang menggunakan <strong>new_VHD ANBK 2022-07_FRESH Versi 14.22.7.0</strong></li>
+</ul></div><div class="timeline-footer"></div></div></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">PROSEDUR PELAKSANAAN SIMULASI ANBK 2022 SMA/SMK Sederajat dan SMP Sederajat PERIODE 2</a><span class="timeline-user">Posko</span><span class="time"><i class="far fa-calendar"></i>11-08-2022<i class="far fa-clock"></i>04:37</span></h3><div class="timeline-body"><p><strong>Hari Kamis, 11 Agustus 2022</strong></p>
+<p>1. Jalankan &amp; login ke Proktor Browser. <strong>ID Proktor diaktifkan pada pukul 06.30 WAKTU SETEMPAT.</strong><br>2. Masuk ke menu status tes.<br>3. Pilih Daftar Tes: <strong>SIMANBK22H2</strong><br>4. Pilih kelompok 1 (Kelompok Tes 1 untuk semua sesi ujian).<br>5. Tekan Rilis Token; <strong>Token dibuka pukul 07.20 WAKTU SETEMPAT.</strong><br>6. Masuk ke Menu Kelompok Tes, pilih Assign All; untuk mengaktifkan peserta login tes.<br>7. Username/password siswa akan muncul di web sesuai dengan waktu sesi.</p>
+<p>Catatan :<br>a. Siswa akan mengerjakan 3 subtes:<br>- Subtes 1 adalah Latihan,<br>- Subtes 2 adalah Numerasi,<br>- Subtes 3 adalah Survey Lingkungan Belajar;<br>b. Antar subtes terdapat jeda waktu 1 menit ditandai dengan tombol MULAI berwarna BIRU;<br>c. Pastikan peserta kembali ke HALAMAN LOGIN untuk dapat keluar dari halaman tes;</p>
+<p>Terima Kasih.</p></div><div class="timeline-footer"></div></div></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">PERSIAPAN SIMULASI ANBK 2022 SMA/SMK Sederajat dan SMP Sederajat PERIODE 2</a><span class="timeline-user">Posko</span><span class="time"><i class="far fa-calendar"></i>07-08-2022<i class="far fa-clock"></i>13:01</span></h3><div class="timeline-body"><p><strong>MODA SEMI DARING</strong></p>
+<p>Untuk Pelaksanaan Simulasi ANBK 2022 Jenjang SMA/SMK Sederajat dan SMP Sederajat, Satuan Pendidikan menggunakan <strong>VHD ANBK 2022_FRESH versi 14.0.0.1</strong> (belum pernah dipatching sebelumnya) dan melakukan Auto Patching dengan cara:</p>
+<p>1. Klik tombol <strong>"Pembaharuan"</strong> pada tampilan pop up yang tampil di halaman CBTSYNC<br>2. Tunggu proses pembaharuan hingga selesai<br>3. Proses pembaharuan selesai ditandai dengan perubahan versi CBTSYNC menjadi <strong>v 14.0.0.5</strong></p>
+<p>Note :<br>- <strong>Jadwal sinkronisasi Simulasi ANBK 2022</strong> pada setiap satuan pendidikan dapat dilihat pada menu <strong>"Simulasi"-"Komputer Proktor"</strong><br>- <strong>Id Proktor dan Pass</strong> bisa di lihat pada menu <strong>"Simulasi" - "Komputer Proktor"</strong><br>- Untuk melakukan Normal view pada Exambrowser Admin menggunakan password <strong>"n0rm4l";</strong></p>
+<p><strong>MODA DARING</strong></p>
+<p>- Id Proktor dan Pass pada menu Simulasi - Komputer Proktor dapat dilihat oleh satuan pendidikan pada tanggal <strong>8&nbsp;</strong><strong>Agustus 2022</strong></p></div><div class="timeline-footer"></div></div></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">Perbaikan Exambrowser Client Windows Versi 22.0806</a><span class="timeline-user">Pusmendik</span><span class="time"><i class="far fa-calendar"></i>06-08-2022<i class="far fa-clock"></i>15:06</span></h3><div class="timeline-body"><p>Dalam rangka perbaikan exambrowser windows yang mengalami kendala pada beberapa komputer moda semi daring dan penambahan label pada saat menjalankan applikasi sehingga ketika terdapat laporan error dapat membedakan antara moda semi daring atau moda daring.</p>
+<p><strong>Download&nbsp;secara manual</strong></p>
+<ol>
+<li>Untuk proses download Exambro operator sekolah dapat mengunduh exambrowser pada laman Download Berkas. Exambrowser_Windows_22.0806_32bit.rar atau&nbsp;Exambrowser_Windows_22.0806_64bit.rar</li>
+</ol>
+<p><strong>Download update secara otomatis</strong></p>
+<p>Syarat untuk dapat melakukan update exambrowser secara otomatis adalah:</p>
+<ol style="text-align: justify;">
+<li>Komputer client wajib terkoneksi internet saat&nbsp;menjalankan exambrowser</li>
+<li>Komputer sekolah sudah menggunakan exambrowser windows versi 22.0727 atau versi 22.0730&nbsp;</li>
+<li>Jalankan Exambrowser dan akan tampil proses update exambrowser secara otomatis</li>
+</ol>
+<p>&nbsp;</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="data:image/png;base64,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" alt="" width="325" height="131"></p>
+<p>&nbsp;</p>
+<p style="text-align: justify;">Setelah proses download selesai versi exambrowser akan otomatis menjadi versi 22.0806</p></div><div class="timeline-footer"></div></div></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">PROSEDUR PELAKSANAAN SIMULASI ANBK 2022 SMA/SMK Sederajat dan SMP Sederajat</a><span class="timeline-user">Posko</span><span class="time"><i class="far fa-calendar"></i>03-08-2022<i class="far fa-clock"></i>19:03</span></h3><div class="timeline-body"><p><strong>Hari Kamis, 04 Agustus 2022</strong></p>
+<p>&nbsp;</p>
+<p>1. Jalankan &amp; login ke Proktor Browser. <strong>ID Proktor diaktifkan pada pukul 06.30 WAKTU SETEMPAT.</strong><br>2. Masuk ke menu status tes.<br>3. Pilih Daftar Tes: <strong>SIMANBK22H2</strong><br>4. Pilih kelompok 1 (Kelompok Tes 1 untuk semua sesi ujian).<br>5. Tekan Rilis Token; <strong>Token dibuka pukul 07.20 WAKTU SETEMPAT.</strong><br>6. Masuk ke Menu Kelompok Tes, pilih Assign All; untuk mengaktifkan peserta login tes.<br>7. Username/password siswa akan muncul di web sesuai dengan waktu sesi.</p>
+<p>Catatan :<br>a. Siswa akan mengerjakan 3 subtes:<br>- Subtes 1 adalah Latihan,<br>- Subtes 2 adalah Numerasi,<br>- Subtes 3 adalah Survei Lingkungan Belajar;<br>b. Antar subtes terdapat jeda waktu 1 menit ditandai dengan tombol MULAI berwarna BIRU;<br>c. Pastikan peserta kembali ke HALAMAN LOGIN untuk dapat keluar dari halaman tes;</p>
+<p>Terima Kasih.</p></div><div class="timeline-footer"></div></div></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">PROSEDUR PELAKSANAAN SIMULASI ANBK 2022 SMA/SMK Sederajat dan SMP Sederajat</a><span class="timeline-user">Posko</span><span class="time"><i class="far fa-calendar"></i>01-08-2022<i class="far fa-clock"></i>18:12</span></h3><div class="timeline-body"><p><strong>Hari Selasa, 02 Agustus 2022</strong></p>
+<p>1. Jalankan &amp; login ke Proktor Browser. <strong>ID Proktor diaktifkan pada pukul 06.30 WAKTU SETEMPAT.</strong><br>2. Masuk ke menu status tes.<br>3. Pilih Daftar Tes: <strong>SIMANBK22H2</strong><br>4. Pilih kelompok 1 (Kelompok Tes 1 untuk semua sesi ujian).<br>5. Tekan Rilis Token; <strong>Token dibuka pukul 07.20 WAKTU SETEMPAT.</strong><br>6. Masuk ke Menu Kelompok Tes, pilih Assign All; untuk mengaktifkan peserta login tes.<br>7. Username/password siswa akan muncul di web sesuai dengan waktu sesi.</p>
+<p>Catatan :<br>a. Siswa akan mengerjakan 3 subtes:<br>- Subtes 1 adalah Latihan,<br>- Subtes 2 adalah Numerasi,<br>- Subtes 3 adalah Survei Lingkungan Belajar;<br>b. Antar subtes terdapat jeda waktu 1 menit ditandai dengan tombol MULAI berwarna BIRU;<br>c. Pastikan peserta kembali ke HALAMAN LOGIN untuk dapat keluar dari halaman tes;</p>
+<p>Terima Kasih.</p></div><div class="timeline-footer"></div></div></li><li class="time-label"><span class="bg-blue">Juli 2022</span></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">PERSIAPAN SIMULASI ANBK 2022 SMA/SMK Sederajat dan SMP Sederajat</a><span class="timeline-user">Posko</span><span class="time"><i class="far fa-calendar"></i>30-07-2022<i class="far fa-clock"></i>02:47</span></h3><div class="timeline-body"><p><strong>MODA SEMI DARING</strong></p>
+<p>Untuk Pelaksanaan Simulasi ANBK 2022 Jenjang SMA/SMK Sederajat dan SMP Sederajat, Satuan Pendidikan menggunakan <strong>VHD ANBK 2022_FRESH versi 14.0.0.1</strong> (belum pernah dipatching sebelumnya) dan melakukan Auto Patching dengan cara:</p>
+<p>1. Klik tombol "Pembaharuan" pada tampilan pop up yang tampil di halaman CBTSYNC<br>2. Tunggu proses pembaharuan hingga selesai<br>3. Proses pembaharuan selesai ditandai dengan perubahan versi CBTSYNC menjadi <strong>v 14.0.0.3</strong></p>
+<p>Note :<br>- Akses Patching akan dibuka pada <strong>pukul 05.00 WIB</strong><br>- Jadwal sinkronisasi Simulasi ANBK 2022 pada setiap satuan pendidikan dapat dilihat pada menu "Simulasi"-"Komputer Proktor"<br>- Id Proktor dan Pass bisa di lihat pada menu "Simulasi" - "Komputer Proktor"<br>- <strong>Exambrowser Admin versi 27.11.19 dan Exambrowser Client Versi 22.0511 atau Exambrowser Client Versi 22.0727</strong><br>- Untuk melakukan Normal view pada Exambrowser Admin menggunakan password <strong>"n0rm4l"</strong>;</p>
+<p><strong>MODA DARING</strong></p>
+<p>- Id Proktor dan Pass pada menu Simulasi - Komputer Proktor dapat dilihat oleh satuan pendidikan pada <strong>tanggal 1 Agustus 2022</strong><br>- <strong>Proktor Browser yang digunakan adalah versi 22.0727 yang dapat diunduh pada menu "Download Berkas" folder Prerequisites</strong><br>- <strong>Exambrowser Client yang digunakan adalah versi 22.0727 yang dapat diunduh pada menu "Download Berkas" folder Prerequisites</strong></p></div><div class="timeline-footer"></div></div></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">Persiapan Simulasi SMA/SMK Sederajat dan SMP Sederajat</a><span class="timeline-user">Pusmendik</span><span class="time"><i class="far fa-calendar"></i>25-07-2022<i class="far fa-clock"></i>21:09</span></h3><div class="timeline-body"><p>Untuk persiapan simulasi jenjang SMA/SMK sederajat dan SMP sederajat, berikut langkah-langkah yang harus segera dilakukan:</p>
+<ol>
+<li>Memperbaharui data infrastruktur, proktor utama dan teknisi</li>
+<li>Memilih status dan moda pelaksanaan</li>
+<li>Mengisi rincian komputer proktor, klien, dan ruang untuk mendapatkan ID Proktor</li>
+</ol>
+<p>&nbsp;</p>
+<p>Tanggal-tanggal penting simulasi ANBK</p>
+<table class="table-pengumuman" border="1" width="100%" cellspacing="0" cellpadding="5px">
+<tbody>
+<tr>
+<td style="background-color: #e6e6e6; padding: 4px; text-align: center; vertical-align: middle;" width="10"><strong>No</strong></td>
+<td style="background-color: #e6e6e6; padding: 4px; text-align: center; vertical-align: middle;"><strong>Tanggal</strong></td>
+<td style="background-color: #e6e6e6; padding: 4px; text-align: center; vertical-align: middle;"><strong>Kegiatan</strong></td>
+</tr>
+<tr>
+<td style="padding: 5px; background-color: #ebebeb; vertical-align: middle; text-align: center;" colspan="3"><strong>PERIODE 1</strong></td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">1.</td>
+<td style="padding: 4px; vertical-align: middle;">Maks 27 Juli</td>
+<td style="padding: 4px; vertical-align: middle;">Pemutakhiran Data Status dan Moda</td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">2.</td>
+<td style="padding: 4px; vertical-align: middle;">30-31 Juli</td>
+<td style="padding: 4px; vertical-align: middle;">Sinkronisasi Simulasi</td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">3.</td>
+<td style="padding: 4px; vertical-align: middle;">1-4 Agustus</td>
+<td style="padding: 4px; vertical-align: middle;">Pelaksanaan Simulasi</td>
+</tr>
+<tr>
+<td style="background-color: #f0f0f0; vertical-align: middle; padding: 5px; text-align: center;" colspan="3"><strong>PERIODE 2</strong></td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">4.</td>
+<td style="padding: 4px; vertical-align: middle;">1-3 Agustus</td>
+<td style="padding: 4px; vertical-align: middle;">Pemutakhiran Data Status dan Moda</td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">5.</td>
+<td style="padding: 4px; vertical-align: middle;">6-7 Agustus</td>
+<td style="padding: 4px; vertical-align: middle;">Sinkronisasi Simulasi</td>
+</tr>
+<tr>
+<td style="padding: 4px; vertical-align: middle;">6.</td>
+<td style="padding: 4px; vertical-align: middle;">8-11 Agustus</td>
+<td style="padding: 4px; vertical-align: middle;">Pelaksanaan Simulasi</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p><em><strong>Catatan:</strong></em></p>
+<ul>
+<li>Simulasi menggunakan data dummy</li>
+<li>Simulasi hanya untuk satuan pendidikan mandiri</li>
+<li>Simulasi diikuti oleh proktor dan teknisi, siswa boleh mengikuti (tidak wajib)</li>
+<li>Menggunakan <strong>VHD fresh ANBK 2022 versi 14.0.0.1</strong></li>
+</ul></div><div class="timeline-footer"></div></div></li><li class="time-label"><span class="bg-blue">Juni 2022</span></li><li><i class="bg-blue fa fa-envelope"></i><div class="timeline-item"><h3 class="timeline-header"><a href="javascript:;">Selamat Datang</a><span class="timeline-user">Pusmendik</span><span class="time"><i class="far fa-calendar"></i>08-06-2022<i class="far fa-clock"></i>03:52</span></h3><div class="timeline-body"><p>Web ini merupakan media komunikasi antara Pusat, Tim Teknis Provinsi, Tim Teknis Kota/Kabupaten, dan Proktor Satuan Pendidikan</p>
+<p>Untuk mengetahui informasi tentang data terkait Asesmen Nasional Berbasis Komputer (ANBK) dapat menggunakan feature menu-menu yang telah kami sediakan disamping kiri. Apabila Bapak/Ibu baru pertama kali masuk ke web ini, dan menu masih belum berfungsi, silahkan ubah Password, dan mohon disimpan dan untuk tidak disalah gunakan username dan password tersebut.&nbsp;</p>
+<p>Untuk sementara waktu sambil menunggu laman pendataan dirilis, silahkan bapak/ibu melengkapi data Tim Teknis.</p>
+<p>&nbsp;</p>
+<p><em><strong>Salam Hormat kami selaku Posko Pusat</strong></em></p></div><div class="timeline-footer"></div></div></li><li><i class="far fa-clock"></i></li></ul></div></div><div class="panel-footer" style="display: none;"></div></div></div><div class="col-sm-4"><div class="imat-layout" id="imat-f99KJ"><div><div class="panel panel-default" id="imat-s5Xou"><div class="panel-heading" style="display: none;"><div class="panel-tools"></div></div><div class="panel-body"><div class="html-object" id="widget-top-3">
+                        <div class="widget-top">
+                            <h3>Posko ANBK</h3>
+                            <h6>Internal Teknis - Jangan Dishare Ke Publik</h6>
+                            <ul class="contact">
+                                <li><img src="/assets/img/flaticon/support-custom.png" class="success"><a href="javascript:;" data-jenis="K">Tim Teknis Kota/Kabupaten</a></li>
+                                <li><img src="/assets/img/flaticon/support-custom.png" class="info"><a href="javascript:;" data-jenis="C">Tim Teknis Cabang Dinas</a></li>
+                                <li><img src="/assets/img/flaticon/support-custom.png" class="primary"><a href="javascript:;" data-jenis="P">Tim Teknis Provinsi</a></li>
+                                <!--<li><img src="/assets/img/flaticon/support-custom.png" class="warning"><a href="javascript:;" data-jenis="X">Proteknas</a></li>-->
+                                <li><img src="/assets/img/flaticon/support-custom.png" class="danger"><a href="javascript:;" data-jenis="Z">Posko Pusat</a></li>
+                            </ul>
+                        </div>
+                    </div></div><div class="panel-footer" style="display: none;"></div></div></div><div><div class="panel panel-default" id="imat-GzMdk"><div class="panel-heading"><i class="icon-left fa fa-download"></i>Download Berkas<div class="panel-tools"><a href="javascript:void(0)" class="btn bg-aqua btn-xs hidden" id="imat-Bhauc" hidden="hidden"><i class="icon-left fa fa-upload"></i>Upload</a></div></div><div class="panel-body with-header no-padding"><div class="html-object" id="contentDownload" style="min-height: 300px;"><ul class="download"><li><div><img src="/assets/img/flaticon/folder.png"><a href="javascript:;" class="download-folder" id="download-undefined" title="">Prerequisites</a><a href="javascript:;" class="download-remove btn btn-xs btn-danger" style="display: none;">X</a></div><ul class="download-child" style="display: none;"><li><img src="/assets/img/flaticon/zip.png"><a href="javascript:;" class="download-file" id="download-27" item="" domain="">exambrowser-Macos-220810.dmg.zip</a><a href="javascript:;" class="download-remove btn btn-xs btn-danger" style="display: none;">X</a></li><li><img src="/assets/img/flaticon/zip.png"><a href="javascript:;" class="download-file" id="download-17" item="" domain="https://unp.kemdikbud.go.id/tes/">proktorbrowser_22.09.13_Windows32.rar</a><a href="javascript:;" class="download-remove btn btn-xs btn-danger" style="display: none;">X</a></li><li><img src="/assets/img/flaticon/zip.png"><a href="javascript:;" class="download-file" id="download-16" item="" domain="https://unp.kemdikbud.go.id/tes/">proktorbrowser_22.09.13_Windows64.rar</a><a href="javascript:;" class="download-remove btn btn-xs btn-danger" style="display: none;">X</a></li><li><img src="/assets/img/flaticon/zip.png"><a href="javascript:;" class="download-file" id="download-14" item="" domain="">eXamBroAdmin 27.11.19.rar</a><a href="javascript:;" class="download-remove btn btn-xs btn-danger" style="display: none;">X</a></li><li><img src="/assets/img/flaticon/zip.png"><a href="javascript:;" class="download-file" id="download-25" item="" domain="https://unp.kemdikbud.go.id/tes/">Exambrowser_Windows_22.0808_32bit.rar</a><a href="javascript:;" class="download-remove btn btn-xs btn-danger" style="display: none;">X</a></li><li><img src="/assets/img/flaticon/zip.png"><a href="javascript:;" class="download-file" id="download-26" item="" domain="https://unp.kemdikbud.go.id/tes/">Exambrowser_Windows_22.0808_64bit.rar</a><a href="javascript:;" class="download-remove btn btn-xs btn-danger" style="display: none;">X</a></li></ul></li><li><div><img src="/assets/img/flaticon/pdf.png"><a href="javascript:;" class="download-file" id="download-40" title="" domain="">Petunjuk SINKRONISASI Penjadwalan Ulang.pdf</a><a href="javascript:;" class="download-remove btn btn-xs btn-danger" style="display: none;">X</a></div></li><li><div><img src="/assets/img/flaticon/pdf.png"><a href="javascript:;" class="download-file" id="download-32" title="" domain="">Panduan Pengawas AN SMP_SMPLB_PAKET B.pdf</a><a href="javascript:;" class="download-remove btn btn-xs btn-danger" style="display: none;">X</a></div></li><li><div><img src="/assets/img/flaticon/pdf.png"><a href="javascript:;" class="download-file" id="download-31" title="" domain="">Panduan Pengawas AN SD_SDLB_Paket A.pdf</a><a href="javascript:;" class="download-remove btn btn-xs btn-danger" style="display: none;">X</a></div></li><li><div><img src="/assets/img/flaticon/pdf.png"><a href="javascript:;" class="download-file" id="download-29" title="" domain="">Panduan Pengawas AN SMK_SMA_SMALB_PAKET C.pdf</a><a href="javascript:;" class="download-remove btn btn-xs btn-danger" style="display: none;">X</a></div></li><li><div><img src="/assets/img/flaticon/jpg.png"><a href="javascript:;" class="download-file" id="download-24" title="" domain="">Permintaan ID Exambroser.jpeg</a><a href="javascript:;" class="download-remove btn btn-xs btn-danger" style="display: none;">X</a></div></li><li><div><img src="/assets/img/flaticon/pdf.png"><a href="javascript:;" class="download-file" id="download-9" title="" domain="">JUKNIS untuk SEKOLAH - ANBK Chromebook_V1.1.pdf</a><a href="javascript:;" class="download-remove btn btn-xs btn-danger" style="display: none;">X</a></div></li><li><div><img src="/assets/img/flaticon/pdf.png"><a href="javascript:;" class="download-file" id="download-8" title="" domain="">MANUAL APLIKASI ANBK ONLINE 21222022.pdf</a><a href="javascript:;" class="download-remove btn btn-xs btn-danger" style="display: none;">X</a></div></li><li><div><img src="/assets/img/flaticon/pdf.png"><a href="javascript:;" class="download-file" id="download-7" title="" domain="">MANUAL APLIKASI ANBK SEMI ONLINE 21222022.pdf</a><a href="javascript:;" class="download-remove btn btn-xs btn-danger" style="display: none;">X</a></div></li><li><div><img src="/assets/img/flaticon/pdf.png"><a href="javascript:;" class="download-file" id="download-5" title="" domain="">BUKU SAKU ANBK 2022.pdf</a><a href="javascript:;" class="download-remove btn btn-xs btn-danger" style="display: none;">X</a></div></li><li><div><img src="/assets/img/flaticon/pdf.png"><a href="javascript:;" class="download-file" id="download-4" title="" domain="">PANDUAN LAMAN ANBK_08072022.pdf</a><a href="javascript:;" class="download-remove btn btn-xs btn-danger" style="display: none;">X</a></div></li><li><div><img src="/assets/img/flaticon/pdf.png"><a href="javascript:;" class="download-file" id="download-3" title="" domain="">JUKNIS ANBK 2022.pdf</a><a href="javascript:;" class="download-remove btn btn-xs btn-danger" style="display: none;">X</a></div></li><li><div><img src="/assets/img/flaticon/pdf.png"><a href="javascript:;" class="download-file" id="download-2" title="" domain="">POS AN 2022.pdf</a><a href="javascript:;" class="download-remove btn btn-xs btn-danger" style="display: none;">X</a></div></li></ul></div></div><div class="panel-footer" style="display: none;"></div></div></div><div><div class="panel panel-default" id="imat-iR50G"><div class="panel-heading"><i class="icon-left fa fa-video"></i>Video Tutorial<div class="panel-tools"></div></div><div class="panel-body with-header no-padding"><div class="html-object" id="contentVideo" style="min-height: 268px;">
+                        <select id="video-select" class="form-control">
+                            <option value="https://unp.kemdikbud.go.id/files/01. Moda ANBK 2021.mp4">Moda ANBK</option>
+                            <option value="https://unp.kemdikbud.go.id/files/02. Exambrowser 2021.mp4">Exam Browser</option>
+                            <option value="https://unp.kemdikbud.go.id/files/03. MSAT 2021.mp4">MSAT</option>
+                            <option value="https://unp.kemdikbud.go.id/files/04. Model Soal MSAT.mp4">Model Soal MSAT</option>
+                            <option value="https://unp.kemdikbud.go.id/files/05. Pembuatan Mesin Virtual (VHD)_REV.mp4">Pembuatan Mesin Virtual</option>
+                            <option value="https://unp.kemdikbud.go.id/files/06. Transfer Response_REV.mp4">Transfer Response</option>
+                        </select>
+                        <div class="embed-responsive embed-responsive-4by3">
+                            <video controls="" class="embed-responsive-item" src="https://unp.kemdikbud.go.id/files/01. Moda ANBK 2021.mp4" id="video" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div></div></div><div class="panel-footer" style="display: none;"></div></div></div></div></div></div></div></div>
+                </div>
+            </div>
+        </div>
+        <script>
+            var baseURL = '/';
+            var uniqueID = 'c6f3129c51eb84dbe0bd01d651e6085b';
+        </script>
+
+        <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+        <script src="vendor/jquery/jquery.form.min.js"></script>
+        <script src="vendor/jquery/jquery-ui.min.js"></script>
+        <script src="vendor/jquery/jquery.slimscroll.min.js"></script>
+        <script src="vendor/select2/js/select2.min.js"></script>
+        <script src="vendor/plupload/js/plupload.full.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="vendor/tinymce/tinymce.min.js"></script>
+        <script src="vendor/tinymce/jquery.tinymce.min.js"></script>
+        <script src="vendor/chart/Chart.min.js"></script>
+
+        <script src="vendor/leaflet/leaflet.js"></script>
+        <script src="vendor/leaflet/leaflet.markercluster.js"></script>
+        <script src="vendor/leaflet/leaflet.colormarkers.js"></script>
+        
+        <!--Assets-->
+        <script src="user/referensi/20230611202152"></script>
+        <script src="assets/js/framework.min.js?_dc=20230611202152"></script>
+        <script src="assets/js/puspendik.min.js?_dc=20230611202152"></script>
+        <!--<script src="vendor/dev-tools/dev-tools.js"></script>-->
+
+        
+</div>
+    </body>
+</html>

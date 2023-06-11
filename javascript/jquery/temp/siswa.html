@@ -1,0 +1,328 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+        <title>Asesmen Nasional - Tahun 2022</title>
+        <link rel="icon" href="assets/img/logo.png" sizes="32x32" />
+
+        <!--Vendor-->
+        <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="vendor/jquery/jquery-ui.min.css" />
+        <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="vendor/font-awesome-5/css/all.min.css" />
+        <link rel="stylesheet" href="vendor/select2/css/select2.min.css" />
+        <link rel="stylesheet" href="vendor/chart/Chart.min.css" />
+
+        <link href="vendor/leaflet/leaflet.css" rel="stylesheet">
+        <link href="vendor/leaflet/MarkerCluster.css" rel="stylesheet">
+        <link href="vendor/leaflet/MarkerCluster.Default.css" rel="stylesheet">
+
+        <!--Assets-->
+        <link rel="stylesheet" href="assets/css/framework.min.css?_dc=20230611202152" />
+        <link rel="stylesheet" href="assets/css/puspendik.min.css?_dc=20230611202152" />
+    </head>
+    <body>
+        <div class="main">
+            <div class="menu">
+                <div class="menu-header">
+                    <img src="assets/img/logo.png" height="70px" />
+                    <span>Asesmen Nasional</span>
+                    <span>PUSAT ASESMEN PENDIDIKAN</span>
+                    <ul>
+                        <li>
+                            <a href="javascript:;" class="js-menu" data-class="Home" data-url="home" data-ajax="Y" data-dialog="N"> 
+                                <span class="fas fa-home fa-lg"></span><br />Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="js-menu" data-class="UsersPengaturan" data-url="users/pengaturan" data-ajax="Y" data-dialog="Y"> 
+                                <span class="fas fa-user-cog fa-lg"></span><br />Pengaturan
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="btn-logout"> <span class="fas fa-sign-out-alt fa-lg"></span><br />Keluar</a>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="nav side-menu">
+                                        <li class="side-menu-label">Menu Utama</li>
+
+                                         <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="Home" data-url="home" data-ajax="Y" data-dialog="N">
+                            <span class="fa fa-tachometer-alt side-menu-icon"></span>
+                            <span class="side-menu-title">Dashboard</span>
+
+                                                    </a>
+
+                                            </li>
+                                        <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="Sekolah" data-url="sekolah" data-ajax="Y" data-dialog="N">
+                            <span class="fa fa-school side-menu-icon"></span>
+                            <span class="side-menu-title">Data Sekolah</span>
+
+                                                    </a>
+
+                                            </li>
+                                        <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="Biodata" data-url="biodata" data-ajax="Y" data-dialog="N">
+                            <span class="fa fa-user-graduate side-menu-icon"></span>
+                            <span class="side-menu-title">Biodata Siswa</span>
+
+                                                    </a>
+
+                                            </li>
+                                        <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="#" data-url="#" data-ajax="Y" data-dialog="N">
+                            <span class="fa fa-desktop side-menu-icon"></span>
+                            <span class="side-menu-title">Asesmen Nasional</span>
+
+                                                        <span class="caret"></span>
+                                                    </a>
+
+                                                <ul class="nav sub-menu collapse">
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="PenjelasanShow" data-url="penjelasan/show" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Penjelasan</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="Integritas" data-url="integritas" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Pakta Integritas</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="Server" data-url="server" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Komputer Proktor</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="Sesi" data-url="sesi" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Pengaturan Sesi</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="SesiKelengkapan" data-url="sesi/kelengkapan" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Cek Kelengkapan Data</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="Kartu" data-url="kartu" data-ajax="Y" data-dialog="Y">
+                                    <span class="side-menu-title">Kartu Login</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="AbsenCetak" data-url="absen/cetak" data-ajax="Y" data-dialog="Y">
+                                    <span class="side-menu-title">Cetak Daftar Hadir</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="AbsenUpload" data-url="absen/upload" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Unggah Daftar Hadir</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="Pelaksanaan" data-url="pelaksanaan" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Berita Acara Pelaksanaan</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="Kasus" data-url="kasus" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Laporan Kasus Soal</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="Cadangan" data-url="cadangan" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Aktivasi Peserta Cadangan</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="Sinkronisasi" data-url="sinkronisasi" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Jadwal Sinkronisasi</span>
+                                </a>
+                            </li>
+                                                    </ul>
+                                            </li>
+                                        <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="#" data-url="#" data-ajax="Y" data-dialog="N">
+                            <span class="fa fa-chart-bar side-menu-icon"></span>
+                            <span class="side-menu-title">Rekap</span>
+
+                                                        <span class="caret"></span>
+                                                    </a>
+
+                                                <ul class="nav sub-menu collapse">
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="ResponseServer" data-url="response/server" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Rekap Upload</span>
+                                </a>
+                            </li>
+                                                    </ul>
+                                            </li>
+                                        <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="#" data-url="#" data-ajax="Y" data-dialog="N">
+                            <span class="fa fa-signal side-menu-icon"></span>
+                            <span class="side-menu-title">Sekolah Blank Spot</span>
+
+                                                        <span class="caret"></span>
+                                                    </a>
+
+                                                <ul class="nav sub-menu collapse">
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="OfflinePenjelasan" data-url="offline/penjelasan" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Penjelasan</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="Token" data-url="token" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Token Sekolah Blank Spot</span>
+                                </a>
+                            </li>
+                                                    </ul>
+                                            </li>
+                                        <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="#" data-url="#" data-ajax="Y" data-dialog="N">
+                            <span class="fa fa-table side-menu-icon"></span>
+                            <span class="side-menu-title">Penjadwalan Ulang</span>
+
+                                                        <span class="caret"></span>
+                                                    </a>
+
+                                                <ul class="nav sub-menu collapse">
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="ResponseSubtes" data-url="response/subtes" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Rekap Sekolah</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="SimulasiServer" data-url="simulasi/server" data-ajax="Y" data-dialog="N">
+                                    <span class="side-menu-title">Komputer Proktor</span>
+                                </a>
+                            </li>
+                                                        <li>
+                                <a href="javascript:void(0)" class="js-menu" data-class="SimulasiKartu" data-url="simulasi/kartu" data-ajax="Y" data-dialog="Y">
+                                    <span class="side-menu-title">Cetak Kartu Login</span>
+                                </a>
+                            </li>
+                                                    </ul>
+                                            </li>
+                                        <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="Ticket" data-url="ticket" data-ajax="Y" data-dialog="N">
+                            <span class="fa fa-ticket-alt side-menu-icon"></span>
+                            <span class="side-menu-title">Layanan Pengaduan</span>
+
+                                                    </a>
+
+                                            </li>
+                                          <li class="side-menu-label">Pengaturan</li>
+
+                                         <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="UsersPengaturan" data-url="users/pengaturan" data-ajax="Y" data-dialog="Y">
+                            <span class="fa fa-user-cog side-menu-icon"></span>
+                            <span class="side-menu-title">Pengaturan Akun</span>
+
+                                                    </a>
+
+                                            </li>
+                                        <li>
+                        <a href="javascript:void(0)" class="js-menu" data-class="UsersOnline" data-url="users/online" data-ajax="Y" data-dialog="Y">
+                            <span class="fa fa-users side-menu-icon"></span>
+                            <span class="side-menu-title">Pengguna Online</span>
+
+                                                    </a>
+
+                                            </li>
+                                      </ul>
+            </div>
+            <div class="wrapper-main">
+                <div class="header">
+                    <a href="#" class="toggle-menu" id="toggle-menu">
+                        <span class="fa fa-bars side-menu-icon"></span>
+                    </a>
+                    <ul class="header-right">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <span class="far fa-user"></span>
+                                <span class="label label-success online-count">0</span>
+                            </a>
+                            <ul class="dropdown-menu user-list"></ul>
+                        </li>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <span class="far fa-bell"></span>
+                                <span class="label label-danger chat-count">0</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="javascript:void(0)" class="js-menu" id="chat-notification" data-class="Ticket" data-url="ticket" data-ajax="Y" data-dialog="N">
+                                        <span class="fa fa-comments"></span>
+                                        Ada
+                                        <span class="chat-count">0</span>
+                                        layanan pengaduan belum ditangani
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="user-menu">
+                            <a href="#" class="dropdown-toggle button-user" data-toggle="dropdown" aria-expanded="false">
+                                <img alt="" src="/api/v2/users/avatar?ajaxToken=1A61F09AB22A92E772CC6A3B77E247C3" />
+                                <span class="userlogin"></span>
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <div class="photo">
+                                    <img alt="" src="/api/v2/users/avatar?ajaxToken=1A61F09AB22A92E772CC6A3B77E247C3" width="100%" />
+                                </div>
+                                <li>
+                                    <a href="javascript:void(0)" class="js-menu" data-class="UsersPengaturan" data-url="users/pengaturan" data-ajax="Y" data-dialog="Y">
+                                        <span class="fa fa-user"></span>
+                                        Pengaturan Akun
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="btn-logout">
+                                        <span class="fa fa-sign-out-alt"></span>
+                                        Keluar</a
+                                    >
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div> 
+                <div class="wrapper-content">
+                    <div class="content imat" id="content"><div class="panel panel-default fullsize" id="imat-L1mi9"><div class="panel-heading"><i class="icon-left fa fa-user"></i>Biodata<div class="panel-tools"></div></div><div class="panel-body with-header no-padding"><div class="navbar navbar-default" id="imat-6Ekct"><div class="container-fluid"></div><div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#imat-6Ekct .navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></div><table width="100%"><tbody><tr><td class="tableLeft" align="left"><form class="navbar-form"><div class="form-group"><a href="javascript:void(0)" class="btn hidden btn-default" id="sync" hidden="hidden" style="display: none;"><i class="icon-left fa fa-sync-alt"></i>Ambil Dari BIO-AN</a></div></form></td><td class="tableRight" align="right"><form class="navbar-form collapse navbar-collapse"><div class="form-group"><select class="form-control" id="kd_jenjang" name="kd_jenjang"><option value="K">SMK</option></select></div><div class="form-group"><select class="form-control" id="kd_prop" name="kd_prop" style="width: 120px;"><option value="22">22. BALI</option></select></div><div class="form-group"><select class="form-control" id="kd_rayon" name="kd_rayon" style="width: 120px;"><option value="05">05. KABUPATEN KARANGASEM</option></select></div><div class="form-group"><select class="form-control" id="kd_sek" name="kd_sek" style="width: 120px;"><option value="0001" data-params="50102771">0001. SMK NEGERI 1 ABANG</option></select></div><div class="form-group"><select class="form-control" id="kd_jenjang_pes" name="kd_jenjang_pes"><option value="K">SMK</option></select></div><div class="form-group"><input class="form-control" type="text" id="kata" name="kata" style="width: 60px;"></div><div class="form-group"><a href="javascript:void(0)" class="btn btn-default" id="cari"><i class="icon-left fa fa-search"></i>Cari</a></div></form></td></tr></tbody></table></div><div class="table-responsive fullsize" style="top: 30px;"><nav class="navbar navbar-default navbar-pagination"><form class="navbar-form navbar-left"><div class="form-group"><a class="btn btn-default" href="javascript:void(0)" id="table-first"><i class="icon-left fa fa-resultset-first"></i></a><a class="btn btn-default" href="javascript:void(0)" id="table-previous"><i class="icon-left fa fa-resultset-previous"></i></a><input class="form-control" href="javascript:void(0)" id="table-page" value="1"><span class="form-control-static" href="javascript:void(0)" id="table-page-count">dari 3</span><a class="btn btn-default" href="javascript:void(0)" id="table-next"><i class="icon-left fa fa-resultset-next"></i></a><a class="btn btn-default" href="javascript:void(0)" id="table-last"><i class="icon-left fa fa-resultset-last"></i></a><a class="btn btn-default" href="javascript:void(0)" id="table-refresh"><i class="icon-left fa fa-arrow-refresh"></i></a><span class="form-control-static hidden-xs" href="javascript:void(0)" id="table-show">Menampilkan data 1-20 dari 50</span></div></form><form class="navbar-form navbar-right hidden-xs"><div class="form-group"><span class="form-control-static hidden-xs">Jumlah Per Halaman</span><select class="form-control" id="combobox" name="combobox"><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option><option value="32">32</option><option value="33">33</option><option value="34">34</option><option value="35">35</option><option value="36">36</option><option value="37">37</option><option value="38">38</option><option value="39">39</option><option value="40">40</option><option value="41">41</option><option value="42">42</option><option value="43">43</option><option value="44">44</option><option value="45">45</option><option value="46">46</option><option value="47">47</option><option value="48">48</option><option value="49">49</option><option value="50">50</option><option value="51">51</option><option value="52">52</option><option value="53">53</option><option value="54">54</option><option value="55">55</option><option value="56">56</option><option value="57">57</option><option value="58">58</option><option value="59">59</option><option value="60">60</option><option value="61">61</option><option value="62">62</option><option value="63">63</option><option value="64">64</option><option value="65">65</option><option value="66">66</option><option value="67">67</option><option value="68">68</option><option value="69">69</option><option value="70">70</option><option value="71">71</option><option value="72">72</option><option value="73">73</option><option value="74">74</option><option value="75">75</option><option value="76">76</option><option value="77">77</option><option value="78">78</option><option value="79">79</option><option value="80">80</option><option value="81">81</option><option value="82">82</option><option value="83">83</option><option value="84">84</option><option value="85">85</option><option value="86">86</option><option value="87">87</option><option value="88">88</option><option value="89">89</option><option value="90">90</option><option value="91">91</option><option value="92">92</option><option value="93">93</option><option value="94">94</option><option value="95">95</option><option value="96">96</option><option value="97">97</option><option value="98">98</option><option value="99">99</option><option value="100">100</option></select></div></form></nav><div class="table-wrapper" style="overflow-y: scroll; position: absolute;"><table class="table table-bordered table-striped" id="biodata-siswa"><thead><tr><th style="width: 100px;"><div style="width: 100px; text-align: center;"><a class="sort-table" href="javascript:void(0)" data-index="username" data-sort="">Username</a></div></th><th style="width: 200px;"><div style="width: 200px; text-align: center;"><a class="sort-table" href="javascript:void(0)" data-index="nm_pes" data-sort="">Nama Peserta</a></div></th><th style="width: 100px;"><div style="width: 100px; text-align: center;"><a class="sort-table" href="javascript:void(0)" data-index="nm_jenjang" data-sort="">Jenjang</a></div></th><th style="width: 50px;"><div style="width: 50px; text-align: center;"><a class="sort-table" href="javascript:void(0)" data-index="kelas" data-sort="">Kelas</a></div></th><th style="width: 100px;"><div style="width: 100px; text-align: center;"><a class="sort-table" href="javascript:void(0)" data-index="status" data-sort="">Status</a></div></th><th style="width: 100px;"><div style="width: 100px; text-align: center;"><a class="sort-table" href="javascript:void(0)" data-index="sex" data-sort="">Jenis Kelamin</a></div></th><th style="width: 120px;"><div style="width: 120px; text-align: center;"><a class="sort-table" href="javascript:void(0)" data-index="tmp_lhr" data-sort="">Tempat Lahir</a></div></th><th style="width: 100px;"><div style="width: 100px; text-align: center;"><a class="sort-table" href="javascript:void(0)" data-index="tgl_lhr" data-sort="">Tanggal Lahir</a></div></th><th style="width: 80px;"><div style="width: 80px; text-align: center;"><a class="sort-table" href="javascript:void(0)" data-index="nisn" data-sort="">NISN</a></div></th><th style="width: 100px;"><div style="width: 100px; text-align: center;"><a class="sort-table" href="javascript:void(0)" data-index="no_induk" data-sort="">Nomor Induk</a></div></th><th style="width: 150px;"><div style="width: 150px; text-align: center;"><a class="sort-table" href="javascript:void(0)" data-index="last_update" data-sort="">Last Update</a></div></th><th><div style="text-align: center;"><a class="sort-table" href="javascript:void(0)" data-index="" data-sort=""></a></div></th></tr></thead><tbody><tr><td align="left" width="100"><div class="table-cell" value="K2205000100018" style="width: 100px;">K2205000100018</div></td><td align="left" width="200"><div class="table-cell" value="Agus Suardana" style="width: 200px;">Agus Suardana</div></td><td align="left" width="100"><div class="table-cell" value="SMK" style="width: 100px;">SMK</div></td><td align="center" width="50"><div class="table-cell" value="11" style="text-align: center; width: 50px;">11</div></td><td align="left" width="100"><div class="table-cell" value="S" style="width: 100px;">Sampling</div></td><td align="left" width="100"><div class="table-cell" value="L" style="width: 100px;">Laki-laki</div></td><td align="left" width="120"><div class="table-cell" value="Umanyar" style="width: 120px;">Umanyar</div></td><td align="left" width="100"><div class="table-cell" value="02-07-2004" style="width: 100px;">02-07-2004</div></td><td align="left" width="80"><div class="table-cell" value="0015985552" style="width: 80px;">0015985552</div></td><td align="left" width="100"><div class="table-cell" value="5221" style="width: 100px;">5221</div></td><td align="left" width="150"><div class="table-cell" value="2022-08-12 09:30:39" style="width: 150px;">2022-08-12 09:30:39</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="left" width="100"><div class="table-cell" value="K2205000100027" style="width: 100px;">K2205000100027</div></td><td align="left" width="200"><div class="table-cell" value="I Gede Kurniawan" style="width: 200px;">I Gede Kurniawan</div></td><td align="left" width="100"><div class="table-cell" value="SMK" style="width: 100px;">SMK</div></td><td align="center" width="50"><div class="table-cell" value="11" style="text-align: center; width: 50px;">11</div></td><td align="left" width="100"><div class="table-cell" value="S" style="width: 100px;">Sampling</div></td><td align="left" width="100"><div class="table-cell" value="L" style="width: 100px;">Laki-laki</div></td><td align="left" width="120"><div class="table-cell" value="Tiyingtali" style="width: 120px;">Tiyingtali</div></td><td align="left" width="100"><div class="table-cell" value="15-01-2006" style="width: 100px;">15-01-2006</div></td><td align="left" width="80"><div class="table-cell" value="0062404287" style="width: 80px;">0062404287</div></td><td align="left" width="100"><div class="table-cell" value="5261" style="width: 100px;">5261</div></td><td align="left" width="150"><div class="table-cell" value="2022-08-12 09:30:39" style="width: 150px;">2022-08-12 09:30:39</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="left" width="100"><div class="table-cell" value="K2205000100036" style="width: 100px;">K2205000100036</div></td><td align="left" width="200"><div class="table-cell" value="I Gede Ngurah Arta Wijaya" style="width: 200px;">I Gede Ngurah Arta Wijaya</div></td><td align="left" width="100"><div class="table-cell" value="SMK" style="width: 100px;">SMK</div></td><td align="center" width="50"><div class="table-cell" value="11" style="text-align: center; width: 50px;">11</div></td><td align="left" width="100"><div class="table-cell" value="S" style="width: 100px;">Sampling</div></td><td align="left" width="100"><div class="table-cell" value="L" style="width: 100px;">Laki-laki</div></td><td align="left" width="120"><div class="table-cell" value="Ngis Kaler" style="width: 120px;">Ngis Kaler</div></td><td align="left" width="100"><div class="table-cell" value="22-01-2006" style="width: 100px;">22-01-2006</div></td><td align="left" width="80"><div class="table-cell" value="0068959682" style="width: 80px;">0068959682</div></td><td align="left" width="100"><div class="table-cell" value="5293" style="width: 100px;">5293</div></td><td align="left" width="150"><div class="table-cell" value="2022-08-12 09:30:39" style="width: 150px;">2022-08-12 09:30:39</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="left" width="100"><div class="table-cell" value="K2205000100045" style="width: 100px;">K2205000100045</div></td><td align="left" width="200"><div class="table-cell" value="I Gede Wahyu Aditya Paramita" style="width: 200px;">I Gede Wahyu Aditya Paramita</div></td><td align="left" width="100"><div class="table-cell" value="SMK" style="width: 100px;">SMK</div></td><td align="center" width="50"><div class="table-cell" value="11" style="text-align: center; width: 50px;">11</div></td><td align="left" width="100"><div class="table-cell" value="S" style="width: 100px;">Sampling</div></td><td align="left" width="100"><div class="table-cell" value="L" style="width: 100px;">Laki-laki</div></td><td align="left" width="120"><div class="table-cell" value="Bau Kawan" style="width: 120px;">Bau Kawan</div></td><td align="left" width="100"><div class="table-cell" value="28-12-2005" style="width: 100px;">28-12-2005</div></td><td align="left" width="80"><div class="table-cell" value="0051951453" style="width: 80px;">0051951453</div></td><td align="left" width="100"><div class="table-cell" value="5162" style="width: 100px;">5162</div></td><td align="left" width="150"><div class="table-cell" value="2022-08-12 09:30:39" style="width: 150px;">2022-08-12 09:30:39</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="left" width="100"><div class="table-cell" value="K2205000100054" style="width: 100px;">K2205000100054</div></td><td align="left" width="200"><div class="table-cell" value="I Kadek Arianta" style="width: 200px;">I Kadek Arianta</div></td><td align="left" width="100"><div class="table-cell" value="SMK" style="width: 100px;">SMK</div></td><td align="center" width="50"><div class="table-cell" value="11" style="text-align: center; width: 50px;">11</div></td><td align="left" width="100"><div class="table-cell" value="S" style="width: 100px;">Sampling</div></td><td align="left" width="100"><div class="table-cell" value="L" style="width: 100px;">Laki-laki</div></td><td align="left" width="120"><div class="table-cell" value="Batumadeg" style="width: 120px;">Batumadeg</div></td><td align="left" width="100"><div class="table-cell" value="08-10-2005" style="width: 100px;">08-10-2005</div></td><td align="left" width="80"><div class="table-cell" value="0058953797" style="width: 80px;">0058953797</div></td><td align="left" width="100"><div class="table-cell" value="5195" style="width: 100px;">5195</div></td><td align="left" width="150"><div class="table-cell" value="2022-08-12 09:30:39" style="width: 150px;">2022-08-12 09:30:39</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="left" width="100"><div class="table-cell" value="K2205000100063" style="width: 100px;">K2205000100063</div></td><td align="left" width="200"><div class="table-cell" value="I Kadek Dwi Adnyana" style="width: 200px;">I Kadek Dwi Adnyana</div></td><td align="left" width="100"><div class="table-cell" value="SMK" style="width: 100px;">SMK</div></td><td align="center" width="50"><div class="table-cell" value="11" style="text-align: center; width: 50px;">11</div></td><td align="left" width="100"><div class="table-cell" value="S" style="width: 100px;">Sampling</div></td><td align="left" width="100"><div class="table-cell" value="L" style="width: 100px;">Laki-laki</div></td><td align="left" width="120"><div class="table-cell" value="Batudawa" style="width: 120px;">Batudawa</div></td><td align="left" width="100"><div class="table-cell" value="13-11-2005" style="width: 100px;">13-11-2005</div></td><td align="left" width="80"><div class="table-cell" value="0057286377" style="width: 80px;">0057286377</div></td><td align="left" width="100"><div class="table-cell" value="5196" style="width: 100px;">5196</div></td><td align="left" width="150"><div class="table-cell" value="2022-08-12 09:30:39" style="width: 150px;">2022-08-12 09:30:39</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="left" width="100"><div class="table-cell" value="K2205000100072" style="width: 100px;">K2205000100072</div></td><td align="left" width="200"><div class="table-cell" value="I Kadek Gunawan Adi Putra " style="width: 200px;">I Kadek Gunawan Adi Putra </div></td><td align="left" width="100"><div class="table-cell" value="SMK" style="width: 100px;">SMK</div></td><td align="center" width="50"><div class="table-cell" value="11" style="text-align: center; width: 50px;">11</div></td><td align="left" width="100"><div class="table-cell" value="S" style="width: 100px;">Sampling</div></td><td align="left" width="100"><div class="table-cell" value="L" style="width: 100px;">Laki-laki</div></td><td align="left" width="120"><div class="table-cell" value="Kertawarah" style="width: 120px;">Kertawarah</div></td><td align="left" width="100"><div class="table-cell" value="05-10-2005" style="width: 100px;">05-10-2005</div></td><td align="left" width="80"><div class="table-cell" value="0053704406" style="width: 80px;">0053704406</div></td><td align="left" width="100"><div class="table-cell" value="5166" style="width: 100px;">5166</div></td><td align="left" width="150"><div class="table-cell" value="2022-08-12 09:30:39" style="width: 150px;">2022-08-12 09:30:39</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="left" width="100"><div class="table-cell" value="K2205000100089" style="width: 100px;">K2205000100089</div></td><td align="left" width="200"><div class="table-cell" value="I Kadek Suena" style="width: 200px;">I Kadek Suena</div></td><td align="left" width="100"><div class="table-cell" value="SMK" style="width: 100px;">SMK</div></td><td align="center" width="50"><div class="table-cell" value="11" style="text-align: center; width: 50px;">11</div></td><td align="left" width="100"><div class="table-cell" value="S" style="width: 100px;">Sampling</div></td><td align="left" width="100"><div class="table-cell" value="L" style="width: 100px;">Laki-laki</div></td><td align="left" width="120"><div class="table-cell" value="Batudawa Kelod" style="width: 120px;">Batudawa Kelod</div></td><td align="left" width="100"><div class="table-cell" value="24-05-2005" style="width: 100px;">24-05-2005</div></td><td align="left" width="80"><div class="table-cell" value="0053750279" style="width: 80px;">0053750279</div></td><td align="left" width="100"><div class="table-cell" value="5233" style="width: 100px;">5233</div></td><td align="left" width="150"><div class="table-cell" value="2022-08-12 09:30:39" style="width: 150px;">2022-08-12 09:30:39</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="left" width="100"><div class="table-cell" value="K2205000100098" style="width: 100px;">K2205000100098</div></td><td align="left" width="200"><div class="table-cell" value="I Ketut Agus Saputra" style="width: 200px;">I Ketut Agus Saputra</div></td><td align="left" width="100"><div class="table-cell" value="SMK" style="width: 100px;">SMK</div></td><td align="center" width="50"><div class="table-cell" value="11" style="text-align: center; width: 50px;">11</div></td><td align="left" width="100"><div class="table-cell" value="S" style="width: 100px;">Sampling</div></td><td align="left" width="100"><div class="table-cell" value="L" style="width: 100px;">Laki-laki</div></td><td align="left" width="120"><div class="table-cell" value="Pidpid" style="width: 120px;">Pidpid</div></td><td align="left" width="100"><div class="table-cell" value="09-05-2006" style="width: 100px;">09-05-2006</div></td><td align="left" width="80"><div class="table-cell" value="0062695724" style="width: 80px;">0062695724</div></td><td align="left" width="100"><div class="table-cell" value="5236" style="width: 100px;">5236</div></td><td align="left" width="150"><div class="table-cell" value="2022-08-12 09:30:39" style="width: 150px;">2022-08-12 09:30:39</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="left" width="100"><div class="table-cell" value="K2205000100107" style="width: 100px;">K2205000100107</div></td><td align="left" width="200"><div class="table-cell" value="I Ketut Budi" style="width: 200px;">I Ketut Budi</div></td><td align="left" width="100"><div class="table-cell" value="SMK" style="width: 100px;">SMK</div></td><td align="center" width="50"><div class="table-cell" value="11" style="text-align: center; width: 50px;">11</div></td><td align="left" width="100"><div class="table-cell" value="S" style="width: 100px;">Sampling</div></td><td align="left" width="100"><div class="table-cell" value="L" style="width: 100px;">Laki-laki</div></td><td align="left" width="120"><div class="table-cell" value="Banyuning" style="width: 120px;">Banyuning</div></td><td align="left" width="100"><div class="table-cell" value="22-11-2003" style="width: 100px;">22-11-2003</div></td><td align="left" width="80"><div class="table-cell" value="0035456122" style="width: 80px;">0035456122</div></td><td align="left" width="100"><div class="table-cell" value="5237" style="width: 100px;">5237</div></td><td align="left" width="150"><div class="table-cell" value="2022-08-12 09:30:39" style="width: 150px;">2022-08-12 09:30:39</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="left" width="100"><div class="table-cell" value="K2205000100116" style="width: 100px;">K2205000100116</div></td><td align="left" width="200"><div class="table-cell" value="I Komang Alit Prastiana" style="width: 200px;">I Komang Alit Prastiana</div></td><td align="left" width="100"><div class="table-cell" value="SMK" style="width: 100px;">SMK</div></td><td align="center" width="50"><div class="table-cell" value="11" style="text-align: center; width: 50px;">11</div></td><td align="left" width="100"><div class="table-cell" value="S" style="width: 100px;">Sampling</div></td><td align="left" width="100"><div class="table-cell" value="L" style="width: 100px;">Laki-laki</div></td><td align="left" width="120"><div class="table-cell" value="Karangasem" style="width: 120px;">Karangasem</div></td><td align="left" width="100"><div class="table-cell" value="29-03-2006" style="width: 100px;">29-03-2006</div></td><td align="left" width="80"><div class="table-cell" value="0064779802" style="width: 80px;">0064779802</div></td><td align="left" width="100"><div class="table-cell" value="5172" style="width: 100px;">5172</div></td><td align="left" width="150"><div class="table-cell" value="2022-08-12 09:30:39" style="width: 150px;">2022-08-12 09:30:39</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="left" width="100"><div class="table-cell" value="K2205000100125" style="width: 100px;">K2205000100125</div></td><td align="left" width="200"><div class="table-cell" value="I Komang Narayana" style="width: 200px;">I Komang Narayana</div></td><td align="left" width="100"><div class="table-cell" value="SMK" style="width: 100px;">SMK</div></td><td align="center" width="50"><div class="table-cell" value="11" style="text-align: center; width: 50px;">11</div></td><td align="left" width="100"><div class="table-cell" value="S" style="width: 100px;">Sampling</div></td><td align="left" width="100"><div class="table-cell" value="L" style="width: 100px;">Laki-laki</div></td><td align="left" width="120"><div class="table-cell" value="Karangasem" style="width: 120px;">Karangasem</div></td><td align="left" width="100"><div class="table-cell" value="09-01-2006" style="width: 100px;">09-01-2006</div></td><td align="left" width="80"><div class="table-cell" value="0062692768" style="width: 80px;">0062692768</div></td><td align="left" width="100"><div class="table-cell" value="5206" style="width: 100px;">5206</div></td><td align="left" width="150"><div class="table-cell" value="2022-08-12 09:30:39" style="width: 150px;">2022-08-12 09:30:39</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="left" width="100"><div class="table-cell" value="K2205000100134" style="width: 100px;">K2205000100134</div></td><td align="left" width="200"><div class="table-cell" value="I Komang Nova Artawan" style="width: 200px;">I Komang Nova Artawan</div></td><td align="left" width="100"><div class="table-cell" value="SMK" style="width: 100px;">SMK</div></td><td align="center" width="50"><div class="table-cell" value="11" style="text-align: center; width: 50px;">11</div></td><td align="left" width="100"><div class="table-cell" value="S" style="width: 100px;">Sampling</div></td><td align="left" width="100"><div class="table-cell" value="L" style="width: 100px;">Laki-laki</div></td><td align="left" width="120"><div class="table-cell" value="Datah" style="width: 120px;">Datah</div></td><td align="left" width="100"><div class="table-cell" value="08-10-2006" style="width: 100px;">08-10-2006</div></td><td align="left" width="80"><div class="table-cell" value="0062464044" style="width: 80px;">0062464044</div></td><td align="left" width="100"><div class="table-cell" value="5244" style="width: 100px;">5244</div></td><td align="left" width="150"><div class="table-cell" value="2022-08-12 09:30:39" style="width: 150px;">2022-08-12 09:30:39</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="left" width="100"><div class="table-cell" value="K2205000100143" style="width: 100px;">K2205000100143</div></td><td align="left" width="200"><div class="table-cell" value="I Made Fajar Bagiastra" style="width: 200px;">I Made Fajar Bagiastra</div></td><td align="left" width="100"><div class="table-cell" value="SMK" style="width: 100px;">SMK</div></td><td align="center" width="50"><div class="table-cell" value="11" style="text-align: center; width: 50px;">11</div></td><td align="left" width="100"><div class="table-cell" value="S" style="width: 100px;">Sampling</div></td><td align="left" width="100"><div class="table-cell" value="L" style="width: 100px;">Laki-laki</div></td><td align="left" width="120"><div class="table-cell" value="Amlapura" style="width: 120px;">Amlapura</div></td><td align="left" width="100"><div class="table-cell" value="14-10-2005" style="width: 100px;">14-10-2005</div></td><td align="left" width="80"><div class="table-cell" value="0055543750" style="width: 80px;">0055543750</div></td><td align="left" width="100"><div class="table-cell" value="5208" style="width: 100px;">5208</div></td><td align="left" width="150"><div class="table-cell" value="2022-08-12 09:30:39" style="width: 150px;">2022-08-12 09:30:39</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="left" width="100"><div class="table-cell" value="K2205000100152" style="width: 100px;">K2205000100152</div></td><td align="left" width="200"><div class="table-cell" value="I Made Juniasa" style="width: 200px;">I Made Juniasa</div></td><td align="left" width="100"><div class="table-cell" value="SMK" style="width: 100px;">SMK</div></td><td align="center" width="50"><div class="table-cell" value="11" style="text-align: center; width: 50px;">11</div></td><td align="left" width="100"><div class="table-cell" value="S" style="width: 100px;">Sampling</div></td><td align="left" width="100"><div class="table-cell" value="L" style="width: 100px;">Laki-laki</div></td><td align="left" width="120"><div class="table-cell" value="Datah" style="width: 120px;">Datah</div></td><td align="left" width="100"><div class="table-cell" value="07-06-2005" style="width: 100px;">07-06-2005</div></td><td align="left" width="80"><div class="table-cell" value="0064758452" style="width: 80px;">0064758452</div></td><td align="left" width="100"><div class="table-cell" value="5247" style="width: 100px;">5247</div></td><td align="left" width="150"><div class="table-cell" value="2022-08-12 09:30:39" style="width: 150px;">2022-08-12 09:30:39</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="left" width="100"><div class="table-cell" value="K2205000100169" style="width: 100px;">K2205000100169</div></td><td align="left" width="200"><div class="table-cell" value="I Wayan Ariantara" style="width: 200px;">I Wayan Ariantara</div></td><td align="left" width="100"><div class="table-cell" value="SMK" style="width: 100px;">SMK</div></td><td align="center" width="50"><div class="table-cell" value="11" style="text-align: center; width: 50px;">11</div></td><td align="left" width="100"><div class="table-cell" value="S" style="width: 100px;">Sampling</div></td><td align="left" width="100"><div class="table-cell" value="L" style="width: 100px;">Laki-laki</div></td><td align="left" width="120"><div class="table-cell" value="Tegal Panti" style="width: 120px;">Tegal Panti</div></td><td align="left" width="100"><div class="table-cell" value="07-06-2004" style="width: 100px;">07-06-2004</div></td><td align="left" width="80"><div class="table-cell" value="0045455834" style="width: 80px;">0045455834</div></td><td align="left" width="100"><div class="table-cell" value="5214" style="width: 100px;">5214</div></td><td align="left" width="150"><div class="table-cell" value="2022-08-12 09:30:39" style="width: 150px;">2022-08-12 09:30:39</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="left" width="100"><div class="table-cell" value="K2205000100178" style="width: 100px;">K2205000100178</div></td><td align="left" width="200"><div class="table-cell" value="I Wayan Darma" style="width: 200px;">I Wayan Darma</div></td><td align="left" width="100"><div class="table-cell" value="SMK" style="width: 100px;">SMK</div></td><td align="center" width="50"><div class="table-cell" value="11" style="text-align: center; width: 50px;">11</div></td><td align="left" width="100"><div class="table-cell" value="S" style="width: 100px;">Sampling</div></td><td align="left" width="100"><div class="table-cell" value="L" style="width: 100px;">Laki-laki</div></td><td align="left" width="120"><div class="table-cell" value="Bau Kawan" style="width: 120px;">Bau Kawan</div></td><td align="left" width="100"><div class="table-cell" value="14-11-2005" style="width: 100px;">14-11-2005</div></td><td align="left" width="80"><div class="table-cell" value="0054873710" style="width: 80px;">0054873710</div></td><td align="left" width="100"><div class="table-cell" value="5183" style="width: 100px;">5183</div></td><td align="left" width="150"><div class="table-cell" value="2022-08-12 09:30:39" style="width: 150px;">2022-08-12 09:30:39</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="left" width="100"><div class="table-cell" value="K2205000100187" style="width: 100px;">K2205000100187</div></td><td align="left" width="200"><div class="table-cell" value="I Wayan Sedayatana" style="width: 200px;">I Wayan Sedayatana</div></td><td align="left" width="100"><div class="table-cell" value="SMK" style="width: 100px;">SMK</div></td><td align="center" width="50"><div class="table-cell" value="11" style="text-align: center; width: 50px;">11</div></td><td align="left" width="100"><div class="table-cell" value="S" style="width: 100px;">Sampling</div></td><td align="left" width="100"><div class="table-cell" value="L" style="width: 100px;">Laki-laki</div></td><td align="left" width="120"><div class="table-cell" value="Tuminggal" style="width: 120px;">Tuminggal</div></td><td align="left" width="100"><div class="table-cell" value="13-06-2006" style="width: 100px;">13-06-2006</div></td><td align="left" width="80"><div class="table-cell" value="0069917871" style="width: 80px;">0069917871</div></td><td align="left" width="100"><div class="table-cell" value="5288" style="width: 100px;">5288</div></td><td align="left" width="150"><div class="table-cell" value="2022-08-12 09:30:39" style="width: 150px;">2022-08-12 09:30:39</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="left" width="100"><div class="table-cell" value="K2205000100196" style="width: 100px;">K2205000100196</div></td><td align="left" width="200"><div class="table-cell" value="I Kadek Abhi Tirtha Mahardika" style="width: 200px;">I Kadek Abhi Tirtha Mahardika</div></td><td align="left" width="100"><div class="table-cell" value="SMK" style="width: 100px;">SMK</div></td><td align="center" width="50"><div class="table-cell" value="11" style="text-align: center; width: 50px;">11</div></td><td align="left" width="100"><div class="table-cell" value="S" style="width: 100px;">Sampling</div></td><td align="left" width="100"><div class="table-cell" value="L" style="width: 100px;">Laki-laki</div></td><td align="left" width="120"><div class="table-cell" value="Karangasem" style="width: 120px;">Karangasem</div></td><td align="left" width="100"><div class="table-cell" value="15-04-2006" style="width: 100px;">15-04-2006</div></td><td align="left" width="80"><div class="table-cell" value="0068231873" style="width: 80px;">0068231873</div></td><td align="left" width="100"><div class="table-cell" value="5339" style="width: 100px;">5339</div></td><td align="left" width="150"><div class="table-cell" value="2022-08-12 09:30:39" style="width: 150px;">2022-08-12 09:30:39</div></td><td align="left"><div class="table-cell"></div></td></tr><tr><td align="left" width="100"><div class="table-cell" value="K2205000100205" style="width: 100px;">K2205000100205</div></td><td align="left" width="200"><div class="table-cell" value="I Kadek Suarnayasa" style="width: 200px;">I Kadek Suarnayasa</div></td><td align="left" width="100"><div class="table-cell" value="SMK" style="width: 100px;">SMK</div></td><td align="center" width="50"><div class="table-cell" value="11" style="text-align: center; width: 50px;">11</div></td><td align="left" width="100"><div class="table-cell" value="S" style="width: 100px;">Sampling</div></td><td align="left" width="100"><div class="table-cell" value="L" style="width: 100px;">Laki-laki</div></td><td align="left" width="120"><div class="table-cell" value="Karangasem" style="width: 120px;">Karangasem</div></td><td align="left" width="100"><div class="table-cell" value="20-12-2004" style="width: 100px;">20-12-2004</div></td><td align="left" width="80"><div class="table-cell" value="0045600541" style="width: 80px;">0045600541</div></td><td align="left" width="100"><div class="table-cell" value="5344" style="width: 100px;">5344</div></td><td align="left" width="150"><div class="table-cell" value="2022-08-12 09:30:39" style="width: 150px;">2022-08-12 09:30:39</div></td><td align="left"><div class="table-cell"></div></td></tr></tbody></table></div><div class="table-fixed" style="margin-right: 17px;"><table class="table table-bordered table-striped" id="biodata-siswa"><thead><tr><th style="width: 100px;"><div style="width: 100px; text-align: center;"><a class="sort-table" href="javascript:void(0)" data-index="username" data-sort="">Username</a></div></th><th style="width: 200px;"><div style="width: 200px; text-align: center;"><a class="sort-table" href="javascript:void(0)" data-index="nm_pes" data-sort="">Nama Peserta</a></div></th><th style="width: 100px;"><div style="width: 100px; text-align: center;"><a class="sort-table" href="javascript:void(0)" data-index="nm_jenjang" data-sort="">Jenjang</a></div></th><th style="width: 50px;"><div style="width: 50px; text-align: center;"><a class="sort-table" href="javascript:void(0)" data-index="kelas" data-sort="">Kelas</a></div></th><th style="width: 100px;"><div style="width: 100px; text-align: center;"><a class="sort-table" href="javascript:void(0)" data-index="status" data-sort="">Status</a></div></th><th style="width: 100px;"><div style="width: 100px; text-align: center;"><a class="sort-table" href="javascript:void(0)" data-index="sex" data-sort="">Jenis Kelamin</a></div></th><th style="width: 120px;"><div style="width: 120px; text-align: center;"><a class="sort-table" href="javascript:void(0)" data-index="tmp_lhr" data-sort="">Tempat Lahir</a></div></th><th style="width: 100px;"><div style="width: 100px; text-align: center;"><a class="sort-table" href="javascript:void(0)" data-index="tgl_lhr" data-sort="">Tanggal Lahir</a></div></th><th style="width: 80px;"><div style="width: 80px; text-align: center;"><a class="sort-table" href="javascript:void(0)" data-index="nisn" data-sort="">NISN</a></div></th><th style="width: 100px;"><div style="width: 100px; text-align: center;"><a class="sort-table" href="javascript:void(0)" data-index="no_induk" data-sort="">Nomor Induk</a></div></th><th style="width: 150px;"><div style="width: 150px; text-align: center;"><a class="sort-table" href="javascript:void(0)" data-index="last_update" data-sort="">Last Update</a></div></th><th><div style="text-align: center;"><a class="sort-table" href="javascript:void(0)" data-index="" data-sort=""></a></div></th></tr></thead></table></div></div></div><div class="panel-footer" style="display: none;"></div></div></div>
+                </div>
+            </div>
+        </div>
+        <script>
+            var baseURL = '/';
+            var uniqueID = 'c6f3129c51eb84dbe0bd01d651e6085b';
+        </script>
+
+        <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+        <script src="vendor/jquery/jquery.form.min.js"></script>
+        <script src="vendor/jquery/jquery-ui.min.js"></script>
+        <script src="vendor/jquery/jquery.slimscroll.min.js"></script>
+        <script src="vendor/select2/js/select2.min.js"></script>
+        <script src="vendor/plupload/js/plupload.full.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="vendor/tinymce/tinymce.min.js"></script>
+        <script src="vendor/tinymce/jquery.tinymce.min.js"></script>
+        <script src="vendor/chart/Chart.min.js"></script>
+
+        <script src="vendor/leaflet/leaflet.js"></script>
+        <script src="vendor/leaflet/leaflet.markercluster.js"></script>
+        <script src="vendor/leaflet/leaflet.colormarkers.js"></script>
+        
+        <!--Assets-->
+        <script src="user/referensi/20230611202152"></script>
+        <script src="assets/js/framework.min.js?_dc=20230611202152"></script>
+        <script src="assets/js/puspendik.min.js?_dc=20230611202152"></script>
+        <!--<script src="vendor/dev-tools/dev-tools.js"></script>-->
+
+        
+</div>
+    </body>
+</html>
