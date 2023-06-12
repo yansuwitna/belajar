@@ -26,44 +26,6 @@
     <link rel="stylesheet" href="lib/template/dist/css/adminlte.css" />
     <link rel="stylesheet" href="css/site.css" />
 
-    <style>
-      [wire\:loading],
-      [wire\:loading\.delay],
-      [wire\:loading\.inline-block],
-      [wire\:loading\.inline],
-      [wire\:loading\.block],
-      [wire\:loading\.flex],
-      [wire\:loading\.table],
-      [wire\:loading\.grid],
-      [wire\:loading\.inline-flex] {
-        display: none;
-      }
-      [wire\:loading\.delay\.shortest],
-      [wire\:loading\.delay\.shorter],
-      [wire\:loading\.delay\.short],
-      [wire\:loading\.delay\.long],
-      [wire\:loading\.delay\.longer],
-      [wire\:loading\.delay\.longest] {
-        display: none;
-      }
-      [wire\:offline] {
-        display: none;
-      }
-      [wire\:dirty]:not(textarea):not(input):not(select) {
-        display: none;
-      }
-      input:-webkit-autofill,
-      select:-webkit-autofill,
-      textarea:-webkit-autofill {
-        animation-duration: 50000s;
-        animation-name: livewireautofill;
-      }
-      @keyframes livewireautofill {
-        from {
-        }
-      }
-    </style>
-
     <!-- jQuery -->
     <script src="lib/template/plugins/jquery/jquery.min.js"></script>
     <script src="lib/template/plugins/jquery-validation/jquery.validate.min.js"></script>
@@ -239,6 +201,75 @@
         <!-- Main content -->
         <div class="content">
           <div class="container-fluid">
+            <div class="row">
+              <div class="col-12 col-sm-6 col-md-3">
+                <div class="info-box">
+                  <span class="info-box-icon bg-info elevation-1"
+                    ><i class="fas fa-cog"></i
+                  ></span>
+
+                  <div class="info-box-content">
+                    <span class="info-box-text">CPU Traffic</span>
+                    <span class="info-box-number">
+                      10
+                      <small>%</small>
+                    </span>
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+              </div>
+              <!-- /.col -->
+              <div class="col-12 col-sm-6 col-md-3">
+                <div class="info-box mb-3">
+                  <span class="info-box-icon bg-danger elevation-1"
+                    ><i class="fas fa-thumbs-up"></i
+                  ></span>
+
+                  <div class="info-box-content">
+                    <span class="info-box-text">Likes</span>
+                    <span class="info-box-number">41,410</span>
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+              </div>
+              <!-- /.col -->
+
+              <!-- fix for small devices only -->
+              <div class="clearfix hidden-md-up"></div>
+
+              <div class="col-12 col-sm-6 col-md-3">
+                <div class="info-box mb-3">
+                  <span class="info-box-icon bg-success elevation-1"
+                    ><i class="fas fa-shopping-cart"></i
+                  ></span>
+
+                  <div class="info-box-content">
+                    <span class="info-box-text">Sales</span>
+                    <span class="info-box-number">760</span>
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+              </div>
+              <!-- /.col -->
+              <div class="col-12 col-sm-6 col-md-3">
+                <div class="info-box mb-3">
+                  <span class="info-box-icon bg-warning elevation-1"
+                    ><i class="fas fa-users"></i
+                  ></span>
+
+                  <div class="info-box-content">
+                    <span class="info-box-text">New Members</span>
+                    <span class="info-box-number">2,000</span>
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+              </div>
+              <!-- /.col -->
+            </div>
             <div class="row">
               <div class="col-lg-12">
                 <div class="card card-primary card-outline">
