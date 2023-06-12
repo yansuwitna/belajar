@@ -1,0 +1,2841 @@
+<!DOCTYPE html>
+
+<html class="loading" lang="id" data-textdirection="ltr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui"
+    />
+    <meta
+      name="csrf-token"
+      content="1igJujHjPVsUNbw70y4YSRChFztFVFfzXNFIM4Ih"
+    />
+    <meta
+      name="description"
+      content="Aplikasi Penilaian dan Asesmen. Direktorat SMK"
+    />
+    <meta
+      name="keywords"
+      content="erapor, smk, eraporsmk, erapor v6, erapor versi 6"
+    />
+    <meta name="author" content="Direktorat SMK" />
+    <title>Data Peserta Didik Aktif | e-Rapor SMK</title>
+    <!--link rel="apple-touch-icon" href="lib/images/ico/apple-icon-120.png"-->
+    <link rel="shortcut icon" type="image/x-icon" href="lib/favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600"
+      rel="stylesheet"
+    />
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" href="lib/vendors/css/vendors.min.css" />
+
+    <link
+      rel="stylesheet"
+      href="lib/vendors/css/forms/select/select2.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="lib/css/base/plugins/extensions/ext-component-sweet-alerts.css"
+    />
+    <!-- END: Vendor CSS-->
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" href="lib/css/core.css" />
+    <link rel="stylesheet" href="lib/css/base/themes/dark-layout.css" />
+    <link rel="stylesheet" href="lib/css/base/themes/bordered-layout.css" />
+    <link rel="stylesheet" href="lib/css/base/themes/semi-dark-layout.css" />
+
+    <!-- BEGIN: Page CSS-->
+    <link
+      rel="stylesheet"
+      href="lib/css/base/core/menu/menu-types/vertical-menu.css"
+    />
+
+    <!-- laravel style -->
+    <link rel="stylesheet" href="lib/css/overrides.css" />
+
+    <!-- BEGIN: Custom CSS-->
+
+    <link rel="stylesheet" href="lib/css/style.css" />
+    <link rel="stylesheet" href="lib/vendor/fontawesome/css/all.min.css" />
+  </head>
+  <!-- END: Head-->
+
+  <!-- BEGIN: Body-->
+
+  <body
+    class="vertical-layout vertical-menu-modern navbar-sticky footer-fixed default"
+    data-open="click"
+    data-menu="vertical-menu-modern"
+    data-col="default"
+    data-framework="laravel"
+    data-asset-path="lib/"
+  >
+    <!-- BEGIN: Header-->
+    <nav
+      class="header-navbar navbar navbar-expand-lg align-items-center fixed-top navbar-light navbar-shadow"
+    >
+      <div class="navbar-container d-flex content">
+        <div class="bookmark-wrapper d-flex align-items-center">
+          <ul class="nav navbar-nav d-xl-none">
+            <li class="nav-item">
+              <a class="nav-link menu-toggle" href="javascript:void(0);"
+                ><i class="ficon" data-feather="menu"></i
+              ></a>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav">
+            <li class="nav-item d-none d-lg-block">
+              <h2>SMKN 1 ABANG | 2022/2023 Genap</h2>
+            </li>
+          </ul>
+        </div>
+        <ul class="nav navbar-nav align-items-center ms-auto">
+          <li class="nav-item dropdown dropdown-language">
+            <a class="nav-link nav-link-style">
+              <i class="ficon" data-feather="moon"></i>
+            </a>
+          </li>
+          <li class="nav-item dropdown dropdown-user">
+            <a
+              class="nav-link dropdown-toggle dropdown-user-link"
+              id="dropdown-user"
+              href="javascript:void(0);"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+            >
+              <div class="user-nav d-sm-flex d-none">
+                <span class="user-name fw-bolder">
+                  I WAYAN SUWITNA, S.Kom., A.Md.
+                </span>
+                <span class="user-status">
+                  Guru, Waka Kurikulum, Pembina Ekstrakurikuler
+                </span>
+              </div>
+              <span class="avatar">
+                <img
+                  class="round"
+                  src="https://ui-avatars.com/api/?name=I+W+S+S+A&amp;color=7F9CF5&amp;background=EBF4FF"
+                  alt="avatar"
+                  height="40"
+                  width="40"
+                />
+                <span class="avatar-status-online"></span>
+              </span>
+            </a>
+            <div
+              class="dropdown-menu dropdown-menu-end"
+              aria-labelledby="dropdown-user"
+            >
+              <h6 class="dropdown-header">Profil Pengguna</h6>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="lib/user/profile">
+                <i class="me-50" data-feather="user"></i> Profile
+              </a>
+              <a
+                class="dropdown-item"
+                href="lib/logout"
+                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+              >
+                <i class="me-50" data-feather="power"></i> Logout
+              </a>
+              <form method="POST" id="logout-form" action="lib/logout">
+                <input
+                  type="hidden"
+                  name="_token"
+                  value="1igJujHjPVsUNbw70y4YSRChFztFVFfzXNFIM4Ih"
+                />
+              </form>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- END: Header-->
+    <!-- END: Header-->
+
+    <!-- BEGIN: Main Menu-->
+    <div
+      class="main-menu menu-fixed menu-light menu-accordion menu-shadow"
+      data-scroll-to-active="true"
+    >
+      <div class="navbar-header">
+        <ul class="nav navbar-nav flex-row">
+          <li class="nav-item me-auto">
+            <a class="navbar-brand" href="lib">
+              <span class="brand-logo">
+                <img src="lib/images/logo.png" alt="logo" srcset="" />
+              </span>
+              <h2 class="brand-text" style="font-size: 1.4rem">e-Rapor SMK</h2>
+            </a>
+          </li>
+          <li class="nav-item nav-toggle">
+            <a class="nav-link modern-nav-toggle pe-0" data-toggle="collapse">
+              <i
+                class="d-block d-xl-none text-primary toggle-icon font-medium-4"
+                data-feather="x"
+              ></i>
+              <i
+                class="d-none d-xl-block collapse-toggle-icon font-medium-4 text-primary"
+                data-feather="disc"
+                data-ticon="disc"
+              ></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="shadow-bottom"></div>
+      <div class="main-menu-content">
+        <ul class="navigation navigation-main">
+          <li>
+            <a class="d-flex align-items-center" href="lib"
+              ><i class="fa-solid fa-home"></i
+              ><span class="menu-title text-truncate">Beranda</span></a
+            >
+          </li>
+          <li>
+            <a class="d-flex align-items-center" href="javascript:void(0)"
+              ><i class="fa-solid fa-list"></i
+              ><span class="menu-title text-truncate">Referensi</span></a
+            >
+            <ul class="menu-content">
+              <li>
+                <a class="d-flex align-items-center" href="javascript:void(0)"
+                  ><i class="fa-solid fa-hand-point-right"></i
+                  ><span class="menu-title text-truncate"
+                    >Rombongan Belajar</span
+                  ></a
+                >
+                <ul class="menu-content">
+                  <li>
+                    <a
+                      class="d-flex align-items-center"
+                      href="lib/referensi/rombongan-belajar"
+                      ><i class="fa-solid fa-hand-point-right"></i
+                      ><span class="menu-title text-truncate">Reguler</span></a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="d-flex align-items-center"
+                      href="lib/referensi/rombel-pilihan"
+                      ><i class="fa-solid fa-hand-point-right"></i
+                      ><span class="menu-title text-truncate"
+                        >Matpel Pilihan</span
+                      ></a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a class="d-flex align-items-center" href="javascript:void(0)"
+                  ><i class="fa-solid fa-hand-point-right"></i
+                  ><span class="menu-title text-truncate"
+                    >Peserta Didik</span
+                  ></a
+                >
+                <ul class="menu-content">
+                  <li class="active">
+                    <a
+                      class="d-flex align-items-center"
+                      href="lib/referensi/peserta-didik-aktif"
+                      ><i class="fa-solid fa-hand-point-right"></i
+                      ><span class="menu-title text-truncate"
+                        >Peserta Didik Aktif</span
+                      ></a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a
+                  class="d-flex align-items-center"
+                  href="lib/referensi/kompetensi-dasar"
+                  ><i class="fa-solid fa-hand-point-right"></i
+                  ><span class="menu-title text-truncate"
+                    >Kompetensi Dasar</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a
+                  class="d-flex align-items-center"
+                  href="lib/referensi/capaian-pembelajaran"
+                  ><i class="fa-solid fa-hand-point-right"></i
+                  ><span class="menu-title text-truncate"
+                    >Capaian Pembelajaran</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a
+                  class="d-flex align-items-center"
+                  href="lib/referensi/tujuan-pembelajaran"
+                  ><i class="fa-solid fa-hand-point-right"></i
+                  ><span class="menu-title text-truncate"
+                    >Tujuan Pembelajaran</span
+                  ></a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a class="d-flex align-items-center" href="javascript:void(0)"
+              ><i class="fa-solid fa-list-check"></i
+              ><span class="menu-title text-truncate">Nilai Akademik</span></a
+            >
+            <ul class="menu-content">
+              <li>
+                <a
+                  class="d-flex align-items-center"
+                  href="lib/penilaian/nilai-akhir"
+                  ><i class="fa-solid fa-hand-point-right"></i
+                  ><span class="menu-title text-truncate"
+                    >Input Nilai Akhir</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a
+                  class="d-flex align-items-center"
+                  href="lib/penilaian/capaian-kompetensi"
+                  ><i class="fa-solid fa-hand-point-right"></i
+                  ><span class="menu-title text-truncate"
+                    >Capaian Kompetensi</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a class="d-flex align-items-center" href="lib/penilaian/sikap"
+                  ><i class="fa-solid fa-hand-point-right"></i
+                  ><span class="menu-title text-truncate">Sikap</span></a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a
+              class="d-flex align-items-center"
+              href="lib/penilaian/ekstrakurikuler"
+              ><i class="fa-solid fa-user-pen"></i
+              ><span class="menu-title text-truncate"
+                >Nilai Ekstrakurikuler</span
+              ></a
+            >
+          </li>
+          <li>
+            <a class="d-flex align-items-center" href="javascript:void(0)"
+              ><i class="fa-solid fa-copy"></i
+              ><span class="menu-title text-truncate">Wali Kelas</span></a
+            >
+            <ul class="menu-content">
+              <li>
+                <a
+                  class="d-flex align-items-center"
+                  href="lib/wali-kelas/catatan-sikap"
+                  ><i class="fa-solid fa-hand-point-right"></i
+                  ><span class="menu-title text-truncate"
+                    >Catatan Sikap</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a
+                  class="d-flex align-items-center"
+                  href="lib/wali-kelas/praktik-kerja-lapangan"
+                  ><i class="fa-solid fa-hand-point-right"></i
+                  ><span class="menu-title text-truncate"
+                    >Praktik Kerja Lapangan</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a
+                  class="d-flex align-items-center"
+                  href="lib/wali-kelas/ketidakhadiran"
+                  ><i class="fa-solid fa-hand-point-right"></i
+                  ><span class="menu-title text-truncate"
+                    >Ketidakhadiran</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a
+                  class="d-flex align-items-center"
+                  href="lib/wali-kelas/nilai-ekstrakurikuler"
+                  ><i class="fa-solid fa-hand-point-right"></i
+                  ><span class="menu-title text-truncate"
+                    >Nilai Ekstrakurikuler</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a
+                  class="d-flex align-items-center"
+                  href="lib/wali-kelas/kenaikan-kelas"
+                  ><i class="fa-solid fa-hand-point-right"></i
+                  ><span class="menu-title text-truncate"
+                    >Kenaikan Kelas</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a
+                  class="d-flex align-items-center"
+                  href="lib/wali-kelas/rapor-nilai-akhir"
+                  ><i class="fa-solid fa-hand-point-right"></i
+                  ><span class="menu-title text-truncate">Cetak Rapor</span></a
+                >
+              </li>
+              <li>
+                <a class="d-flex align-items-center" href="lib/wali-kelas/leger"
+                  ><i class="fa-solid fa-download"></i
+                  ><span class="menu-title text-truncate">Unduh Leger</span></a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a class="d-flex align-items-center" href="lib/user/profile"
+              ><i class="fa-solid fa-user"></i
+              ><span class="menu-title text-truncate">Profil Pengguna</span></a
+            >
+          </li>
+          <li>
+            <a class="d-flex align-items-center" href="lib/unduhan"
+              ><i class="fa-solid fa-download"></i
+              ><span class="menu-title text-truncate">Pusat Unduhan</span></a
+            >
+          </li>
+          <li>
+            <a
+              class="d-flex align-items-center text-danger"
+              onclick="event.preventDefault(); document.getElementById(&#039;logout-form&#039;).submit();"
+              href="lib/logout"
+              ><i class="fa-solid fa-right-from-bracket"></i
+              ><span class="menu-title text-truncate">Keluar Aplikasi</span></a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- END: Main Menu-->
+    <!-- END: Main Menu-->
+
+    <!-- BEGIN: Content-->
+    <div class="app-content content">
+      <!-- BEGIN: Header-->
+      <div class="content-overlay"></div>
+      <div class="header-navbar-shadow"></div>
+
+      <div class="content-wrapper container-xxl p-0">
+        <div
+          wire:id="WG2UX7sYZLdWdsImKS1O"
+          wire:initial-data='{"fingerprint":{"id":"WG2UX7sYZLdWdsImKS1O","name":"referensi.peserta-didik-aktif","locale":"id","path":"referensi\/peserta-didik-aktif","method":"GET","v":"acj"},"effects":{"listeners":["proses_sinkron","show_progress"],"path":"http:\/\/103.168.146.139:8154\/referensi\/peserta-didik-aktif?page=3"},"serverMemo":{"children":[],"errors":[],"htmlHash":"2cc46f90","data":{"search":"","sortby":"nama","sortbydesc":"ASC","per_page":10,"rombongan_belajar_id":null,"data":"Peserta Didik","pd_id":null,"pd":null,"nama":null,"nis":null,"nisn":null,"nik":null,"jenis_kelamin":null,"tempat_tanggal_lahir":null,"agama":null,"status":null,"anak_ke":null,"alamat":null,"rt_rw":null,"desa_kelurahan":null,"kecamatan":null,"kode_pos":null,"no_hp":null,"sekolah_asal":null,"diterima_kelas":null,"diterima":null,"email":null,"nama_ayah":null,"kerja_ayah":null,"nama_ibu":null,"kerja_ibu":null,"nama_wali":null,"alamat_wali":null,"telp_wali":null,"kerja_wali":null,"filter_tingkat":null,"filter_jurusan":null,"filter_rombel":null,"result":[],"page":"3","paginators":{"page":"3"}},"dataMeta":[],"checksum":"c68d6e5a978e9c676b6355de4bfefcd084c17e215e3ce4920e3f8453c7adc1b4"}}'
+        >
+          <div class="content-header row" wire:ignore>
+            <div class="content-header-left col-md-9 col-12 mb-2">
+              <div class="row breadcrumbs-top">
+                <div class="col-12">
+                  <h2 class="content-header-title float-start mb-0">
+                    Data Peserta Didik Aktif
+                  </h2>
+                  <div class="breadcrumb-wrapper">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item">
+                        <a href="lib"> Beranda </a>
+                      </li>
+                      <li class="breadcrumb-item">
+                        <a href="#"> Referensi </a>
+                      </li>
+                      <li class="breadcrumb-item">Data Peserta Didik Aktif</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="content-body">
+            <div class="card">
+              <div class="card-body">
+                <div class="row justify-content-between mb-2">
+                  <div class="col-4">
+                    <div class="d-inline" wire:ignore>
+                      <select
+                        class="form-select"
+                        wire:model="filter_tingkat"
+                        data-pharaonic="select2"
+                        data-component-id="WG2UX7sYZLdWdsImKS1O"
+                        data-search-off="true"
+                        data-placeholder="== Filter Tingkat =="
+                      >
+                        <option value="">== Filter Tingkat ==</option>
+                        <option value="10">Kelas 10</option>
+                        <option value="11">Kelas 11</option>
+                        <option value="12">Kelas 12</option>
+                        <option value="13">Kelas 13</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="d-inline" wire:ignore>
+                      <select
+                        class="form-select"
+                        id="filter_jurusan"
+                        wire:model="filter_jurusan"
+                        data-pharaonic="select2"
+                        data-component-id="WG2UX7sYZLdWdsImKS1O"
+                        data-search-off="true"
+                        data-placeholder="== Filter Jurusan =="
+                      >
+                        <option value="">== Filter Jurusan ==</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="d-inline" wire:ignore>
+                      <select
+                        class="form-select"
+                        id="filter_rombel"
+                        wire:model="filter_rombel"
+                        data-pharaonic="select2"
+                        data-component-id="WG2UX7sYZLdWdsImKS1O"
+                        data-search-off="true"
+                        data-placeholder="== Filter Rombel =="
+                      >
+                        <option value="">== Filter Rombel ==</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="row justify-content-between mb-2">
+                  <div class="col-4">
+                    <div class="d-inline" wire:ignore>
+                      <select
+                        class="form-select"
+                        wire:model="per_page"
+                        wire:change="loadPerPage"
+                        data-pharaonic="select2"
+                        data-component-id="WG2UX7sYZLdWdsImKS1O"
+                        data-search-off="true"
+                      >
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Cari data..."
+                      wire:model="search"
+                    />
+                  </div>
+                </div>
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th class="text-center">Nama</th>
+                      <th class="text-center">NISN</th>
+                      <th class="text-center">L/P</th>
+                      <th class="text-center">Tempat, Tanggal Lahir</th>
+                      <th class="text-center">Agama</th>
+                      <th class="text-center">Kelas</th>
+                      <th class="text-center">Detil</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>I ARYA SUGRIWA</td>
+                      <td class="text-center">0029256508</td>
+                      <td class="text-center">L</td>
+                      <td>BUNUTAN, 29 Oktober 2002</td>
+                      <td>Hindu</td>
+                      <td>XII TKR 2</td>
+                      <td class="text-center">
+                        <button
+                          class="btn btn-info btn-sm"
+                          wire:click="getID('771011a1-9c0b-e211-bce9-e7a58841b32b')"
+                        >
+                          Detil
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>I DEWA AYU AGUNG DIAH DARMAYANTI</td>
+                      <td class="text-center">0044411845</td>
+                      <td class="text-center">P</td>
+                      <td>GIANYAR, 21 Januari 2006</td>
+                      <td>Hindu</td>
+                      <td>XI MM</td>
+                      <td class="text-center">
+                        <button
+                          class="btn btn-info btn-sm"
+                          wire:click="getID('ca7b0828-71b5-11e3-91ee-47515af948c1')"
+                        >
+                          Detil
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>I DEWA AYU AGUNG RAI RATNA KARANG</td>
+                      <td class="text-center">0052551463</td>
+                      <td class="text-center">P</td>
+                      <td>DENPASAR, 24 Agustus 2005</td>
+                      <td>Hindu</td>
+                      <td>XII TKJ 2</td>
+                      <td class="text-center">
+                        <button
+                          class="btn btn-info btn-sm"
+                          wire:click="getID('912e47ae-c2e6-e111-bf6e-8dcd03ea734c')"
+                        >
+                          Detil
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>I DEWA GEDE ADITYA</td>
+                      <td class="text-center">0056731441</td>
+                      <td class="text-center">L</td>
+                      <td>BIAS, 23 Oktober 2005</td>
+                      <td>Hindu</td>
+                      <td>XI MM</td>
+                      <td class="text-center">
+                        <button
+                          class="btn btn-info btn-sm"
+                          wire:click="getID('dd7c39f9-08e9-e111-8244-b994b89f3baa')"
+                        >
+                          Detil
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>I DEWA GEDE BRANI KARANG</td>
+                      <td class="text-center">0040099626</td>
+                      <td class="text-center">L</td>
+                      <td>DENPASAR, 20 Januari 2004</td>
+                      <td>Hindu</td>
+                      <td>XII DPIB 2</td>
+                      <td class="text-center">
+                        <button
+                          class="btn btn-info btn-sm"
+                          wire:click="getID('dfc364b7-d6ff-44ae-8332-54662d30ccae')"
+                        >
+                          Detil
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>I GD BAYU ASTIKA PUTRA</td>
+                      <td class="text-center">0062468821</td>
+                      <td class="text-center">L</td>
+                      <td>TANAH ARON, 20 Februari 2006</td>
+                      <td>Hindu</td>
+                      <td>X TKR 2</td>
+                      <td class="text-center">
+                        <button
+                          class="btn btn-info btn-sm"
+                          wire:click="getID('52e0240e-3be7-e111-a0df-8d238fb81062')"
+                        >
+                          Detil
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>I GEDE ADI KURNIA</td>
+                      <td class="text-center">0044890044</td>
+                      <td class="text-center">L</td>
+                      <td>BATUMADEG, 07 Agustus 2004</td>
+                      <td>Hindu</td>
+                      <td>XII TKR 2</td>
+                      <td class="text-center">
+                        <button
+                          class="btn btn-info btn-sm"
+                          wire:click="getID('10aa07d0-97fc-e111-b8d5-4b481d4c5516')"
+                        >
+                          Detil
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>I GEDE ADI SUPUTRA</td>
+                      <td class="text-center">0067062323</td>
+                      <td class="text-center">L</td>
+                      <td>MERITA, 21 Desember 2006</td>
+                      <td>Hindu</td>
+                      <td>X TKR 2</td>
+                      <td class="text-center">
+                        <button
+                          class="btn btn-info btn-sm"
+                          wire:click="getID('985658b6-4ba9-11e3-90aa-cbb2c8479c6c')"
+                        >
+                          Detil
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>I GEDE ADI WIDYA ADNYANA</td>
+                      <td class="text-center">0062177352</td>
+                      <td class="text-center">L</td>
+                      <td>PURWAYU, 17 April 2006</td>
+                      <td>Hindu</td>
+                      <td>X TKR 2</td>
+                      <td class="text-center">
+                        <button
+                          class="btn btn-info btn-sm"
+                          wire:click="getID('3b5ba469-24ed-e111-bab9-a963eaefd67d')"
+                        >
+                          Detil
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>I GEDE ADI WIRATAMA</td>
+                      <td class="text-center">0058699758</td>
+                      <td class="text-center">L</td>
+                      <td>ABABI, 10 September 2005</td>
+                      <td>Hindu</td>
+                      <td>XI AKL 1</td>
+                      <td class="text-center">
+                        <button
+                          class="btn btn-info btn-sm"
+                          wire:click="getID('1a5a33eb-42f2-e111-ae89-77d4fd1a06ac')"
+                        >
+                          Detil
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="row justify-content-between mt-2">
+                  <div class="col-6">
+                    <p>Menampilkan 21 sampai 30 dari 1025 data</p>
+                  </div>
+                  <div class="col-6">
+                    <div>
+                      <nav>
+                        <ul class="pagination justify-content-end">
+                          <li class="page-item">
+                            <button
+                              type="button"
+                              dusk="previousPage"
+                              class="page-link"
+                              wire:click="previousPage('page')"
+                              wire:loading.attr="disabled"
+                              rel="prev"
+                              aria-label="&laquo; Previous"
+                            >
+                              &lsaquo;&lsaquo;
+                            </button>
+                          </li>
+
+                          <li
+                            class="page-item"
+                            wire:key="paginator-page-1-page-1"
+                          >
+                            <button
+                              type="button"
+                              class="page-link"
+                              wire:click="gotoPage(1, 'page')"
+                            >
+                              1
+                            </button>
+                          </li>
+                          <li
+                            class="page-item"
+                            wire:key="paginator-page-1-page-2"
+                          >
+                            <button
+                              type="button"
+                              class="page-link"
+                              wire:click="gotoPage(2, 'page')"
+                            >
+                              2
+                            </button>
+                          </li>
+                          <li
+                            class="page-item active"
+                            wire:key="paginator-page-1-page-3"
+                            aria-current="page"
+                          >
+                            <span class="page-link">3</span>
+                          </li>
+                          <li
+                            class="page-item"
+                            wire:key="paginator-page-1-page-4"
+                          >
+                            <button
+                              type="button"
+                              class="page-link"
+                              wire:click="gotoPage(4, 'page')"
+                            >
+                              4
+                            </button>
+                          </li>
+                          <li
+                            class="page-item"
+                            wire:key="paginator-page-1-page-5"
+                          >
+                            <button
+                              type="button"
+                              class="page-link"
+                              wire:click="gotoPage(5, 'page')"
+                            >
+                              5
+                            </button>
+                          </li>
+                          <li
+                            class="page-item"
+                            wire:key="paginator-page-1-page-6"
+                          >
+                            <button
+                              type="button"
+                              class="page-link"
+                              wire:click="gotoPage(6, 'page')"
+                            >
+                              6
+                            </button>
+                          </li>
+
+                          <li class="page-item disabled" aria-disabled="true">
+                            <span class="page-link">...</span>
+                          </li>
+
+                          <li
+                            class="page-item"
+                            wire:key="paginator-page-1-page-102"
+                          >
+                            <button
+                              type="button"
+                              class="page-link"
+                              wire:click="gotoPage(102, 'page')"
+                            >
+                              102
+                            </button>
+                          </li>
+                          <li
+                            class="page-item"
+                            wire:key="paginator-page-1-page-103"
+                          >
+                            <button
+                              type="button"
+                              class="page-link"
+                              wire:click="gotoPage(103, 'page')"
+                            >
+                              103
+                            </button>
+                          </li>
+
+                          <li class="page-item">
+                            <button
+                              type="button"
+                              dusk="nextPage"
+                              class="page-link"
+                              wire:click="nextPage('page')"
+                              wire:loading.attr="disabled"
+                              rel="next"
+                              aria-label="Next &raquo;"
+                            >
+                              &rsaquo;&rsaquo;
+                            </button>
+                          </li>
+                        </ul>
+                      </nav>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              wire:ignore.self
+              class="modal fade"
+              id="detilPD"
+              tabindex="-1"
+              aria-labelledby="detilPDLabel"
+              aria-hidden="true"
+              data-bs-backdrop="true"
+            >
+              <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="detilPDLabel">
+                      Detil Peserta Didik
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="row mb-2">
+                      <label for="nama" class="col-sm-3 col-form-label"
+                        >Nama</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly
+                          wire:model="nama"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="nis" class="col-sm-3 col-form-label"
+                        >NIS</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly
+                          wire:model="nis"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="nisn" class="col-sm-3 col-form-label"
+                        >NISN</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly
+                          wire:model="nisn"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="nik" class="col-sm-3 col-form-label"
+                        >NIK</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly
+                          wire:model="nik"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="jenis_kelamin" class="col-sm-3 col-form-label"
+                        >Jenis Kelamin</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly
+                          wire:model="jenis_kelamin"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label
+                        for="tempat_tanggal_lahir"
+                        class="col-sm-3 col-form-label"
+                        >Tempat, Tanggal Lahir</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly
+                          wire:model="tempat_tanggal_lahir"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="agama" class="col-sm-3 col-form-label"
+                        >Agama</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly
+                          wire:model="agama"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="status" class="col-sm-3 col-form-label"
+                        >Status dalam keluarga</label
+                      >
+                      <div class="col-sm-9" wire:ignore>
+                        <select
+                          id="status"
+                          class="form-select"
+                          wire:model="status"
+                          data-pharaonic="select2"
+                          data-component-id="WG2UX7sYZLdWdsImKS1O"
+                          data-search-off="true"
+                          data-parent="#detilPD"
+                          data-placeholder="== Pilih Status =="
+                        >
+                          <option value="Anak Kandung">Anak Kandung</option>
+                          <option value="Anak Tiri">Anak Tiri</option>
+                          <option value="Anak Angkat">Anak Angkat</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="anak_ke" class="col-sm-3 col-form-label"
+                        >Anak Ke</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          wire:model="anak_ke"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="alamat" class="col-sm-3 col-form-label"
+                        >Alamat</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly
+                          wire:model="alamat"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="rt" class="col-sm-3 col-form-label"
+                        >RT/RW</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly
+                          wire:model="rt_rw"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label
+                        for="desa_kelurahan"
+                        class="col-sm-3 col-form-label"
+                        >Desa/Kelurahan</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly
+                          wire:model="desa_kelurahan"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="kecamatan" class="col-sm-3 col-form-label"
+                        >Kecamatan</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly
+                          wire:model="kecamatan"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="kode_pos" class="col-sm-3 col-form-label"
+                        >Kodepos</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly
+                          wire:model="kode_pos"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="no_hp" class="col-sm-3 col-form-label"
+                        >Telp/HP</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly
+                          wire:model="no_hp"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="sekolah_asal" class="col-sm-3 col-form-label"
+                        >Asal Sekolah</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly
+                          wire:model="sekolah_asal"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label
+                        for="diterima_kelas"
+                        class="col-sm-3 col-form-label"
+                        >Diterima dikelas</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          wire:model="diterima_kelas"
+                          type="text"
+                          class="form-control"
+                          placeholder=""
+                          aria-label="Diterima dikelas"
+                          aria-describedby="button-addon1"
+                        />
+                        <!--div class="input-group">
+                                <button wire:loading wire:target="syncPD" class="btn btn-outline-primary" type="button" id="button-addon1">
+                                    <div class="spinner-border spinner-border-sm text-info" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>                                      
+                                </button>
+                                <button wire:loading.remove wire:target="syncPD" class="btn btn-outline-primary" type="button" id="button-addon1" wire:click="syncPD"><i class="fa-solid fa-rotate"></i></button>
+                                <input wire:model="diterima_kelas" type="text" class="form-control" placeholder="" aria-label="Diterima dikelas" aria-describedby="button-addon1">
+                            </div-->
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="diterima" class="col-sm-3 col-form-label"
+                        >Diterima pada tanggal</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly
+                          wire:model="diterima"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="email" class="col-sm-3 col-form-label"
+                        >Email</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="email"
+                          class="form-control"
+                          wire:model.lazy="email"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="nama_ayah" class="col-sm-3 col-form-label"
+                        >Nama Ayah</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly
+                          wire:model="nama_ayah"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="kerja_ayah" class="col-sm-3 col-form-label"
+                        >Pekerjaan Ayah</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly
+                          wire:model="kerja_ayah"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="nama_ibu" class="col-sm-3 col-form-label"
+                        >Nama Ibu Kandung</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly
+                          wire:model="nama_ibu"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="kerja_ibu" class="col-sm-3 col-form-label"
+                        >Pekerjaan Ibu Kandung</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly
+                          wire:model="kerja_ibu"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="nama_wali" class="col-sm-3 col-form-label"
+                        >Nama Wali</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          wire:model="nama_wali"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="alamat_wali" class="col-sm-3 col-form-label"
+                        >Alamat Wali</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          wire:model="alamat_wali"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="telp_wali" class="col-sm-3 col-form-label"
+                        >Telp/HP Wali</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          wire:model="telp_wali"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="kerja_wali" class="col-sm-3 col-form-label"
+                        >Pekerjaan Wali</label
+                      >
+                      <div class="col-sm-9" wire:ignore>
+                        <select
+                          id="kerja_wali"
+                          class="form-select"
+                          wire:model="kerja_wali"
+                          data-pharaonic="select2"
+                          data-component-id="WG2UX7sYZLdWdsImKS1O"
+                          data-search-off="true"
+                          data-parent="#detilPD"
+                          data-placeholder="== Pilih Pekerjaan Wali =="
+                        >
+                          <option value="">== Pilih Pekerjaan Wali ==</option>
+                          <option value="0"></option>
+                          <option value="1">Tidak bekerja</option>
+                          <option value="2">Nelayan</option>
+                          <option value="3">Petani</option>
+                          <option value="4">Peternak</option>
+                          <option value="5">PNS/TNI/Polri</option>
+                          <option value="6">Karyawan Swasta</option>
+                          <option value="7">Pedagang Kecil</option>
+                          <option value="8">Pedagang Besar</option>
+                          <option value="9">Wiraswasta</option>
+                          <option value="10">Wirausaha</option>
+                          <option value="11">Buruh</option>
+                          <option value="12">Pensiunan</option>
+                          <option value="13">Tenaga Kerja Indonesia</option>
+                          <option value="14">Karyawan BUMN</option>
+                          <option value="90">Tidak dapat diterapkan</option>
+                          <option value="98">Sudah Meninggal</option>
+                          <option value="99">Lainnya</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      wire:loading.remove
+                      wire:target="perbaharui"
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                      wire:click.prevent="tutup"
+                    >
+                      Tutup
+                    </button>
+                    <button
+                      wire:loading
+                      wire:target="perbaharui"
+                      class="btn btn-outline-primary"
+                      type="button"
+                      id="button-addon1"
+                    >
+                      <div
+                        class="spinner-border spinner-border-sm text-info"
+                        role="status"
+                      >
+                        <span class="visually-hidden">Loading...</span>
+                      </div>
+                    </button>
+                    <button
+                      wire:loading.remove
+                      wire:target="perbaharui"
+                      type="submit"
+                      class="btn btn-primary"
+                      wire:click.prevent="perbaharui"
+                    >
+                      Perbaharui
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              wire:ignore.self=""
+              class="modal fade show"
+              id="detilPD"
+              tabindex="-1"
+              aria-labelledby="detilPDLabel"
+              data-bs-backdrop="true"
+              aria-modal="true"
+              role="dialog"
+              style="display: block"
+            >
+              <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="detilPDLabel">
+                      Detil Peserta Didik
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="row mb-2">
+                      <label for="nama" class="col-sm-3 col-form-label"
+                        >Nama</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly=""
+                          wire:model="nama"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="nis" class="col-sm-3 col-form-label"
+                        >NIS</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly=""
+                          wire:model="nis"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="nisn" class="col-sm-3 col-form-label"
+                        >NISN</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly=""
+                          wire:model="nisn"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="nik" class="col-sm-3 col-form-label"
+                        >NIK</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly=""
+                          wire:model="nik"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="jenis_kelamin" class="col-sm-3 col-form-label"
+                        >Jenis Kelamin</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly=""
+                          wire:model="jenis_kelamin"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label
+                        for="tempat_tanggal_lahir"
+                        class="col-sm-3 col-form-label"
+                        >Tempat, Tanggal Lahir</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly=""
+                          wire:model="tempat_tanggal_lahir"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="agama" class="col-sm-3 col-form-label"
+                        >Agama</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly=""
+                          wire:model="agama"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="status" class="col-sm-3 col-form-label"
+                        >Status dalam keluarga</label
+                      >
+                      <div class="col-sm-9" wire:ignore="">
+                        <select
+                          id="status"
+                          class="form-select select2-hidden-accessible"
+                          wire:model="status"
+                          data-pharaonic="select2"
+                          data-component-id="8kwrXjc8DRIkFaDmKOEx"
+                          data-search-off="true"
+                          data-parent="#detilPD"
+                          data-placeholder="== Pilih Status =="
+                          data-select2-id="status"
+                          tabindex="-1"
+                          aria-hidden="true"
+                        >
+                          <option value="Anak Kandung" data-select2-id="12">
+                            Anak Kandung
+                          </option>
+                          <option value="Anak Tiri">Anak Tiri</option>
+                          <option value="Anak Angkat">
+                            Anak Angkat
+                          </option></select
+                        ><span
+                          class="select2 select2-container select2-container--default"
+                          dir="ltr"
+                          data-select2-id="11"
+                          style="width: auto"
+                          ><span class="selection"
+                            ><span
+                              class="select2-selection select2-selection--single"
+                              role="combobox"
+                              aria-haspopup="true"
+                              aria-expanded="false"
+                              tabindex="0"
+                              aria-disabled="false"
+                              aria-labelledby="select2-status-container"
+                              ><span
+                                class="select2-selection__rendered"
+                                id="select2-status-container"
+                                role="textbox"
+                                aria-readonly="true"
+                                title="Anak Kandung"
+                                >Anak Kandung</span
+                              ><span
+                                class="select2-selection__arrow"
+                                role="presentation"
+                                ><b role="presentation"></b></span></span></span
+                          ><span
+                            class="dropdown-wrapper"
+                            aria-hidden="true"
+                          ></span
+                        ></span>
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="anak_ke" class="col-sm-3 col-form-label"
+                        >Anak Ke</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          wire:model="anak_ke"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="alamat" class="col-sm-3 col-form-label"
+                        >Alamat</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly=""
+                          wire:model="alamat"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="rt" class="col-sm-3 col-form-label"
+                        >RT/RW</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly=""
+                          wire:model="rt_rw"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label
+                        for="desa_kelurahan"
+                        class="col-sm-3 col-form-label"
+                        >Desa/Kelurahan</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly=""
+                          wire:model="desa_kelurahan"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="kecamatan" class="col-sm-3 col-form-label"
+                        >Kecamatan</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly=""
+                          wire:model="kecamatan"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="kode_pos" class="col-sm-3 col-form-label"
+                        >Kodepos</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly=""
+                          wire:model="kode_pos"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="no_hp" class="col-sm-3 col-form-label"
+                        >Telp/HP</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly=""
+                          wire:model="no_hp"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="sekolah_asal" class="col-sm-3 col-form-label"
+                        >Asal Sekolah</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly=""
+                          wire:model="sekolah_asal"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label
+                        for="diterima_kelas"
+                        class="col-sm-3 col-form-label"
+                        >Diterima dikelas</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          wire:model="diterima_kelas"
+                          type="text"
+                          class="form-control"
+                          placeholder=""
+                          aria-label="Diterima dikelas"
+                          aria-describedby="button-addon1"
+                        />
+                        <!--div class="input-group">
+                                <button wire:loading wire:target="syncPD" class="btn btn-outline-primary" type="button" id="button-addon1">
+                                    <div class="spinner-border spinner-border-sm text-info" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>                                      
+                                </button>
+                                <button wire:loading.remove wire:target="syncPD" class="btn btn-outline-primary" type="button" id="button-addon1" wire:click="syncPD"><i class="fa-solid fa-rotate"></i></button>
+                                <input wire:model="diterima_kelas" type="text" class="form-control" placeholder="" aria-label="Diterima dikelas" aria-describedby="button-addon1">
+                            </div-->
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="diterima" class="col-sm-3 col-form-label"
+                        >Diterima pada tanggal</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly=""
+                          wire:model="diterima"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="email" class="col-sm-3 col-form-label"
+                        >Email</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="email"
+                          class="form-control"
+                          wire:model.lazy="email"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="nama_ayah" class="col-sm-3 col-form-label"
+                        >Nama Ayah</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly=""
+                          wire:model="nama_ayah"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="kerja_ayah" class="col-sm-3 col-form-label"
+                        >Pekerjaan Ayah</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly=""
+                          wire:model="kerja_ayah"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="nama_ibu" class="col-sm-3 col-form-label"
+                        >Nama Ibu Kandung</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly=""
+                          wire:model="nama_ibu"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="kerja_ibu" class="col-sm-3 col-form-label"
+                        >Pekerjaan Ibu Kandung</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          readonly=""
+                          wire:model="kerja_ibu"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="nama_wali" class="col-sm-3 col-form-label"
+                        >Nama Wali</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          wire:model="nama_wali"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="alamat_wali" class="col-sm-3 col-form-label"
+                        >Alamat Wali</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          wire:model="alamat_wali"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="telp_wali" class="col-sm-3 col-form-label"
+                        >Telp/HP Wali</label
+                      >
+                      <div class="col-sm-9">
+                        <input
+                          type="text"
+                          class="form-control"
+                          wire:model="telp_wali"
+                        />
+                      </div>
+                    </div>
+                    <div class="row mb-2">
+                      <label for="kerja_wali" class="col-sm-3 col-form-label"
+                        >Pekerjaan Wali</label
+                      >
+                      <div class="col-sm-9" wire:ignore="">
+                        <select
+                          id="kerja_wali"
+                          class="form-select select2-hidden-accessible"
+                          wire:model="kerja_wali"
+                          data-pharaonic="select2"
+                          data-component-id="8kwrXjc8DRIkFaDmKOEx"
+                          data-search-off="true"
+                          data-parent="#detilPD"
+                          data-placeholder="== Pilih Pekerjaan Wali =="
+                          data-select2-id="kerja_wali"
+                          tabindex="-1"
+                          aria-hidden="true"
+                        >
+                          <option value="" data-select2-id="14">
+                            == Pilih Pekerjaan Wali ==
+                          </option>
+                          <option value="0"></option>
+                          <option value="1">Tidak bekerja</option>
+                          <option value="2">Nelayan</option>
+                          <option value="3">Petani</option>
+                          <option value="4">Peternak</option>
+                          <option value="5">PNS/TNI/Polri</option>
+                          <option value="6">Karyawan Swasta</option>
+                          <option value="7">Pedagang Kecil</option>
+                          <option value="8">Pedagang Besar</option>
+                          <option value="9">Wiraswasta</option>
+                          <option value="10">Wirausaha</option>
+                          <option value="11">Buruh</option>
+                          <option value="12">Pensiunan</option>
+                          <option value="13">Tenaga Kerja Indonesia</option>
+                          <option value="14">Karyawan BUMN</option>
+                          <option value="90">Tidak dapat diterapkan</option>
+                          <option value="98">Sudah Meninggal</option>
+                          <option value="99">Lainnya</option></select
+                        ><span
+                          class="select2 select2-container select2-container--default"
+                          dir="ltr"
+                          data-select2-id="13"
+                          style="width: auto"
+                          ><span class="selection"
+                            ><span
+                              class="select2-selection select2-selection--single"
+                              role="combobox"
+                              aria-haspopup="true"
+                              aria-expanded="false"
+                              tabindex="0"
+                              aria-disabled="false"
+                              aria-labelledby="select2-kerja_wali-container"
+                              ><span
+                                class="select2-selection__rendered"
+                                id="select2-kerja_wali-container"
+                                role="textbox"
+                                aria-readonly="true"
+                                ><span class="select2-selection__placeholder"
+                                  >== Pilih Pekerjaan Wali ==</span
+                                ></span
+                              ><span
+                                class="select2-selection__arrow"
+                                role="presentation"
+                                ><b role="presentation"></b></span></span></span
+                          ><span
+                            class="dropdown-wrapper"
+                            aria-hidden="true"
+                          ></span
+                        ></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      wire:loading.remove=""
+                      wire:target="perbaharui"
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                      wire:click.prevent="tutup"
+                    >
+                      Tutup
+                    </button>
+                    <button
+                      wire:loading=""
+                      wire:target="perbaharui"
+                      class="btn btn-outline-primary"
+                      type="button"
+                      id="button-addon1"
+                    >
+                      <div
+                        class="spinner-border spinner-border-sm text-info"
+                        role="status"
+                      >
+                        <span class="visually-hidden">Loading...</span>
+                      </div>
+                    </button>
+                    <button
+                      wire:loading.remove=""
+                      wire:target="perbaharui"
+                      type="submit"
+                      class="btn btn-primary"
+                      wire:click.prevent="perbaharui"
+                    >
+                      Perbaharui
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="spinner" wire:loading></div>
+          </div>
+        </div>
+
+        <!-- Livewire Component wire-end:WG2UX7sYZLdWdsImKS1O -->
+      </div>
+    </div>
+    <!-- End: Content-->
+
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+
+    <!-- BEGIN: Footer-->
+    <footer class="footer footer-light footer-fixed">
+      <p class="clearfix mb-0">
+        <span class="float-md-start d-block d-md-inline-block mt-25"
+          >Hak Cipta &copy;
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          <a class="ms-25" href="https://smk.kemdikbud.go.id/" target="_blank"
+            >Direktorat SMK</a
+          >
+        </span>
+        <span class="float-md-end d-none d-md-block" title="Made with love"
+          >Versi 6.0.4<i data-feather="heart"></i
+        ></span>
+      </p>
+    </footer>
+    <button class="btn btn-primary btn-icon scroll-top" type="button">
+      <i data-feather="arrow-up"></i>
+    </button>
+    <!-- END: Footer-->
+
+    <!-- BEGIN: Vendor JS-->
+    <script src="lib/vendors/js/vendors.min.js"></script>
+    <!-- BEGIN Vendor JS-->
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="lib/vendors/js/ui/jquery.sticky.js"></script>
+    <!-- END: Page Vendor JS-->
+    <!-- BEGIN: Theme JS-->
+    <script src="lib/vendors/js/forms/select/select2.full.min.js"></script>
+    <script src="lib/js/core/app-menu.js"></script>
+    <script src="lib/js/core/app.js"></script>
+
+    <!-- custome scripts file for user -->
+    <script src="lib/js/core/scripts.js"></script>
+
+    <script src="lib/js/scripts/customizer.js"></script>
+    <!-- END: Theme JS-->
+    <!-- BEGIN: Page JS-->
+
+    <!-- END: Page JS-->
+    <style>
+      .spinner {
+        top: 50%;
+        right: auto;
+        bottom: auto;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        position: fixed;
+        z-index: 1060;
+        height: 60px;
+        width: 60px;
+        -webkit-animation: rotation 0.6s infinite linear;
+        -moz-animation: rotation 0.6s infinite linear;
+        -o-animation: rotation 0.6s infinite linear;
+        animation: rotation 0.6s infinite linear;
+        border-left: 6px solid rgba(0, 174, 239, 0.15);
+        border-right: 6px solid rgba(0, 174, 239, 0.15);
+        border-bottom: 6px solid rgba(0, 174, 239, 0.15);
+        border-top: 6px solid rgba(0, 174, 239, 0.8);
+        border-radius: 100%;
+      }
+
+      @-webkit-keyframes rotation {
+        from {
+          -webkit-transform: rotate(0deg);
+        }
+        to {
+          -webkit-transform: rotate(359deg);
+        }
+      }
+      @-moz-keyframes rotation {
+        from {
+          -moz-transform: rotate(0deg);
+        }
+        to {
+          -moz-transform: rotate(359deg);
+        }
+      }
+      @-o-keyframes rotation {
+        from {
+          -o-transform: rotate(0deg);
+        }
+        to {
+          -o-transform: rotate(359deg);
+        }
+      }
+      @keyframes rotation {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(359deg);
+        }
+      }
+    </style>
+    <script>
+      window.addEventListener("data_jurusan", (event) => {
+        console.log(event.detail.data_jurusan);
+        $("#filter_jurusan").html(
+          '<option value="">== Filter Jurusan ==</option>'
+        );
+        $("#filter_rombel").html(
+          '<option value="">== Filter Rombel ==</option>'
+        );
+        $.each(event.detail.data_jurusan, function (i, item) {
+          $("#filter_jurusan").append(
+            $("<option>", {
+              value: item.jurusan_sp_id,
+              text: item.nama_jurusan_sp,
+            })
+          );
+        });
+      });
+      window.addEventListener("data_rombel", (event) => {
+        $("#filter_rombel").html(
+          '<option value="">== Filter Rombel ==</option>'
+        );
+        $.each(event.detail.data_rombel, function (i, item) {
+          $("#filter_rombel").append(
+            $("<option>", {
+              value: item.rombongan_belajar_id,
+              text: item.nama,
+            })
+          );
+        });
+      });
+    </script>
+    <script defer src="lib/vendors/js/alpinejs/alpine.js"></script>
+    <script src="lib/vendor/fontawesome/js/all.min.js"></script>
+    <script src="lib/vendors/js/extensions/sweetalert2.all.min.js"></script>
+    <script>
+      /**** Livewire Alert Scripts ****/
+      (() => {
+        var __webpack_modules__ = {
+            757: (e, t, r) => {
+              e.exports = r(666);
+            },
+            666: (e) => {
+              var t = (function (e) {
+                "use strict";
+                var t,
+                  r = Object.prototype,
+                  n = r.hasOwnProperty,
+                  o = "function" == typeof Symbol ? Symbol : {},
+                  i = o.iterator || "@@iterator",
+                  a = o.asyncIterator || "@@asyncIterator",
+                  c = o.toStringTag || "@@toStringTag";
+                function s(e, t, r) {
+                  return (
+                    Object.defineProperty(e, t, {
+                      value: r,
+                      enumerable: !0,
+                      configurable: !0,
+                      writable: !0,
+                    }),
+                    e[t]
+                  );
+                }
+                try {
+                  s({}, "");
+                } catch (e) {
+                  s = function (e, t, r) {
+                    return (e[t] = r);
+                  };
+                }
+                function l(e, t, r, n) {
+                  var o = t && t.prototype instanceof y ? t : y,
+                    i = Object.create(o.prototype),
+                    a = new x(n || []);
+                  return (
+                    (i._invoke = (function (e, t, r) {
+                      var n = f;
+                      return function (o, i) {
+                        if (n === p)
+                          throw new Error("Generator is already running");
+                        if (n === d) {
+                          if ("throw" === o) throw i;
+                          return S();
+                        }
+                        for (r.method = o, r.arg = i; ; ) {
+                          var a = r.delegate;
+                          if (a) {
+                            var c = L(a, r);
+                            if (c) {
+                              if (c === h) continue;
+                              return c;
+                            }
+                          }
+                          if ("next" === r.method) r.sent = r._sent = r.arg;
+                          else if ("throw" === r.method) {
+                            if (n === f) throw ((n = d), r.arg);
+                            r.dispatchException(r.arg);
+                          } else
+                            "return" === r.method && r.abrupt("return", r.arg);
+                          n = p;
+                          var s = u(e, t, r);
+                          if ("normal" === s.type) {
+                            if (((n = r.done ? d : _), s.arg === h)) continue;
+                            return { value: s.arg, done: r.done };
+                          }
+                          "throw" === s.type &&
+                            ((n = d), (r.method = "throw"), (r.arg = s.arg));
+                        }
+                      };
+                    })(e, r, a)),
+                    i
+                  );
+                }
+                function u(e, t, r) {
+                  try {
+                    return { type: "normal", arg: e.call(t, r) };
+                  } catch (e) {
+                    return { type: "throw", arg: e };
+                  }
+                }
+                e.wrap = l;
+                var f = "suspendedStart",
+                  _ = "suspendedYield",
+                  p = "executing",
+                  d = "completed",
+                  h = {};
+                function y() {}
+                function v() {}
+                function m() {}
+                var b = {};
+                s(b, i, function () {
+                  return this;
+                });
+                var w = Object.getPrototypeOf,
+                  g = w && w(w(D([])));
+                g && g !== r && n.call(g, i) && (b = g);
+                var O = (m.prototype = y.prototype = Object.create(b));
+                function E(e) {
+                  ["next", "throw", "return"].forEach(function (t) {
+                    s(e, t, function (e) {
+                      return this._invoke(t, e);
+                    });
+                  });
+                }
+                function k(e, t) {
+                  function r(o, i, a, c) {
+                    var s = u(e[o], e, i);
+                    if ("throw" !== s.type) {
+                      var l = s.arg,
+                        f = l.value;
+                      return f && "object" == typeof f && n.call(f, "__await")
+                        ? t.resolve(f.__await).then(
+                            function (e) {
+                              r("next", e, a, c);
+                            },
+                            function (e) {
+                              r("throw", e, a, c);
+                            }
+                          )
+                        : t.resolve(f).then(
+                            function (e) {
+                              (l.value = e), a(l);
+                            },
+                            function (e) {
+                              return r("throw", e, a, c);
+                            }
+                          );
+                    }
+                    c(s.arg);
+                  }
+                  var o;
+                  this._invoke = function (e, n) {
+                    function i() {
+                      return new t(function (t, o) {
+                        r(e, n, t, o);
+                      });
+                    }
+                    return (o = o ? o.then(i, i) : i());
+                  };
+                }
+                function L(e, r) {
+                  var n = e.iterator[r.method];
+                  if (n === t) {
+                    if (((r.delegate = null), "throw" === r.method)) {
+                      if (
+                        e.iterator.return &&
+                        ((r.method = "return"),
+                        (r.arg = t),
+                        L(e, r),
+                        "throw" === r.method)
+                      )
+                        return h;
+                      (r.method = "throw"),
+                        (r.arg = new TypeError(
+                          "The iterator does not provide a 'throw' method"
+                        ));
+                    }
+                    return h;
+                  }
+                  var o = u(n, e.iterator, r.arg);
+                  if ("throw" === o.type)
+                    return (
+                      (r.method = "throw"),
+                      (r.arg = o.arg),
+                      (r.delegate = null),
+                      h
+                    );
+                  var i = o.arg;
+                  return i
+                    ? i.done
+                      ? ((r[e.resultName] = i.value),
+                        (r.next = e.nextLoc),
+                        "return" !== r.method &&
+                          ((r.method = "next"), (r.arg = t)),
+                        (r.delegate = null),
+                        h)
+                      : i
+                    : ((r.method = "throw"),
+                      (r.arg = new TypeError(
+                        "iterator result is not an object"
+                      )),
+                      (r.delegate = null),
+                      h);
+                }
+                function j(e) {
+                  var t = { tryLoc: e[0] };
+                  1 in e && (t.catchLoc = e[1]),
+                    2 in e && ((t.finallyLoc = e[2]), (t.afterLoc = e[3])),
+                    this.tryEntries.push(t);
+                }
+                function P(e) {
+                  var t = e.completion || {};
+                  (t.type = "normal"), delete t.arg, (e.completion = t);
+                }
+                function x(e) {
+                  (this.tryEntries = [{ tryLoc: "root" }]),
+                    e.forEach(j, this),
+                    this.reset(!0);
+                }
+                function D(e) {
+                  if (e) {
+                    var r = e[i];
+                    if (r) return r.call(e);
+                    if ("function" == typeof e.next) return e;
+                    if (!isNaN(e.length)) {
+                      var o = -1,
+                        a = function r() {
+                          for (; ++o < e.length; )
+                            if (n.call(e, o))
+                              return (r.value = e[o]), (r.done = !1), r;
+                          return (r.value = t), (r.done = !0), r;
+                        };
+                      return (a.next = a);
+                    }
+                  }
+                  return { next: S };
+                }
+                function S() {
+                  return { value: t, done: !0 };
+                }
+                return (
+                  (v.prototype = m),
+                  s(O, "constructor", m),
+                  s(m, "constructor", v),
+                  (v.displayName = s(m, c, "GeneratorFunction")),
+                  (e.isGeneratorFunction = function (e) {
+                    var t = "function" == typeof e && e.constructor;
+                    return (
+                      !!t &&
+                      (t === v ||
+                        "GeneratorFunction" === (t.displayName || t.name))
+                    );
+                  }),
+                  (e.mark = function (e) {
+                    return (
+                      Object.setPrototypeOf
+                        ? Object.setPrototypeOf(e, m)
+                        : ((e.__proto__ = m), s(e, c, "GeneratorFunction")),
+                      (e.prototype = Object.create(O)),
+                      e
+                    );
+                  }),
+                  (e.awrap = function (e) {
+                    return { __await: e };
+                  }),
+                  E(k.prototype),
+                  s(k.prototype, a, function () {
+                    return this;
+                  }),
+                  (e.AsyncIterator = k),
+                  (e.async = function (t, r, n, o, i) {
+                    void 0 === i && (i = Promise);
+                    var a = new k(l(t, r, n, o), i);
+                    return e.isGeneratorFunction(r)
+                      ? a
+                      : a.next().then(function (e) {
+                          return e.done ? e.value : a.next();
+                        });
+                  }),
+                  E(O),
+                  s(O, c, "Generator"),
+                  s(O, i, function () {
+                    return this;
+                  }),
+                  s(O, "toString", function () {
+                    return "[object Generator]";
+                  }),
+                  (e.keys = function (e) {
+                    var t = [];
+                    for (var r in e) t.push(r);
+                    return (
+                      t.reverse(),
+                      function r() {
+                        for (; t.length; ) {
+                          var n = t.pop();
+                          if (n in e) return (r.value = n), (r.done = !1), r;
+                        }
+                        return (r.done = !0), r;
+                      }
+                    );
+                  }),
+                  (e.values = D),
+                  (x.prototype = {
+                    constructor: x,
+                    reset: function (e) {
+                      if (
+                        ((this.prev = 0),
+                        (this.next = 0),
+                        (this.sent = this._sent = t),
+                        (this.done = !1),
+                        (this.delegate = null),
+                        (this.method = "next"),
+                        (this.arg = t),
+                        this.tryEntries.forEach(P),
+                        !e)
+                      )
+                        for (var r in this)
+                          "t" === r.charAt(0) &&
+                            n.call(this, r) &&
+                            !isNaN(+r.slice(1)) &&
+                            (this[r] = t);
+                    },
+                    stop: function () {
+                      this.done = !0;
+                      var e = this.tryEntries[0].completion;
+                      if ("throw" === e.type) throw e.arg;
+                      return this.rval;
+                    },
+                    dispatchException: function (e) {
+                      if (this.done) throw e;
+                      var r = this;
+                      function o(n, o) {
+                        return (
+                          (c.type = "throw"),
+                          (c.arg = e),
+                          (r.next = n),
+                          o && ((r.method = "next"), (r.arg = t)),
+                          !!o
+                        );
+                      }
+                      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+                        var a = this.tryEntries[i],
+                          c = a.completion;
+                        if ("root" === a.tryLoc) return o("end");
+                        if (a.tryLoc <= this.prev) {
+                          var s = n.call(a, "catchLoc"),
+                            l = n.call(a, "finallyLoc");
+                          if (s && l) {
+                            if (this.prev < a.catchLoc)
+                              return o(a.catchLoc, !0);
+                            if (this.prev < a.finallyLoc)
+                              return o(a.finallyLoc);
+                          } else if (s) {
+                            if (this.prev < a.catchLoc)
+                              return o(a.catchLoc, !0);
+                          } else {
+                            if (!l)
+                              throw new Error(
+                                "try statement without catch or finally"
+                              );
+                            if (this.prev < a.finallyLoc)
+                              return o(a.finallyLoc);
+                          }
+                        }
+                      }
+                    },
+                    abrupt: function (e, t) {
+                      for (var r = this.tryEntries.length - 1; r >= 0; --r) {
+                        var o = this.tryEntries[r];
+                        if (
+                          o.tryLoc <= this.prev &&
+                          n.call(o, "finallyLoc") &&
+                          this.prev < o.finallyLoc
+                        ) {
+                          var i = o;
+                          break;
+                        }
+                      }
+                      i &&
+                        ("break" === e || "continue" === e) &&
+                        i.tryLoc <= t &&
+                        t <= i.finallyLoc &&
+                        (i = null);
+                      var a = i ? i.completion : {};
+                      return (
+                        (a.type = e),
+                        (a.arg = t),
+                        i
+                          ? ((this.method = "next"),
+                            (this.next = i.finallyLoc),
+                            h)
+                          : this.complete(a)
+                      );
+                    },
+                    complete: function (e, t) {
+                      if ("throw" === e.type) throw e.arg;
+                      return (
+                        "break" === e.type || "continue" === e.type
+                          ? (this.next = e.arg)
+                          : "return" === e.type
+                          ? ((this.rval = this.arg = e.arg),
+                            (this.method = "return"),
+                            (this.next = "end"))
+                          : "normal" === e.type && t && (this.next = t),
+                        h
+                      );
+                    },
+                    finish: function (e) {
+                      for (var t = this.tryEntries.length - 1; t >= 0; --t) {
+                        var r = this.tryEntries[t];
+                        if (r.finallyLoc === e)
+                          return (
+                            this.complete(r.completion, r.afterLoc), P(r), h
+                          );
+                      }
+                    },
+                    catch: function (e) {
+                      for (var t = this.tryEntries.length - 1; t >= 0; --t) {
+                        var r = this.tryEntries[t];
+                        if (r.tryLoc === e) {
+                          var n = r.completion;
+                          if ("throw" === n.type) {
+                            var o = n.arg;
+                            P(r);
+                          }
+                          return o;
+                        }
+                      }
+                      throw new Error("illegal catch attempt");
+                    },
+                    delegateYield: function (e, r, n) {
+                      return (
+                        (this.delegate = {
+                          iterator: D(e),
+                          resultName: r,
+                          nextLoc: n,
+                        }),
+                        "next" === this.method && (this.arg = t),
+                        h
+                      );
+                    },
+                  }),
+                  e
+                );
+              })(e.exports);
+              try {
+                regeneratorRuntime = t;
+              } catch (e) {
+                "object" == typeof globalThis
+                  ? (globalThis.regeneratorRuntime = t)
+                  : Function("r", "regeneratorRuntime = r")(t);
+              }
+            },
+          },
+          __webpack_module_cache__ = {};
+        function __webpack_require__(e) {
+          var t = __webpack_module_cache__[e];
+          if (void 0 !== t) return t.exports;
+          var r = (__webpack_module_cache__[e] = { exports: {} });
+          return (
+            __webpack_modules__[e](r, r.exports, __webpack_require__), r.exports
+          );
+        }
+        (__webpack_require__.n = (e) => {
+          var t = e && e.__esModule ? () => e.default : () => e;
+          return __webpack_require__.d(t, { a: t }), t;
+        }),
+          (__webpack_require__.d = (e, t) => {
+            for (var r in t)
+              __webpack_require__.o(t, r) &&
+                !__webpack_require__.o(e, r) &&
+                Object.defineProperty(e, r, { enumerable: !0, get: t[r] });
+          }),
+          (__webpack_require__.o = (e, t) =>
+            Object.prototype.hasOwnProperty.call(e, t));
+        var __webpack_exports__ = {};
+        (() => {
+          "use strict";
+          var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ =
+              __webpack_require__(757),
+            _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default =
+              __webpack_require__.n(
+                _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__
+              );
+          function ownKeys(e, t) {
+            var r = Object.keys(e);
+            if (Object.getOwnPropertySymbols) {
+              var n = Object.getOwnPropertySymbols(e);
+              t &&
+                (n = n.filter(function (t) {
+                  return Object.getOwnPropertyDescriptor(e, t).enumerable;
+                })),
+                r.push.apply(r, n);
+            }
+            return r;
+          }
+          function _objectSpread(e) {
+            for (var t = 1; t < arguments.length; t++) {
+              var r = null != arguments[t] ? arguments[t] : {};
+              t % 2
+                ? ownKeys(Object(r), !0).forEach(function (t) {
+                    _defineProperty(e, t, r[t]);
+                  })
+                : Object.getOwnPropertyDescriptors
+                ? Object.defineProperties(
+                    e,
+                    Object.getOwnPropertyDescriptors(r)
+                  )
+                : ownKeys(Object(r)).forEach(function (t) {
+                    Object.defineProperty(
+                      e,
+                      t,
+                      Object.getOwnPropertyDescriptor(r, t)
+                    );
+                  });
+            }
+            return e;
+          }
+          function _defineProperty(e, t, r) {
+            return (
+              t in e
+                ? Object.defineProperty(e, t, {
+                    value: r,
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                  })
+                : (e[t] = r),
+              e
+            );
+          }
+          function asyncGeneratorStep(e, t, r, n, o, i, a) {
+            try {
+              var c = e[i](a),
+                s = c.value;
+            } catch (e) {
+              return void r(e);
+            }
+            c.done ? t(s) : Promise.resolve(s).then(n, o);
+          }
+          function _asyncToGenerator(e) {
+            return function () {
+              var t = this,
+                r = arguments;
+              return new Promise(function (n, o) {
+                var i = e.apply(t, r);
+                function a(e) {
+                  asyncGeneratorStep(i, n, o, a, c, "next", e);
+                }
+                function c(e) {
+                  asyncGeneratorStep(i, n, o, a, c, "throw", e);
+                }
+                a(void 0);
+              });
+            };
+          }
+          function evalCallbacksOptions(options) {
+            for (
+              var callbacksKeysAllowed = [
+                  "allowOutsideClick",
+                  "allowEscapeKey",
+                  "allowEnterKey",
+                  "loaderHtml",
+                  "inputOptions",
+                  "inputValidator",
+                  "preConfirm",
+                  "preDeny",
+                  "didClose",
+                  "didDestroy",
+                  "didOpen",
+                  "didRender",
+                  "willClose",
+                  "willOpen",
+                ],
+                _i = 0,
+                _callbacksKeysAllowed = callbacksKeysAllowed;
+              _i < _callbacksKeysAllowed.length;
+              _i++
+            ) {
+              var callbackKey = _callbacksKeysAllowed[_i];
+              options.hasOwnProperty(callbackKey) &&
+                ("string" == typeof options[callbackKey] ||
+                  options[callbackKey] instanceof String) &&
+                options[callbackKey] &&
+                "" != options[callbackKey].trim() &&
+                (options[callbackKey] = eval(options[callbackKey]));
+            }
+          }
+          function afterAlertInteraction(e) {
+            if (e.confirmed)
+              return "self" === e.onConfirmed.component
+                ? void Livewire.find(e.onConfirmed.id).emitSelf(
+                    e.onConfirmed.listener,
+                    e.result
+                  )
+                : void Livewire.emitTo(
+                    e.onConfirmed.component,
+                    e.onConfirmed.listener,
+                    e.result
+                  );
+            if (e.isDenied)
+              return "self" === e.onDenied.component
+                ? void Livewire.find(e.onDenied.id).emitSelf(
+                    e.onDenied.listener,
+                    e.result
+                  )
+                : void Livewire.emitTo(
+                    e.onDenied.component,
+                    e.onDenied.listener,
+                    e.result
+                  );
+            if (e.onProgressFinished && e.dismiss === Swal.DismissReason.timer)
+              return "self" === e.onProgressFinished.component
+                ? void Livewire.find(e.onProgressFinished.id).emitSelf(
+                    e.onProgressFinished.listener,
+                    e.result
+                  )
+                : void Livewire.emitTo(
+                    e.onProgressFinished.component,
+                    e.onProgressFinished.listener,
+                    e.result
+                  );
+            if (e.onDismissed) {
+              if ("self" === e.onDismissed.component)
+                return void Livewire.find(e.onDismissed.id).emit(
+                  e.onDismissed.listener,
+                  e.result
+                );
+              Livewire.emitTo(
+                e.onDismissed.component,
+                e.onDismissed.listener,
+                e.result
+              );
+            }
+          }
+          window.addEventListener(
+            "alert",
+            (function () {
+              var e = _asyncToGenerator(
+                _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(
+                  function e(t) {
+                    var r, n, o, i, a, c, s, l;
+                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(
+                      function (e) {
+                        for (;;)
+                          switch ((e.prev = e.next)) {
+                            case 0:
+                              return (
+                                (o = t.detail.message),
+                                (i =
+                                  null !== (r = t.detail.type) && void 0 !== r
+                                    ? r
+                                    : null),
+                                (a = t.detail.data),
+                                (c = t.detail.events),
+                                evalCallbacksOptions((s = t.detail.options)),
+                                (e.next = 8),
+                                Swal.fire(
+                                  _objectSpread({ title: o, icon: i }, s)
+                                )
+                              );
+                            case 8:
+                              afterAlertInteraction(
+                                _objectSpread(
+                                  _objectSpread(
+                                    _objectSpread(
+                                      {
+                                        confirmed: (l = e.sent).isConfirmed,
+                                        denied: l.isDenied,
+                                        dismiss: l.dismiss,
+                                        result: _objectSpread(
+                                          _objectSpread({}, l),
+                                          {},
+                                          {
+                                            data: _objectSpread(
+                                              _objectSpread({}, a),
+                                              {},
+                                              {
+                                                inputAttributes:
+                                                  null !==
+                                                    (n = s.inputAttributes) &&
+                                                  void 0 !== n
+                                                    ? n
+                                                    : null,
+                                              }
+                                            ),
+                                          }
+                                        ),
+                                      },
+                                      c
+                                    ),
+                                    l
+                                  ),
+                                  s
+                                )
+                              );
+                            case 10:
+                            case "end":
+                              return e.stop();
+                          }
+                      },
+                      e
+                    );
+                  }
+                )
+              );
+              return function (t) {
+                return e.apply(this, arguments);
+              };
+            })()
+          ),
+            (window.flashAlert = (function () {
+              var e = _asyncToGenerator(
+                _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(
+                  function e(t) {
+                    var r, n, o, i, a, c, s;
+                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(
+                      function (e) {
+                        for (;;)
+                          switch ((e.prev = e.next)) {
+                            case 0:
+                              return (
+                                (i = t.events),
+                                (a = t.events.data),
+                                evalCallbacksOptions((c = t.options)),
+                                (e.next = 6),
+                                Swal.fire(
+                                  _objectSpread(
+                                    {
+                                      title:
+                                        null !== (r = t.message) && void 0 !== r
+                                          ? r
+                                          : "",
+                                      icon:
+                                        null !== (n = t.type) && void 0 !== n
+                                          ? n
+                                          : null,
+                                    },
+                                    c
+                                  )
+                                )
+                              );
+                            case 6:
+                              afterAlertInteraction(
+                                _objectSpread(
+                                  _objectSpread(
+                                    {
+                                      confirmed: (s = e.sent).isConfirmed,
+                                      denied: s.isDenied,
+                                      dismiss: s.dismiss,
+                                      result: _objectSpread(
+                                        _objectSpread({}, s),
+                                        {},
+                                        {
+                                          data: _objectSpread(
+                                            _objectSpread({}, a),
+                                            {},
+                                            {
+                                              inputAttributes:
+                                                null !==
+                                                  (o = c.inputAttributes) &&
+                                                void 0 !== o
+                                                  ? o
+                                                  : null,
+                                            }
+                                          ),
+                                        }
+                                      ),
+                                    },
+                                    i
+                                  ),
+                                  t.options
+                                )
+                              );
+                            case 8:
+                            case "end":
+                              return e.stop();
+                          }
+                      },
+                      e
+                    );
+                  }
+                )
+              );
+              return function (t) {
+                return e.apply(this, arguments);
+              };
+            })());
+        })();
+      })();
+    </script>
+
+    <script>
+      var Pharaonic;
+      void 0 === Pharaonic && (Pharaonic = {});
+      var PharaonicSelect2 = {
+        Select2: {
+          init: function () {
+            $('[data-pharaonic="select2"]:not("[data-select2-id]")').each(
+              function () {
+                Pharaonic.Select2.load(
+                  $(this),
+                  $(this).is("[data-component-id]")
+                    ? $(this).data("component-id")
+                    : null
+                );
+              }
+            );
+          },
+          load: function (a, e) {
+            var t, i, n, l, d;
+            e &&
+              ((t = {
+                multiple: $(a).is("[multiple]"),
+                tags: $(a).is("[data-tags]"),
+                placeholder: $(a).is("[data-placeholder]")
+                  ? $(a).data("placeholder")
+                  : "Select an option",
+                language: $(a).is("[data-language]")
+                  ? $(a).data("language")
+                  : "en",
+                dir: $(a).is("[data-dir]") ? $(a).data("dir") : "ltr",
+                dropdownParent: $(a).is("[data-parent]")
+                  ? $($(a).data("parent"))
+                  : null,
+                minimumResultsForSearch: $(a).is("[data-search-off]") ? -1 : 0,
+                allowClear: $(a).is("[data-clear]"),
+              }),
+              (n =
+                (i = a[0].attributes).getNamedItem("wire:model") ||
+                i.getNamedItem("wire:model.defer") ||
+                null),
+              i.getNamedItem("class") || $(a).attr("class", "form-select"),
+              delete i,
+              (a = $(a).select2(t)) &&
+                ((l = n.value),
+                (d = 0 < n.name.search("defer")),
+                a.on("change", function () {
+                  Livewire.find(e).set(l, $(a).val(), d);
+                })));
+          },
+        },
+      };
+      Object.assign(Pharaonic, PharaonicSelect2),
+        $(document).ready(function () {
+          Pharaonic.Select2.init();
+        }),
+        window.addEventListener("pharaonic.select2.init", () => {
+          Pharaonic.Select2.init();
+        }),
+        window.addEventListener("pharaonic.select2.load", (a) => {
+          Pharaonic.Select2.load($(a.detail.target), a.detail.component);
+        });
+    </script>
+
+    <script type="text/javascript">
+      $(window).on("load", function () {
+        if (feather) {
+          feather.replace({
+            width: 14,
+            height: 14,
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

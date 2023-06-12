@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Data Diri | BPI</title>
+    <link rel="icon" href="img/logo.png" />
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="lib/template/plugins/fontawesome-free/css/all.min.css"
+    />
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link
+      rel="stylesheet"
+      href="lib/template/plugins/icheck-bootstrap/icheck-bootstrap.min.css"
+    />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="lib/template/dist/css/adminlte.css" />
+    <link rel="stylesheet" href="css/site.css" />
+
+    <style>
+      [wire\:loading],
+      [wire\:loading\.delay],
+      [wire\:loading\.inline-block],
+      [wire\:loading\.inline],
+      [wire\:loading\.block],
+      [wire\:loading\.flex],
+      [wire\:loading\.table],
+      [wire\:loading\.grid],
+      [wire\:loading\.inline-flex] {
+        display: none;
+      }
+      [wire\:loading\.delay\.shortest],
+      [wire\:loading\.delay\.shorter],
+      [wire\:loading\.delay\.short],
+      [wire\:loading\.delay\.long],
+      [wire\:loading\.delay\.longer],
+      [wire\:loading\.delay\.longest] {
+        display: none;
+      }
+      [wire\:offline] {
+        display: none;
+      }
+      [wire\:dirty]:not(textarea):not(input):not(select) {
+        display: none;
+      }
+      input:-webkit-autofill,
+      select:-webkit-autofill,
+      textarea:-webkit-autofill {
+        animation-duration: 50000s;
+        animation-name: livewireautofill;
+      }
+      @keyframes livewireautofill {
+        from {
+        }
+      }
+    </style>
+
+    <!-- jQuery -->
+    <script src="lib/template/plugins/jquery/jquery.min.js"></script>
+    <script src="lib/template/plugins/jquery-validation/jquery.validate.min.js"></script>
+    <script src="lib/template/plugins/sweetalert2/sweetalert2.all.min.js"></script>
+    <script src="lib/jquery.form/jquery.form.min.js"></script>
+
+    <script>
+      function SetJqueryForm(idForm) {
+        idForm = idForm || "main_form";
+        $("#" + idForm).ajaxForm({
+          beforeSubmit: function () {
+            ShowLoading();
+          },
+          data: {
+            _token: "tRf3qhyTvmo9MuU2xnkbhzTAvaKzXUIOlaU6dswZ",
+          },
+          success: function (hasil) {
+            var res = JSON.parse(hasil);
+            if (res.status) {
+              window.onbeforeunload = function () {};
+              if (res.url !== "" && res.url !== null) {
+                location.replace(res.url);
+              } else {
+                location.reload();
+              }
+            } else {
+              ShowError(res.message);
+            }
+          },
+          error: function (a, b, c) {
+            var pesan = b;
+            if (c != undefined && c != "" && c != null) {
+              pesan = c;
+            }
+            ShowError(pesan);
+          },
+        });
+      }
+
+      function SetJqueryFormNoReload(idForm, callback, idModal) {
+        idForm = idForm || "main_form";
+        idModal = idModal || "main_modal";
+        $("#" + idForm).ajaxForm({
+          beforeSubmit: function () {
+            ShowLoading();
+          },
+          data: {
+            _token: "tRf3qhyTvmo9MuU2xnkbhzTAvaKzXUIOlaU6dswZ",
+          },
+          success: function (hasil) {
+            var res = JSON.parse(hasil);
+            if (res.status) {
+              ShowSuccess(res.message);
+              $("#" + idModal).modal("hide");
+              if (callback != undefined) {
+                callback();
+              }
+            } else {
+              ShowError(res.message);
+            }
+          },
+          error: function (a, b, c) {
+            var pesan = b;
+            if (c != undefined && c != "" && c != null) {
+              pesan = c;
+            }
+            ShowError(pesan);
+          },
+        });
+      }
+    </script>
+  </head>
+
+  <body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+      <!-- Navbar -->
+      <nav class="main-header navbar navbar-expand navbar-light">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"
+              ><i class="fas fa-bars"></i
+            ></a>
+          </li>
+        </ul>
+
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              onclick="KonfirmasiSubmit('logout-form','Anda akan keluar dari sistem.')"
+              role="button"
+            >
+              <i class="fas fa-sign-out-alt"></i>
+            </a>
+            <form
+              id="logout-form"
+              action="/pendaftaran/logout"
+              method="POST"
+              style="display: none"
+            >
+              <input
+                type="hidden"
+                name="_token"
+                value="tRf3qhyTvmo9MuU2xnkbhzTAvaKzXUIOlaU6dswZ"
+              />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.navbar -->
+
+      <!-- Main Sidebar Container -->
+      <aside class="main-sidebar sidebar-light-primary elevation-6">
+        <!-- Brand Logo -->
+        <a href="/" class="brand-link">
+          <img src="img/logo.png" alt="Logo BPI" class="brand-image" />
+          <span class="brand-text">BPI</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <!-- Sidebar user panel (optional) -->
+
+          <!-- Sidebar Menu -->
+          <nav class="mt-2 text-sm">
+            <ul
+              class="nav nav-pills nav-sidebar nav-child-indent flex-column"
+              data-widget="treeview"
+              role="menu"
+              data-accordion="false"
+              id="sidebar"
+            >
+              <li class="nav-header pt-4">Menu Utama</li>
+              <li class="nav-item">
+                <a href="/pendaftaran/datadiri" class="nav-link active">
+                  <i class="nav-icon fa fa-user"></i>
+                  <p>Data Diri</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/pendaftaran/usulan-beasiswa" class="nav-link">
+                  <i class="nav-icon fa fa-th-large"></i>
+                  <p>Berkas Beasiswa</p>
+                </a>
+              </li>
+              <li class="nav-item"></li>
+            </ul>
+          </nav>
+          <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+      </aside>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm-12">
+                <h1 class="mb-0"><b> Data Diri </b></h1>
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <div class="content">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="card card-primary card-outline">
+                  <div class="card-body">
+                    <dl class="row">
+                      <dt class="col-sm-3">Nama Akun</dt>
+                      <dd class="col-sm-9">I Wayan Suwitna</dd>
+                      <dt class="col-sm-3">Username</dt>
+                      <dd class="col-sm-9">5107041009870006</dd>
+                      <dt class="col-sm-3">Email</dt>
+                      <dd class="col-sm-9">yansuwitna@gmail.com</dd>
+                      <dt class="col-sm-3">Status</dt>
+                      <dd class="col-sm-9">
+                        <a class="btn btn-label btn-outline-success btn-flat"
+                          >Aktif <i class="fa fa-check"></i
+                        ></a>
+                      </dd>
+                      <dt class="col-sm-3">Status Email</dt>
+                      <dd class="col-sm-9">
+                        <a class="btn btn-label btn-outline-success btn-flat"
+                          >Sudah Konfirmasi <i class="fa fa-check"></i
+                        ></a>
+                      </dd>
+                      <dt class="col-sm-3">Nama Lengkap Beasiswa</dt>
+                      <dd class="col-sm-9">I Wayan Suwitna</dd>
+                      <dt class="col-sm-3">NIK</dt>
+                      <dd class="col-sm-9">5107041009870006</dd>
+                      <dt class="col-sm-3">Tempat Lahir</dt>
+                      <dd class="col-sm-9">Dauh Pangkung</dd>
+                      <dt class="col-sm-3">Tanggal Lahir</dt>
+                      <dd class="col-sm-9">10-09-1987</dd>
+                    </dl>
+                    <div class="row justify-content-end">
+                      <div class="col-md-3">
+                        <button
+                          class="btn btn-block btn-warning"
+                          data-target="#main_modal"
+                          data-toggle="modal"
+                        >
+                          Ubah Data
+                          <i class="fa fa-edit"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.col-md-6 -->
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.container-fluid -->
+        </div>
+        <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
+
+      <!-- Main Footer -->
+      <footer class="main-footer">
+        Copyright &copy; 2022
+        <a href="#">Beasiswa Pendidikan Indonesia </a>. All rights reserved.
+      </footer>
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- REQUIRED SCRIPTS -->
+
+    <!-- Bootstrap 4 -->
+    <script src="lib/template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="lib/template/dist/js/adminlte.min.js"></script>
+
+    <div
+      class="modal fade"
+      id="main_modal"
+      style="display: none"
+      aria-modal="true"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <div
+        id="modal-custom"
+        class="modal-dialog modal-dialog-centered modal-lg"
+      >
+        <div class="modal-content">
+          <div class="modal-header" style="display: none">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+            <h4 class="modal-title" id="judul_modal">Default Modal</h4>
+          </div>
+          <div class="modal-body" id="isi_modal">
+            <h3>
+              <b> Ubah Data Diri </b>
+            </h3>
+            <hr />
+            <form
+              action="/pendaftaran/datadiri/edit"
+              method="POST"
+              id="edit_form"
+              novalidate="novalidate"
+            >
+              <input
+                type="hidden"
+                name="_token"
+                value="tRf3qhyTvmo9MuU2xnkbhzTAvaKzXUIOlaU6dswZ"
+              />
+              <input
+                type="hidden"
+                name="id"
+                value="eyJpdiI6IktqcjBMWnRJOFc0M0Q4RXBaaEJsc1E9PSIsInZhbHVlIjoibzlxdisrOHV0MG55UDVPM2I4WXQ5Zz09IiwibWFjIjoiZjFkNGYzNmMxNGU5MTkxNzg0M2E1YTZhMTY2NDU1ZTU3NDQ1YmVjMzBlZGUxNWE2OTgxZTk2MjA4Yjc2Y2YwMyIsInRhZyI6IiJ9"
+              />
+              <div class="form-group">
+                <label class="harus">Username</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  value="5107041009870006"
+                  disabled=""
+                  required="required"
+                />
+                <label
+                  id="undefined-error"
+                  class="error"
+                  for="undefined"
+                  style="display: none"
+                  >This field is required.</label
+                >
+              </div>
+              <div class="form-group">
+                <label class="harus">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  value="yansuwitna@gmail.com"
+                  disabled=""
+                  required="required"
+                />
+                <label
+                  id="undefined-error"
+                  class="error"
+                  for="undefined"
+                  style="display: none"
+                  >This field is required.</label
+                >
+              </div>
+              <div class="form-group">
+                <label class="">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  name="password"
+                  value=""
+                />
+              </div>
+              <div class="form-group">
+                <label class="harus">Nama Akun</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="name"
+                  value="I Wayan Suwitna"
+                  required="required"
+                />
+                <label
+                  id="name-error"
+                  class="error"
+                  for="name"
+                  style="display: none"
+                  >This field is required.</label
+                >
+              </div>
+              <div class="form-group">
+                <label class="harus">Tempat Lahir</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="tempat_lahir"
+                  value="Dauh Pangkung"
+                  required="required"
+                />
+                <label
+                  id="tempat_lahir-error"
+                  class="error"
+                  for="tempat_lahir"
+                  style="display: none"
+                  >This field is required.</label
+                >
+              </div>
+              <div class="form-group">
+                <label class="harus">Tanggal Lahir</label>
+                <input
+                  type="text"
+                  class="form-control tanggal"
+                  name="tanggal_lahir"
+                  autocomplete="off"
+                  value="10-09-1987"
+                  required="required"
+                />
+                <label
+                  id="tanggal_lahir-error"
+                  class="error"
+                  for="tanggal_lahir"
+                  style="display: none"
+                  >This field is required.</label
+                >
+              </div>
+              <div class="form-group text-right row justify-content-end">
+                <div class="col-md-4">
+                  <button class="btn btn-primary btn-block" type="submit">
+                    Simpan
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+
+    <script src="js/site.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="lib/bootstrap-datepicker/css/bootstrap-datepicker3.min.css"
+    />
+    <script src="lib/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+
+    <script>
+      function SetDatepicker(el) {
+        el = el || ".tanggal";
+        $(el).datepicker({
+          format: "dd-mm-yyyy",
+        });
+
+        $(el).prop("autocomplete", "off");
+      }
+    </script>
+    <script></script>
+    <script
+      src="livewire/livewire.js?id=de3fca26689cb5a39af4"
+      data-turbo-eval="false"
+      data-turbolinks-eval="false"
+    ></script>
+    <script data-turbo-eval="false" data-turbolinks-eval="false">
+      window.livewire = new Livewire();
+      window.Livewire = window.livewire;
+      window.livewire_app_url = "https://beasiswa.kemdikbud.go.id/pendaftaran";
+      window.livewire_token = "tRf3qhyTvmo9MuU2xnkbhzTAvaKzXUIOlaU6dswZ";
+      window.deferLoadingAlpine = function (callback) {
+        window.addEventListener("livewire:load", function () {
+          callback();
+        });
+      };
+      let started = false;
+      window.addEventListener("alpine:initializing", function () {
+        if (!started) {
+          window.livewire.start();
+          started = true;
+        }
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        if (!started) {
+          window.livewire.start();
+          started = true;
+        }
+      });
+    </script>
+  </body>
+</html>

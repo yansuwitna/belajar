@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="id" class="h-100">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- CSRF Token -->
+    <meta
+      name="csrf-token"
+      content="RcYfyaD2HxCZWtYn6M1CwNyOL7vAWhku7tDl0tGv"
+    />
+
+    <title>BPI</title>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="lib/template/plugins/fontawesome-free/css/all.min.css"
+    />
+    <!-- icheck bootstrap -->
+    <link
+      rel="stylesheet"
+      href="lib/template/plugins/icheck-bootstrap/icheck-bootstrap.min.css"
+    />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="lib/template/dist/css/adminlte.min.css" />
+    <link rel="stylesheet" href="css/site.css" />
+
+    <link
+      rel="stylesheet"
+      href="lib/bootstrap-datepicker/css/bootstrap-datepicker.min.css"
+    />
+  </head>
+
+  <body class="hold-transition login-page">
+    <div>
+      <div class="card card-outline p-4">
+        <div class="card-header nohr">
+          <a href="#" class="h3"><b>Pendaftaran</b></a>
+          <p class="login-box-msg">
+            Silahkan isi formulir berikut untuk pembuatan akun Beasiswa
+            Pendidikan Indonesia
+          </p>
+          <br />
+          <p class="text-info text-bold">
+            Gunakan nama lengkap sesuai dengan nama yang tercantum pada:
+          </p>
+          <ol class="mb-0">
+            <li>PDDikti: khusus NIDN/NIM</li>
+            <li>NISN dan NUPTK: khusus Dapodik</li>
+          </ol>
+        </div>
+        <div class="card-body">
+          <div>
+            <form action="register" method="POST" id="main_form">
+              <input
+                type="hidden"
+                name="_token"
+                value="RcYfyaD2HxCZWtYn6M1CwNyOL7vAWhku7tDl0tGv"
+              />
+              <div class="form-group">
+                <label for="nama" class="harus">Nama Lengkap</label>
+                <input
+                  id="nama"
+                  type="text"
+                  class="form-control"
+                  required
+                  autofocus
+                  aria-describedby="namaHelp"
+                  name="nama"
+                  onkeydown="return /[a-z. ]/i.test(event.key)"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="nik" class="harus">NIK</label>
+                <input
+                  id="nik"
+                  type="number"
+                  minlength="16"
+                  maxlength="17"
+                  class="form-control"
+                  required
+                  autofocus
+                  aria-describedby="nikHelp"
+                  name="nik"
+                />
+              </div>
+
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label for="email" class="harus">Alamat Email</label>
+                    <input
+                      id="email"
+                      type="text"
+                      class="form-control"
+                      required
+                      autofocus
+                      aria-describedby="emailHelp"
+                      name="email"
+                    />
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label for="" class="harus">Konfirmasi Email</label>
+                    <input
+                      id="konfirmasiEmail"
+                      type="text"
+                      class="form-control"
+                      required
+                      autofocus
+                      aria-describedby="konfirmasiEmailHelp"
+                      name="konfirmasiEmail"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label for="tempatLahir" class="harus">Tempat Lahir</label>
+                    <input
+                      id="tempatLahir"
+                      type="text"
+                      class="form-control"
+                      required
+                      autofocus
+                      aria-describedby="tempatLahirHelp"
+                      name="tempat_lahir"
+                    />
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label for="tanggalLahir" class="harus1"
+                      >Tanggal Lahir</label
+                    >
+                    <div class="input-group date" data-provide="datepicker">
+                      <input
+                        id="tanggalLahir"
+                        type="text"
+                        class="form-control"
+                        aria-describedby="tanggalLahirHelp"
+                        name="tanggal_lahir"
+                        required
+                        autocomplete="off"
+                      />
+                      <div class="input-group-addon"></div>
+                    </div>
+                    <label
+                      id="tanggalLahir-error"
+                      class="error"
+                      for="tanggalLahir"
+                      style="display: none"
+                      >This field is required.</label
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label for="password" class="harus">Password</label>
+                    <input
+                      id="password"
+                      type="password"
+                      class="form-control"
+                      required
+                      autofocus
+                      aria-describedby="passwordHelp"
+                      name="password"
+                    />
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label for="konfirmasiPassword" class="harus"
+                      >Konfirmasi Password</label
+                    >
+                    <input
+                      id="konfirmasiPassword"
+                      type="password"
+                      name="konfirmasi_password"
+                      class="form-control"
+                      required
+                      autofocus
+                      aria-describedby="konfirmasiPasswordHelp"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="nama" class="harus"
+                  >Pendidikan Terakhir & Latar Belakang Pendaftar</label
+                >
+                <select name="id_latar_belakang" class="form-control chosen">
+                  <option value="">-- Pilih --</option>
+                  <option value="3">S1 - Pelaku Budaya</option>
+                  <option value="2">S1 - Siswa</option>
+                  <option value="1">S1 - Siswa Berprestasi</option>
+                  <option value="5">S2 - Calon Dosen</option>
+                  <option value="4">S2 - Dosen</option>
+                  <option value="8">S2 - Guru &amp; Tendik</option>
+                  <option value="9">S2 - Pelaku Budaya</option>
+                  <option value="7">S2 - Siswa Berprestasi</option>
+                  <option value="6">S2 - Tendik Dikti</option>
+                  <option value="10">S3 - Dosen</option>
+                  <option value="12">S3 - Guru &amp; Tendik</option>
+                  <option value="14">S3 - Oxford</option>
+                  <option value="13">S3 - Pelaku Budaya</option>
+                  <option value="11">S3 - Tendik Dikti</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="captcha" class="harus">Captcha</label>
+                <div class="captcha">
+                  <span><img src="" /></span>
+                  <button
+                    type="button"
+                    class="btn btn-danger"
+                    class="reload"
+                    id="reload"
+                  >
+                    &#x21bb;
+                  </button>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="" class="harus"
+                  >Masukan Hasil Penjumlahan Capcha</label
+                >
+                <input
+                  id="captcha"
+                  type="text"
+                  class="form-control"
+                  placeholder="Masukan Hasil Penjumlahan Capcha"
+                  name="captcha"
+                />
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block mt-3">
+                Daftar
+              </button>
+            </form>
+
+            <a class="btn btn-link btn-block" href="login">
+              Sudah punya akun ? Masuk disini
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="lib/template/plugins/jquery/jquery.min.js"></script>
+    <script src="lib/template/plugins/jquery-validation/jquery.validate.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="lib/template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="lib/template/dist/js/adminlte.min.js"></script>
+    <script src="lib/template/plugins/sweetalert2/sweetalert2.all.min.js"></script>
+    <script src="lib/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="lib/bootstrap-datepicker/locales/bootstrap-datepicker.id.min.js"></script>
+    <script src="lib/jquery.form/jquery.form.min.js"></script>
+
+    <script>
+      function SetJqueryForm(idForm) {
+        idForm = idForm || "main_form";
+        $("#" + idForm).ajaxForm({
+          beforeSubmit: function () {
+            ShowLoading();
+          },
+          data: {
+            _token: "RcYfyaD2HxCZWtYn6M1CwNyOL7vAWhku7tDl0tGv",
+          },
+          success: function (hasil) {
+            var res = JSON.parse(hasil);
+            if (res.status) {
+              window.onbeforeunload = function () {};
+              if (res.url !== "" && res.url !== null) {
+                location.replace(res.url);
+              } else {
+                location.reload();
+              }
+            } else {
+              ShowError(res.message);
+            }
+          },
+          error: function (a, b, c) {
+            var pesan = b;
+            if (c != undefined && c != "" && c != null) {
+              pesan = c;
+            }
+            ShowError(pesan);
+          },
+        });
+      }
+
+      function SetJqueryFormNoReload(idForm, callback, idModal) {
+        idForm = idForm || "main_form";
+        idModal = idModal || "main_modal";
+        $("#" + idForm).ajaxForm({
+          beforeSubmit: function () {
+            ShowLoading();
+          },
+          data: {
+            _token: "RcYfyaD2HxCZWtYn6M1CwNyOL7vAWhku7tDl0tGv",
+          },
+          success: function (hasil) {
+            var res = JSON.parse(hasil);
+            if (res.status) {
+              ShowSuccess(res.message);
+              $("#" + idModal).modal("hide");
+              if (callback != undefined) {
+                callback();
+              }
+            } else {
+              ShowError(res.message);
+            }
+          },
+          error: function (a, b, c) {
+            var pesan = b;
+            if (c != undefined && c != "" && c != null) {
+              pesan = c;
+            }
+            ShowError(pesan);
+          },
+        });
+      }
+    </script>
+    <div class="modal fade" id="main_modal">
+      <div
+        id="modal-custom"
+        class="modal-dialog modal-dialog-centered modal-lg"
+      >
+        <div class="modal-content">
+          <div class="modal-header" style="display: none">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="judul_modal">Default Modal</h4>
+          </div>
+          <div class="modal-body" id="isi_modal"></div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <script>
+      function OpenModal(url, xl) {
+        if (xl == undefined) {
+          $("#modal-custom").removeClass("modal-xl");
+          $("#modal-custom").addClass("modal-lg");
+        } else {
+          $("#modal-custom").removeClass("modal-lg");
+          $("#modal-custom").addClass("modal-xl");
+        }
+
+        ShowLoading();
+        $.ajax({
+          url: url,
+          success: function (res) {
+            swal.close();
+            $("#isi_modal").html(res);
+            $("#main_modal").modal("show");
+          },
+          error: function (a, b, c) {
+            swal.close();
+            if (a.status == 403) {
+              ShowError("Anda tidak punya akses");
+            } else if (a.status == 404) {
+              ShowError("Data tidak ditemukan.");
+            } else {
+              ShowError(b);
+            }
+          },
+        });
+      }
+
+      function OpenImage(url, judul) {
+        judul = judul || "Gambar";
+
+        let split = url.split(".");
+        let ext = split[split.length - 1].toLowerCase();
+        var img = ["png", "jpg", "jpeg"];
+        var isi =
+          "<span class='text-muted text-center' style='display: block;'>Dokumen tidak dapat ditampilkan</span>";
+
+        if (url.startsWith("http")) {
+        } else if (url.startsWith("/uploads")) {
+          url = url.substring(1);
+          url = "" + url;
+        } else {
+          url = "uploads/" + url;
+        }
+
+        if (img.includes(ext)) {
+          isi = "<img src='" + url + "' class='gambar-tengah' />";
+        } else if (ext == "pdf") {
+          isi =
+            "<object type='application/pdf' class='pdf-tengah' style='' data='" +
+            url +
+            "?#toolbar=0&navpanes=0'>" +
+            "<p> Tidak dapat menampilkan preview. Klik <a href=" +
+            url +
+            ">di sini</a> untuk mengunduh.</p>" +
+            "</object>";
+        }
+        var kepala = `<h2><b>${judul}</b></h2><hr>`;
+        $("#isi_modal").html(kepala + isi);
+        $("#main_modal").modal("show");
+      }
+    </script>
+    <script src="js/site.js"></script>
+
+    <script
+      src="livewire/livewire.js?id=de3fca26689cb5a39af4"
+      data-turbo-eval="false"
+      data-turbolinks-eval="false"
+    ></script>
+    <script data-turbo-eval="false" data-turbolinks-eval="false">
+      window.livewire = new Livewire();
+      window.Livewire = window.livewire;
+      window.livewire_app_url = "https://beasiswa.kemdikbud.go.id/pendaftaran";
+      window.livewire_token = "RcYfyaD2HxCZWtYn6M1CwNyOL7vAWhku7tDl0tGv";
+      window.deferLoadingAlpine = function (callback) {
+        window.addEventListener("livewire:load", function () {
+          callback();
+        });
+      };
+      let started = false;
+      window.addEventListener("alpine:initializing", function () {
+        if (!started) {
+          window.livewire.start();
+          started = true;
+        }
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        if (!started) {
+          window.livewire.start();
+          started = true;
+        }
+      });
+    </script>
+
+    <script>
+      $(".date").datepicker({
+        format: "dd/mm/yyyy",
+      });
+    </script>
+    <link
+      rel="stylesheet"
+      href="lib/template/plugins/select2/css/select2.min.css"
+    />
+    <script src="lib/template/plugins/select2/js/select2.full.min.js"></script>
+    <script>
+      function SetChosen(el) {
+        el = el || ".chosen";
+        $(el).select2({
+          width: "100%",
+        });
+      }
+
+      function SetChosenWithoutSearch(el) {
+        $(el).select2({
+          minimumResultsForSearch: -1,
+          width: "100%",
+        });
+      }
+
+      function SetChosenTags(el) {
+        $(el).select2({
+          tags: true,
+          tokenSeparators: [";"],
+          width: "100%",
+        });
+      }
+
+      function ChosenNotSorted(el) {
+        $(el).select2({
+          width: "100%",
+          placeholder: "-- Pilih --",
+        });
+
+        $(el).on("select2:select", function (evt) {
+          var element = evt.params.data.element;
+          var $element = $(element);
+
+          $element.detach();
+          $(this).append($element);
+          $(this).trigger("change");
+        });
+      }
+
+      function SetChosenServer(el, url, minChar, placeholder, callbackData) {
+        minChar = minChar || 3;
+        placeholder = placeholder || "-- Pilih --";
+        callbackData = callbackData || CallbackData;
+        $(el).select2({
+          width: "100%",
+          minimumInputLength: minChar,
+          allowClear: true,
+          placeholder: placeholder,
+          tags: false,
+          ajax: {
+            url: url,
+            dataType: "json",
+            type: "GET",
+            quietMillis: 50,
+            data: callbackData,
+            processResults: function (data) {
+              return {
+                results: $.map(data, function (item) {
+                  return {
+                    text: item.text,
+                    id: item.id,
+                  };
+                }),
+              };
+            },
+          },
+        });
+      }
+
+      function CallbackData(term) {
+        return {
+          search: term.term,
+        };
+      }
+    </script>
+    <script>
+      SetChosen();
+
+      $("#main_form").validate({
+        rules: {
+          password: {
+            minlength: 5,
+          },
+          konfirmasi_password: {
+            minlength: 5,
+            equalTo: "#password",
+          },
+          konfirmasiEmail: {
+            equalTo: "#email",
+          },
+        },
+        messages: {
+          konfirmasi_password: {
+            equalTo: "Password tidak sama",
+          },
+          konfirmasiEmail: {
+            equalTo: "Email tidak sama",
+          },
+        },
+      });
+      SetJqueryForm();
+
+      $("#reload").click(function () {
+        $.ajax({
+          type: "GET",
+          url: "reload-captcha",
+          success: function (data) {
+            $(".captcha span").html(data.captcha);
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

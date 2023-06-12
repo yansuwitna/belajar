@@ -1,0 +1,1791 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Unggah Dokumen | BPI</title>
+    <link rel="icon" href="img/logo.png" />
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="lib/template/plugins/fontawesome-free/css/all.min.css"
+    />
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link
+      rel="stylesheet"
+      href="lib/template/plugins/icheck-bootstrap/icheck-bootstrap.min.css"
+    />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="lib/template/dist/css/adminlte.css" />
+    <link rel="stylesheet" href="css/site.css" />
+
+    <!-- jQuery -->
+    <script src="lib/template/plugins/jquery/jquery.min.js"></script>
+    <script src="lib/template/plugins/jquery-validation/jquery.validate.min.js"></script>
+    <script src="lib/template/plugins/sweetalert2/sweetalert2.all.min.js"></script>
+    <script src="lib/jquery.form/jquery.form.min.js"></script>
+
+    <script>
+      function SetJqueryForm(idForm) {
+        idForm = idForm || "main_form";
+        $("#" + idForm).ajaxForm({
+          beforeSubmit: function () {
+            ShowLoading();
+          },
+          data: {
+            _token: "tRf3qhyTvmo9MuU2xnkbhzTAvaKzXUIOlaU6dswZ",
+          },
+          success: function (hasil) {
+            var res = JSON.parse(hasil);
+            if (res.status) {
+              window.onbeforeunload = function () {};
+              if (res.url !== "" && res.url !== null) {
+                location.replace(res.url);
+              } else {
+                location.reload();
+              }
+            } else {
+              ShowError(res.message);
+            }
+          },
+          error: function (a, b, c) {
+            var pesan = b;
+            if (c != undefined && c != "" && c != null) {
+              pesan = c;
+            }
+            ShowError(pesan);
+          },
+        });
+      }
+
+      function SetJqueryFormNoReload(idForm, callback, idModal) {
+        idForm = idForm || "main_form";
+        idModal = idModal || "main_modal";
+        $("#" + idForm).ajaxForm({
+          beforeSubmit: function () {
+            ShowLoading();
+          },
+          data: {
+            _token: "tRf3qhyTvmo9MuU2xnkbhzTAvaKzXUIOlaU6dswZ",
+          },
+          success: function (hasil) {
+            var res = JSON.parse(hasil);
+            if (res.status) {
+              ShowSuccess(res.message);
+              $("#" + idModal).modal("hide");
+              if (callback != undefined) {
+                callback();
+              }
+            } else {
+              ShowError(res.message);
+            }
+          },
+          error: function (a, b, c) {
+            var pesan = b;
+            if (c != undefined && c != "" && c != null) {
+              pesan = c;
+            }
+            ShowError(pesan);
+          },
+        });
+      }
+    </script>
+  </head>
+
+  <body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+      <!-- Navbar -->
+      <nav class="main-header navbar navbar-expand navbar-light">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"
+              ><i class="fas fa-bars"></i
+            ></a>
+          </li>
+        </ul>
+
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              onclick="KonfirmasiSubmit('logout-form','Anda akan keluar dari sistem.')"
+              role="button"
+            >
+              <i class="fas fa-sign-out-alt"></i>
+            </a>
+            <form
+              id="logout-form"
+              action="/pendaftaran/logout"
+              method="POST"
+              style="display: none"
+            >
+              <input
+                type="hidden"
+                name="_token"
+                value="tRf3qhyTvmo9MuU2xnkbhzTAvaKzXUIOlaU6dswZ"
+              />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.navbar -->
+
+      <!-- Main Sidebar Container -->
+      <aside class="main-sidebar sidebar-light-primary elevation-6">
+        <!-- Brand Logo -->
+        <a href="/" class="brand-link">
+          <img src="img/logo.png" alt="Logo BPI" class="brand-image" />
+          <span class="brand-text">BPI</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <!-- Sidebar user panel (optional) -->
+
+          <!-- Sidebar Menu -->
+          <nav class="mt-2 text-sm">
+            <ul
+              class="nav nav-pills nav-sidebar nav-child-indent flex-column"
+              data-widget="treeview"
+              role="menu"
+              data-accordion="false"
+              id="sidebar"
+            >
+              <li class="nav-header pt-4">Menu Utama</li>
+              <li class="nav-item">
+                <a href="/pendaftaran/datadiri" class="nav-link">
+                  <i class="nav-icon fa fa-user"></i>
+                  <p>Data Diri</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/pendaftaran/usulan-beasiswa" class="nav-link active">
+                  <i class="nav-icon fa fa-th-large"></i>
+                  <p>Berkas Beasiswa</p>
+                </a>
+              </li>
+              <li class="nav-item menu-open">
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a
+                      href="usulan-beasiswa/detail/eyJpdiI6Ik9EWFFTOFBDeDRnN29YWDlVRnhsUGc9PSIsInZhbHVlIjoicm1UNXNFREVqZjcxd2tSZUxQRjN2QT09IiwibWFjIjoiMDY4NTc1NzVhMTNlMWEzZTQxMmI5MzU3MDAwYWRjNDVkMTBlYjQ3Y2IzOTEzYzEzZDczNTZhZmVjODkzMTc0ZiIsInRhZyI6IiJ9"
+                      class="nav-link"
+                    >
+                      <i class="nav-icon far fa-circle"></i>
+                      <p>Beasiswa</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      href="biodata/eyJpdiI6Ik9EWFFTOFBDeDRnN29YWDlVRnhsUGc9PSIsInZhbHVlIjoicm1UNXNFREVqZjcxd2tSZUxQRjN2QT09IiwibWFjIjoiMDY4NTc1NzVhMTNlMWEzZTQxMmI5MzU3MDAwYWRjNDVkMTBlYjQ3Y2IzOTEzYzEzZDczNTZhZmVjODkzMTc0ZiIsInRhZyI6IiJ9"
+                      class="nav-link"
+                    >
+                      <i class="nav-icon far fa-circle"></i>
+                      <p>Biodata</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      href="informasi-keluarga/eyJpdiI6Ik9EWFFTOFBDeDRnN29YWDlVRnhsUGc9PSIsInZhbHVlIjoicm1UNXNFREVqZjcxd2tSZUxQRjN2QT09IiwibWFjIjoiMDY4NTc1NzVhMTNlMWEzZTQxMmI5MzU3MDAwYWRjNDVkMTBlYjQ3Y2IzOTEzYzEzZDczNTZhZmVjODkzMTc0ZiIsInRhZyI6IiJ9"
+                      class="nav-link"
+                    >
+                      <i class="nav-icon far fa-circle"></i>
+                      <p>Informasi Keluarga</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      href="unggah-dokumen/eyJpdiI6Ik9EWFFTOFBDeDRnN29YWDlVRnhsUGc9PSIsInZhbHVlIjoicm1UNXNFREVqZjcxd2tSZUxQRjN2QT09IiwibWFjIjoiMDY4NTc1NzVhMTNlMWEzZTQxMmI5MzU3MDAwYWRjNDVkMTBlYjQ3Y2IzOTEzYzEzZDczNTZhZmVjODkzMTc0ZiIsInRhZyI6IiJ9"
+                      class="nav-link active"
+                    >
+                      <i class="nav-icon far fa-circle"></i>
+                      <p>Dokumen</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      href="pendidikan/eyJpdiI6Ik9EWFFTOFBDeDRnN29YWDlVRnhsUGc9PSIsInZhbHVlIjoicm1UNXNFREVqZjcxd2tSZUxQRjN2QT09IiwibWFjIjoiMDY4NTc1NzVhMTNlMWEzZTQxMmI5MzU3MDAwYWRjNDVkMTBlYjQ3Y2IzOTEzYzEzZDczNTZhZmVjODkzMTc0ZiIsInRhZyI6IiJ9"
+                      class="nav-link"
+                    >
+                      <i class="nav-icon far fa-circle"></i>
+                      <p>Riwayat Pendidikan</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      href="riwayat-pekerjaan/eyJpdiI6Ik9EWFFTOFBDeDRnN29YWDlVRnhsUGc9PSIsInZhbHVlIjoicm1UNXNFREVqZjcxd2tSZUxQRjN2QT09IiwibWFjIjoiMDY4NTc1NzVhMTNlMWEzZTQxMmI5MzU3MDAwYWRjNDVkMTBlYjQ3Y2IzOTEzYzEzZDczNTZhZmVjODkzMTc0ZiIsInRhZyI6IiJ9"
+                      class="nav-link"
+                    >
+                      <i class="nav-icon far fa-circle"></i>
+                      <p>Riwayat Pekerjaan</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      href="bahasa/eyJpdiI6Ik9EWFFTOFBDeDRnN29YWDlVRnhsUGc9PSIsInZhbHVlIjoicm1UNXNFREVqZjcxd2tSZUxQRjN2QT09IiwibWFjIjoiMDY4NTc1NzVhMTNlMWEzZTQxMmI5MzU3MDAwYWRjNDVkMTBlYjQ3Y2IzOTEzYzEzZDczNTZhZmVjODkzMTc0ZiIsInRhZyI6IiJ9"
+                      class="nav-link"
+                    >
+                      <i class="nav-icon far fa-circle"></i>
+                      <p>Bahasa</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      href="pengalaman-organisasi/eyJpdiI6Ik9EWFFTOFBDeDRnN29YWDlVRnhsUGc9PSIsInZhbHVlIjoicm1UNXNFREVqZjcxd2tSZUxQRjN2QT09IiwibWFjIjoiMDY4NTc1NzVhMTNlMWEzZTQxMmI5MzU3MDAwYWRjNDVkMTBlYjQ3Y2IzOTEzYzEzZDczNTZhZmVjODkzMTc0ZiIsInRhZyI6IiJ9"
+                      class="nav-link"
+                    >
+                      <i class="nav-icon far fa-circle"></i>
+                      <p>Pengalaman Organisasi</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      href="prestasi/eyJpdiI6Ik9EWFFTOFBDeDRnN29YWDlVRnhsUGc9PSIsInZhbHVlIjoicm1UNXNFREVqZjcxd2tSZUxQRjN2QT09IiwibWFjIjoiMDY4NTc1NzVhMTNlMWEzZTQxMmI5MzU3MDAwYWRjNDVkMTBlYjQ3Y2IzOTEzYzEzZDczNTZhZmVjODkzMTc0ZiIsInRhZyI6IiJ9"
+                      class="nav-link"
+                    >
+                      <i class="nav-icon far fa-circle"></i>
+                      <p>Prestasi</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      href="penghargaan/eyJpdiI6Ik9EWFFTOFBDeDRnN29YWDlVRnhsUGc9PSIsInZhbHVlIjoicm1UNXNFREVqZjcxd2tSZUxQRjN2QT09IiwibWFjIjoiMDY4NTc1NzVhMTNlMWEzZTQxMmI5MzU3MDAwYWRjNDVkMTBlYjQ3Y2IzOTEzYzEzZDczNTZhZmVjODkzMTc0ZiIsInRhZyI6IiJ9"
+                      class="nav-link"
+                    >
+                      <i class="nav-icon far fa-circle"></i>
+                      <p>Penghargaan</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      href="workshop/eyJpdiI6Ik9EWFFTOFBDeDRnN29YWDlVRnhsUGc9PSIsInZhbHVlIjoicm1UNXNFREVqZjcxd2tSZUxQRjN2QT09IiwibWFjIjoiMDY4NTc1NzVhMTNlMWEzZTQxMmI5MzU3MDAwYWRjNDVkMTBlYjQ3Y2IzOTEzYzEzZDczNTZhZmVjODkzMTc0ZiIsInRhZyI6IiJ9"
+                      class="nav-link"
+                    >
+                      <i class="nav-icon far fa-circle"></i>
+                      <p>Pelatihan/Workshop</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      href="karya-ilmiah/eyJpdiI6Ik9EWFFTOFBDeDRnN29YWDlVRnhsUGc9PSIsInZhbHVlIjoicm1UNXNFREVqZjcxd2tSZUxQRjN2QT09IiwibWFjIjoiMDY4NTc1NzVhMTNlMWEzZTQxMmI5MzU3MDAwYWRjNDVkMTBlYjQ3Y2IzOTEzYzEzZDczNTZhZmVjODkzMTc0ZiIsInRhZyI6IiJ9"
+                      class="nav-link"
+                    >
+                      <i class="nav-icon far fa-circle"></i>
+                      <p>Karya Ilmiah</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      href="konferensi-ilmiah/eyJpdiI6Ik9EWFFTOFBDeDRnN29YWDlVRnhsUGc9PSIsInZhbHVlIjoicm1UNXNFREVqZjcxd2tSZUxQRjN2QT09IiwibWFjIjoiMDY4NTc1NzVhMTNlMWEzZTQxMmI5MzU3MDAwYWRjNDVkMTBlYjQ3Y2IzOTEzYzEzZDczNTZhZmVjODkzMTc0ZiIsInRhZyI6IiJ9"
+                      class="nav-link"
+                    >
+                      <i class="nav-icon far fa-circle"></i>
+                      <p>Konferensi Ilmiah</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      href="riset/eyJpdiI6Ik9EWFFTOFBDeDRnN29YWDlVRnhsUGc9PSIsInZhbHVlIjoicm1UNXNFREVqZjcxd2tSZUxQRjN2QT09IiwibWFjIjoiMDY4NTc1NzVhMTNlMWEzZTQxMmI5MzU3MDAwYWRjNDVkMTBlYjQ3Y2IzOTEzYzEzZDczNTZhZmVjODkzMTc0ZiIsInRhZyI6IiJ9"
+                      class="nav-link"
+                    >
+                      <i class="nav-icon far fa-circle"></i>
+                      <p>Riset</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      href="konfirmasi-berkas/eyJpdiI6Ik9EWFFTOFBDeDRnN29YWDlVRnhsUGc9PSIsInZhbHVlIjoicm1UNXNFREVqZjcxd2tSZUxQRjN2QT09IiwibWFjIjoiMDY4NTc1NzVhMTNlMWEzZTQxMmI5MzU3MDAwYWRjNDVkMTBlYjQ3Y2IzOTEzYzEzZDczNTZhZmVjODkzMTc0ZiIsInRhZyI6IiJ9"
+                      class="nav-link"
+                    >
+                      <i class="nav-icon far fa-circle"></i>
+                      <p>Konfirmasi Berkas</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+          <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+      </aside>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm-12">
+                <h1 class="mb-0"><b> Unggah Dokumen </b></h1>
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <div class="content">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-12">
+                <style>
+                  a.disabled {
+                    pointer-events: none;
+                  }
+                </style>
+                <div
+                  wire:id="XiJdo2pwbXhsrTjcEex4"
+                  wire:initial-data='{"fingerprint":{"id":"XiJdo2pwbXhsrTjcEex4","name":"pengumuman","locale":"id","path":"unggah-dokumen\/eyJpdiI6InVNQ3E3UHo1VVVXQ1VkS0ZMVUxDcnc9PSIsInZhbHVlIjoiVGVyUExuc1ZGTFhlMUJtOU1HOVpCUT09IiwibWFjIjoiN2U0YWYzMDA5YjlhY2VhN2FiYzQ1ODY5Zjc1YzhkNmEwYzIwMjc0MWQ1NDdkYzU2NGY2MzJlZWQyZjMxMzdjMiIsInRhZyI6IiJ9","method":"GET","v":"acj"},"effects":{"listeners":[]},"serverMemo":{"children":[],"errors":[],"htmlHash":"54ac8fd2","data":[],"dataMeta":[],"checksum":"dca841bea8e8267cfa742630ea66a6cde4569ab7794026fb66bbecdf33e8d0bc"}}'
+                >
+                  <div class="row-md">
+                    <blockquote>
+                      <h6>BATAS SUBMIT BEASISWA LUAR NEGERI</h6>
+                      <p>
+                        15 Juni 2023 pukul 23.59 WIB adalah batas submit berkas
+                        pendaftaran Beasiswa Pendidikan Indonesia (BPI) tujuan
+                        Perguruan Tinggi Luar Negeri. Sebelum melakukan submit
+                        berkas pendaftaran, pastikan kembali bahwa persyaratan
+                        dan dokumen sudah dilengkapi. Setelah melakukan submit,
+                        segera cetak kartu peserta sebagai tanda bahwa Anda
+                        telah menyelesaikan pendaftaran. Informasi mengenai
+                        tahapan selanjutnya dapat dipantau secara berkala di
+                        laman web beasiswa.kemdikbud.go.id dan Instagram
+                        @awardee_bpi. Semoga Sukses
+                      </p>
+                    </blockquote>
+                  </div>
+                </div>
+
+                <!-- Livewire Component wire-end:XiJdo2pwbXhsrTjcEex4 -->
+                <div class="tab-content">
+                  <div class="tab-pane active">
+                    <div class="card card-primary card-outline">
+                      <div class="card-body">
+                        <div
+                          wire:id="FMefDx2pzGMqgLrdNhQy"
+                          wire:initial-data='{"fingerprint":{"id":"FMefDx2pzGMqgLrdNhQy","name":"pengusul.usulan-pendaftaran.unggah-dokumen","locale":"id","path":"unggah-dokumen\/eyJpdiI6InVNQ3E3UHo1VVVXQ1VkS0ZMVUxDcnc9PSIsInZhbHVlIjoiVGVyUExuc1ZGTFhlMUJtOU1HOVpCUT09IiwibWFjIjoiN2U0YWYzMDA5YjlhY2VhN2FiYzQ1ODY5Zjc1YzhkNmEwYzIwMjc0MWQ1NDdkYzU2NGY2MzJlZWQyZjMxMzdjMiIsInRhZyI6IiJ9","method":"GET","v":"acj"},"effects":{"listeners":[]},"serverMemo":{"children":{"":{"id":"MtpX1J5UO3HelSlUzVI2","tag":"div"}},"errors":[],"htmlHash":"524a0720","data":{"jenisDokumen":[],"uploadedDokumen":null,"dataDiri":[]},"dataMeta":{"modelCollections":{"jenisDokumen":{"class":"App\\Models\\RJenisDokumen","id":[1,6,2,4,7,9,10,11,12,19,30,37,44,45,46,49,52,53],"relations":[],"connection":"mysql"}},"models":{"dataDiri":{"class":"App\\Models\\DataDiri","id":247677,"relations":[],"connection":"mysql"}}},"checksum":"fe32b3c86b0595627d45a13939c1c0b108f9f0e94923a1b4783988fab9b1a3af"}}'
+                        >
+                          <form action="" id="main_form">
+                            <div
+                              wire:id="Ku5elss69i18Y8Z4ghBB"
+                              wire:initial-data='{"fingerprint":{"id":"Ku5elss69i18Y8Z4ghBB","name":"pengusul.usulan-pendaftaran.dokumen-uploader","locale":"id","path":"unggah-dokumen\/eyJpdiI6InVNQ3E3UHo1VVVXQ1VkS0ZMVUxDcnc9PSIsInZhbHVlIjoiVGVyUExuc1ZGTFhlMUJtOU1HOVpCUT09IiwibWFjIjoiN2U0YWYzMDA5YjlhY2VhN2FiYzQ1ODY5Zjc1YzhkNmEwYzIwMjc0MWQ1NDdkYzU2NGY2MzJlZWQyZjMxMzdjMiIsInRhZyI6IiJ9","method":"GET","v":"acj"},"effects":{"listeners":[]},"serverMemo":{"children":[],"errors":[],"htmlHash":"1be3c5ba","data":{"file":null,"jenis":[],"saved":false,"uploadedDokumen":null,"dataDiri":[],"syarat":[]},"dataMeta":{"models":{"jenis":{"class":"App\\Models\\RJenisDokumen","id":1,"relations":[],"connection":"mysql"},"dataDiri":{"class":"App\\Models\\DataDiri","id":247677,"relations":[],"connection":"mysql"},"syarat":{"class":"App\\Models\\RSyaratBeasiswa","id":919,"relations":["rJenisDokumen"],"connection":"mysql"}}},"checksum":"04903bbb8f744c196f121aabf0f931923cd55965548e7375ed60eef598e61c16"}}'
+                              class="form-group"
+                            >
+                              <label style="font-weight: 700" class="harus"
+                                >Pas Foto</label
+                              >
+                              <br />
+                              <label class="mb-3"
+                                >Pas Foto formal, dan terlihat jelas</label
+                              >
+                              <br />
+                              <label class="text-info"
+                                >File yang diupload maksimal 2MB</label
+                              >
+                              <div
+                                class="card card-body"
+                                style="margin-bottom: 30px"
+                              >
+                                <div class="row">
+                                  <span
+                                    class="badge badge-pill badge-danger mb-3 ml-1 py-1 px-2"
+                                  >
+                                    <i class="fas fa-times mr-1"></i> Belum
+                                    Upload
+                                  </span>
+                                </div>
+                                <div class="row">
+                                  <div class="col-lg-5 custom-file">
+                                    <input
+                                      type="file"
+                                      name="dokumen"
+                                      id="dokumenInput"
+                                      class="custom-file-input"
+                                      wire:model="file"
+                                      accept=".pdf,.png,.jpg,.jpeg"
+                                    />
+                                    <label
+                                      class="custom-file-label"
+                                      for="dokumenInput"
+                                      >Pilih Berkas...</label
+                                    >
+                                  </div>
+
+                                  <div class="col mt-1">
+                                    <div
+                                      wire:loading
+                                      wire:target="file"
+                                      class="spinner-border spinner-border-sm text-primary my-auto"
+                                      role="status"
+                                    >
+                                      <span class="sr-only">Loading...</span>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="mt-2"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Livewire Component wire-end:Ku5elss69i18Y8Z4ghBB -->
+                            <div
+                              wire:id="nKE4lQd6zBpW0cO9uHsT"
+                              wire:initial-data='{"fingerprint":{"id":"nKE4lQd6zBpW0cO9uHsT","name":"pengusul.usulan-pendaftaran.dokumen-uploader","locale":"id","path":"unggah-dokumen\/eyJpdiI6InVNQ3E3UHo1VVVXQ1VkS0ZMVUxDcnc9PSIsInZhbHVlIjoiVGVyUExuc1ZGTFhlMUJtOU1HOVpCUT09IiwibWFjIjoiN2U0YWYzMDA5YjlhY2VhN2FiYzQ1ODY5Zjc1YzhkNmEwYzIwMjc0MWQ1NDdkYzU2NGY2MzJlZWQyZjMxMzdjMiIsInRhZyI6IiJ9","method":"GET","v":"acj"},"effects":{"listeners":[]},"serverMemo":{"children":[],"errors":[],"htmlHash":"fca83292","data":{"file":null,"jenis":[],"saved":false,"uploadedDokumen":null,"dataDiri":[],"syarat":[]},"dataMeta":{"models":{"jenis":{"class":"App\\Models\\RJenisDokumen","id":6,"relations":[],"connection":"mysql"},"dataDiri":{"class":"App\\Models\\DataDiri","id":247677,"relations":[],"connection":"mysql"},"syarat":{"class":"App\\Models\\RSyaratBeasiswa","id":920,"relations":["rJenisDokumen"],"connection":"mysql"}}},"checksum":"11c6b06e3a6433cc6e0cf7ff1b0ad9d95a248f22bfe7bf428f5f8a1eb7c112c6"}}'
+                              class="form-group"
+                            >
+                              <label style="font-weight: 700" class="harus"
+                                >KTP</label
+                              >
+                              <br />
+                              <label class="mb-3"
+                                >hasil foto/Scan dapat terbaca dengan
+                                jelas</label
+                              >
+                              <br />
+                              <label class="text-info"
+                                >File yang diupload maksimal 2MB</label
+                              >
+                              <div
+                                class="card card-body"
+                                style="margin-bottom: 30px"
+                              >
+                                <div class="row">
+                                  <span
+                                    class="badge badge-pill badge-danger mb-3 ml-1 py-1 px-2"
+                                  >
+                                    <i class="fas fa-times mr-1"></i> Belum
+                                    Upload
+                                  </span>
+                                </div>
+                                <div class="row">
+                                  <div class="col-lg-5 custom-file">
+                                    <input
+                                      type="file"
+                                      name="dokumen"
+                                      id="dokumenInput"
+                                      class="custom-file-input"
+                                      wire:model="file"
+                                      accept=".pdf,.png,.jpg,.jpeg"
+                                    />
+                                    <label
+                                      class="custom-file-label"
+                                      for="dokumenInput"
+                                      >Pilih Berkas...</label
+                                    >
+                                  </div>
+
+                                  <div class="col mt-1">
+                                    <div
+                                      wire:loading
+                                      wire:target="file"
+                                      class="spinner-border spinner-border-sm text-primary my-auto"
+                                      role="status"
+                                    >
+                                      <span class="sr-only">Loading...</span>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="mt-2"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Livewire Component wire-end:nKE4lQd6zBpW0cO9uHsT -->
+                            <div
+                              wire:id="T7eJsLMGBddWFmxuwHfk"
+                              wire:initial-data='{"fingerprint":{"id":"T7eJsLMGBddWFmxuwHfk","name":"pengusul.usulan-pendaftaran.dokumen-uploader","locale":"id","path":"unggah-dokumen\/eyJpdiI6InVNQ3E3UHo1VVVXQ1VkS0ZMVUxDcnc9PSIsInZhbHVlIjoiVGVyUExuc1ZGTFhlMUJtOU1HOVpCUT09IiwibWFjIjoiN2U0YWYzMDA5YjlhY2VhN2FiYzQ1ODY5Zjc1YzhkNmEwYzIwMjc0MWQ1NDdkYzU2NGY2MzJlZWQyZjMxMzdjMiIsInRhZyI6IiJ9","method":"GET","v":"acj"},"effects":{"listeners":[]},"serverMemo":{"children":[],"errors":[],"htmlHash":"91b4f614","data":{"file":null,"jenis":[],"saved":false,"uploadedDokumen":null,"dataDiri":[],"syarat":[]},"dataMeta":{"models":{"jenis":{"class":"App\\Models\\RJenisDokumen","id":2,"relations":[],"connection":"mysql"},"dataDiri":{"class":"App\\Models\\DataDiri","id":247677,"relations":[],"connection":"mysql"},"syarat":{"class":"App\\Models\\RSyaratBeasiswa","id":922,"relations":["rJenisDokumen"],"connection":"mysql"}}},"checksum":"81885d55f3439145c668448aaee77c003fe0896c963f65a052edc60fb0ba6318"}}'
+                              class="form-group"
+                            >
+                              <label style="font-weight: 700" class="harus"
+                                >Ijazah pendidikan terakhir (asli/legalisir).
+                                Khusus pendaftar doktoral, mengunggah ijazah S1
+                                dan S2.</label
+                              >
+                              <br />
+                              <label class="mb-3"
+                                >Apabila lulusan luar negeri, maka wajib
+                                melampirkan hasil penyetaraan ijazah dari
+                                Kementerian Pendidikan, Kebudayaan, Riset, dan
+                                Teknologi, melalui laman
+                                https://ijazahln.kemdikbud.go.id/ijazahln/.
+                              </label>
+                              <br />
+                              <label class="text-info"
+                                >File yang diupload maksimal 2MB</label
+                              >
+                              <div
+                                class="card card-body"
+                                style="margin-bottom: 30px"
+                              >
+                                <div class="row">
+                                  <span
+                                    class="badge badge-pill badge-danger mb-3 ml-1 py-1 px-2"
+                                  >
+                                    <i class="fas fa-times mr-1"></i> Belum
+                                    Upload
+                                  </span>
+                                </div>
+                                <div class="row">
+                                  <div class="col-lg-5 custom-file">
+                                    <input
+                                      type="file"
+                                      name="dokumen"
+                                      id="dokumenInput"
+                                      class="custom-file-input"
+                                      wire:model="file"
+                                      accept=".pdf,.png,.jpg,.jpeg"
+                                    />
+                                    <label
+                                      class="custom-file-label"
+                                      for="dokumenInput"
+                                      >Pilih Berkas...</label
+                                    >
+                                  </div>
+
+                                  <div class="col mt-1">
+                                    <div
+                                      wire:loading
+                                      wire:target="file"
+                                      class="spinner-border spinner-border-sm text-primary my-auto"
+                                      role="status"
+                                    >
+                                      <span class="sr-only">Loading...</span>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="mt-2"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Livewire Component wire-end:T7eJsLMGBddWFmxuwHfk -->
+                            <div
+                              wire:id="zwmRTaZ6bOn7up0ej7ml"
+                              wire:initial-data='{"fingerprint":{"id":"zwmRTaZ6bOn7up0ej7ml","name":"pengusul.usulan-pendaftaran.dokumen-uploader","locale":"id","path":"unggah-dokumen\/eyJpdiI6InVNQ3E3UHo1VVVXQ1VkS0ZMVUxDcnc9PSIsInZhbHVlIjoiVGVyUExuc1ZGTFhlMUJtOU1HOVpCUT09IiwibWFjIjoiN2U0YWYzMDA5YjlhY2VhN2FiYzQ1ODY5Zjc1YzhkNmEwYzIwMjc0MWQ1NDdkYzU2NGY2MzJlZWQyZjMxMzdjMiIsInRhZyI6IiJ9","method":"GET","v":"acj"},"effects":{"listeners":[]},"serverMemo":{"children":[],"errors":[],"htmlHash":"41264e38","data":{"file":null,"jenis":[],"saved":false,"uploadedDokumen":null,"dataDiri":[],"syarat":[]},"dataMeta":{"models":{"jenis":{"class":"App\\Models\\RJenisDokumen","id":4,"relations":[],"connection":"mysql"},"dataDiri":{"class":"App\\Models\\DataDiri","id":247677,"relations":[],"connection":"mysql"},"syarat":{"class":"App\\Models\\RSyaratBeasiswa","id":926,"relations":["rJenisDokumen"],"connection":"mysql"}}},"checksum":"d9a5d324869343b355cc96372cc044d144640d75064c69d4cf3bda36a632bde1"}}'
+                              class="form-group"
+                            >
+                              <label style="font-weight: 700" class="harus"
+                                >Surat Pernyataan Pendaftar Beasiswa Pendidikan
+                                Indonesia Kementerian Pendidikan, Kebudayaan,
+                                Riset, Dan Teknologi</label
+                              >
+                              <br />
+                              <label class="mb-3"
+                                >Surat Pernyataan Komitmen sebagai penerima
+                                beasiswa sesuai dengan format dalam lampiran dan
+                                ditandatangani di atas materai
+                                Rp10.000,00</label
+                              >
+                              <br />
+                              <label class="text-info"
+                                >File yang diupload maksimal 2MB</label
+                              >
+                              <div
+                                class="card card-body"
+                                style="margin-bottom: 30px"
+                              >
+                                <div class="row">
+                                  <span
+                                    class="badge badge-pill badge-danger mb-3 ml-1 py-1 px-2"
+                                  >
+                                    <i class="fas fa-times mr-1"></i> Belum
+                                    Upload
+                                  </span>
+                                </div>
+                                <div class="row">
+                                  <div class="col-lg-5 custom-file">
+                                    <input
+                                      type="file"
+                                      name="dokumen"
+                                      id="dokumenInput"
+                                      class="custom-file-input"
+                                      wire:model="file"
+                                      accept=".pdf,.png,.jpg,.jpeg"
+                                    />
+                                    <label
+                                      class="custom-file-label"
+                                      for="dokumenInput"
+                                      >Pilih Berkas...</label
+                                    >
+                                  </div>
+
+                                  <div class="col mt-1">
+                                    <div
+                                      wire:loading
+                                      wire:target="file"
+                                      class="spinner-border spinner-border-sm text-primary my-auto"
+                                      role="status"
+                                    >
+                                      <span class="sr-only">Loading...</span>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="mt-2">
+                                    <a
+                                      class="btn btn-info"
+                                      target="_blank"
+                                      href="https://docs.google.com/document/d/17wtmeb8cCouE8RARBv0eFz6lgcOf6Gzo2U-QOv0LnUo/edit?usp=sharing"
+                                    >
+                                      <i class="fa fa-file-download"></i> Format
+                                      Dokumen
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Livewire Component wire-end:zwmRTaZ6bOn7up0ej7ml -->
+                            <div
+                              wire:id="43yE3WumcLwizCJ0dBeL"
+                              wire:initial-data='{"fingerprint":{"id":"43yE3WumcLwizCJ0dBeL","name":"pengusul.usulan-pendaftaran.dokumen-uploader","locale":"id","path":"unggah-dokumen\/eyJpdiI6InVNQ3E3UHo1VVVXQ1VkS0ZMVUxDcnc9PSIsInZhbHVlIjoiVGVyUExuc1ZGTFhlMUJtOU1HOVpCUT09IiwibWFjIjoiN2U0YWYzMDA5YjlhY2VhN2FiYzQ1ODY5Zjc1YzhkNmEwYzIwMjc0MWQ1NDdkYzU2NGY2MzJlZWQyZjMxMzdjMiIsInRhZyI6IiJ9","method":"GET","v":"acj"},"effects":{"listeners":[]},"serverMemo":{"children":[],"errors":[],"htmlHash":"40ee06f1","data":{"file":null,"jenis":[],"saved":false,"uploadedDokumen":null,"dataDiri":[],"syarat":[]},"dataMeta":{"models":{"jenis":{"class":"App\\Models\\RJenisDokumen","id":7,"relations":[],"connection":"mysql"},"dataDiri":{"class":"App\\Models\\DataDiri","id":247677,"relations":[],"connection":"mysql"},"syarat":{"class":"App\\Models\\RSyaratBeasiswa","id":928,"relations":["rJenisDokumen"],"connection":"mysql"}}},"checksum":"dd41110c403ed64f78703d3bf655cb3da60f1a6287f15593c4b0b4621587d022"}}'
+                              class="form-group"
+                            >
+                              <label style="font-weight: 700" class="harus"
+                                >Surat Rekomendasi Pimpinan</label
+                              >
+                              <br />
+                              <label class="mb-3"
+                                >Ketentuan Surat Rekomendasi dapat dilihat pada
+                                Panduan Pendaftaran Beasiswa Pendidikan
+                                Indonesia</label
+                              >
+                              <br />
+                              <label class="text-info"
+                                >File yang diupload maksimal 2MB</label
+                              >
+                              <div
+                                class="card card-body"
+                                style="margin-bottom: 30px"
+                              >
+                                <div class="row">
+                                  <span
+                                    class="badge badge-pill badge-danger mb-3 ml-1 py-1 px-2"
+                                  >
+                                    <i class="fas fa-times mr-1"></i> Belum
+                                    Upload
+                                  </span>
+                                </div>
+                                <div class="row">
+                                  <div class="col-lg-5 custom-file">
+                                    <input
+                                      type="file"
+                                      name="dokumen"
+                                      id="dokumenInput"
+                                      class="custom-file-input"
+                                      wire:model="file"
+                                      accept=".pdf,.png,.jpg,.jpeg"
+                                    />
+                                    <label
+                                      class="custom-file-label"
+                                      for="dokumenInput"
+                                      >Pilih Berkas...</label
+                                    >
+                                  </div>
+
+                                  <div class="col mt-1">
+                                    <div
+                                      wire:loading
+                                      wire:target="file"
+                                      class="spinner-border spinner-border-sm text-primary my-auto"
+                                      role="status"
+                                    >
+                                      <span class="sr-only">Loading...</span>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="mt-2">
+                                    <a
+                                      class="btn btn-info"
+                                      target="_blank"
+                                      href="https://docs.google.com/document/d/1JkzKikOLg9SthU6-hzvDuVXnEuvKNjHQ1qtCqrJ_Kts/edit?usp=sharing"
+                                    >
+                                      <i class="fa fa-file-download"></i> Format
+                                      Dokumen
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Livewire Component wire-end:43yE3WumcLwizCJ0dBeL -->
+                            <div
+                              wire:id="gwhgN2xstQBT9vSyOXrH"
+                              wire:initial-data='{"fingerprint":{"id":"gwhgN2xstQBT9vSyOXrH","name":"pengusul.usulan-pendaftaran.dokumen-uploader","locale":"id","path":"unggah-dokumen\/eyJpdiI6InVNQ3E3UHo1VVVXQ1VkS0ZMVUxDcnc9PSIsInZhbHVlIjoiVGVyUExuc1ZGTFhlMUJtOU1HOVpCUT09IiwibWFjIjoiN2U0YWYzMDA5YjlhY2VhN2FiYzQ1ODY5Zjc1YzhkNmEwYzIwMjc0MWQ1NDdkYzU2NGY2MzJlZWQyZjMxMzdjMiIsInRhZyI6IiJ9","method":"GET","v":"acj"},"effects":{"listeners":[]},"serverMemo":{"children":[],"errors":[],"htmlHash":"a255627e","data":{"file":null,"jenis":[],"saved":false,"uploadedDokumen":null,"dataDiri":[],"syarat":[]},"dataMeta":{"models":{"jenis":{"class":"App\\Models\\RJenisDokumen","id":9,"relations":[],"connection":"mysql"},"dataDiri":{"class":"App\\Models\\DataDiri","id":247677,"relations":[],"connection":"mysql"},"syarat":{"class":"App\\Models\\RSyaratBeasiswa","id":921,"relations":["rJenisDokumen"],"connection":"mysql"}}},"checksum":"6b0613d5a1faa8419958dc93082f695de24e1e89f3bf3faa73dc114765a867b3"}}'
+                              class="form-group"
+                            >
+                              <label style="font-weight: 700" class="harus"
+                                >LOA Unconditional/Ket Diterima PT</label
+                              >
+                              <br />
+                              <label class="mb-3"
+                                >Surat resmi yang dikeluarkan oleh Perguruan
+                                Tinggi yang menyatakan bahwa calon mahasiswa
+                                telah memenuhi kriteria dan dinyatakan lulus
+                                diterima di perguruan tinggi tersebut tanpa ada
+                                syarat tambahan.</label
+                              >
+                              <br />
+                              <label class="text-info"
+                                >File yang diupload maksimal 2MB</label
+                              >
+                              <div
+                                class="card card-body"
+                                style="margin-bottom: 30px"
+                              >
+                                <div class="row">
+                                  <span
+                                    class="badge badge-pill badge-danger mb-3 ml-1 py-1 px-2"
+                                  >
+                                    <i class="fas fa-times mr-1"></i> Belum
+                                    Upload
+                                  </span>
+                                </div>
+                                <div class="row">
+                                  <div class="col-lg-5 custom-file">
+                                    <input
+                                      type="file"
+                                      name="dokumen"
+                                      id="dokumenInput"
+                                      class="custom-file-input"
+                                      wire:model="file"
+                                      accept=".pdf,.png,.jpg,.jpeg"
+                                    />
+                                    <label
+                                      class="custom-file-label"
+                                      for="dokumenInput"
+                                      >Pilih Berkas...</label
+                                    >
+                                  </div>
+
+                                  <div class="col mt-1">
+                                    <div
+                                      wire:loading
+                                      wire:target="file"
+                                      class="spinner-border spinner-border-sm text-primary my-auto"
+                                      role="status"
+                                    >
+                                      <span class="sr-only">Loading...</span>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="mt-2"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Livewire Component wire-end:gwhgN2xstQBT9vSyOXrH -->
+                            <div
+                              wire:id="lzpY2j8XBTzacXqBDOzj"
+                              wire:initial-data='{"fingerprint":{"id":"lzpY2j8XBTzacXqBDOzj","name":"pengusul.usulan-pendaftaran.dokumen-uploader","locale":"id","path":"unggah-dokumen\/eyJpdiI6InVNQ3E3UHo1VVVXQ1VkS0ZMVUxDcnc9PSIsInZhbHVlIjoiVGVyUExuc1ZGTFhlMUJtOU1HOVpCUT09IiwibWFjIjoiN2U0YWYzMDA5YjlhY2VhN2FiYzQ1ODY5Zjc1YzhkNmEwYzIwMjc0MWQ1NDdkYzU2NGY2MzJlZWQyZjMxMzdjMiIsInRhZyI6IiJ9","method":"GET","v":"acj"},"effects":{"listeners":[]},"serverMemo":{"children":[],"errors":[],"htmlHash":"c48f6943","data":{"file":null,"jenis":[],"saved":false,"uploadedDokumen":null,"dataDiri":[],"syarat":[]},"dataMeta":{"models":{"jenis":{"class":"App\\Models\\RJenisDokumen","id":10,"relations":[],"connection":"mysql"},"dataDiri":{"class":"App\\Models\\DataDiri","id":247677,"relations":[],"connection":"mysql"},"syarat":{"class":"App\\Models\\RSyaratBeasiswa","id":929,"relations":["rJenisDokumen"],"connection":"mysql"}}},"checksum":"6543a302a2bfc26e108117420252c0b5cf6df551b056327c5c1017f3643dc609"}}'
+                              class="form-group"
+                            >
+                              <label style="font-weight: 700" class="harus"
+                                >Surat Rekomendasi/Rekomendasi Akademisi</label
+                              >
+                              <br />
+                              <label class="mb-3"
+                                >Ketentuan Surat Rekomendasi dapat dilihat pada
+                                Panduan Pendaftaran Beasiswa Pendidikan
+                                Indonesia</label
+                              >
+                              <br />
+                              <label class="text-info"
+                                >File yang diupload maksimal 2MB</label
+                              >
+                              <div
+                                class="card card-body"
+                                style="margin-bottom: 30px"
+                              >
+                                <div class="row">
+                                  <span
+                                    class="badge badge-pill badge-danger mb-3 ml-1 py-1 px-2"
+                                  >
+                                    <i class="fas fa-times mr-1"></i> Belum
+                                    Upload
+                                  </span>
+                                </div>
+                                <div class="row">
+                                  <div class="col-lg-5 custom-file">
+                                    <input
+                                      type="file"
+                                      name="dokumen"
+                                      id="dokumenInput"
+                                      class="custom-file-input"
+                                      wire:model="file"
+                                      accept=".pdf,.png,.jpg,.jpeg"
+                                    />
+                                    <label
+                                      class="custom-file-label"
+                                      for="dokumenInput"
+                                      >Pilih Berkas...</label
+                                    >
+                                  </div>
+
+                                  <div class="col mt-1">
+                                    <div
+                                      wire:loading
+                                      wire:target="file"
+                                      class="spinner-border spinner-border-sm text-primary my-auto"
+                                      role="status"
+                                    >
+                                      <span class="sr-only">Loading...</span>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="mt-2"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Livewire Component wire-end:lzpY2j8XBTzacXqBDOzj -->
+                            <div
+                              wire:id="U1JUkRODAdlYusq7KyNx"
+                              wire:initial-data='{"fingerprint":{"id":"U1JUkRODAdlYusq7KyNx","name":"pengusul.usulan-pendaftaran.dokumen-uploader","locale":"id","path":"unggah-dokumen\/eyJpdiI6InVNQ3E3UHo1VVVXQ1VkS0ZMVUxDcnc9PSIsInZhbHVlIjoiVGVyUExuc1ZGTFhlMUJtOU1HOVpCUT09IiwibWFjIjoiN2U0YWYzMDA5YjlhY2VhN2FiYzQ1ODY5Zjc1YzhkNmEwYzIwMjc0MWQ1NDdkYzU2NGY2MzJlZWQyZjMxMzdjMiIsInRhZyI6IiJ9","method":"GET","v":"acj"},"effects":{"listeners":[]},"serverMemo":{"children":[],"errors":[],"htmlHash":"0a150fbf","data":{"file":null,"jenis":[],"saved":false,"uploadedDokumen":null,"dataDiri":[],"syarat":[]},"dataMeta":{"models":{"jenis":{"class":"App\\Models\\RJenisDokumen","id":11,"relations":[],"connection":"mysql"},"dataDiri":{"class":"App\\Models\\DataDiri","id":247677,"relations":[],"connection":"mysql"},"syarat":{"class":"App\\Models\\RSyaratBeasiswa","id":927,"relations":["rJenisDokumen"],"connection":"mysql"}}},"checksum":"ccd03d26e4146fff0a9a4d9191eda5be7648e929413f7095dd8e7218e8adf193"}}'
+                              class="form-group"
+                            >
+                              <label style="font-weight: 700" class="harus"
+                                >Surat Izin Pimpinan</label
+                              >
+                              <br />
+                              <label class="mb-3"
+                                >Ketentuan Surat Izin dapat dilihat pada Panduan
+                                Pendaftaran Beasiswa Pendidikan Indonesia</label
+                              >
+                              <br />
+                              <label class="text-info"
+                                >File yang diupload maksimal 2MB</label
+                              >
+                              <div
+                                class="card card-body"
+                                style="margin-bottom: 30px"
+                              >
+                                <div class="row">
+                                  <span
+                                    class="badge badge-pill badge-danger mb-3 ml-1 py-1 px-2"
+                                  >
+                                    <i class="fas fa-times mr-1"></i> Belum
+                                    Upload
+                                  </span>
+                                </div>
+                                <div class="row">
+                                  <div class="col-lg-5 custom-file">
+                                    <input
+                                      type="file"
+                                      name="dokumen"
+                                      id="dokumenInput"
+                                      class="custom-file-input"
+                                      wire:model="file"
+                                      accept=".pdf,.png,.jpg,.jpeg"
+                                    />
+                                    <label
+                                      class="custom-file-label"
+                                      for="dokumenInput"
+                                      >Pilih Berkas...</label
+                                    >
+                                  </div>
+
+                                  <div class="col mt-1">
+                                    <div
+                                      wire:loading
+                                      wire:target="file"
+                                      class="spinner-border spinner-border-sm text-primary my-auto"
+                                      role="status"
+                                    >
+                                      <span class="sr-only">Loading...</span>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="mt-2">
+                                    <a
+                                      class="btn btn-info"
+                                      target="_blank"
+                                      href="https://docs.google.com/document/d/1ILdnInsM55f7Mg04uebGrOLa3AP87X9pyYwCysKlSAY/edit?usp=sharing"
+                                    >
+                                      <i class="fa fa-file-download"></i> Format
+                                      Dokumen
+                                    </a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Livewire Component wire-end:U1JUkRODAdlYusq7KyNx -->
+                            <div
+                              wire:id="tmwq2tFw3opWlPIun5k6"
+                              wire:initial-data='{"fingerprint":{"id":"tmwq2tFw3opWlPIun5k6","name":"pengusul.usulan-pendaftaran.dokumen-uploader","locale":"id","path":"unggah-dokumen\/eyJpdiI6InVNQ3E3UHo1VVVXQ1VkS0ZMVUxDcnc9PSIsInZhbHVlIjoiVGVyUExuc1ZGTFhlMUJtOU1HOVpCUT09IiwibWFjIjoiN2U0YWYzMDA5YjlhY2VhN2FiYzQ1ODY5Zjc1YzhkNmEwYzIwMjc0MWQ1NDdkYzU2NGY2MzJlZWQyZjMxMzdjMiIsInRhZyI6IiJ9","method":"GET","v":"acj"},"effects":{"listeners":[]},"serverMemo":{"children":[],"errors":[],"htmlHash":"e9184b51","data":{"file":null,"jenis":[],"saved":false,"uploadedDokumen":null,"dataDiri":[],"syarat":[]},"dataMeta":{"models":{"jenis":{"class":"App\\Models\\RJenisDokumen","id":12,"relations":[],"connection":"mysql"},"dataDiri":{"class":"App\\Models\\DataDiri","id":247677,"relations":[],"connection":"mysql"},"syarat":{"class":"App\\Models\\RSyaratBeasiswa","id":934,"relations":["rJenisDokumen"],"connection":"mysql"}}},"checksum":"a0a584c41076062933789b5bab764cb0e94906deecf1456407aca70b79e685cb"}}'
+                              class="form-group"
+                            >
+                              <label style="font-weight: 700" class="harus"
+                                >Surat Dokumen Rencana Studi</label
+                              >
+                              <br />
+                              <label class="mb-3"
+                                >Ketentuan Rencana Studi dapat dilihat pada
+                                Panduan Pendaftaran Beasiswa Pendidikan
+                                Indonesia.</label
+                              >
+                              <br />
+                              <label class="text-info"
+                                >File yang diupload maksimal 2MB</label
+                              >
+                              <div
+                                class="card card-body"
+                                style="margin-bottom: 30px"
+                              >
+                                <div class="row">
+                                  <span
+                                    class="badge badge-pill badge-danger mb-3 ml-1 py-1 px-2"
+                                  >
+                                    <i class="fas fa-times mr-1"></i> Belum
+                                    Upload
+                                  </span>
+                                </div>
+                                <div class="row">
+                                  <div class="col-lg-5 custom-file">
+                                    <input
+                                      type="file"
+                                      name="dokumen"
+                                      id="dokumenInput"
+                                      class="custom-file-input"
+                                      wire:model="file"
+                                      accept=".pdf,.png,.jpg,.jpeg"
+                                    />
+                                    <label
+                                      class="custom-file-label"
+                                      for="dokumenInput"
+                                      >Pilih Berkas...</label
+                                    >
+                                  </div>
+
+                                  <div class="col mt-1">
+                                    <div
+                                      wire:loading
+                                      wire:target="file"
+                                      class="spinner-border spinner-border-sm text-primary my-auto"
+                                      role="status"
+                                    >
+                                      <span class="sr-only">Loading...</span>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="mt-2"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Livewire Component wire-end:tmwq2tFw3opWlPIun5k6 -->
+                            <div
+                              wire:id="BbAuWHazRwdJ7XzlfAkY"
+                              wire:initial-data='{"fingerprint":{"id":"BbAuWHazRwdJ7XzlfAkY","name":"pengusul.usulan-pendaftaran.dokumen-uploader","locale":"id","path":"unggah-dokumen\/eyJpdiI6InVNQ3E3UHo1VVVXQ1VkS0ZMVUxDcnc9PSIsInZhbHVlIjoiVGVyUExuc1ZGTFhlMUJtOU1HOVpCUT09IiwibWFjIjoiN2U0YWYzMDA5YjlhY2VhN2FiYzQ1ODY5Zjc1YzhkNmEwYzIwMjc0MWQ1NDdkYzU2NGY2MzJlZWQyZjMxMzdjMiIsInRhZyI6IiJ9","method":"GET","v":"acj"},"effects":{"listeners":[]},"serverMemo":{"children":[],"errors":[],"htmlHash":"d31d82de","data":{"file":null,"jenis":[],"saved":false,"uploadedDokumen":null,"dataDiri":[],"syarat":[]},"dataMeta":{"models":{"jenis":{"class":"App\\Models\\RJenisDokumen","id":19,"relations":[],"connection":"mysql"},"dataDiri":{"class":"App\\Models\\DataDiri","id":247677,"relations":[],"connection":"mysql"},"syarat":{"class":"App\\Models\\RSyaratBeasiswa","id":935,"relations":["rJenisDokumen"],"connection":"mysql"}}},"checksum":"c95710a79dde6cc161ec687d001903697c6ce31a2c63761ff2adcb81ea98c8b8"}}'
+                              class="form-group"
+                            >
+                              <label style="font-weight: 700" class="harus"
+                                >SK Pengangkatan sebagai ASN/Pegawai
+                                Tetap</label
+                              >
+                              <br />
+                              <label class="mb-3"
+                                >Surat Keputusan pengangkatan sebagai ASN atau
+                                Pegawai Tetap</label
+                              >
+                              <br />
+                              <label class="text-info"
+                                >File yang diupload maksimal 2MB</label
+                              >
+                              <div
+                                class="card card-body"
+                                style="margin-bottom: 30px"
+                              >
+                                <div class="row">
+                                  <span
+                                    class="badge badge-pill badge-danger mb-3 ml-1 py-1 px-2"
+                                  >
+                                    <i class="fas fa-times mr-1"></i> Belum
+                                    Upload
+                                  </span>
+                                </div>
+                                <div class="row">
+                                  <div class="col-lg-5 custom-file">
+                                    <input
+                                      type="file"
+                                      name="dokumen"
+                                      id="dokumenInput"
+                                      class="custom-file-input"
+                                      wire:model="file"
+                                      accept=".pdf,.png,.jpg,.jpeg"
+                                    />
+                                    <label
+                                      class="custom-file-label"
+                                      for="dokumenInput"
+                                      >Pilih Berkas...</label
+                                    >
+                                  </div>
+
+                                  <div class="col mt-1">
+                                    <div
+                                      wire:loading
+                                      wire:target="file"
+                                      class="spinner-border spinner-border-sm text-primary my-auto"
+                                      role="status"
+                                    >
+                                      <span class="sr-only">Loading...</span>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="mt-2"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Livewire Component wire-end:BbAuWHazRwdJ7XzlfAkY -->
+                            <div
+                              wire:id="Qn0tmmwLJPTy02k42xdl"
+                              wire:initial-data='{"fingerprint":{"id":"Qn0tmmwLJPTy02k42xdl","name":"pengusul.usulan-pendaftaran.dokumen-uploader","locale":"id","path":"unggah-dokumen\/eyJpdiI6InVNQ3E3UHo1VVVXQ1VkS0ZMVUxDcnc9PSIsInZhbHVlIjoiVGVyUExuc1ZGTFhlMUJtOU1HOVpCUT09IiwibWFjIjoiN2U0YWYzMDA5YjlhY2VhN2FiYzQ1ODY5Zjc1YzhkNmEwYzIwMjc0MWQ1NDdkYzU2NGY2MzJlZWQyZjMxMzdjMiIsInRhZyI6IiJ9","method":"GET","v":"acj"},"effects":{"listeners":[]},"serverMemo":{"children":[],"errors":[],"htmlHash":"02f76d86","data":{"file":null,"jenis":[],"saved":false,"uploadedDokumen":null,"dataDiri":[],"syarat":[]},"dataMeta":{"models":{"jenis":{"class":"App\\Models\\RJenisDokumen","id":30,"relations":[],"connection":"mysql"},"dataDiri":{"class":"App\\Models\\DataDiri","id":247677,"relations":[],"connection":"mysql"},"syarat":{"class":"App\\Models\\RSyaratBeasiswa","id":930,"relations":["rJenisDokumen"],"connection":"mysql"}}},"checksum":"c670b24f22d0be9287c7463b93f1a1293d958725c2fef498c77f7f15e9cab26d"}}'
+                              class="form-group"
+                            >
+                              <label style="font-weight: 700" class="harus"
+                                >Surat Keterangan Masa Kerja</label
+                              >
+                              <br />
+                              <label class="mb-3"
+                                >Jenis Beasiswa Pelaku Budaya: Surat Keterangan
+                                masa kerja bagi PNS minimal 4 tahun dan setiap
+                                unsur penilaian kerja sekurang-kurangnya
+                                bernilai “baik” dalam 2 (dua) tahun terakhir;
+                                Jenis Beasiswa Pendidikan dan Tenaga
+                                Kependidikan: Surat keterangan sudah mengajar
+                                paling sedikit 2 (dua) tahun berturut-turut;
+                                Khusus Pathway Program LPTK/PPG : Surat
+                                keterangan telah mengabdi sebagai Dosen Tetap
+                                selama minimal 3 tahun di perguruan tinggi yang
+                                menyelenggarakan program studi
+                                Pendidikan.</label
+                              >
+                              <br />
+                              <label class="text-info"
+                                >File yang diupload maksimal 2MB</label
+                              >
+                              <div
+                                class="card card-body"
+                                style="margin-bottom: 30px"
+                              >
+                                <div class="row">
+                                  <span
+                                    class="badge badge-pill badge-danger mb-3 ml-1 py-1 px-2"
+                                  >
+                                    <i class="fas fa-times mr-1"></i> Belum
+                                    Upload
+                                  </span>
+                                </div>
+                                <div class="row">
+                                  <div class="col-lg-5 custom-file">
+                                    <input
+                                      type="file"
+                                      name="dokumen"
+                                      id="dokumenInput"
+                                      class="custom-file-input"
+                                      wire:model="file"
+                                      accept=".pdf,.png,.jpg,.jpeg"
+                                    />
+                                    <label
+                                      class="custom-file-label"
+                                      for="dokumenInput"
+                                      >Pilih Berkas...</label
+                                    >
+                                  </div>
+
+                                  <div class="col mt-1">
+                                    <div
+                                      wire:loading
+                                      wire:target="file"
+                                      class="spinner-border spinner-border-sm text-primary my-auto"
+                                      role="status"
+                                    >
+                                      <span class="sr-only">Loading...</span>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="mt-2"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Livewire Component wire-end:Qn0tmmwLJPTy02k42xdl -->
+                            <div
+                              wire:id="ONrZcZGBYjtsWnm6K4rO"
+                              wire:initial-data='{"fingerprint":{"id":"ONrZcZGBYjtsWnm6K4rO","name":"pengusul.usulan-pendaftaran.dokumen-uploader","locale":"id","path":"unggah-dokumen\/eyJpdiI6InVNQ3E3UHo1VVVXQ1VkS0ZMVUxDcnc9PSIsInZhbHVlIjoiVGVyUExuc1ZGTFhlMUJtOU1HOVpCUT09IiwibWFjIjoiN2U0YWYzMDA5YjlhY2VhN2FiYzQ1ODY5Zjc1YzhkNmEwYzIwMjc0MWQ1NDdkYzU2NGY2MzJlZWQyZjMxMzdjMiIsInRhZyI6IiJ9","method":"GET","v":"acj"},"effects":{"listeners":[]},"serverMemo":{"children":[],"errors":[],"htmlHash":"45ceaad0","data":{"file":null,"jenis":[],"saved":false,"uploadedDokumen":null,"dataDiri":[],"syarat":[]},"dataMeta":{"models":{"jenis":{"class":"App\\Models\\RJenisDokumen","id":37,"relations":[],"connection":"mysql"},"dataDiri":{"class":"App\\Models\\DataDiri","id":247677,"relations":[],"connection":"mysql"},"syarat":{"class":"App\\Models\\RSyaratBeasiswa","id":923,"relations":["rJenisDokumen"],"connection":"mysql"}}},"checksum":"5a99a99ba430dea4bdcfc40e79230c99a554dec9a5e7a580b4bb24f3178d03c4"}}'
+                              class="form-group"
+                            >
+                              <label style="font-weight: 700" class="harus"
+                                >Transkrip pendidikan terakhir (asli/legalisir).
+                                Khusus pendaftar doktoral, mengunggah transkrip
+                                S1 dan S2.</label
+                              >
+                              <br />
+                              <label class="mb-3"
+                                >Apabila lulusan luar negeri, maka wajib
+                                melampirkan hasil konversi IPK dari Kementerian
+                                Pendidikan, Kebudayaan, Riset, dan Teknologi,
+                                melalui laman
+                                https://ijazahln.kemdikbud.go.id/ijazahln/.
+                              </label>
+                              <br />
+                              <label class="text-info"
+                                >File yang diupload maksimal 2MB</label
+                              >
+                              <div
+                                class="card card-body"
+                                style="margin-bottom: 30px"
+                              >
+                                <div class="row">
+                                  <span
+                                    class="badge badge-pill badge-danger mb-3 ml-1 py-1 px-2"
+                                  >
+                                    <i class="fas fa-times mr-1"></i> Belum
+                                    Upload
+                                  </span>
+                                </div>
+                                <div class="row">
+                                  <div class="col-lg-5 custom-file">
+                                    <input
+                                      type="file"
+                                      name="dokumen"
+                                      id="dokumenInput"
+                                      class="custom-file-input"
+                                      wire:model="file"
+                                      accept=".pdf,.png,.jpg,.jpeg"
+                                    />
+                                    <label
+                                      class="custom-file-label"
+                                      for="dokumenInput"
+                                      >Pilih Berkas...</label
+                                    >
+                                  </div>
+
+                                  <div class="col mt-1">
+                                    <div
+                                      wire:loading
+                                      wire:target="file"
+                                      class="spinner-border spinner-border-sm text-primary my-auto"
+                                      role="status"
+                                    >
+                                      <span class="sr-only">Loading...</span>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="mt-2"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Livewire Component wire-end:ONrZcZGBYjtsWnm6K4rO -->
+                            <div
+                              wire:id="WYGu1fALlGofjUiuQg9K"
+                              wire:initial-data='{"fingerprint":{"id":"WYGu1fALlGofjUiuQg9K","name":"pengusul.usulan-pendaftaran.dokumen-uploader","locale":"id","path":"unggah-dokumen\/eyJpdiI6InVNQ3E3UHo1VVVXQ1VkS0ZMVUxDcnc9PSIsInZhbHVlIjoiVGVyUExuc1ZGTFhlMUJtOU1HOVpCUT09IiwibWFjIjoiN2U0YWYzMDA5YjlhY2VhN2FiYzQ1ODY5Zjc1YzhkNmEwYzIwMjc0MWQ1NDdkYzU2NGY2MzJlZWQyZjMxMzdjMiIsInRhZyI6IiJ9","method":"GET","v":"acj"},"effects":{"listeners":[]},"serverMemo":{"children":[],"errors":[],"htmlHash":"0fc0caa6","data":{"file":null,"jenis":[],"saved":false,"uploadedDokumen":null,"dataDiri":[],"syarat":[]},"dataMeta":{"models":{"jenis":{"class":"App\\Models\\RJenisDokumen","id":44,"relations":[],"connection":"mysql"},"dataDiri":{"class":"App\\Models\\DataDiri","id":247677,"relations":[],"connection":"mysql"},"syarat":{"class":"App\\Models\\RSyaratBeasiswa","id":924,"relations":["rJenisDokumen"],"connection":"mysql"}}},"checksum":"3d81ba177c558344a0f995b22a51201039503d132ea9efeab20bf186e3b0bff0"}}'
+                              class="form-group"
+                            >
+                              <label style="font-weight: 700" class=" "
+                                >Sertifikat Kemampuan Bahasa
+                                Internasional</label
+                              >
+                              <br />
+                              <label class="mb-3"
+                                >Kemampuan bahasa resmi PBB</label
+                              >
+                              <br />
+                              <label class="text-info"
+                                >File yang diupload maksimal 2MB</label
+                              >
+                              <div
+                                class="card card-body"
+                                style="margin-bottom: 30px"
+                              >
+                                <div class="row">
+                                  <span
+                                    class="badge badge-pill badge-danger mb-3 ml-1 py-1 px-2"
+                                  >
+                                    <i class="fas fa-times mr-1"></i> Belum
+                                    Upload
+                                  </span>
+                                </div>
+                                <div class="row">
+                                  <div class="col-lg-5 custom-file">
+                                    <input
+                                      type="file"
+                                      name="dokumen"
+                                      id="dokumenInput"
+                                      class="custom-file-input"
+                                      wire:model="file"
+                                      accept=".pdf,.png,.jpg,.jpeg"
+                                    />
+                                    <label
+                                      class="custom-file-label"
+                                      for="dokumenInput"
+                                      >Pilih Berkas...</label
+                                    >
+                                  </div>
+
+                                  <div class="col mt-1">
+                                    <div
+                                      wire:loading
+                                      wire:target="file"
+                                      class="spinner-border spinner-border-sm text-primary my-auto"
+                                      role="status"
+                                    >
+                                      <span class="sr-only">Loading...</span>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="mt-2"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Livewire Component wire-end:WYGu1fALlGofjUiuQg9K -->
+                            <div
+                              wire:id="wob3kAWeAJ2YVDiTFS7P"
+                              wire:initial-data='{"fingerprint":{"id":"wob3kAWeAJ2YVDiTFS7P","name":"pengusul.usulan-pendaftaran.dokumen-uploader","locale":"id","path":"unggah-dokumen\/eyJpdiI6InVNQ3E3UHo1VVVXQ1VkS0ZMVUxDcnc9PSIsInZhbHVlIjoiVGVyUExuc1ZGTFhlMUJtOU1HOVpCUT09IiwibWFjIjoiN2U0YWYzMDA5YjlhY2VhN2FiYzQ1ODY5Zjc1YzhkNmEwYzIwMjc0MWQ1NDdkYzU2NGY2MzJlZWQyZjMxMzdjMiIsInRhZyI6IiJ9","method":"GET","v":"acj"},"effects":{"listeners":[]},"serverMemo":{"children":[],"errors":[],"htmlHash":"6ab35800","data":{"file":null,"jenis":[],"saved":false,"uploadedDokumen":null,"dataDiri":[],"syarat":[]},"dataMeta":{"models":{"jenis":{"class":"App\\Models\\RJenisDokumen","id":45,"relations":[],"connection":"mysql"},"dataDiri":{"class":"App\\Models\\DataDiri","id":247677,"relations":[],"connection":"mysql"},"syarat":{"class":"App\\Models\\RSyaratBeasiswa","id":925,"relations":["rJenisDokumen"],"connection":"mysql"}}},"checksum":"9b12e5242c78f3cf9a682372cc0d624505c9d048fe96485394bc365f8f699a2d"}}'
+                              class="form-group"
+                            >
+                              <label style="font-weight: 700" class="harus"
+                                >Surat Keterangan Sehat dan Bebas Narkoba</label
+                              >
+                              <br />
+                              <label class="mb-3"
+                                >Dikeluarkan oleh dokter dari rumah
+                                sakit/puskesmas/klinik/lembaga berwenang, paling
+                                lama 6 (enam) bulan terhitung dari tanggal
+                                pendaftaran</label
+                              >
+                              <br />
+                              <label class="text-info"
+                                >File yang diupload maksimal 2MB</label
+                              >
+                              <div
+                                class="card card-body"
+                                style="margin-bottom: 30px"
+                              >
+                                <div class="row">
+                                  <span
+                                    class="badge badge-pill badge-danger mb-3 ml-1 py-1 px-2"
+                                  >
+                                    <i class="fas fa-times mr-1"></i> Belum
+                                    Upload
+                                  </span>
+                                </div>
+                                <div class="row">
+                                  <div class="col-lg-5 custom-file">
+                                    <input
+                                      type="file"
+                                      name="dokumen"
+                                      id="dokumenInput"
+                                      class="custom-file-input"
+                                      wire:model="file"
+                                      accept=".pdf,.png,.jpg,.jpeg"
+                                    />
+                                    <label
+                                      class="custom-file-label"
+                                      for="dokumenInput"
+                                      >Pilih Berkas...</label
+                                    >
+                                  </div>
+
+                                  <div class="col mt-1">
+                                    <div
+                                      wire:loading
+                                      wire:target="file"
+                                      class="spinner-border spinner-border-sm text-primary my-auto"
+                                      role="status"
+                                    >
+                                      <span class="sr-only">Loading...</span>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="mt-2"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Livewire Component wire-end:wob3kAWeAJ2YVDiTFS7P -->
+                            <div
+                              wire:id="lij8JbOhWHY3ZD8ARo37"
+                              wire:initial-data='{"fingerprint":{"id":"lij8JbOhWHY3ZD8ARo37","name":"pengusul.usulan-pendaftaran.dokumen-uploader","locale":"id","path":"unggah-dokumen\/eyJpdiI6InVNQ3E3UHo1VVVXQ1VkS0ZMVUxDcnc9PSIsInZhbHVlIjoiVGVyUExuc1ZGTFhlMUJtOU1HOVpCUT09IiwibWFjIjoiN2U0YWYzMDA5YjlhY2VhN2FiYzQ1ODY5Zjc1YzhkNmEwYzIwMjc0MWQ1NDdkYzU2NGY2MzJlZWQyZjMxMzdjMiIsInRhZyI6IiJ9","method":"GET","v":"acj"},"effects":{"listeners":[]},"serverMemo":{"children":[],"errors":[],"htmlHash":"36dc2df4","data":{"file":null,"jenis":[],"saved":false,"uploadedDokumen":null,"dataDiri":[],"syarat":[]},"dataMeta":{"models":{"jenis":{"class":"App\\Models\\RJenisDokumen","id":46,"relations":[],"connection":"mysql"},"dataDiri":{"class":"App\\Models\\DataDiri","id":247677,"relations":[],"connection":"mysql"},"syarat":{"class":"App\\Models\\RSyaratBeasiswa","id":931,"relations":["rJenisDokumen"],"connection":"mysql"}}},"checksum":"ed7d219f832e27204299a9d863aba1760fd7765e2a30af42fbb5b78dc4fcdd8e"}}'
+                              class="form-group"
+                            >
+                              <label style="font-weight: 700" class="harus"
+                                >Surat Pernyataan bersedia
+                                dibebastugaskan</label
+                              >
+                              <br />
+                              <label class="mb-3"
+                                >Surat Pernyataan bersedia dibebastugaskan dari
+                                segala kewajiban pada instansi asal selama
+                                menjadi penerima beasiswa.</label
+                              >
+                              <br />
+                              <label class="text-info"
+                                >File yang diupload maksimal 2MB</label
+                              >
+                              <div
+                                class="card card-body"
+                                style="margin-bottom: 30px"
+                              >
+                                <div class="row">
+                                  <span
+                                    class="badge badge-pill badge-danger mb-3 ml-1 py-1 px-2"
+                                  >
+                                    <i class="fas fa-times mr-1"></i> Belum
+                                    Upload
+                                  </span>
+                                </div>
+                                <div class="row">
+                                  <div class="col-lg-5 custom-file">
+                                    <input
+                                      type="file"
+                                      name="dokumen"
+                                      id="dokumenInput"
+                                      class="custom-file-input"
+                                      wire:model="file"
+                                      accept=".pdf,.png,.jpg,.jpeg"
+                                    />
+                                    <label
+                                      class="custom-file-label"
+                                      for="dokumenInput"
+                                      >Pilih Berkas...</label
+                                    >
+                                  </div>
+
+                                  <div class="col mt-1">
+                                    <div
+                                      wire:loading
+                                      wire:target="file"
+                                      class="spinner-border spinner-border-sm text-primary my-auto"
+                                      role="status"
+                                    >
+                                      <span class="sr-only">Loading...</span>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="mt-2"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Livewire Component wire-end:lij8JbOhWHY3ZD8ARo37 -->
+                            <div
+                              wire:id="HRiy2KoPJOP3CJk83LML"
+                              wire:initial-data='{"fingerprint":{"id":"HRiy2KoPJOP3CJk83LML","name":"pengusul.usulan-pendaftaran.dokumen-uploader","locale":"id","path":"unggah-dokumen\/eyJpdiI6InVNQ3E3UHo1VVVXQ1VkS0ZMVUxDcnc9PSIsInZhbHVlIjoiVGVyUExuc1ZGTFhlMUJtOU1HOVpCUT09IiwibWFjIjoiN2U0YWYzMDA5YjlhY2VhN2FiYzQ1ODY5Zjc1YzhkNmEwYzIwMjc0MWQ1NDdkYzU2NGY2MzJlZWQyZjMxMzdjMiIsInRhZyI6IiJ9","method":"GET","v":"acj"},"effects":{"listeners":[]},"serverMemo":{"children":[],"errors":[],"htmlHash":"519f2820","data":{"file":null,"jenis":[],"saved":false,"uploadedDokumen":null,"dataDiri":[],"syarat":[]},"dataMeta":{"models":{"jenis":{"class":"App\\Models\\RJenisDokumen","id":49,"relations":[],"connection":"mysql"},"dataDiri":{"class":"App\\Models\\DataDiri","id":247677,"relations":[],"connection":"mysql"},"syarat":{"class":"App\\Models\\RSyaratBeasiswa","id":933,"relations":["rJenisDokumen"],"connection":"mysql"}}},"checksum":"e0160215e19334f5f2506bac78ebbcf4d9937083473f0d005aefa3e234906181"}}'
+                              class="form-group"
+                            >
+                              <label style="font-weight: 700" class="harus"
+                                >Essai
+                              </label>
+                              <br />
+                              <label class="mb-3"
+                                >Ketentuan Essai dapat dilihat pada Panduan
+                                Pendaftaran Beasiswa Pendidikan
+                                Indonesia.</label
+                              >
+                              <br />
+                              <label class="text-info"
+                                >File yang diupload maksimal 2MB</label
+                              >
+                              <div
+                                class="card card-body"
+                                style="margin-bottom: 30px"
+                              >
+                                <div class="row">
+                                  <span
+                                    class="badge badge-pill badge-danger mb-3 ml-1 py-1 px-2"
+                                  >
+                                    <i class="fas fa-times mr-1"></i> Belum
+                                    Upload
+                                  </span>
+                                </div>
+                                <div class="row">
+                                  <div class="col-lg-5 custom-file">
+                                    <input
+                                      type="file"
+                                      name="dokumen"
+                                      id="dokumenInput"
+                                      class="custom-file-input"
+                                      wire:model="file"
+                                      accept=".pdf,.png,.jpg,.jpeg"
+                                    />
+                                    <label
+                                      class="custom-file-label"
+                                      for="dokumenInput"
+                                      >Pilih Berkas...</label
+                                    >
+                                  </div>
+
+                                  <div class="col mt-1">
+                                    <div
+                                      wire:loading
+                                      wire:target="file"
+                                      class="spinner-border spinner-border-sm text-primary my-auto"
+                                      role="status"
+                                    >
+                                      <span class="sr-only">Loading...</span>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="mt-2"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Livewire Component wire-end:HRiy2KoPJOP3CJk83LML -->
+                            <div
+                              wire:id="UpeD46E72eAmjRubyf9e"
+                              wire:initial-data='{"fingerprint":{"id":"UpeD46E72eAmjRubyf9e","name":"pengusul.usulan-pendaftaran.dokumen-uploader","locale":"id","path":"unggah-dokumen\/eyJpdiI6InVNQ3E3UHo1VVVXQ1VkS0ZMVUxDcnc9PSIsInZhbHVlIjoiVGVyUExuc1ZGTFhlMUJtOU1HOVpCUT09IiwibWFjIjoiN2U0YWYzMDA5YjlhY2VhN2FiYzQ1ODY5Zjc1YzhkNmEwYzIwMjc0MWQ1NDdkYzU2NGY2MzJlZWQyZjMxMzdjMiIsInRhZyI6IiJ9","method":"GET","v":"acj"},"effects":{"listeners":[]},"serverMemo":{"children":[],"errors":[],"htmlHash":"73d01b66","data":{"file":null,"jenis":[],"saved":false,"uploadedDokumen":null,"dataDiri":[],"syarat":[]},"dataMeta":{"models":{"jenis":{"class":"App\\Models\\RJenisDokumen","id":52,"relations":[],"connection":"mysql"},"dataDiri":{"class":"App\\Models\\DataDiri","id":247677,"relations":[],"connection":"mysql"},"syarat":{"class":"App\\Models\\RSyaratBeasiswa","id":936,"relations":["rJenisDokumen"],"connection":"mysql"}}},"checksum":"047a71b8a8795a12a06c9a54070119db357b31b6fefce0b49bbe3faf47ca9728"}}'
+                              class="form-group"
+                            >
+                              <label style="font-weight: 700" class=" "
+                                >Sertifikat Guru Penggerak</label
+                              >
+                              <br />
+                              <label class="mb-3"></label>
+                              <br />
+                              <label class="text-info"
+                                >File yang diupload maksimal 2MB</label
+                              >
+                              <div
+                                class="card card-body"
+                                style="margin-bottom: 30px"
+                              >
+                                <div class="row">
+                                  <span
+                                    class="badge badge-pill badge-danger mb-3 ml-1 py-1 px-2"
+                                  >
+                                    <i class="fas fa-times mr-1"></i> Belum
+                                    Upload
+                                  </span>
+                                </div>
+                                <div class="row">
+                                  <div class="col-lg-5 custom-file">
+                                    <input
+                                      type="file"
+                                      name="dokumen"
+                                      id="dokumenInput"
+                                      class="custom-file-input"
+                                      wire:model="file"
+                                      accept=".pdf,.png,.jpg,.jpeg"
+                                    />
+                                    <label
+                                      class="custom-file-label"
+                                      for="dokumenInput"
+                                      >Pilih Berkas...</label
+                                    >
+                                  </div>
+
+                                  <div class="col mt-1">
+                                    <div
+                                      wire:loading
+                                      wire:target="file"
+                                      class="spinner-border spinner-border-sm text-primary my-auto"
+                                      role="status"
+                                    >
+                                      <span class="sr-only">Loading...</span>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="mt-2"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Livewire Component wire-end:UpeD46E72eAmjRubyf9e -->
+                            <div
+                              wire:id="MtpX1J5UO3HelSlUzVI2"
+                              wire:initial-data='{"fingerprint":{"id":"MtpX1J5UO3HelSlUzVI2","name":"pengusul.usulan-pendaftaran.dokumen-uploader","locale":"id","path":"unggah-dokumen\/eyJpdiI6InVNQ3E3UHo1VVVXQ1VkS0ZMVUxDcnc9PSIsInZhbHVlIjoiVGVyUExuc1ZGTFhlMUJtOU1HOVpCUT09IiwibWFjIjoiN2U0YWYzMDA5YjlhY2VhN2FiYzQ1ODY5Zjc1YzhkNmEwYzIwMjc0MWQ1NDdkYzU2NGY2MzJlZWQyZjMxMzdjMiIsInRhZyI6IiJ9","method":"GET","v":"acj"},"effects":{"listeners":[]},"serverMemo":{"children":[],"errors":[],"htmlHash":"e50762d7","data":{"file":null,"jenis":[],"saved":false,"uploadedDokumen":null,"dataDiri":[],"syarat":[]},"dataMeta":{"models":{"jenis":{"class":"App\\Models\\RJenisDokumen","id":53,"relations":[],"connection":"mysql"},"dataDiri":{"class":"App\\Models\\DataDiri","id":247677,"relations":[],"connection":"mysql"},"syarat":{"class":"App\\Models\\RSyaratBeasiswa","id":1145,"relations":["rJenisDokumen"],"connection":"mysql"}}},"checksum":"f9bee87f9c4f3b41816bbc97c0c6b8a18ded8b24ec4812c1fe79eb382621d7a2"}}'
+                              class="form-group"
+                            >
+                              <label style="font-weight: 700" class=" "
+                                >SK PNS terakhir (Jabfung)</label
+                              >
+                              <br />
+                              <label class="mb-3"
+                                >SK PNS terakhir yang menjelaskan jabatan yang
+                                dimiliki saat ini.</label
+                              >
+                              <br />
+                              <label class="text-info"
+                                >File yang diupload maksimal 2MB</label
+                              >
+                              <div
+                                class="card card-body"
+                                style="margin-bottom: 30px"
+                              >
+                                <div class="row">
+                                  <span
+                                    class="badge badge-pill badge-danger mb-3 ml-1 py-1 px-2"
+                                  >
+                                    <i class="fas fa-times mr-1"></i> Belum
+                                    Upload
+                                  </span>
+                                </div>
+                                <div class="row">
+                                  <div class="col-lg-5 custom-file">
+                                    <input
+                                      type="file"
+                                      name="dokumen"
+                                      id="dokumenInput"
+                                      class="custom-file-input"
+                                      wire:model="file"
+                                      accept=".pdf,.png,.jpg,.jpeg"
+                                    />
+                                    <label
+                                      class="custom-file-label"
+                                      for="dokumenInput"
+                                      >Pilih Berkas...</label
+                                    >
+                                  </div>
+
+                                  <div class="col mt-1">
+                                    <div
+                                      wire:loading
+                                      wire:target="file"
+                                      class="spinner-border spinner-border-sm text-primary my-auto"
+                                      role="status"
+                                    >
+                                      <span class="sr-only">Loading...</span>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="row">
+                                  <div class="mt-2"></div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Livewire Component wire-end:MtpX1J5UO3HelSlUzVI2 -->
+                          </form>
+
+                          <script>
+                            function Kirim() {
+                              $("#main_form").submit();
+                            }
+                          </script>
+                        </div>
+
+                        <!-- Livewire Component wire-end:FMefDx2pzGMqgLrdNhQy -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.col-md-6 -->
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.container-fluid -->
+        </div>
+        <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
+
+      <!-- Main Footer -->
+      <footer class="main-footer">
+        Copyright &copy; 2022
+        <a href="#">Beasiswa Pendidikan Indonesia </a>. All rights reserved.
+      </footer>
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- REQUIRED SCRIPTS -->
+
+    <!-- Bootstrap 4 -->
+    <script src="lib/template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="lib/template/dist/js/adminlte.min.js"></script>
+    <div class="modal fade" id="main_modal">
+      <div
+        id="modal-custom"
+        class="modal-dialog modal-dialog-centered modal-lg"
+      >
+        <div class="modal-content">
+          <div class="modal-header" style="display: none">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="judul_modal">Default Modal</h4>
+          </div>
+          <div class="modal-body" id="isi_modal"></div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <script>
+      function OpenModal(url, xl) {
+        if (xl == undefined) {
+          $("#modal-custom").removeClass("modal-xl");
+          $("#modal-custom").addClass("modal-lg");
+        } else {
+          $("#modal-custom").removeClass("modal-lg");
+          $("#modal-custom").addClass("modal-xl");
+        }
+
+        ShowLoading();
+        $.ajax({
+          url: url,
+          success: function (res) {
+            swal.close();
+            $("#isi_modal").html(res);
+            $("#main_modal").modal("show");
+          },
+          error: function (a, b, c) {
+            swal.close();
+            if (a.status == 403) {
+              ShowError("Anda tidak punya akses");
+            } else if (a.status == 404) {
+              ShowError("Data tidak ditemukan.");
+            } else {
+              ShowError(b);
+            }
+          },
+        });
+      }
+
+      function OpenImage(url, judul) {
+        judul = judul || "Gambar";
+
+        let split = url.split(".");
+        let ext = split[split.length - 1].toLowerCase();
+        var img = ["png", "jpg", "jpeg"];
+        var isi =
+          "<span class='text-muted text-center' style='display: block;'>Dokumen tidak dapat ditampilkan</span>";
+
+        if (url.startsWith("http")) {
+        } else if (url.startsWith("/uploads")) {
+          url = url.substring(1);
+          url = "" + url;
+        } else {
+          url = "uploads/" + url;
+        }
+
+        if (img.includes(ext)) {
+          isi = "<img src='" + url + "' class='gambar-tengah' />";
+        } else if (ext == "pdf") {
+          isi =
+            "<object type='application/pdf' class='pdf-tengah' style='' data='" +
+            url +
+            "?#toolbar=0&navpanes=0'>" +
+            "<p> Tidak dapat menampilkan preview. Klik <a href=" +
+            url +
+            ">di sini</a> untuk mengunduh.</p>" +
+            "</object>";
+        }
+        var kepala = `<h2><b>${judul}</b></h2><hr>`;
+        $("#isi_modal").html(kepala + isi);
+        $("#main_modal").modal("show");
+      }
+    </script>
+    <script>
+      function Delete(url, message) {
+        message = message || "Anda tidak akan dapat mengembalikan data ini!";
+        Swal.fire({
+          title: "Apakah Anda yakin?",
+          text: message,
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          cancelButtonText: "Batal",
+          confirmButtonText: "Ya, hapus data ini!",
+        }).then((result) => {
+          if (result.value) {
+            ShowLoading();
+            $.ajax({
+              type: "POST",
+              url: url,
+              data: {
+                _token: "tRf3qhyTvmo9MuU2xnkbhzTAvaKzXUIOlaU6dswZ",
+              },
+              success: function (hasil) {
+                if (hasil != "") {
+                  var res = JSON.parse(hasil);
+                  if (res != undefined) {
+                    if (res.status == 0) {
+                      ShowError(res.message);
+                      return;
+                    } else if (res.url != "" && res.url != null) {
+                      location.replace(res.url);
+                    }
+                  }
+                }
+                location.reload();
+              },
+              error: function (a, b, c) {
+                if (a.status == 403) {
+                  ShowError("Anda tidak punya akses");
+                } else if (a.status == 404) {
+                  ShowError("Data tidak ditemukan");
+                } else {
+                  ShowError(b);
+                }
+              },
+            });
+          }
+        });
+      }
+    </script>
+    <script src="js/site.js"></script>
+  </body>
+</html>

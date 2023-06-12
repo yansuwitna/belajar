@@ -1,0 +1,2410 @@
+<!DOCTYPE html>
+
+<html class="loading" lang="id" data-textdirection="ltr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0,user-scalable=0,minimal-ui"
+    />
+    <meta
+      name="csrf-token"
+      content="1igJujHjPVsUNbw70y4YSRChFztFVFfzXNFIM4Ih"
+    />
+    <meta
+      name="description"
+      content="Aplikasi Penilaian dan Asesmen. Direktorat SMK"
+    />
+    <meta
+      name="keywords"
+      content="erapor, smk, eraporsmk, erapor v6, erapor versi 6"
+    />
+    <meta name="author" content="Direktorat SMK" />
+    <title>Beranda | e-Rapor SMK</title>
+    <!--link rel="apple-touch-icon" href="lib/images/ico/apple-icon-120.png"-->
+    <link rel="shortcut icon" type="image/x-icon" href="lib/favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600"
+      rel="stylesheet"
+    />
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" href="lib/vendors/css/vendors.min.css" />
+
+    <link
+      rel="stylesheet"
+      href="lib/vendors/css/forms/select/select2.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="lib/css/base/plugins/extensions/ext-component-sweet-alerts.css"
+    />
+    <!-- END: Vendor CSS-->
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" href="lib/css/core.css" />
+    <link rel="stylesheet" href="lib/css/base/themes/dark-layout.css" />
+    <link rel="stylesheet" href="lib/css/base/themes/bordered-layout.css" />
+    <link rel="stylesheet" href="lib/css/base/themes/semi-dark-layout.css" />
+
+    <!-- BEGIN: Page CSS-->
+    <link
+      rel="stylesheet"
+      href="lib/css/base/core/menu/menu-types/vertical-menu.css"
+    />
+
+    <!-- laravel style -->
+    <link rel="stylesheet" href="lib/css/overrides.css" />
+
+    <!-- BEGIN: Custom CSS-->
+
+    <link rel="stylesheet" href="lib/css/style.css" />
+    <link rel="stylesheet" href="lib/vendor/fontawesome/css/all.min.css" />
+  </head>
+  <!-- END: Head-->
+
+  <!-- BEGIN: Body-->
+
+  <body
+    class="vertical-layout vertical-menu-modern navbar-sticky footer-fixed default"
+    data-open="click"
+    data-menu="vertical-menu-modern"
+    data-col="default"
+    data-framework="laravel"
+    data-asset-path="lib/"
+  >
+    <!-- BEGIN: Header-->
+    <nav
+      class="header-navbar navbar navbar-expand-lg align-items-center fixed-top navbar-light navbar-shadow"
+    >
+      <div class="navbar-container d-flex content">
+        <div class="bookmark-wrapper d-flex align-items-center">
+          <ul class="nav navbar-nav d-xl-none">
+            <li class="nav-item">
+              <a class="nav-link menu-toggle" href="javascript:void(0);"
+                ><i class="ficon" data-feather="menu"></i
+              ></a>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav">
+            <li class="nav-item d-none d-lg-block">
+              <h2>SMKN 1 ABANG | 2022/2023 Genap</h2>
+            </li>
+          </ul>
+        </div>
+        <ul class="nav navbar-nav align-items-center ms-auto">
+          <li class="nav-item dropdown dropdown-language">
+            <a class="nav-link nav-link-style">
+              <i class="ficon" data-feather="moon"></i>
+            </a>
+          </li>
+          <li class="nav-item dropdown dropdown-user">
+            <a
+              class="nav-link dropdown-toggle dropdown-user-link"
+              id="dropdown-user"
+              href="javascript:void(0);"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+            >
+              <div class="user-nav d-sm-flex d-none">
+                <span class="user-name fw-bolder">
+                  I WAYAN SUWITNA, S.Kom., A.Md.
+                </span>
+                <span class="user-status">
+                  Guru, Waka Kurikulum, Pembina Ekstrakurikuler
+                </span>
+              </div>
+              <span class="avatar">
+                <img
+                  class="round"
+                  src="https://ui-avatars.com/api/?name=I+W+S+S+A&amp;color=7F9CF5&amp;background=EBF4FF"
+                  alt="avatar"
+                  height="40"
+                  width="40"
+                />
+                <span class="avatar-status-online"></span>
+              </span>
+            </a>
+            <div
+              class="dropdown-menu dropdown-menu-end"
+              aria-labelledby="dropdown-user"
+            >
+              <h6 class="dropdown-header">Profil Pengguna</h6>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="lib/user/profile">
+                <i class="me-50" data-feather="user"></i> Profile
+              </a>
+              <a
+                class="dropdown-item"
+                href="lib/logout"
+                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+              >
+                <i class="me-50" data-feather="power"></i> Logout
+              </a>
+              <form method="POST" id="logout-form" action="lib/logout">
+                <input
+                  type="hidden"
+                  name="_token"
+                  value="1igJujHjPVsUNbw70y4YSRChFztFVFfzXNFIM4Ih"
+                />
+              </form>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- END: Header-->
+    <!-- END: Header-->
+
+    <!-- BEGIN: Main Menu-->
+    <div
+      class="main-menu menu-fixed menu-light menu-accordion menu-shadow"
+      data-scroll-to-active="true"
+    >
+      <div class="navbar-header">
+        <ul class="nav navbar-nav flex-row">
+          <li class="nav-item me-auto">
+            <a class="navbar-brand" href="lib">
+              <span class="brand-logo">
+                <img src="lib/images/logo.png" alt="logo" srcset="" />
+              </span>
+              <h2 class="brand-text" style="font-size: 1.4rem">e-Rapor SMK</h2>
+            </a>
+          </li>
+          <li class="nav-item nav-toggle">
+            <a class="nav-link modern-nav-toggle pe-0" data-toggle="collapse">
+              <i
+                class="d-block d-xl-none text-primary toggle-icon font-medium-4"
+                data-feather="x"
+              ></i>
+              <i
+                class="d-none d-xl-block collapse-toggle-icon font-medium-4 text-primary"
+                data-feather="disc"
+                data-ticon="disc"
+              ></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="shadow-bottom"></div>
+      <div class="main-menu-content">
+        <ul class="navigation navigation-main">
+          <li class="active">
+            <a class="d-flex align-items-center" href="lib"
+              ><i class="fa-solid fa-home"></i
+              ><span class="menu-title text-truncate">Beranda</span></a
+            >
+          </li>
+          <li>
+            <a class="d-flex align-items-center" href="javascript:void(0)"
+              ><i class="fa-solid fa-list"></i
+              ><span class="menu-title text-truncate">Referensi</span></a
+            >
+            <ul class="menu-content">
+              <li>
+                <a class="d-flex align-items-center" href="javascript:void(0)"
+                  ><i class="fa-solid fa-hand-point-right"></i
+                  ><span class="menu-title text-truncate"
+                    >Rombongan Belajar</span
+                  ></a
+                >
+                <ul class="menu-content">
+                  <li>
+                    <a
+                      class="d-flex align-items-center"
+                      href="lib/referensi/rombongan-belajar"
+                      ><i class="fa-solid fa-hand-point-right"></i
+                      ><span class="menu-title text-truncate">Reguler</span></a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="d-flex align-items-center"
+                      href="lib/referensi/rombel-pilihan"
+                      ><i class="fa-solid fa-hand-point-right"></i
+                      ><span class="menu-title text-truncate"
+                        >Matpel Pilihan</span
+                      ></a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a class="d-flex align-items-center" href="javascript:void(0)"
+                  ><i class="fa-solid fa-hand-point-right"></i
+                  ><span class="menu-title text-truncate"
+                    >Peserta Didik</span
+                  ></a
+                >
+                <ul class="menu-content">
+                  <li>
+                    <a
+                      class="d-flex align-items-center"
+                      href="lib/referensi/peserta-didik-aktif"
+                      ><i class="fa-solid fa-hand-point-right"></i
+                      ><span class="menu-title text-truncate"
+                        >Peserta Didik Aktif</span
+                      ></a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a
+                  class="d-flex align-items-center"
+                  href="lib/referensi/kompetensi-dasar"
+                  ><i class="fa-solid fa-hand-point-right"></i
+                  ><span class="menu-title text-truncate"
+                    >Kompetensi Dasar</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a
+                  class="d-flex align-items-center"
+                  href="lib/referensi/capaian-pembelajaran"
+                  ><i class="fa-solid fa-hand-point-right"></i
+                  ><span class="menu-title text-truncate"
+                    >Capaian Pembelajaran</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a
+                  class="d-flex align-items-center"
+                  href="lib/referensi/tujuan-pembelajaran"
+                  ><i class="fa-solid fa-hand-point-right"></i
+                  ><span class="menu-title text-truncate"
+                    >Tujuan Pembelajaran</span
+                  ></a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a class="d-flex align-items-center" href="javascript:void(0)"
+              ><i class="fa-solid fa-list-check"></i
+              ><span class="menu-title text-truncate">Nilai Akademik</span></a
+            >
+            <ul class="menu-content">
+              <li>
+                <a
+                  class="d-flex align-items-center"
+                  href="lib/penilaian/nilai-akhir"
+                  ><i class="fa-solid fa-hand-point-right"></i
+                  ><span class="menu-title text-truncate"
+                    >Input Nilai Akhir</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a
+                  class="d-flex align-items-center"
+                  href="lib/penilaian/capaian-kompetensi"
+                  ><i class="fa-solid fa-hand-point-right"></i
+                  ><span class="menu-title text-truncate"
+                    >Capaian Kompetensi</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a class="d-flex align-items-center" href="lib/penilaian/sikap"
+                  ><i class="fa-solid fa-hand-point-right"></i
+                  ><span class="menu-title text-truncate">Sikap</span></a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a
+              class="d-flex align-items-center"
+              href="lib/penilaian/ekstrakurikuler"
+              ><i class="fa-solid fa-user-pen"></i
+              ><span class="menu-title text-truncate"
+                >Nilai Ekstrakurikuler</span
+              ></a
+            >
+          </li>
+          <li>
+            <a class="d-flex align-items-center" href="javascript:void(0)"
+              ><i class="fa-solid fa-copy"></i
+              ><span class="menu-title text-truncate">Wali Kelas</span></a
+            >
+            <ul class="menu-content">
+              <li>
+                <a
+                  class="d-flex align-items-center"
+                  href="lib/wali-kelas/catatan-sikap"
+                  ><i class="fa-solid fa-hand-point-right"></i
+                  ><span class="menu-title text-truncate"
+                    >Catatan Sikap</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a
+                  class="d-flex align-items-center"
+                  href="lib/wali-kelas/praktik-kerja-lapangan"
+                  ><i class="fa-solid fa-hand-point-right"></i
+                  ><span class="menu-title text-truncate"
+                    >Praktik Kerja Lapangan</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a
+                  class="d-flex align-items-center"
+                  href="lib/wali-kelas/ketidakhadiran"
+                  ><i class="fa-solid fa-hand-point-right"></i
+                  ><span class="menu-title text-truncate"
+                    >Ketidakhadiran</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a
+                  class="d-flex align-items-center"
+                  href="lib/wali-kelas/nilai-ekstrakurikuler"
+                  ><i class="fa-solid fa-hand-point-right"></i
+                  ><span class="menu-title text-truncate"
+                    >Nilai Ekstrakurikuler</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a
+                  class="d-flex align-items-center"
+                  href="lib/wali-kelas/kenaikan-kelas"
+                  ><i class="fa-solid fa-hand-point-right"></i
+                  ><span class="menu-title text-truncate"
+                    >Kenaikan Kelas</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a
+                  class="d-flex align-items-center"
+                  href="lib/wali-kelas/rapor-nilai-akhir"
+                  ><i class="fa-solid fa-hand-point-right"></i
+                  ><span class="menu-title text-truncate">Cetak Rapor</span></a
+                >
+              </li>
+              <li>
+                <a class="d-flex align-items-center" href="lib/wali-kelas/leger"
+                  ><i class="fa-solid fa-download"></i
+                  ><span class="menu-title text-truncate">Unduh Leger</span></a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a class="d-flex align-items-center" href="lib/user/profile"
+              ><i class="fa-solid fa-user"></i
+              ><span class="menu-title text-truncate">Profil Pengguna</span></a
+            >
+          </li>
+          <li>
+            <a class="d-flex align-items-center" href="lib/unduhan"
+              ><i class="fa-solid fa-download"></i
+              ><span class="menu-title text-truncate">Pusat Unduhan</span></a
+            >
+          </li>
+          <li>
+            <a
+              class="d-flex align-items-center text-danger"
+              onclick="event.preventDefault(); document.getElementById(&#039;logout-form&#039;).submit();"
+              href="lib/logout"
+              ><i class="fa-solid fa-right-from-bracket"></i
+              ><span class="menu-title text-truncate">Keluar Aplikasi</span></a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- END: Main Menu-->
+    <!-- END: Main Menu-->
+
+    <!-- BEGIN: Content-->
+    <div class="app-content content">
+      <!-- BEGIN: Header-->
+      <div class="content-overlay"></div>
+      <div class="header-navbar-shadow"></div>
+
+      <div class="content-wrapper container-xxl p-0">
+        <div
+          wire:id="zm3srHRnqfYW7387APR4"
+          wire:initial-data='{"fingerprint":{"id":"zm3srHRnqfYW7387APR4","name":"dashboard.guru","locale":"id","path":"\/","method":"GET","v":"acj"},"effects":{"listeners":["confirmed","finishGenerate"],"path":"http:\/\/103.168.146.139:8154"},"serverMemo":{"children":[],"errors":[],"htmlHash":"39068cc0","data":{"pembelajaran_id":null,"kompentesi_id":null,"nama_mata_pelajaran":null,"search":"","per_page":10,"merdeka":false,"data_siswa":[],"page":1,"paginators":{"page":1}},"dataMeta":[],"checksum":"d59e7c9afc506c8842a9c05baf050958354de1b85731fd5d3397d8d07c1ecc5a"}}'
+        >
+          <div class="content-header row" wire:ignore>
+            <div class="content-header-left col-md-9 col-12 mb-2">
+              <div class="row breadcrumbs-top">
+                <div class="col-12">
+                  <h2 class="content-header-title float-start mb-0">Beranda</h2>
+                  <div class="breadcrumb-wrapper">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item">
+                        <a href="lib"> Beranda </a>
+                      </li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="content-body">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">
+                  Mata Pelajaran yang diampu di Tahun Pelajaran 2022/2023 Genap
+                </h4>
+                <table class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                      <th class="text-center align-middle">No</th>
+                      <th class="text-center align-middle">Mata Pelajaran</th>
+                      <th class="text-center align-middle">Rombel</th>
+                      <th class="text-center align-middle">Wali Kelas</th>
+                      <th class="text-center align-middle">
+                        Jumlah Peserta Didik
+                      </th>
+                      <th class="text-center">Jml Peserta Didik Dinilai</th>
+                      <th class="text-center">Detil</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-center">1</td>
+                      <td>Administrasi Sistem Jaringan</td>
+                      <td>XI TKJ 2</td>
+                      <td>BGS. WAYAN PUTU SWAYA, S.Pd.</td>
+                      <td class="text-center">35</td>
+                      <td class="text-center">35</td>
+                      <td class="text-center">
+                        <button
+                          class="btn btn-sm btn-info"
+                          data-target="#detilModal"
+                          data-toggle="modal"
+                        >
+                          Detil modal
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">2</td>
+                      <td>Administrasi Sistem Jaringan</td>
+                      <td>XI TKJ 1</td>
+                      <td>NI NYOMAN ASTARI, S.Pd.</td>
+                      <td class="text-center">36</td>
+                      <td class="text-center">36</td>
+                      <td class="text-center">
+                        <button
+                          class="btn btn-sm btn-info"
+                          wire:click="detil('14a4987a-acce-4012-8300-71849b626973')"
+                        >
+                          Detil
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">3</td>
+                      <td>Administrasi Infrastruktur Jaringan</td>
+                      <td>XII TKJ 1</td>
+                      <td>NI KETUT ARY PRISMAWATHI, S.Pd.</td>
+                      <td class="text-center">33</td>
+                      <td class="text-center">33</td>
+                      <td class="text-center">
+                        <button
+                          class="btn btn-sm btn-info"
+                          wire:click="detil('2e901513-9c85-4e1b-9dff-5d172bbde21b')"
+                        >
+                          Detil
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">4</td>
+                      <td>Produk Kreatif dan Kewirausahaan</td>
+                      <td>XII TKJ 1</td>
+                      <td>NI KETUT ARY PRISMAWATHI, S.Pd.</td>
+                      <td class="text-center">33</td>
+                      <td class="text-center">33</td>
+                      <td class="text-center">
+                        <button
+                          class="btn btn-sm btn-info"
+                          wire:click="detil('da321f2a-1686-42df-ad02-bd8b4afd93d1')"
+                        >
+                          Detil
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="text-center">5</td>
+                      <td>Administrasi Infrastruktur Jaringan</td>
+                      <td>XII TKJ 2</td>
+                      <td>I KETUT SANDIYASA PUTRA, S.Pd.</td>
+                      <td class="text-center">35</td>
+                      <td class="text-center">35</td>
+                      <td class="text-center">
+                        <button
+                          class="btn btn-sm btn-info"
+                          wire:click="detil('8e74047d-36a1-4988-9e7b-ba9f1306db38')"
+                        >
+                          Detil
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">
+                  Progres Penilaian Tahun Pelajaran 2022/2023 Genap
+                </h4>
+                <div class="row justify-content-between mb-2">
+                  <div class="col-4">
+                    <div class="d-inline" wire:ignore>
+                      <select
+                        class="form-select"
+                        wire:model="per_page"
+                        wire:change="loadPerPage"
+                        data-pharaonic="select2"
+                        data-component-id="zm3srHRnqfYW7387APR4"
+                        data-search-off="true"
+                      >
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Cari data..."
+                      wire:model="search"
+                    />
+                  </div>
+                </div>
+                <div class="table-responsive">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th class="text-center align-middle">Rombel</th>
+                        <th class="text-center align-middle">Mata Pelajaran</th>
+                        <th class="text-center align-middle">
+                          Guru Mata Pelajaran
+                        </th>
+                        <th class="text-center align-middle">
+                          Jumlah Peserta Didik
+                        </th>
+                        <th class="text-center align-middle">
+                          Jml Peserta Didik Dinilai
+                        </th>
+                        <th class="text-center align-middle">Detil</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>X AKL 1</td>
+                        <td>Sejarah</td>
+                        <td>I NYOMAN PARSUA ARSANA, S.Pd.</td>
+                        <td class="text-center">31</td>
+                        <td class="text-center">31</td>
+                        <td class="text-center">
+                          <button
+                            class="btn btn-sm btn-info"
+                            wire:click="detil('06ee6380-86b1-4911-8253-f4605a005f53')"
+                          >
+                            Detil
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>X BD 2</td>
+                        <td>Sejarah</td>
+                        <td>I NYOMAN PARSUA ARSANA, S.Pd.</td>
+                        <td class="text-center">27</td>
+                        <td class="text-center">27</td>
+                        <td class="text-center">
+                          <button
+                            class="btn btn-sm btn-info"
+                            wire:click="detil('21e187ee-3085-42f0-824f-9a41d4bdadd2')"
+                          >
+                            Detil
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>X DPIB</td>
+                        <td>Sejarah</td>
+                        <td>I MADE BERTI KARTIKA DEWI, S.Pd.</td>
+                        <td class="text-center">36</td>
+                        <td class="text-center">36</td>
+                        <td class="text-center">
+                          <button
+                            class="btn btn-sm btn-info"
+                            wire:click="detil('afbfad60-6f27-47f5-ba1f-b64ff386a133')"
+                          >
+                            Detil
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>X TKJ 1</td>
+                        <td>Bahasa Indonesia</td>
+                        <td>NI NYOMAN ASTARI, S.Pd.</td>
+                        <td class="text-center">29</td>
+                        <td class="text-center">29</td>
+                        <td class="text-center">
+                          <button
+                            class="btn btn-sm btn-info"
+                            wire:click="detil('4406c432-8af9-447e-bd80-367c2753ffb2')"
+                          >
+                            Detil
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>X TKJ 3</td>
+                        <td>Pendidikan Agama Hindu dan Budi Pekerti</td>
+                        <td>I WAYAN KADIARTAMA, S.Pd.</td>
+                        <td class="text-center">28</td>
+                        <td class="text-center">28</td>
+                        <td class="text-center">
+                          <button
+                            class="btn btn-sm btn-info"
+                            wire:click="detil('6db59c63-87fd-427e-ad74-87538ad082dc')"
+                          >
+                            Detil
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>X TKR 2</td>
+                        <td>Bahasa Indonesia</td>
+                        <td>I MADE MURYAWAN, S.Pd.</td>
+                        <td class="text-center">35</td>
+                        <td class="text-center">35</td>
+                        <td class="text-center">
+                          <button
+                            class="btn btn-sm btn-info"
+                            wire:click="detil('6ad6550f-e858-4d9e-b7b1-c9c1deb6a8c4')"
+                          >
+                            Detil
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>X TKR 2</td>
+                        <td>Pendidikan Agama Hindu dan Budi Pekerti</td>
+                        <td>I WAYAN KADIARTAMA, S.Pd.</td>
+                        <td class="text-center">35</td>
+                        <td class="text-center">35</td>
+                        <td class="text-center">
+                          <button
+                            class="btn btn-sm btn-info"
+                            wire:click="detil('6e59686b-7d44-4fbd-84c0-ab8a1881c4d4')"
+                          >
+                            Detil
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>XI AKL 1</td>
+                        <td>Muatan Lokal Bahasa Daerah</td>
+                        <td>NI WAYAN PUTU WIDIANI, S.Pd., M.Pd.</td>
+                        <td class="text-center">33</td>
+                        <td class="text-center">33</td>
+                        <td class="text-center">
+                          <button
+                            class="btn btn-sm btn-info"
+                            wire:click="detil('2244cf04-6498-4a55-9285-fac4d35f7bfa')"
+                          >
+                            Detil
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>XI BKP</td>
+                        <td>Pendidikan Jasmani, Olahraga, dan Kesehatan</td>
+                        <td>I KETUT SANDIYASA PUTRA, S.Pd.</td>
+                        <td class="text-center">8</td>
+                        <td class="text-center">8</td>
+                        <td class="text-center">
+                          <button
+                            class="btn btn-sm btn-info"
+                            wire:click="detil('29d992e5-9e6e-4816-9e7a-b7af289f41e4')"
+                          >
+                            Detil
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>XII BDP</td>
+                        <td>Pengelolaan Bisnis Ritel</td>
+                        <td>NI NENGAH DESI LASARI, S.Pd.</td>
+                        <td class="text-center">36</td>
+                        <td class="text-center">36</td>
+                        <td class="text-center">
+                          <button
+                            class="btn btn-sm btn-info"
+                            wire:click="detil('d69ebb25-cb87-42dc-bc8f-0fa3d02f71d5')"
+                          >
+                            Detil
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="row justify-content-between mt-2">
+                  <div class="col-6">
+                    <p>Menampilkan 1 sampai 10 dari 380 data</p>
+                  </div>
+                  <div class="col-6">
+                    <div>
+                      <nav>
+                        <ul class="pagination justify-content-end">
+                          <li
+                            class="page-item disabled"
+                            aria-disabled="true"
+                            aria-label="&laquo; Previous"
+                          >
+                            <span class="page-link" aria-hidden="true"
+                              >&lsaquo;&lsaquo;</span
+                            >
+                          </li>
+
+                          <li
+                            class="page-item active"
+                            wire:key="paginator-page-1-page-1"
+                            aria-current="page"
+                          >
+                            <span class="page-link">1</span>
+                          </li>
+                          <li
+                            class="page-item"
+                            wire:key="paginator-page-1-page-2"
+                          >
+                            <button
+                              type="button"
+                              class="page-link"
+                              wire:click="gotoPage(2, 'page')"
+                            >
+                              2
+                            </button>
+                          </li>
+                          <li
+                            class="page-item"
+                            wire:key="paginator-page-1-page-3"
+                          >
+                            <button
+                              type="button"
+                              class="page-link"
+                              wire:click="gotoPage(3, 'page')"
+                            >
+                              3
+                            </button>
+                          </li>
+                          <li
+                            class="page-item"
+                            wire:key="paginator-page-1-page-4"
+                          >
+                            <button
+                              type="button"
+                              class="page-link"
+                              wire:click="gotoPage(4, 'page')"
+                            >
+                              4
+                            </button>
+                          </li>
+                          <li
+                            class="page-item"
+                            wire:key="paginator-page-1-page-5"
+                          >
+                            <button
+                              type="button"
+                              class="page-link"
+                              wire:click="gotoPage(5, 'page')"
+                            >
+                              5
+                            </button>
+                          </li>
+                          <li
+                            class="page-item"
+                            wire:key="paginator-page-1-page-6"
+                          >
+                            <button
+                              type="button"
+                              class="page-link"
+                              wire:click="gotoPage(6, 'page')"
+                            >
+                              6
+                            </button>
+                          </li>
+
+                          <li class="page-item disabled" aria-disabled="true">
+                            <span class="page-link">...</span>
+                          </li>
+
+                          <li
+                            class="page-item"
+                            wire:key="paginator-page-1-page-37"
+                          >
+                            <button
+                              type="button"
+                              class="page-link"
+                              wire:click="gotoPage(37, 'page')"
+                            >
+                              37
+                            </button>
+                          </li>
+                          <li
+                            class="page-item"
+                            wire:key="paginator-page-1-page-38"
+                          >
+                            <button
+                              type="button"
+                              class="page-link"
+                              wire:click="gotoPage(38, 'page')"
+                            >
+                              38
+                            </button>
+                          </li>
+
+                          <li class="page-item">
+                            <button
+                              type="button"
+                              dusk="nextPage"
+                              class="page-link"
+                              wire:click="nextPage('page')"
+                              wire:loading.attr="disabled"
+                              rel="next"
+                              aria-label="Next &raquo;"
+                            >
+                              &rsaquo;&rsaquo;
+                            </button>
+                          </li>
+                        </ul>
+                      </nav>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              wire:ignore.self=""
+              class="modal fade show"
+              id="detilModal"
+              tabindex="-1"
+              aria-labelledby="detilModalLabel"
+              data-bs-backdrop="true"
+              aria-modal="true"
+              role="dialog"
+              style="display: none"
+            >
+              <div
+                class="modal-dialog modal-fullscreen modal-dialog-scrollable"
+              >
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="detilModalLabel">
+                      Detil Penilaian Mata Pelajaran Administrasi Sistem
+                      Jaringan
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <table class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th class="text-center">No</th>
+                          <th class="text-center">Nama</th>
+                          <th class="text-center">NISN</th>
+                          <th class="text-center">Agama</th>
+                          <th class="text-center">Nilai Akhir</th>
+                          <th class="text-center">Capaian Kompetensi</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="text-center">1</td>
+                          <td>AYUK JUNI ANTIKA</td>
+                          <td class="text-center">0058663794</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">74</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">2</td>
+                          <td>I GEDE GUNAWAN PARWATA</td>
+                          <td class="text-center">0049732398</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">73</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">3</td>
+                          <td>I KADEK ABHI TIRTHA MAHARDIKA</td>
+                          <td class="text-center">0068231873</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">84</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">4</td>
+                          <td>I KADEK JODI ARNATA</td>
+                          <td class="text-center">0059299623</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">78</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">5</td>
+                          <td>I KADEK JULIARTA</td>
+                          <td class="text-center">0065029640</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">86</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">6</td>
+                          <td>I KADEK OKTA MAS KURNIA</td>
+                          <td class="text-center">0055807797</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">79</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">7</td>
+                          <td>I KADEK SUARDANA</td>
+                          <td class="text-center">0051292427</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">82</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">8</td>
+                          <td>I KADEK SUARNAYASA</td>
+                          <td class="text-center">0045600541</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">75</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">9</td>
+                          <td>I KETUT KARMITA</td>
+                          <td class="text-center">0052487711</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">82</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">10</td>
+                          <td>I KOMANG SAPUTRA</td>
+                          <td class="text-center">0069975088</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">83</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">11</td>
+                          <td>I KOMANG YOGI ANTARA</td>
+                          <td class="text-center">0055188534</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">78</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">12</td>
+                          <td>I MADE SURYA DARMA PUTRA</td>
+                          <td class="text-center">0051757348</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">79</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">13</td>
+                          <td>I MADE WIRATMAJA</td>
+                          <td class="text-center">0051330118</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">79</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">14</td>
+                          <td>I NYOMAN JELANTIK WIJAYA</td>
+                          <td class="text-center">0048485448</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">81</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">15</td>
+                          <td>I PUTU SATYA PARAHITA</td>
+                          <td class="text-center">0069022737</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">73</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">16</td>
+                          <td>I WAYAN ARIESTA ADITIA EKA PUTRA</td>
+                          <td class="text-center">0067695042</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">76</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">17</td>
+                          <td>I WAYAN BUDA ADNYANA</td>
+                          <td class="text-center">0051182136</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">87</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">18</td>
+                          <td>I WAYAN JANUADI</td>
+                          <td class="text-center">0064893385</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">77</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">19</td>
+                          <td>I WAYAN SUSILA</td>
+                          <td class="text-center">0053876240</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">85</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">20</td>
+                          <td>I WAYAN YUKI WIDIANTARA</td>
+                          <td class="text-center">0067843614</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">84</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">21</td>
+                          <td>IDA AYU PUTU SEPTIARI</td>
+                          <td class="text-center">0053022071</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">81</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">22</td>
+                          <td>KADEK TRI EKA DESTARINI</td>
+                          <td class="text-center">0053861933</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">82</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">23</td>
+                          <td>KADEK YOGI SETIAWAN</td>
+                          <td class="text-center">0058142652</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">74</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">24</td>
+                          <td>NI KADEK ARIATI</td>
+                          <td class="text-center">0056183268</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">73</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">25</td>
+                          <td>NI KADEK JULIANI</td>
+                          <td class="text-center">0052084306</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">76</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">26</td>
+                          <td>NI KADEK WULANTARI</td>
+                          <td class="text-center">0063491227</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">81</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">27</td>
+                          <td>NI KOMANG APRIANI</td>
+                          <td class="text-center">0051400864</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">73</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">28</td>
+                          <td>NI KOMANG ASTINI</td>
+                          <td class="text-center">0062738225</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">73</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">29</td>
+                          <td>NI KOMANG DIA ARINI</td>
+                          <td class="text-center">0063173569</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">87</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">30</td>
+                          <td>NI KOMANG JUWITA APSARI</td>
+                          <td class="text-center">0067319885</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">79</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">31</td>
+                          <td>NI KOMANG TRI AYUDIA DEWI</td>
+                          <td class="text-center">0058122525</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">85</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">32</td>
+                          <td>NI LUH EKA SUKARIANI</td>
+                          <td class="text-center">0044971965</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">85</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">33</td>
+                          <td>NI LUH KERTI JULI ANTARI</td>
+                          <td class="text-center">0044890043</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">77</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">34</td>
+                          <td>NI MADE SUKRI</td>
+                          <td class="text-center">0059649291</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">79</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="text-center">35</td>
+                          <td>NI WAYAN MERIANI</td>
+                          <td class="text-center">0069558248</td>
+                          <td class="text-center">Hindu</td>
+                          <td class="text-center">79</td>
+                          <td>
+                            Menunjukkan penguasaan yang baik dalam mengevaluasi
+                            Database Server dan Mengkonfigurasi Database Server
+                            <hr />
+                            Perlu ditingkatkan dalam mengevaluasi Mail Server
+                            dan Mengkonfigurasi Mail Server
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Tutup
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="spinner" wire:loading></div>
+          </div>
+        </div>
+
+        <!-- Livewire Component wire-end:zm3srHRnqfYW7387APR4 -->
+      </div>
+    </div>
+    <!-- End: Content-->
+
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+
+    <!-- BEGIN: Footer-->
+    <footer class="footer footer-light footer-fixed">
+      <p class="clearfix mb-0">
+        <span class="float-md-start d-block d-md-inline-block mt-25"
+          >Hak Cipta &copy;
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          <a class="ms-25" href="https://smk.kemdikbud.go.id/" target="_blank"
+            >Direktorat SMK</a
+          >
+        </span>
+        <span class="float-md-end d-none d-md-block" title="Made with love"
+          >Versi 6.0.4<i data-feather="heart"></i
+        ></span>
+      </p>
+    </footer>
+    <button class="btn btn-primary btn-icon scroll-top" type="button">
+      <i data-feather="arrow-up"></i>
+    </button>
+    <!-- END: Footer-->
+
+    <!-- BEGIN: Vendor JS-->
+    <script src="lib/vendors/js/vendors.min.js"></script>
+    <!-- BEGIN Vendor JS-->
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="lib/vendors/js/ui/jquery.sticky.js"></script>
+    <!-- END: Page Vendor JS-->
+    <!-- BEGIN: Theme JS-->
+    <script src="lib/vendors/js/forms/select/select2.full.min.js"></script>
+    <script src="lib/js/core/app-menu.js"></script>
+    <script src="lib/js/core/app.js"></script>
+
+    <!-- custome scripts file for user -->
+    <script src="lib/js/core/scripts.js"></script>
+
+    <script src="lib/js/scripts/customizer.js"></script>
+    <!-- END: Theme JS-->
+    <!-- BEGIN: Page JS-->
+
+    <!-- END: Page JS-->
+    <style>
+      .spinner {
+        top: 50%;
+        right: auto;
+        bottom: auto;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        position: fixed;
+        z-index: 1060;
+        height: 60px;
+        width: 60px;
+        -webkit-animation: rotation 0.6s infinite linear;
+        -moz-animation: rotation 0.6s infinite linear;
+        -o-animation: rotation 0.6s infinite linear;
+        animation: rotation 0.6s infinite linear;
+        border-left: 6px solid rgba(0, 174, 239, 0.15);
+        border-right: 6px solid rgba(0, 174, 239, 0.15);
+        border-bottom: 6px solid rgba(0, 174, 239, 0.15);
+        border-top: 6px solid rgba(0, 174, 239, 0.8);
+        border-radius: 100%;
+      }
+
+      @-webkit-keyframes rotation {
+        from {
+          -webkit-transform: rotate(0deg);
+        }
+        to {
+          -webkit-transform: rotate(359deg);
+        }
+      }
+      @-moz-keyframes rotation {
+        from {
+          -moz-transform: rotate(0deg);
+        }
+        to {
+          -moz-transform: rotate(359deg);
+        }
+      }
+      @-o-keyframes rotation {
+        from {
+          -o-transform: rotate(0deg);
+        }
+        to {
+          -o-transform: rotate(359deg);
+        }
+      }
+      @keyframes rotation {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(359deg);
+        }
+      }
+    </style>
+    <script defer src="lib/vendors/js/alpinejs/alpine.js"></script>
+    <script src="lib/vendor/fontawesome/js/all.min.js"></script>
+    <script src="lib/vendors/js/extensions/sweetalert2.all.min.js"></script>
+    <script>
+      /**** Livewire Alert Scripts ****/
+      (() => {
+        var __webpack_modules__ = {
+            757: (e, t, r) => {
+              e.exports = r(666);
+            },
+            666: (e) => {
+              var t = (function (e) {
+                "use strict";
+                var t,
+                  r = Object.prototype,
+                  n = r.hasOwnProperty,
+                  o = "function" == typeof Symbol ? Symbol : {},
+                  i = o.iterator || "@@iterator",
+                  a = o.asyncIterator || "@@asyncIterator",
+                  c = o.toStringTag || "@@toStringTag";
+                function s(e, t, r) {
+                  return (
+                    Object.defineProperty(e, t, {
+                      value: r,
+                      enumerable: !0,
+                      configurable: !0,
+                      writable: !0,
+                    }),
+                    e[t]
+                  );
+                }
+                try {
+                  s({}, "");
+                } catch (e) {
+                  s = function (e, t, r) {
+                    return (e[t] = r);
+                  };
+                }
+                function l(e, t, r, n) {
+                  var o = t && t.prototype instanceof y ? t : y,
+                    i = Object.create(o.prototype),
+                    a = new x(n || []);
+                  return (
+                    (i._invoke = (function (e, t, r) {
+                      var n = f;
+                      return function (o, i) {
+                        if (n === p)
+                          throw new Error("Generator is already running");
+                        if (n === d) {
+                          if ("throw" === o) throw i;
+                          return S();
+                        }
+                        for (r.method = o, r.arg = i; ; ) {
+                          var a = r.delegate;
+                          if (a) {
+                            var c = L(a, r);
+                            if (c) {
+                              if (c === h) continue;
+                              return c;
+                            }
+                          }
+                          if ("next" === r.method) r.sent = r._sent = r.arg;
+                          else if ("throw" === r.method) {
+                            if (n === f) throw ((n = d), r.arg);
+                            r.dispatchException(r.arg);
+                          } else
+                            "return" === r.method && r.abrupt("return", r.arg);
+                          n = p;
+                          var s = u(e, t, r);
+                          if ("normal" === s.type) {
+                            if (((n = r.done ? d : _), s.arg === h)) continue;
+                            return { value: s.arg, done: r.done };
+                          }
+                          "throw" === s.type &&
+                            ((n = d), (r.method = "throw"), (r.arg = s.arg));
+                        }
+                      };
+                    })(e, r, a)),
+                    i
+                  );
+                }
+                function u(e, t, r) {
+                  try {
+                    return { type: "normal", arg: e.call(t, r) };
+                  } catch (e) {
+                    return { type: "throw", arg: e };
+                  }
+                }
+                e.wrap = l;
+                var f = "suspendedStart",
+                  _ = "suspendedYield",
+                  p = "executing",
+                  d = "completed",
+                  h = {};
+                function y() {}
+                function v() {}
+                function m() {}
+                var b = {};
+                s(b, i, function () {
+                  return this;
+                });
+                var w = Object.getPrototypeOf,
+                  g = w && w(w(D([])));
+                g && g !== r && n.call(g, i) && (b = g);
+                var O = (m.prototype = y.prototype = Object.create(b));
+                function E(e) {
+                  ["next", "throw", "return"].forEach(function (t) {
+                    s(e, t, function (e) {
+                      return this._invoke(t, e);
+                    });
+                  });
+                }
+                function k(e, t) {
+                  function r(o, i, a, c) {
+                    var s = u(e[o], e, i);
+                    if ("throw" !== s.type) {
+                      var l = s.arg,
+                        f = l.value;
+                      return f && "object" == typeof f && n.call(f, "__await")
+                        ? t.resolve(f.__await).then(
+                            function (e) {
+                              r("next", e, a, c);
+                            },
+                            function (e) {
+                              r("throw", e, a, c);
+                            }
+                          )
+                        : t.resolve(f).then(
+                            function (e) {
+                              (l.value = e), a(l);
+                            },
+                            function (e) {
+                              return r("throw", e, a, c);
+                            }
+                          );
+                    }
+                    c(s.arg);
+                  }
+                  var o;
+                  this._invoke = function (e, n) {
+                    function i() {
+                      return new t(function (t, o) {
+                        r(e, n, t, o);
+                      });
+                    }
+                    return (o = o ? o.then(i, i) : i());
+                  };
+                }
+                function L(e, r) {
+                  var n = e.iterator[r.method];
+                  if (n === t) {
+                    if (((r.delegate = null), "throw" === r.method)) {
+                      if (
+                        e.iterator.return &&
+                        ((r.method = "return"),
+                        (r.arg = t),
+                        L(e, r),
+                        "throw" === r.method)
+                      )
+                        return h;
+                      (r.method = "throw"),
+                        (r.arg = new TypeError(
+                          "The iterator does not provide a 'throw' method"
+                        ));
+                    }
+                    return h;
+                  }
+                  var o = u(n, e.iterator, r.arg);
+                  if ("throw" === o.type)
+                    return (
+                      (r.method = "throw"),
+                      (r.arg = o.arg),
+                      (r.delegate = null),
+                      h
+                    );
+                  var i = o.arg;
+                  return i
+                    ? i.done
+                      ? ((r[e.resultName] = i.value),
+                        (r.next = e.nextLoc),
+                        "return" !== r.method &&
+                          ((r.method = "next"), (r.arg = t)),
+                        (r.delegate = null),
+                        h)
+                      : i
+                    : ((r.method = "throw"),
+                      (r.arg = new TypeError(
+                        "iterator result is not an object"
+                      )),
+                      (r.delegate = null),
+                      h);
+                }
+                function j(e) {
+                  var t = { tryLoc: e[0] };
+                  1 in e && (t.catchLoc = e[1]),
+                    2 in e && ((t.finallyLoc = e[2]), (t.afterLoc = e[3])),
+                    this.tryEntries.push(t);
+                }
+                function P(e) {
+                  var t = e.completion || {};
+                  (t.type = "normal"), delete t.arg, (e.completion = t);
+                }
+                function x(e) {
+                  (this.tryEntries = [{ tryLoc: "root" }]),
+                    e.forEach(j, this),
+                    this.reset(!0);
+                }
+                function D(e) {
+                  if (e) {
+                    var r = e[i];
+                    if (r) return r.call(e);
+                    if ("function" == typeof e.next) return e;
+                    if (!isNaN(e.length)) {
+                      var o = -1,
+                        a = function r() {
+                          for (; ++o < e.length; )
+                            if (n.call(e, o))
+                              return (r.value = e[o]), (r.done = !1), r;
+                          return (r.value = t), (r.done = !0), r;
+                        };
+                      return (a.next = a);
+                    }
+                  }
+                  return { next: S };
+                }
+                function S() {
+                  return { value: t, done: !0 };
+                }
+                return (
+                  (v.prototype = m),
+                  s(O, "constructor", m),
+                  s(m, "constructor", v),
+                  (v.displayName = s(m, c, "GeneratorFunction")),
+                  (e.isGeneratorFunction = function (e) {
+                    var t = "function" == typeof e && e.constructor;
+                    return (
+                      !!t &&
+                      (t === v ||
+                        "GeneratorFunction" === (t.displayName || t.name))
+                    );
+                  }),
+                  (e.mark = function (e) {
+                    return (
+                      Object.setPrototypeOf
+                        ? Object.setPrototypeOf(e, m)
+                        : ((e.__proto__ = m), s(e, c, "GeneratorFunction")),
+                      (e.prototype = Object.create(O)),
+                      e
+                    );
+                  }),
+                  (e.awrap = function (e) {
+                    return { __await: e };
+                  }),
+                  E(k.prototype),
+                  s(k.prototype, a, function () {
+                    return this;
+                  }),
+                  (e.AsyncIterator = k),
+                  (e.async = function (t, r, n, o, i) {
+                    void 0 === i && (i = Promise);
+                    var a = new k(l(t, r, n, o), i);
+                    return e.isGeneratorFunction(r)
+                      ? a
+                      : a.next().then(function (e) {
+                          return e.done ? e.value : a.next();
+                        });
+                  }),
+                  E(O),
+                  s(O, c, "Generator"),
+                  s(O, i, function () {
+                    return this;
+                  }),
+                  s(O, "toString", function () {
+                    return "[object Generator]";
+                  }),
+                  (e.keys = function (e) {
+                    var t = [];
+                    for (var r in e) t.push(r);
+                    return (
+                      t.reverse(),
+                      function r() {
+                        for (; t.length; ) {
+                          var n = t.pop();
+                          if (n in e) return (r.value = n), (r.done = !1), r;
+                        }
+                        return (r.done = !0), r;
+                      }
+                    );
+                  }),
+                  (e.values = D),
+                  (x.prototype = {
+                    constructor: x,
+                    reset: function (e) {
+                      if (
+                        ((this.prev = 0),
+                        (this.next = 0),
+                        (this.sent = this._sent = t),
+                        (this.done = !1),
+                        (this.delegate = null),
+                        (this.method = "next"),
+                        (this.arg = t),
+                        this.tryEntries.forEach(P),
+                        !e)
+                      )
+                        for (var r in this)
+                          "t" === r.charAt(0) &&
+                            n.call(this, r) &&
+                            !isNaN(+r.slice(1)) &&
+                            (this[r] = t);
+                    },
+                    stop: function () {
+                      this.done = !0;
+                      var e = this.tryEntries[0].completion;
+                      if ("throw" === e.type) throw e.arg;
+                      return this.rval;
+                    },
+                    dispatchException: function (e) {
+                      if (this.done) throw e;
+                      var r = this;
+                      function o(n, o) {
+                        return (
+                          (c.type = "throw"),
+                          (c.arg = e),
+                          (r.next = n),
+                          o && ((r.method = "next"), (r.arg = t)),
+                          !!o
+                        );
+                      }
+                      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+                        var a = this.tryEntries[i],
+                          c = a.completion;
+                        if ("root" === a.tryLoc) return o("end");
+                        if (a.tryLoc <= this.prev) {
+                          var s = n.call(a, "catchLoc"),
+                            l = n.call(a, "finallyLoc");
+                          if (s && l) {
+                            if (this.prev < a.catchLoc)
+                              return o(a.catchLoc, !0);
+                            if (this.prev < a.finallyLoc)
+                              return o(a.finallyLoc);
+                          } else if (s) {
+                            if (this.prev < a.catchLoc)
+                              return o(a.catchLoc, !0);
+                          } else {
+                            if (!l)
+                              throw new Error(
+                                "try statement without catch or finally"
+                              );
+                            if (this.prev < a.finallyLoc)
+                              return o(a.finallyLoc);
+                          }
+                        }
+                      }
+                    },
+                    abrupt: function (e, t) {
+                      for (var r = this.tryEntries.length - 1; r >= 0; --r) {
+                        var o = this.tryEntries[r];
+                        if (
+                          o.tryLoc <= this.prev &&
+                          n.call(o, "finallyLoc") &&
+                          this.prev < o.finallyLoc
+                        ) {
+                          var i = o;
+                          break;
+                        }
+                      }
+                      i &&
+                        ("break" === e || "continue" === e) &&
+                        i.tryLoc <= t &&
+                        t <= i.finallyLoc &&
+                        (i = null);
+                      var a = i ? i.completion : {};
+                      return (
+                        (a.type = e),
+                        (a.arg = t),
+                        i
+                          ? ((this.method = "next"),
+                            (this.next = i.finallyLoc),
+                            h)
+                          : this.complete(a)
+                      );
+                    },
+                    complete: function (e, t) {
+                      if ("throw" === e.type) throw e.arg;
+                      return (
+                        "break" === e.type || "continue" === e.type
+                          ? (this.next = e.arg)
+                          : "return" === e.type
+                          ? ((this.rval = this.arg = e.arg),
+                            (this.method = "return"),
+                            (this.next = "end"))
+                          : "normal" === e.type && t && (this.next = t),
+                        h
+                      );
+                    },
+                    finish: function (e) {
+                      for (var t = this.tryEntries.length - 1; t >= 0; --t) {
+                        var r = this.tryEntries[t];
+                        if (r.finallyLoc === e)
+                          return (
+                            this.complete(r.completion, r.afterLoc), P(r), h
+                          );
+                      }
+                    },
+                    catch: function (e) {
+                      for (var t = this.tryEntries.length - 1; t >= 0; --t) {
+                        var r = this.tryEntries[t];
+                        if (r.tryLoc === e) {
+                          var n = r.completion;
+                          if ("throw" === n.type) {
+                            var o = n.arg;
+                            P(r);
+                          }
+                          return o;
+                        }
+                      }
+                      throw new Error("illegal catch attempt");
+                    },
+                    delegateYield: function (e, r, n) {
+                      return (
+                        (this.delegate = {
+                          iterator: D(e),
+                          resultName: r,
+                          nextLoc: n,
+                        }),
+                        "next" === this.method && (this.arg = t),
+                        h
+                      );
+                    },
+                  }),
+                  e
+                );
+              })(e.exports);
+              try {
+                regeneratorRuntime = t;
+              } catch (e) {
+                "object" == typeof globalThis
+                  ? (globalThis.regeneratorRuntime = t)
+                  : Function("r", "regeneratorRuntime = r")(t);
+              }
+            },
+          },
+          __webpack_module_cache__ = {};
+        function __webpack_require__(e) {
+          var t = __webpack_module_cache__[e];
+          if (void 0 !== t) return t.exports;
+          var r = (__webpack_module_cache__[e] = { exports: {} });
+          return (
+            __webpack_modules__[e](r, r.exports, __webpack_require__), r.exports
+          );
+        }
+        (__webpack_require__.n = (e) => {
+          var t = e && e.__esModule ? () => e.default : () => e;
+          return __webpack_require__.d(t, { a: t }), t;
+        }),
+          (__webpack_require__.d = (e, t) => {
+            for (var r in t)
+              __webpack_require__.o(t, r) &&
+                !__webpack_require__.o(e, r) &&
+                Object.defineProperty(e, r, { enumerable: !0, get: t[r] });
+          }),
+          (__webpack_require__.o = (e, t) =>
+            Object.prototype.hasOwnProperty.call(e, t));
+        var __webpack_exports__ = {};
+        (() => {
+          "use strict";
+          var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ =
+              __webpack_require__(757),
+            _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default =
+              __webpack_require__.n(
+                _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__
+              );
+          function ownKeys(e, t) {
+            var r = Object.keys(e);
+            if (Object.getOwnPropertySymbols) {
+              var n = Object.getOwnPropertySymbols(e);
+              t &&
+                (n = n.filter(function (t) {
+                  return Object.getOwnPropertyDescriptor(e, t).enumerable;
+                })),
+                r.push.apply(r, n);
+            }
+            return r;
+          }
+          function _objectSpread(e) {
+            for (var t = 1; t < arguments.length; t++) {
+              var r = null != arguments[t] ? arguments[t] : {};
+              t % 2
+                ? ownKeys(Object(r), !0).forEach(function (t) {
+                    _defineProperty(e, t, r[t]);
+                  })
+                : Object.getOwnPropertyDescriptors
+                ? Object.defineProperties(
+                    e,
+                    Object.getOwnPropertyDescriptors(r)
+                  )
+                : ownKeys(Object(r)).forEach(function (t) {
+                    Object.defineProperty(
+                      e,
+                      t,
+                      Object.getOwnPropertyDescriptor(r, t)
+                    );
+                  });
+            }
+            return e;
+          }
+          function _defineProperty(e, t, r) {
+            return (
+              t in e
+                ? Object.defineProperty(e, t, {
+                    value: r,
+                    enumerable: !0,
+                    configurable: !0,
+                    writable: !0,
+                  })
+                : (e[t] = r),
+              e
+            );
+          }
+          function asyncGeneratorStep(e, t, r, n, o, i, a) {
+            try {
+              var c = e[i](a),
+                s = c.value;
+            } catch (e) {
+              return void r(e);
+            }
+            c.done ? t(s) : Promise.resolve(s).then(n, o);
+          }
+          function _asyncToGenerator(e) {
+            return function () {
+              var t = this,
+                r = arguments;
+              return new Promise(function (n, o) {
+                var i = e.apply(t, r);
+                function a(e) {
+                  asyncGeneratorStep(i, n, o, a, c, "next", e);
+                }
+                function c(e) {
+                  asyncGeneratorStep(i, n, o, a, c, "throw", e);
+                }
+                a(void 0);
+              });
+            };
+          }
+          function evalCallbacksOptions(options) {
+            for (
+              var callbacksKeysAllowed = [
+                  "allowOutsideClick",
+                  "allowEscapeKey",
+                  "allowEnterKey",
+                  "loaderHtml",
+                  "inputOptions",
+                  "inputValidator",
+                  "preConfirm",
+                  "preDeny",
+                  "didClose",
+                  "didDestroy",
+                  "didOpen",
+                  "didRender",
+                  "willClose",
+                  "willOpen",
+                ],
+                _i = 0,
+                _callbacksKeysAllowed = callbacksKeysAllowed;
+              _i < _callbacksKeysAllowed.length;
+              _i++
+            ) {
+              var callbackKey = _callbacksKeysAllowed[_i];
+              options.hasOwnProperty(callbackKey) &&
+                ("string" == typeof options[callbackKey] ||
+                  options[callbackKey] instanceof String) &&
+                options[callbackKey] &&
+                "" != options[callbackKey].trim() &&
+                (options[callbackKey] = eval(options[callbackKey]));
+            }
+          }
+          function afterAlertInteraction(e) {
+            if (e.confirmed)
+              return "self" === e.onConfirmed.component
+                ? void Livewire.find(e.onConfirmed.id).emitSelf(
+                    e.onConfirmed.listener,
+                    e.result
+                  )
+                : void Livewire.emitTo(
+                    e.onConfirmed.component,
+                    e.onConfirmed.listener,
+                    e.result
+                  );
+            if (e.isDenied)
+              return "self" === e.onDenied.component
+                ? void Livewire.find(e.onDenied.id).emitSelf(
+                    e.onDenied.listener,
+                    e.result
+                  )
+                : void Livewire.emitTo(
+                    e.onDenied.component,
+                    e.onDenied.listener,
+                    e.result
+                  );
+            if (e.onProgressFinished && e.dismiss === Swal.DismissReason.timer)
+              return "self" === e.onProgressFinished.component
+                ? void Livewire.find(e.onProgressFinished.id).emitSelf(
+                    e.onProgressFinished.listener,
+                    e.result
+                  )
+                : void Livewire.emitTo(
+                    e.onProgressFinished.component,
+                    e.onProgressFinished.listener,
+                    e.result
+                  );
+            if (e.onDismissed) {
+              if ("self" === e.onDismissed.component)
+                return void Livewire.find(e.onDismissed.id).emit(
+                  e.onDismissed.listener,
+                  e.result
+                );
+              Livewire.emitTo(
+                e.onDismissed.component,
+                e.onDismissed.listener,
+                e.result
+              );
+            }
+          }
+          window.addEventListener(
+            "alert",
+            (function () {
+              var e = _asyncToGenerator(
+                _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(
+                  function e(t) {
+                    var r, n, o, i, a, c, s, l;
+                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(
+                      function (e) {
+                        for (;;)
+                          switch ((e.prev = e.next)) {
+                            case 0:
+                              return (
+                                (o = t.detail.message),
+                                (i =
+                                  null !== (r = t.detail.type) && void 0 !== r
+                                    ? r
+                                    : null),
+                                (a = t.detail.data),
+                                (c = t.detail.events),
+                                evalCallbacksOptions((s = t.detail.options)),
+                                (e.next = 8),
+                                Swal.fire(
+                                  _objectSpread({ title: o, icon: i }, s)
+                                )
+                              );
+                            case 8:
+                              afterAlertInteraction(
+                                _objectSpread(
+                                  _objectSpread(
+                                    _objectSpread(
+                                      {
+                                        confirmed: (l = e.sent).isConfirmed,
+                                        denied: l.isDenied,
+                                        dismiss: l.dismiss,
+                                        result: _objectSpread(
+                                          _objectSpread({}, l),
+                                          {},
+                                          {
+                                            data: _objectSpread(
+                                              _objectSpread({}, a),
+                                              {},
+                                              {
+                                                inputAttributes:
+                                                  null !==
+                                                    (n = s.inputAttributes) &&
+                                                  void 0 !== n
+                                                    ? n
+                                                    : null,
+                                              }
+                                            ),
+                                          }
+                                        ),
+                                      },
+                                      c
+                                    ),
+                                    l
+                                  ),
+                                  s
+                                )
+                              );
+                            case 10:
+                            case "end":
+                              return e.stop();
+                          }
+                      },
+                      e
+                    );
+                  }
+                )
+              );
+              return function (t) {
+                return e.apply(this, arguments);
+              };
+            })()
+          ),
+            (window.flashAlert = (function () {
+              var e = _asyncToGenerator(
+                _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(
+                  function e(t) {
+                    var r, n, o, i, a, c, s;
+                    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(
+                      function (e) {
+                        for (;;)
+                          switch ((e.prev = e.next)) {
+                            case 0:
+                              return (
+                                (i = t.events),
+                                (a = t.events.data),
+                                evalCallbacksOptions((c = t.options)),
+                                (e.next = 6),
+                                Swal.fire(
+                                  _objectSpread(
+                                    {
+                                      title:
+                                        null !== (r = t.message) && void 0 !== r
+                                          ? r
+                                          : "",
+                                      icon:
+                                        null !== (n = t.type) && void 0 !== n
+                                          ? n
+                                          : null,
+                                    },
+                                    c
+                                  )
+                                )
+                              );
+                            case 6:
+                              afterAlertInteraction(
+                                _objectSpread(
+                                  _objectSpread(
+                                    {
+                                      confirmed: (s = e.sent).isConfirmed,
+                                      denied: s.isDenied,
+                                      dismiss: s.dismiss,
+                                      result: _objectSpread(
+                                        _objectSpread({}, s),
+                                        {},
+                                        {
+                                          data: _objectSpread(
+                                            _objectSpread({}, a),
+                                            {},
+                                            {
+                                              inputAttributes:
+                                                null !==
+                                                  (o = c.inputAttributes) &&
+                                                void 0 !== o
+                                                  ? o
+                                                  : null,
+                                            }
+                                          ),
+                                        }
+                                      ),
+                                    },
+                                    i
+                                  ),
+                                  t.options
+                                )
+                              );
+                            case 8:
+                            case "end":
+                              return e.stop();
+                          }
+                      },
+                      e
+                    );
+                  }
+                )
+              );
+              return function (t) {
+                return e.apply(this, arguments);
+              };
+            })());
+        })();
+      })();
+    </script>
+
+    <script>
+      var Pharaonic;
+      void 0 === Pharaonic && (Pharaonic = {});
+      var PharaonicSelect2 = {
+        Select2: {
+          init: function () {
+            $('[data-pharaonic="select2"]:not("[data-select2-id]")').each(
+              function () {
+                Pharaonic.Select2.load(
+                  $(this),
+                  $(this).is("[data-component-id]")
+                    ? $(this).data("component-id")
+                    : null
+                );
+              }
+            );
+          },
+          load: function (a, e) {
+            var t, i, n, l, d;
+            e &&
+              ((t = {
+                multiple: $(a).is("[multiple]"),
+                tags: $(a).is("[data-tags]"),
+                placeholder: $(a).is("[data-placeholder]")
+                  ? $(a).data("placeholder")
+                  : "Select an option",
+                language: $(a).is("[data-language]")
+                  ? $(a).data("language")
+                  : "en",
+                dir: $(a).is("[data-dir]") ? $(a).data("dir") : "ltr",
+                dropdownParent: $(a).is("[data-parent]")
+                  ? $($(a).data("parent"))
+                  : null,
+                minimumResultsForSearch: $(a).is("[data-search-off]") ? -1 : 0,
+                allowClear: $(a).is("[data-clear]"),
+              }),
+              (n =
+                (i = a[0].attributes).getNamedItem("wire:model") ||
+                i.getNamedItem("wire:model.defer") ||
+                null),
+              i.getNamedItem("class") || $(a).attr("class", "form-select"),
+              delete i,
+              (a = $(a).select2(t)) &&
+                ((l = n.value),
+                (d = 0 < n.name.search("defer")),
+                a.on("change", function () {
+                  Livewire.find(e).set(l, $(a).val(), d);
+                })));
+          },
+        },
+      };
+      Object.assign(Pharaonic, PharaonicSelect2),
+        $(document).ready(function () {
+          Pharaonic.Select2.init();
+        }),
+        window.addEventListener("pharaonic.select2.init", () => {
+          Pharaonic.Select2.init();
+        }),
+        window.addEventListener("pharaonic.select2.load", (a) => {
+          Pharaonic.Select2.load($(a.detail.target), a.detail.component);
+        });
+    </script>
+
+    <script type="text/javascript">
+      $(window).on("load", function () {
+        if (feather) {
+          feather.replace({
+            width: 14,
+            height: 14,
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

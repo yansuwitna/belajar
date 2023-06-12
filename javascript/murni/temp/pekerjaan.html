@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Riwayat Pekerjaan | BPI</title>
+    <link rel="icon" href="img/logo.png" />
+    <!-- Google Font: Source Sans Pro -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="lib/template/plugins/fontawesome-free/css/all.min.css"
+    />
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link
+      rel="stylesheet"
+      href="lib/template/plugins/icheck-bootstrap/icheck-bootstrap.min.css"
+    />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="lib/template/dist/css/adminlte.css" />
+    <link rel="stylesheet" href="css/site.css" />
+
+    <!-- jQuery -->
+    <script src="lib/template/plugins/jquery/jquery.min.js"></script>
+    <script src="lib/template/plugins/jquery-validation/jquery.validate.min.js"></script>
+    <script src="lib/template/plugins/sweetalert2/sweetalert2.all.min.js"></script>
+    <script src="lib/jquery.form/jquery.form.min.js"></script>
+
+    <script>
+      function SetJqueryForm(idForm) {
+        idForm = idForm || "main_form";
+        $("#" + idForm).ajaxForm({
+          beforeSubmit: function () {
+            ShowLoading();
+          },
+          data: {
+            _token: "tRf3qhyTvmo9MuU2xnkbhzTAvaKzXUIOlaU6dswZ",
+          },
+          success: function (hasil) {
+            var res = JSON.parse(hasil);
+            if (res.status) {
+              window.onbeforeunload = function () {};
+              if (res.url !== "" && res.url !== null) {
+                location.replace(res.url);
+              } else {
+                location.reload();
+              }
+            } else {
+              ShowError(res.message);
+            }
+          },
+          error: function (a, b, c) {
+            var pesan = b;
+            if (c != undefined && c != "" && c != null) {
+              pesan = c;
+            }
+            ShowError(pesan);
+          },
+        });
+      }
+
+      function SetJqueryFormNoReload(idForm, callback, idModal) {
+        idForm = idForm || "main_form";
+        idModal = idModal || "main_modal";
+        $("#" + idForm).ajaxForm({
+          beforeSubmit: function () {
+            ShowLoading();
+          },
+          data: {
+            _token: "tRf3qhyTvmo9MuU2xnkbhzTAvaKzXUIOlaU6dswZ",
+          },
+          success: function (hasil) {
+            var res = JSON.parse(hasil);
+            if (res.status) {
+              ShowSuccess(res.message);
+              $("#" + idModal).modal("hide");
+              if (callback != undefined) {
+                callback();
+              }
+            } else {
+              ShowError(res.message);
+            }
+          },
+          error: function (a, b, c) {
+            var pesan = b;
+            if (c != undefined && c != "" && c != null) {
+              pesan = c;
+            }
+            ShowError(pesan);
+          },
+        });
+      }
+    </script>
+  </head>
+
+  <body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+      <!-- Navbar -->
+      <nav class="main-header navbar navbar-expand navbar-light">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"
+              ><i class="fas fa-bars"></i
+            ></a>
+          </li>
+        </ul>
+
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              onclick="KonfirmasiSubmit('logout-form','Anda akan keluar dari sistem.')"
+              role="button"
+            >
+              <i class="fas fa-sign-out-alt"></i>
+            </a>
+            <form
+              id="logout-form"
+              action="/pendaftaran/logout"
+              method="POST"
+              style="display: none"
+            >
+              <input
+                type="hidden"
+                name="_token"
+                value="tRf3qhyTvmo9MuU2xnkbhzTAvaKzXUIOlaU6dswZ"
+              />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.navbar -->
+
+      <!-- Main Sidebar Container -->
+      <aside class="main-sidebar sidebar-light-primary elevation-6">
+        <!-- Brand Logo -->
+        <a href="/" class="brand-link">
+          <img src="img/logo.png" alt="Logo BPI" class="brand-image" />
+          <span class="brand-text">BPI</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <!-- Sidebar user panel (optional) -->
+
+          <!-- Sidebar Menu -->
+          <nav class="mt-2 text-sm">
+            <ul
+              class="nav nav-pills nav-sidebar nav-child-indent flex-column"
+              data-widget="treeview"
+              role="menu"
+              data-accordion="false"
+              id="sidebar"
+            >
+              <li class="nav-header pt-4">Menu Utama</li>
+              <li class="nav-item">
+                <a href="/pendaftaran/datadiri" class="nav-link">
+                  <i class="nav-icon fa fa-user"></i>
+                  <p>Data Diri</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/pendaftaran/usulan-beasiswa" class="nav-link active">
+                  <i class="nav-icon fa fa-th-large"></i>
+                  <p>Berkas Beasiswa</p>
+                </a>
+              </li>
+              <li class="nav-item menu-open">
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a
+                      href="usulan-beasiswa/detail/eyJpdiI6IlZaaGJYRnRnOUR1RG9iT3FhWW5vUkE9PSIsInZhbHVlIjoiZGNaWEhSeHpVNmUxYnZGM0NaWHVadz09IiwibWFjIjoiZGMyMzZiMGRmMDE3OTAzNWUyYzhjNTZlOTAyYzhjYjdkZmQwZThkMWRjM2QxODA4MjhkOTNiOTFlZjU2YzcxYiIsInRhZyI6IiJ9"
+                      class="nav-link"
+                    >
+                      <i class="nav-icon far fa-circle"></i>
+                      <p>Beasiswa</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      href="biodata/eyJpdiI6IlZaaGJYRnRnOUR1RG9iT3FhWW5vUkE9PSIsInZhbHVlIjoiZGNaWEhSeHpVNmUxYnZGM0NaWHVadz09IiwibWFjIjoiZGMyMzZiMGRmMDE3OTAzNWUyYzhjNTZlOTAyYzhjYjdkZmQwZThkMWRjM2QxODA4MjhkOTNiOTFlZjU2YzcxYiIsInRhZyI6IiJ9"
+                      class="nav-link"
+                    >
+                      <i class="nav-icon far fa-circle"></i>
+                      <p>Biodata</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      href="informasi-keluarga/eyJpdiI6IlZaaGJYRnRnOUR1RG9iT3FhWW5vUkE9PSIsInZhbHVlIjoiZGNaWEhSeHpVNmUxYnZGM0NaWHVadz09IiwibWFjIjoiZGMyMzZiMGRmMDE3OTAzNWUyYzhjNTZlOTAyYzhjYjdkZmQwZThkMWRjM2QxODA4MjhkOTNiOTFlZjU2YzcxYiIsInRhZyI6IiJ9"
+                      class="nav-link"
+                    >
+                      <i class="nav-icon far fa-circle"></i>
+                      <p>Informasi Keluarga</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      href="unggah-dokumen/eyJpdiI6IlZaaGJYRnRnOUR1RG9iT3FhWW5vUkE9PSIsInZhbHVlIjoiZGNaWEhSeHpVNmUxYnZGM0NaWHVadz09IiwibWFjIjoiZGMyMzZiMGRmMDE3OTAzNWUyYzhjNTZlOTAyYzhjYjdkZmQwZThkMWRjM2QxODA4MjhkOTNiOTFlZjU2YzcxYiIsInRhZyI6IiJ9"
+                      class="nav-link"
+                    >
+                      <i class="nav-icon far fa-circle"></i>
+                      <p>Dokumen</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      href="pendidikan/eyJpdiI6IlZaaGJYRnRnOUR1RG9iT3FhWW5vUkE9PSIsInZhbHVlIjoiZGNaWEhSeHpVNmUxYnZGM0NaWHVadz09IiwibWFjIjoiZGMyMzZiMGRmMDE3OTAzNWUyYzhjNTZlOTAyYzhjYjdkZmQwZThkMWRjM2QxODA4MjhkOTNiOTFlZjU2YzcxYiIsInRhZyI6IiJ9"
+                      class="nav-link"
+                    >
+                      <i class="nav-icon far fa-circle"></i>
+                      <p>Riwayat Pendidikan</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      href="riwayat-pekerjaan/eyJpdiI6IlZaaGJYRnRnOUR1RG9iT3FhWW5vUkE9PSIsInZhbHVlIjoiZGNaWEhSeHpVNmUxYnZGM0NaWHVadz09IiwibWFjIjoiZGMyMzZiMGRmMDE3OTAzNWUyYzhjNTZlOTAyYzhjYjdkZmQwZThkMWRjM2QxODA4MjhkOTNiOTFlZjU2YzcxYiIsInRhZyI6IiJ9"
+                      class="nav-link active"
+                    >
+                      <i class="nav-icon far fa-circle"></i>
+                      <p>Riwayat Pekerjaan</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      href="bahasa/eyJpdiI6IlZaaGJYRnRnOUR1RG9iT3FhWW5vUkE9PSIsInZhbHVlIjoiZGNaWEhSeHpVNmUxYnZGM0NaWHVadz09IiwibWFjIjoiZGMyMzZiMGRmMDE3OTAzNWUyYzhjNTZlOTAyYzhjYjdkZmQwZThkMWRjM2QxODA4MjhkOTNiOTFlZjU2YzcxYiIsInRhZyI6IiJ9"
+                      class="nav-link"
+                    >
+                      <i class="nav-icon far fa-circle"></i>
+                      <p>Bahasa</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      href="pengalaman-organisasi/eyJpdiI6IlZaaGJYRnRnOUR1RG9iT3FhWW5vUkE9PSIsInZhbHVlIjoiZGNaWEhSeHpVNmUxYnZGM0NaWHVadz09IiwibWFjIjoiZGMyMzZiMGRmMDE3OTAzNWUyYzhjNTZlOTAyYzhjYjdkZmQwZThkMWRjM2QxODA4MjhkOTNiOTFlZjU2YzcxYiIsInRhZyI6IiJ9"
+                      class="nav-link"
+                    >
+                      <i class="nav-icon far fa-circle"></i>
+                      <p>Pengalaman Organisasi</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      href="prestasi/eyJpdiI6IlZaaGJYRnRnOUR1RG9iT3FhWW5vUkE9PSIsInZhbHVlIjoiZGNaWEhSeHpVNmUxYnZGM0NaWHVadz09IiwibWFjIjoiZGMyMzZiMGRmMDE3OTAzNWUyYzhjNTZlOTAyYzhjYjdkZmQwZThkMWRjM2QxODA4MjhkOTNiOTFlZjU2YzcxYiIsInRhZyI6IiJ9"
+                      class="nav-link"
+                    >
+                      <i class="nav-icon far fa-circle"></i>
+                      <p>Prestasi</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      href="penghargaan/eyJpdiI6IlZaaGJYRnRnOUR1RG9iT3FhWW5vUkE9PSIsInZhbHVlIjoiZGNaWEhSeHpVNmUxYnZGM0NaWHVadz09IiwibWFjIjoiZGMyMzZiMGRmMDE3OTAzNWUyYzhjNTZlOTAyYzhjYjdkZmQwZThkMWRjM2QxODA4MjhkOTNiOTFlZjU2YzcxYiIsInRhZyI6IiJ9"
+                      class="nav-link"
+                    >
+                      <i class="nav-icon far fa-circle"></i>
+                      <p>Penghargaan</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      href="workshop/eyJpdiI6IlZaaGJYRnRnOUR1RG9iT3FhWW5vUkE9PSIsInZhbHVlIjoiZGNaWEhSeHpVNmUxYnZGM0NaWHVadz09IiwibWFjIjoiZGMyMzZiMGRmMDE3OTAzNWUyYzhjNTZlOTAyYzhjYjdkZmQwZThkMWRjM2QxODA4MjhkOTNiOTFlZjU2YzcxYiIsInRhZyI6IiJ9"
+                      class="nav-link"
+                    >
+                      <i class="nav-icon far fa-circle"></i>
+                      <p>Pelatihan/Workshop</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      href="karya-ilmiah/eyJpdiI6IlZaaGJYRnRnOUR1RG9iT3FhWW5vUkE9PSIsInZhbHVlIjoiZGNaWEhSeHpVNmUxYnZGM0NaWHVadz09IiwibWFjIjoiZGMyMzZiMGRmMDE3OTAzNWUyYzhjNTZlOTAyYzhjYjdkZmQwZThkMWRjM2QxODA4MjhkOTNiOTFlZjU2YzcxYiIsInRhZyI6IiJ9"
+                      class="nav-link"
+                    >
+                      <i class="nav-icon far fa-circle"></i>
+                      <p>Karya Ilmiah</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      href="konferensi-ilmiah/eyJpdiI6IlZaaGJYRnRnOUR1RG9iT3FhWW5vUkE9PSIsInZhbHVlIjoiZGNaWEhSeHpVNmUxYnZGM0NaWHVadz09IiwibWFjIjoiZGMyMzZiMGRmMDE3OTAzNWUyYzhjNTZlOTAyYzhjYjdkZmQwZThkMWRjM2QxODA4MjhkOTNiOTFlZjU2YzcxYiIsInRhZyI6IiJ9"
+                      class="nav-link"
+                    >
+                      <i class="nav-icon far fa-circle"></i>
+                      <p>Konferensi Ilmiah</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      href="riset/eyJpdiI6IlZaaGJYRnRnOUR1RG9iT3FhWW5vUkE9PSIsInZhbHVlIjoiZGNaWEhSeHpVNmUxYnZGM0NaWHVadz09IiwibWFjIjoiZGMyMzZiMGRmMDE3OTAzNWUyYzhjNTZlOTAyYzhjYjdkZmQwZThkMWRjM2QxODA4MjhkOTNiOTFlZjU2YzcxYiIsInRhZyI6IiJ9"
+                      class="nav-link"
+                    >
+                      <i class="nav-icon far fa-circle"></i>
+                      <p>Riset</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      href="konfirmasi-berkas/eyJpdiI6IlZaaGJYRnRnOUR1RG9iT3FhWW5vUkE9PSIsInZhbHVlIjoiZGNaWEhSeHpVNmUxYnZGM0NaWHVadz09IiwibWFjIjoiZGMyMzZiMGRmMDE3OTAzNWUyYzhjNTZlOTAyYzhjYjdkZmQwZThkMWRjM2QxODA4MjhkOTNiOTFlZjU2YzcxYiIsInRhZyI6IiJ9"
+                      class="nav-link"
+                    >
+                      <i class="nav-icon far fa-circle"></i>
+                      <p>Konfirmasi Berkas</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+          <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+      </aside>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm-12">
+                <h1 class="mb-0"><b> Riwayat Pekerjaan </b></h1>
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <div class="content">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-12">
+                <style>
+                  a.disabled {
+                    pointer-events: none;
+                  }
+                </style>
+                <div
+                  wire:id="BniuZnS9AU6O26hBjvIx"
+                  wire:initial-data='{"fingerprint":{"id":"BniuZnS9AU6O26hBjvIx","name":"pengumuman","locale":"id","path":"riwayat-pekerjaan\/eyJpdiI6Ik1sM3MrOENCakp0Mzk0aTcwKzlXVEE9PSIsInZhbHVlIjoiMW5vN3NtMTRJc0hKM3pycVF6Y2pydz09IiwibWFjIjoiYTdiNjc5ZWNjNDZjZTdhZDkxYzc4MzRkMDk4NjExNTlmYTZiMWJlN2RmZWZhMThmNDdhODZkMmU0N2ZhY2JiZSIsInRhZyI6IiJ9","method":"GET","v":"acj"},"effects":{"listeners":[]},"serverMemo":{"children":[],"errors":[],"htmlHash":"54ac8fd2","data":[],"dataMeta":[],"checksum":"595283506362b22ee3081726703b2d3995437e10965bf79c605089ab6cf3da18"}}'
+                >
+                  <div class="row-md">
+                    <blockquote>
+                      <h6>BATAS SUBMIT BEASISWA LUAR NEGERI</h6>
+                      <p>
+                        15 Juni 2023 pukul 23.59 WIB adalah batas submit berkas
+                        pendaftaran Beasiswa Pendidikan Indonesia (BPI) tujuan
+                        Perguruan Tinggi Luar Negeri. Sebelum melakukan submit
+                        berkas pendaftaran, pastikan kembali bahwa persyaratan
+                        dan dokumen sudah dilengkapi. Setelah melakukan submit,
+                        segera cetak kartu peserta sebagai tanda bahwa Anda
+                        telah menyelesaikan pendaftaran. Informasi mengenai
+                        tahapan selanjutnya dapat dipantau secara berkala di
+                        laman web beasiswa.kemdikbud.go.id dan Instagram
+                        @awardee_bpi. Semoga Sukses
+                      </p>
+                    </blockquote>
+                  </div>
+                </div>
+
+                <!-- Livewire Component wire-end:BniuZnS9AU6O26hBjvIx -->
+                <div class="tab-content">
+                  <div class="tab-pane active">
+                    <div class="card card-primary card-outline">
+                      <div class="card-body">
+                        <form
+                          action="riwayat-pekerjaan/update_data"
+                          method="post"
+                          id="status_form"
+                        >
+                          <input
+                            type="hidden"
+                            name="_token"
+                            value="tRf3qhyTvmo9MuU2xnkbhzTAvaKzXUIOlaU6dswZ"
+                          />
+                          <input
+                            type="hidden"
+                            name="id"
+                            value="eyJpdiI6Ik1sM3MrOENCakp0Mzk0aTcwKzlXVEE9PSIsInZhbHVlIjoiMW5vN3NtMTRJc0hKM3pycVF6Y2pydz09IiwibWFjIjoiYTdiNjc5ZWNjNDZjZTdhZDkxYzc4MzRkMDk4NjExNTlmYTZiMWJlN2RmZWZhMThmNDdhODZkMmU0N2ZhY2JiZSIsInRhZyI6IiJ9"
+                          />
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="form-group">
+                                <label class="harus col-form-label"
+                                  >Apakah Anda memiliki pengalaman kerja?</label
+                                >
+                                <br />
+                                <div class="icheck-primary d-inline mr-5">
+                                  <input
+                                    type="radio"
+                                    id="radioPrimary1"
+                                    name="punya"
+                                    value="1"
+                                    required
+                                  />
+                                  <label for="radioPrimary1"> Ya </label>
+                                </div>
+                                <div class="icheck-primary d-inline">
+                                  <input
+                                    type="radio"
+                                    id="radioPrimary2"
+                                    name="punya"
+                                    value="0"
+                                  />
+                                  <label for="radioPrimary2"> Tidak </label>
+                                </div>
+                                <br />
+                                <label
+                                  id="punya-error"
+                                  class="error"
+                                  for="punya"
+                                  style="display: none"
+                                  >This field is required.</label
+                                >
+                              </div>
+                              <div class="form-group">
+                                <button class="btn btn-primary" type="submit">
+                                  Simpan
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+
+                    <script>
+                      $("#status_form").validate();
+                      SetJqueryForm("status_form");
+                    </script>
+                  </div>
+                </div>
+              </div>
+              <!-- /.col-md-6 -->
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.container-fluid -->
+        </div>
+        <!-- /.content -->
+      </div>
+      <!-- /.content-wrapper -->
+
+      <!-- Main Footer -->
+      <footer class="main-footer">
+        Copyright &copy; 2022
+        <a href="#">Beasiswa Pendidikan Indonesia </a>. All rights reserved.
+      </footer>
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- REQUIRED SCRIPTS -->
+
+    <!-- Bootstrap 4 -->
+    <script src="lib/template/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="lib/template/dist/js/adminlte.min.js"></script>
+    <div class="modal fade" id="main_modal">
+      <div
+        id="modal-custom"
+        class="modal-dialog modal-dialog-centered modal-lg"
+      >
+        <div class="modal-content">
+          <div class="modal-header" style="display: none">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="judul_modal">Default Modal</h4>
+          </div>
+          <div class="modal-body" id="isi_modal"></div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <script>
+      function OpenModal(url, xl) {
+        if (xl == undefined) {
+          $("#modal-custom").removeClass("modal-xl");
+          $("#modal-custom").addClass("modal-lg");
+        } else {
+          $("#modal-custom").removeClass("modal-lg");
+          $("#modal-custom").addClass("modal-xl");
+        }
+
+        ShowLoading();
+        $.ajax({
+          url: url,
+          success: function (res) {
+            swal.close();
+            $("#isi_modal").html(res);
+            $("#main_modal").modal("show");
+          },
+          error: function (a, b, c) {
+            swal.close();
+            if (a.status == 403) {
+              ShowError("Anda tidak punya akses");
+            } else if (a.status == 404) {
+              ShowError("Data tidak ditemukan.");
+            } else {
+              ShowError(b);
+            }
+          },
+        });
+      }
+
+      function OpenImage(url, judul) {
+        judul = judul || "Gambar";
+
+        let split = url.split(".");
+        let ext = split[split.length - 1].toLowerCase();
+        var img = ["png", "jpg", "jpeg"];
+        var isi =
+          "<span class='text-muted text-center' style='display: block;'>Dokumen tidak dapat ditampilkan</span>";
+
+        if (url.startsWith("http")) {
+        } else if (url.startsWith("/uploads")) {
+          url = url.substring(1);
+          url = "" + url;
+        } else {
+          url = "uploads/" + url;
+        }
+
+        if (img.includes(ext)) {
+          isi = "<img src='" + url + "' class='gambar-tengah' />";
+        } else if (ext == "pdf") {
+          isi =
+            "<object type='application/pdf' class='pdf-tengah' style='' data='" +
+            url +
+            "?#toolbar=0&navpanes=0'>" +
+            "<p> Tidak dapat menampilkan preview. Klik <a href=" +
+            url +
+            ">di sini</a> untuk mengunduh.</p>" +
+            "</object>";
+        }
+        var kepala = `<h2><b>${judul}</b></h2><hr>`;
+        $("#isi_modal").html(kepala + isi);
+        $("#main_modal").modal("show");
+      }
+    </script>
+    <script>
+      function Delete(url, message) {
+        message = message || "Anda tidak akan dapat mengembalikan data ini!";
+        Swal.fire({
+          title: "Apakah Anda yakin?",
+          text: message,
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          cancelButtonText: "Batal",
+          confirmButtonText: "Ya, hapus data ini!",
+        }).then((result) => {
+          if (result.value) {
+            ShowLoading();
+            $.ajax({
+              type: "POST",
+              url: url,
+              data: {
+                _token: "tRf3qhyTvmo9MuU2xnkbhzTAvaKzXUIOlaU6dswZ",
+              },
+              success: function (hasil) {
+                if (hasil != "") {
+                  var res = JSON.parse(hasil);
+                  if (res != undefined) {
+                    if (res.status == 0) {
+                      ShowError(res.message);
+                      return;
+                    } else if (res.url != "" && res.url != null) {
+                      location.replace(res.url);
+                    }
+                  }
+                }
+                location.reload();
+              },
+              error: function (a, b, c) {
+                if (a.status == 403) {
+                  ShowError("Anda tidak punya akses");
+                } else if (a.status == 404) {
+                  ShowError("Data tidak ditemukan");
+                } else {
+                  ShowError(b);
+                }
+              },
+            });
+          }
+        });
+      }
+    </script>
+    <script src="js/site.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="lib/template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css"
+    />
+    <script src="lib/template/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="lib/template/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+
+    <script>
+      var table = null;
+
+      function setDatatables(element, sortCol, direction) {
+        sortCol = sortCol || 1;
+        direction = direction || "asc";
+        element = element || "#main_table";
+        table = $(element).DataTable({
+          columnDefs: [
+            {
+              searchable: false,
+              orderable: false,
+              targets: 0,
+            },
+            {
+              searchable: false,
+              orderable: false,
+              targets: "nosort",
+            },
+          ],
+          order: [[sortCol, direction]],
+        });
+
+        table
+          .on("order.dt search.dt", function () {
+            table
+              .column(0, {
+                search: "applied",
+                order: "applied",
+              })
+              .nodes()
+              .each(function (cell, i) {
+                cell.innerHTML = i + 1;
+              });
+          })
+          .draw();
+
+        $(element).css("width", "100%");
+        $(element).wrap("<div class='table-responsive'></div>");
+      }
+
+      var t = null;
+
+      function SetDatatablesServerSide(el, url, filterClass, callback) {
+        el = el || "#main_table";
+        url = url || "";
+        $(document).ready(function () {
+          t = $(el).dataTable({
+            aaSorting: [1],
+            bServerSide: true,
+            bStateSave: true,
+            sAjaxSource: url,
+            bProcessing: true,
+            aoColumnDefs: [
+              {
+                bSortable: false,
+                aTargets: "nosort",
+              },
+            ],
+            fnServerParams: function (aoData) {
+              StopAjax(t);
+              if (callback != undefined) {
+                callback(aoData);
+              }
+            },
+            //fnServerParams: function (aoData) {
+            //    //this function is called each time fnServerParams sends data to server
+            //    filter.forEach(function(item, index) {
+            //        aoData.push(item);
+            //    });
+            //    //aoData.push({ "name": "Tahun", "value": $('#Tahun').val() });
+            //    //aoData.push({ "name": "UnitId", "value": $('#UnitId').val() });
+            //    //aoData.push({ "name": "PegawaiId", "value": $('#PegawaiId').val() });
+            //}
+          });
+          $(el).css("width", "100%");
+          $(el).wrap("<div class='table-responsive'></div>");
+
+          if (filterClass != undefined) {
+            $(`.${filterClass}`).change(function () {
+              t.fnDraw();
+            });
+          }
+        });
+      }
+
+      function SetDatatablesServerSideV2(
+        url,
+        koloms,
+        idElement,
+        filterClass,
+        callback,
+        finishCallback
+      ) {
+        idElement = idElement || "main_table";
+        idElement = "#" + idElement;
+        var ajaxOpsi = {
+          url: url,
+        };
+        if (callback != undefined) {
+          ajaxOpsi.data = callback;
+        }
+        var opsi = {
+          stateSave: true,
+          processing: true,
+          serverSide: true,
+          responsive: true,
+          sorting: [1],
+          columnDefs: [
+            {
+              bSortable: false,
+              aTargets: "nosort",
+            },
+          ],
+          columns: koloms,
+          ajax: ajaxOpsi,
+          fnServerParams: function (aoData) {
+            StopAjax(tabel);
+
+            $(idElement + "_processing").css("display", "block");
+          },
+          drawCallback: function (settings) {
+            $(idElement + "_processing").css("display", "none");
+            if (finishCallback != undefined) {
+              finishCallback();
+            }
+          },
+        };
+        // opsi['columns'] = koloms;
+
+        var tabel = $(idElement).DataTable(opsi);
+
+        $(idElement).wrap('<div class="table-responsive"></div>');
+        $(idElement).css("width", "100%");
+
+        if (filterClass != undefined) {
+          $(`.${filterClass}`).change(function () {
+            tabel.draw();
+          });
+        }
+      }
+
+      function StopAjax(t) {
+        if (t != undefined) {
+          t.settings()[0].jqXHR.abort();
+        }
+      }
+
+      function GetDataDefault(data) {}
+    </script>
+    <script src="lib/jquery-maskmoney/jquery.maskMoney.min.js"></script>
+    <script>
+      SetMaskMoney();
+
+      function SetMaskMoney(el, presisi) {
+        el = el || ".uang";
+        presisi = presisi || 0;
+        $(el).maskMoney({
+          thousands: ".",
+          decimal: ",",
+          precision: presisi,
+          allowZero: true,
+        });
+      }
+    </script>
+    <script>
+      setDatatables();
+    </script>
+  </body>
+</html>
